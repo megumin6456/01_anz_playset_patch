@@ -1,0 +1,1914 @@
+# Pop Abducted
+namespace = action
+pop_event = {
+	id = action.121
+	title = OK
+	desc = OK
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = {
+			random_owned_planet = {
+				limit = { has_modifier = abductplanetkiller_raidplace }
+				resettle_pop = {
+					pop = prevprev
+					planet = this
+				}
+			}
+		}
+		create_message = {
+			type = MESSAGE_TYPE_POP_ABDUCTED
+			localization = MESSAGE_POP_ABDUCTED
+			days = 30
+			target = from
+			variable = {
+				type = name
+				localization = SPECIES
+				scope = root.species
+			}
+			variable = {
+				type = name
+				localization = TARGET_PLANET
+				scope = root.planet
+			}
+			variable = {
+				type = name
+				localization = PLANET
+				scope = from
+			}
+		}
+		if = {
+			limit = {
+				exists = from.owner
+			}
+			from.owner = {
+				create_message = {
+					type = MESSAGE_TYPE_POP_ABDUCTED_FROM_US
+					localization = MESSAGE_POP_ABDUCTED_FROM_US
+					days = 30
+					target = from
+					variable = {
+						type = name
+						localization = SPECIES
+						scope = root.species
+					}
+					variable = {
+						type = name
+						localization = ABDUCTER
+						scope = root.planet.owner
+					}
+					variable = {
+						type = name
+						localization = PLANET
+						scope = from
+					}
+				}
+			}
+		}
+	}
+}
+
+# Other Empires react to a Pop dying in a purge
+# This = Planet scope
+# From = Country
+# FromFrom = Pop
+planet_event = {
+	id = action.21
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = fromfrom
+		FROMFROM = {
+			is_robot_pop = no
+			is_sapient = yes
+			NOR = {
+				has_trait = "trait_hive_mind"
+				has_trait = trait_nerve_stapled
+				AND = {
+					has_trait = trait_cybernetic
+					owner = { has_civic = civic_machine_assimilator }
+				}
+			}
+			OR = {
+				NOT = { has_citizenship_type = { country = from type = citizenship_purge } }
+				NOT = { has_purge_type = { country = from type = purge_neutering } }
+			}
+			NOT = { has_purge_type = { country = from type = purge_necrophage } }
+		}
+		is_controlled_by = FROM
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_communications = FROM
+				NOT = { is_country = FROM }
+				NOT = { is_same_species = FROMFROM }
+				NOT = { has_ai_personality_behaviour = purger }
+				OR = {
+					is_country_type = default
+					has_ai_personality = awakened_fallen_empire_xenophile
+				}
+				has_intel_level = {
+					who = FROM
+					category = economy
+					level >= 1
+				}
+			}
+			add_opinion_modifier = { who = FROM modifier = opinion_genocidal }
+		}
+		every_country = {
+			limit = {
+				has_communications = FROM
+				NOT = { is_country = FROM }
+				is_same_species = FROMFROM
+				has_intel_level = {
+					who = FROM
+					category = economy
+					level >= 1
+				}
+			}
+			add_opinion_modifier = { who = FROM modifier = opinion_genocidal_our_species }
+		}
+	}
+}
+
+namespace = leader
+country_event = {
+	id = leader.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		always = no
+	}
+
+	immediate = {
+		
+	}
+}
+
+namespace = distar
+# Catch the Enigmatic Cache
+ship_event = {
+	id = distar.5053
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_ship_flag = enigmatic_cache_ship
+	}
+
+	immediate = {
+		From.owner = { save_event_target_as = cache_killers }
+		solar_system = {
+			save_event_target_as = cache_current_location
+		}
+		# Removes enigmatic_cache_in_orbit modifier if orbiting a planet
+		if = {
+			limit = {
+				exists = orbit
+				orbit = {
+					has_modifier = enigmatic_cache_in_orbit
+				}
+			}
+			orbit = {
+				remove_modifier = enigmatic_cache_in_orbit
+				every_owned_pop = {
+					limit = {
+						OR = {
+							has_modifier = enigmatic_cache_in_orbit_phobe
+						}
+					}
+					remove_modifier = enigmatic_cache_in_orbit_phobe
+				}
+				# Aborts enigmatic research project
+				if = {
+					limit = {
+						owner = {
+							has_special_project = ENIGMATIC_CACHE_PROJECT
+						}
+					}
+					owner = { abort_special_project = { type = ENIGMATIC_CACHE_PROJECT } }
+				}
+			}
+		}
+		# Alerts Players with active Uplifting Project
+		if = {
+			limit = {
+				any_playable_country = {
+					is_researching_special_project = ENIGMATIC_UPLIFTING
+					NOT = { is_same_value = FROM } # Aggressor is not country that is being uplifted
+				}
+			}
+			random_playable_country = {
+				limit = {
+					is_researching_special_project = ENIGMATIC_UPLIFTING
+				}
+				country_event = { id = distar.5070 days = 20 }
+			}
+		}
+		# Removes Inactive Enigmatic Uplift Project
+		if = {
+			limit = {
+				any_playable_country = {
+					has_special_project = ENIGMATIC_UPLIFTING
+				}
+			}
+			random_playable_country = {
+				limit = { has_special_project = ENIGMATIC_UPLIFTING }
+				abort_special_project = { type = ENIGMATIC_UPLIFTING }
+			}
+			delete_ship = this
+			break = yes # If the cache is interrupted while uplifting it will never come back.
+		}
+		delete_ship = this
+	}
+}
+
+namespace = emperor
+# Rise of the Galactic Empire
+country_event = {
+	id = emperor.2
+	title = "emperor.2.name"
+	desc = {
+		trigger = { is_gestalt = no }
+		text = "emperor.2.normal.desc"
+	}
+	desc = {
+		trigger = { is_machine_empire = yes }
+		text = "emperor.2.machine.desc"
+	}
+	desc = {
+		trigger = { is_hive_empire = yes }
+		text = "emperor.2.hive.desc"
+	}
+	picture = GFX_evt_coronation
+	show_sound = event_coronation
+
+	is_triggered_only = yes
+
+	immediate = {
+		remove_modifier = gal_custodian
+		# if = {
+		# 	limit = { has_federation = yes }
+		# 	leave_alliance = { override_requirements = yes }
+		# }
+		set_galactic_emperor = yes
+		if = {
+			limit = { has_country_flag = united_front_active }
+			pass_resolution_no_cooldown = resolution_emperor_united_front
+			remove_country_flag = united_front_active
+		}
+		if = {
+			limit = { has_country_flag = custodian_ina_active }
+			pass_resolution_no_cooldown = resolution_emperor_ina
+			remove_country_flag = custodian_ina_active
+		}
+		if = {
+			limit = { has_country_flag = custodian_gto_active }
+			pass_resolution_no_cooldown = resolution_emperor_gto
+			remove_country_flag = custodian_gto_active
+		}
+		random_country = {
+			limit = { is_country_type = global_event }
+			change_variable = {
+				which = galactic_empires
+				value = 1
+			}
+		}
+		store_galactic_community_leader_backup_data = {
+			FLAG = yes
+			NAME = yes
+			ETHICS = yes
+			GOVERNMENT = yes
+		}
+		if = {
+			limit = {
+				is_gestalt = no
+				is_megacorp = no
+			}
+			if = {
+				limit = {
+					has_origin = origin_legendary_leader_dictatorial
+				}
+				set_origin = origin_legendary_leader_imperial
+			}
+			shift_ethic = "ethic_fanatic_authoritarian"
+			change_government = {
+				authority = auth_imperial
+				cooldown = no
+				remove_invalid_civics = yes
+			}
+			force_add_civic = civic_galactic_sovereign
+		}
+		else_if = {
+			limit = { is_gestalt = yes }
+			force_add_civic = civic_galactic_sovereign
+		}
+		else_if = {
+			limit = { is_megacorp = yes }
+			shift_ethic = "ethic_fanatic_authoritarian"
+			force_add_civic = civic_galactic_sovereign_megacorp
+			change_government = {
+				authority = auth_imperial
+				cooldown = no
+				remove_invalid_civics = yes
+			}
+		}
+		set_government_cooldown = no
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_value = root }
+			}
+			country_event = { id = emperor.3 }
+		}
+		pass_resolution_no_cooldown = resolution_emperor_by_election
+	}
+
+	option = {
+		name = emperor.2.a
+		add_resource = {
+			influence = 250
+		}
+		if = {
+			limit = {
+				is_gestalt = yes
+			}
+			custom_tooltip = emperor.2.a.tooltip.gestalt
+		}
+		else_if = {
+			limit = {
+				is_megacorp = yes
+			}
+			custom_tooltip = emperor.2.a.tooltip.megacorp
+		}
+		else = {
+			custom_tooltip = emperor.2.a.tooltip
+		}
+	}
+}
+
+# Rise of the Galactic Empire (Others)
+country_event = {
+	id = emperor.3
+	title = "emperor.2.name"
+	desc = {
+		trigger = {
+			event_target:gal_emperor = { is_gestalt = no }
+		}
+		text = "emperor.3.normal.desc"
+	}
+	desc = {
+		trigger = {
+			event_target:gal_emperor = { is_machine_empire = yes }
+		}
+		text = "emperor.3.machine.desc"
+	}
+	desc = {
+		trigger = {
+			event_target:gal_emperor = { is_hive_empire = yes }
+		}
+		text = "emperor.3.hive.desc"
+	}
+	picture = GFX_evt_coronation
+	show_sound = event_coronation
+
+	is_triggered_only = yes
+
+	after = {
+		if = {
+			limit = {
+				is_galactic_community_member = yes
+				is_subject = yes
+				overlord = { is_galactic_community_member = no }
+			}
+			country_event = { id = emperor.10 }
+		}
+		else_if = {
+			limit = { is_galactic_community_member = yes }
+			country_event = { id = emperor.4 }
+		}
+	}
+
+	option = {
+		trigger = { is_galactic_community_member = yes }
+		name = emperor.3.a
+		custom_tooltip = emperor.3.a.tooltip
+	}
+	option = {
+		trigger = { is_galactic_community_member = no }
+		name = emperor.3.b
+		custom_tooltip = emperor.3.a.tooltip
+	}
+}
+
+# Synth Age Choice
+namespace = utopia
+country_event = {
+	id = utopia.2550
+	title = "utopia.2550.name"
+	desc = "utopia.2550.desc"
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_laboratory_sound
+	trackable = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = anz_synth_age_merge_all
+		ai_chance = {
+			factor = 2.5 # x 0.8 = 1.75 x 0.7 = 1.225 x 0.7 = 0.8575
+			modifier = {
+				factor = 1.1
+				has_ethic = ethic_materialist
+			}
+			modifier = {
+				factor = 1.17
+				has_ethic = ethic_fanatic_materialist
+			}
+			modifier = {
+				factor = 0.7
+				anz_spr_repsi = yes
+			}
+			modifier = {
+				factor = 0.7
+				anz_spr_recyber = yes
+			}
+			modifier = {
+				factor = 0.7
+				anz_spr_dehive = yes
+			}
+			modifier = {
+				factor = 0.4
+				has_ethic = ethic_spiritualist
+			}
+			modifier = {
+				factor = 0
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+	}
+
+	option = {
+		name = anz_synth_age_merge_robots
+		hidden_effect = {
+			set_country_flag = anz_synth_ascend_only_robots
+		}
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	after = {
+		hidden_effect = { save_event_target_as = synth_evo_owner }
+		capital_scope = {
+			enable_special_project = {
+				name = "SYNTHETIC_EVOLUTION_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+
+# The Synthetic Age
+country_event = {
+	id = utopia.2551
+	title = "utopia.2551.name"
+	desc = "utopia.2551.desc"
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_synthetic_evolution
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = synthetic_empire
+		if = {
+			limit = {
+				has_policy_flag = robots_outlawed
+			}
+			set_policy = {
+				policy = robot_pop_policy
+				option = robot_pops_allowed
+				cooldown = yes
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_policy_flag = ai_servitude
+					has_policy_flag = ai_outlawed
+				}
+			}
+			set_policy = {
+				policy = artificial_intelligence_policy
+				option = ai_full_rights
+				cooldown = yes
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					is_active_resolution = "resolution_divinity_silence_the_soulless"
+					is_active_resolution = "resolution_divinity_a_defined_purpose"
+				}
+			}
+			owner = {
+				set_timed_country_flag = { flag = resolution_breached_synthetic_evolution days = 3600 }
+			}
+		}
+		give_technology = { tech = tech_bio_reactor message = no }
+
+		create_species = {
+			is_mod = yes
+			name = this
+			namelist = this
+			plural = this
+			class = "ROBOT"
+			homeworld = root.species
+			portrait = "default_robot"
+			traits = {
+				trait = "trait_mechanical"
+			}
+
+			effect = {
+				if = {
+					limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+					prev = {
+						switch = {
+							trigger = is_species_class
+							HUM = { prev = { change_species_characteristics = { portrait = "sd_hum_robot" } } }
+							MAM = { prev = { change_species_characteristics = { portrait = "sd_mam_robot" } } }
+							REP = { prev = { change_species_characteristics = { portrait = "sd_rep_robot" } } }
+							AVI = { prev = { change_species_characteristics = { portrait = "sd_avi_robot" } } }
+							ART = { prev = { change_species_characteristics = { portrait = "sd_art_robot" } } }
+							MOL = { prev = { change_species_characteristics = { portrait = "sd_mol_robot" } } }
+							FUN = { prev = { change_species_characteristics = { portrait = "sd_fun_robot" } } }
+							PLANT = { prev = { change_species_characteristics = { portrait = "sd_pla_robot" } } }
+							LITHOID = { prev = { change_species_characteristics = { portrait = "lith_machine" } } }
+							NECROID = { prev = { change_species_characteristics = { portrait = "nec_machine" } } }
+							AQUATIC = { prev = { change_species_characteristics = { portrait = "aqu_machine" } } }
+							TOX = { prev = { change_species_characteristics = { portrait = "tox_machine" } } }
+						}
+					}
+				}
+				if = {
+					limit = { root = { anz_spr_repsi = yes } }
+					modify_species = {
+						add_trait = trait_psionic
+						change_scoped_species = no
+						effect = {
+							save_event_target_as = new_robotic_species
+							set_species_flag = anz_asim_spc_synth_empire@root
+							rename_species = {
+								prompt_country = root
+								name_list = ascension_list
+							}
+						}
+					}
+				} else = {
+					save_event_target_as = new_robotic_species
+					set_species_flag = anz_asim_spc_synth_empire@root
+					rename_species = {
+						prompt_country = root
+						name_list = ascension_list
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				has_country_flag = anz_synth_ascend_only_robots
+			}
+			every_owned_pop = {
+				limit = {
+					is_being_purged = no
+					species = {
+						is_robotic = yes
+					}
+				}
+				change_species = event_target:new_robotic_species
+			}
+	
+			every_controlled_ship = {
+				limit = {
+					is_ship_class = shipclass_colonizer
+					species = {
+						is_robotic = yes
+					}
+				}
+				change_species = event_target:new_robotic_species
+			}
+	
+			every_owned_leader = {
+				limit = {
+					OR = {
+						species = {
+							is_robotic = yes
+						}
+						has_trait = leader_trait_synthetic
+					}
+					NOR = {
+						has_leader_flag = renowned_leader
+						has_leader_flag = legendary_leader
+					}
+				}
+				change_species = event_target:new_robotic_species
+				change_leader_portrait = species
+			}
+
+			every_pool_leader = {
+				limit = {
+					OR = {
+						species = {
+							is_robotic = yes
+							is_livestock = no
+						}
+						has_trait = leader_trait_synthetic
+					}
+				}
+				change_species = event_target:new_robotic_species
+				change_leader_portrait = species
+			}
+
+			every_envoy = {
+				limit = {
+					species = {
+						is_robotic = yes
+						is_livestock = no
+					}
+				}
+				change_species = event_target:new_robotic_species
+				change_leader_portrait = species
+			}
+
+			change_dominant_species = { species = event_target:new_robotic_species }
+		} else = {
+			every_owned_pop = {
+				limit = {
+					is_being_purged = no
+					species = {
+						is_livestock = no
+					}
+				}
+				change_species = event_target:new_robotic_species
+			}
+	
+			every_controlled_ship = {
+				limit = {
+					is_ship_class = shipclass_colonizer
+					species = {
+						is_livestock = no
+					}
+				}
+				change_species = event_target:new_robotic_species
+			}
+	
+			every_owned_leader = {
+				limit = {
+					OR = {
+						species = {
+							is_livestock = no
+						}
+						has_trait = leader_trait_synthetic
+					}
+					NOR = {
+						has_leader_flag = renowned_leader
+						has_leader_flag = legendary_leader
+					}
+				}
+				change_species = event_target:new_robotic_species
+				change_leader_portrait = species				
+			}
+
+			every_pool_leader = {
+				limit = {
+					OR = {
+						species = {
+							is_livestock = no
+						}
+						has_trait = leader_trait_synthetic
+					}
+				}
+				change_species = event_target:new_robotic_species
+				change_leader_portrait = species
+			}
+
+			every_envoy = {
+				limit = {
+					species = {
+						is_livestock = no
+					}
+				}
+				change_species = event_target:new_robotic_species
+				change_leader_portrait = species
+			}
+		}
+
+		every_owned_leader = {
+			limit = {
+				species = { has_trait = trait_mechanical }
+				NOR = {
+					has_trait = leader_trait_synthetic
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+			}
+			add_trait_no_notify = leader_trait_synthetic
+			remove_trait = leader_trait_cyborg
+		}
+
+		every_pool_leader = {
+			limit = {
+				species = { has_trait = trait_mechanical }
+				NOT = { has_trait = leader_trait_synthetic }
+			}
+			add_trait_no_notify = leader_trait_synthetic
+			remove_trait = leader_trait_cyborg
+		}
+
+		observer_event = { id = observer.4 }
+		every_country = {
+			limit = {
+				is_ai = no
+				NOT = { is_same_value = root }
+				has_communications = root
+			}
+			country_event = { id = utopia.2555 days = 5 }
+			country_event = { id = utopia.2556 days = 10 }
+		}
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
+					has_ethic = ethic_fanatic_spiritualist
+					has_communications = root
+					NOT = { is_same_value = root }
+				}
+			}
+			random_country = {
+				limit = {
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
+					has_ethic = ethic_fanatic_spiritualist
+					has_communications = root
+					NOT = { is_same_value = root }
+				}
+				country_event = { id = utopia.2557 days = 15 }
+			}
+		}
+		else = {
+			random_country = {
+				limit = {
+					is_country_type = default
+					has_ethic = ethic_fanatic_spiritualist
+					has_communications = root
+					NOT = { is_same_value = root }
+				}
+				country_event = { id = utopia.2557 days = 15 }
+			}
+		}
+
+		ROOT = {
+			set_country_flag = synth_assimilation
+		}
+	}
+
+	option = {
+		trigger = {
+			is_homicidal = no
+		}
+		name = "utopia.2551.a"
+		custom_tooltip = SYNTH_ASSIMILATION_CITIZENSHIP_ENABLED
+		set_country_flag = anz_synthetic_empire
+	}
+
+	option = {
+		trigger = {
+			is_homicidal = yes
+		}
+		name = "utopia.2551.a"
+	}
+}
+
+# A Cybernetic Revolution
+country_event = {
+	id = utopia.2501
+	title = "utopia.2501.name"
+	desc = "utopia.2501.desc"
+	picture = GFX_evt_cybernetics
+	show_sound = event_the_flesh_is_weak
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = cyborg_empire
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_exact_same_species = root
+				}
+			}
+			random_owned_pop = {
+				limit = { is_exact_same_species = root }
+				create_cybernetic_species_mod = yes
+				species = { save_event_target_as = new_main_species }
+			}
+		}
+		else = {
+			random_owned_pop = {
+				limit = { is_same_species = root }
+				create_cybernetic_species_mod = yes
+				species = { save_event_target_as = new_main_species }
+			}
+		}
+		change_dominant_species = { species = event_target:new_main_species }
+
+		every_controlled_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+			}
+			destroy_ship = yes
+		}
+
+		every_owned_leader = {
+			limit = {
+				species = { has_trait = trait_cybernetic }
+				NOR = {
+					has_trait = leader_trait_cyborg
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+			}
+			add_trait_no_notify = leader_trait_cyborg
+		}
+
+		create_message = {
+			type = MESSAGE_ALL_GAINED_TRAIT
+			localization = MESSAGE_ALL_GAINED_TRAIT_DESC
+			days = @toast_message_days
+			variable = {
+				type = key
+				value = leader_trait_cyborg
+				localization = TRAIT
+			}
+			variable = {
+				key = TRAIT_KEY
+				value = leader_trait_cyborg
+			}
+			variable = {
+				key = "border"
+				value = "GFX_invisible" #TODO Common/ no rarity frame
+			}
+		}
+
+		every_pool_leader = {
+			limit = {
+				species = { has_trait = trait_cybernetic }
+				NOT = { has_trait = leader_trait_cyborg }
+			}
+			add_trait_no_notify = leader_trait_cyborg
+		}
+
+		observer_event = { id = observer.55 }
+		every_country = {
+			limit = {
+				is_ai = no
+				NOT = { is_same_value = root }
+				has_communications = root
+				root = {
+					is_primitive = no
+				}
+			}
+			country_event = { id = utopia.2505 days = 5 }
+		}
+		if = {
+			limit = {
+				any_planet_within_border = {
+					has_planet_flag = fotd_seperatist_planet@root
+					owner = {
+						has_country_flag = fotd_seperatist_country@root
+					}
+				}
+			}
+			country_event = { id = origin.6095 days = 5 random = 2 }
+		}
+
+		if = {
+			limit = {
+				is_gestalt = yes
+			}
+			every_owned_leader = {
+				limit = {
+					is_councilor = yes
+					is_ruler = no
+				}
+				set_gestalt_node_protrait_effect = yes
+			}
+		}
+	}
+
+	option = {
+		name = "utopia.2501.a"
+	}
+}
+
+# Mind over Matter
+# Altered to handle multiple ascension conflicts
+country_event = {
+	id = utopia.2600
+	title = "utopia.2600.name"
+	desc = "utopia.2600.desc"
+	picture = GFX_evt_psionics
+	show_sound = event_mind_over_matter
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_tradition = tr_psionics_adopt
+	}
+
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				is_same_species = root
+				species = {
+					has_psionic_species_trait = no
+				}
+			}
+			if = {
+				limit = {
+					is_exact_same_species = root
+				}
+				set_timed_pop_flag = {
+					flag = anz_psi_ascend_exact
+					days = 1
+				}
+			}
+			modify_species = {
+				species = this
+				add_trait = trait_latent_psionic
+			}
+			if = {
+				limit = {
+					has_pop_flag = anz_psi_ascend_exact
+				}
+				species = { save_event_target_as = psionic_species }
+			}
+		}
+		# Ensure the event target exists, since in rare cases the main species is already psionic and no pops get modified
+		# (Example: Teachers of the Shroud empires)
+		if = {
+			limit = {
+				exists = event_target:psionic_species
+			}
+			change_dominant_species = {
+				species = event_target:psionic_species
+				change_all = yes
+			}
+		}
+		observer_event = { id = observer.5 }
+		every_country = {
+			limit = {
+				is_ai = no
+				has_communications = root
+				NOT = { is_same_value = root }
+			}
+			country_event = { id = utopia.2602 }
+		}
+		remove_country_flag = shroudwalker_enclave_diplomacy_engaged #Resets to fellow psionic greetings
+		if = {
+			limit = {
+				any_planet_within_border = {
+					has_planet_flag = fotd_seperatist_planet@root
+					owner = {
+						has_country_flag = fotd_seperatist_country@root
+					}
+				}
+			}
+			country_event = { id = origin.6105 days = 5 random = 2 }
+		}
+	}
+
+	option = {
+		name = "utopia.2600.a"
+		trigger = {
+			NOT = { has_origin = origin_shroudwalker_apprentice }
+		}
+		tooltip = {
+			modify_species = {
+				species = this
+				add_trait = trait_latent_psionic
+			}
+		}
+	}
+
+	option = {
+		name = "utopia.2600.a"
+		trigger = {
+			has_origin = origin_shroudwalker_apprentice
+		}
+	}
+}
+
+# Transcendence
+country_event = {
+	id = utopia.2650
+	title = "utopia.2650.name"
+	desc = "utopia.2650.desc"
+	picture = GFX_evt_psionics
+	show_sound = event_the_great_awakening
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_tradition = tr_psionics_psionic_assimilation
+	}
+
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				has_trait = trait_latent_psionic
+			}
+			if = {
+				limit = {
+					is_exact_same_species = root
+				}
+				set_timed_pop_flag = {
+					flag = anz_psi_ascend_exact
+					days = 1
+				}
+			}
+			modify_species = {
+				species = this
+				remove_trait = trait_latent_psionic
+				add_trait = trait_psionic
+			}
+			if = {
+				limit = {
+					has_pop_flag = anz_psi_ascend_exact
+				}
+				save_event_target_as = psionic_species
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:psionic_species
+			}
+			change_dominant_species = { species = event_target:psionic_species change_all = yes }
+		}
+	}
+	option = {
+		name = "utopia.2650.a"
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						is_country_type = default
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
+				}
+				every_owned_leader = {
+					limit = {
+						species = {
+							has_trait = trait_psionic
+						}
+						NOR = {
+							has_trait = leader_trait_psionic
+							has_leader_flag = renowned_leader
+							has_leader_flag = legendary_leader
+						}
+					}
+					add_trait_no_notify = leader_trait_psionic
+					owner = {
+						if = {
+							limit = {
+								NOT = {
+									has_country_flag = psionic_leader_toast
+								}
+							}
+							set_timed_country_flag = { 
+								flag = psionic_leader_toast
+								days = 30
+							}
+						}
+					}
+				}
+
+				every_pool_leader = {
+					limit = {
+						species = {
+							has_trait = trait_psionic
+						}
+						NOT = { has_trait = leader_trait_psionic }
+					}
+					add_trait_no_notify = leader_trait_psionic
+					owner = {
+						if = {
+							limit = {
+								NOT = {
+									has_country_flag = psionic_leader_toast
+								}
+							}
+							set_timed_country_flag = { 
+								flag = psionic_leader_toast
+								days = 30
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_country_flag = psionic_leader_toast
+					}
+					create_message = {
+						type = MESSAGE_ALL_GAINED_TRAIT
+						localization = MESSAGE_ALL_GAINED_TRAIT_DESC
+						days = @toast_message_days
+						variable = {
+							type = key
+							value = leader_trait_psionic
+							localization = TRAIT
+						}
+						variable = {
+							key = TRAIT_KEY
+							value = leader_trait_psionic
+						}
+						variable = {
+							key = "border"
+							value = "GFX_invisible" #TODO Common/ no rarity frame
+						}
+					}
+				}
+			}
+			observer_event = { id = observer.6 }
+			every_country = {
+				limit = {
+					is_ai = no
+					has_communications = root
+					NOT = { is_same_value = root }
+				}
+				country_event = { id = utopia.2652 }
+			}
+		}
+	}
+}
+
+
+namespace = marauder
+# Marauder Awakens
+# altered to wake early
+# +50 years after game start (midgame ignored)
+country_event = {
+	id = marauder.500
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				# mid_game_years_passed >= 10
+				# end_game_years_passed < 0
+				years_passed >= 70
+			}
+			has_global_flag = horde_triggered
+		}
+		is_country_type = dormant_marauders
+		NOT = { has_global_flag = marauder_crisis_started }
+		OR = {
+			AND = {
+				has_country_flag = marauder_1
+				any_system_within_border = { has_star_flag = marauder_capital_1 }
+			}
+			AND = {
+				has_country_flag = marauder_2
+				any_system_within_border = { has_star_flag = marauder_capital_2 }
+			}
+			AND = {
+				has_country_flag = marauder_3
+				any_system_within_border = { has_star_flag = marauder_capital_3 }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50 # was 100
+		modifier = {
+			factor = 0.66
+			# mid_game_years_passed >= 50
+			years_passed >= 80
+		}
+		modifier = {
+			factor = 1.5
+			count_country = {
+				limit = { is_country_type = dormant_marauders }
+				count > 1
+			}
+			count_country = {
+				limit = { is_country_type = dormant_marauders }
+				count < 3
+			}
+		}
+		modifier = {
+			factor = 2.0
+			count_country = {
+				limit = { is_country_type = dormant_marauders }
+				count > 2
+			}
+		}
+	}
+
+	immediate = {
+		set_country_type = awakened_marauders
+		set_global_flag = marauder_crisis_started
+		set_global_flag = marauder_crisis_ongoing
+		save_global_event_target_as = raider_khanate
+		if = {
+			limit = { has_country_flag = marauder_1 }
+			random_system = {
+				limit = { has_star_flag = marauder_capital_1 }
+				random_system_planet = {
+					limit = { has_planet_flag = raid_source }
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+			}
+		}
+		if = {
+			limit = { has_country_flag = marauder_2 }
+			random_system = {
+				limit = { has_star_flag = marauder_capital_2 }
+				random_system_planet = {
+					limit = { has_planet_flag = raid_source }
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+			}
+		}
+		if = {
+			limit = { has_country_flag = marauder_3 }
+			random_system = {
+				limit = { has_star_flag = marauder_capital_3 }
+				random_system_planet = {
+					limit = { has_planet_flag = raid_source }
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+			}
+		}
+		change_government = {
+			civics = { civic = civic_great_khans_vision }
+		}
+		set_name = random
+		change_country_flag = {
+			icon = {
+				category = "pirate"
+				file = "flag_pirate_11.dds"
+			}
+			background= {
+				category = "backgrounds"
+				file = "00_solid.dds"
+			}
+			colors={
+				"red"
+				"red"
+				"null"
+				"null"
+			}
+		}
+		create_ship_design = { design = "NAME_Pirate_Transport" }
+		add_ship_design = last_created_design
+		create_ship_design = { design = "NAME_Clan_Builder" }
+		add_ship_design = last_created_design
+
+		### Ruler Khan
+		create_leader = {
+			class = admiral
+			species = owner_main_species
+			name = random
+			skill = 10
+			leader_age_min = 22
+			leader_age_max = 40
+			randomize_traits = no
+			traits = {
+				trait = leader_trait_ruler_great_khan
+				trait = leader_trait_master_gunner
+				trait = subclass_commander_admiral
+				trait = leader_trait_gunship_specialization_3
+				trait = leader_trait_wrecker_3
+				trait = leader_trait_reckless_2
+				trait = leader_trait_artillerist_3
+				trait = leader_trait_demolisher_3
+			}
+		}
+		last_created_leader = {
+			set_leader_flag = great_khan
+			save_global_event_target_as = great_khan_ruler
+		}
+		assign_leader = last_created_leader
+		set_timed_global_flag = { flag = khan_no_die days = 7200 } # Should only die in battle first 20 years
+		country_event = { id = marauder.514 days = 10800 random = 5000 } # Khan dies of old age if still around
+
+		### Admiral Khan
+		clone_leader = {
+			target = event_target:great_khan_ruler
+			class = admiral
+			skill = 10
+			randomize_traits = no
+			effect = {
+				remove_trait = leader_trait_ruler_great_khan
+				add_trait = leader_trait_great_khan
+				set_leader_flag = great_khan
+				save_global_event_target_as = great_khan
+				set_leader_flag = legendary_leader
+			}
+		}
+
+		create_1st_khan_fleet = yes
+		create_marauder_fleet = yes
+		create_marauder_fleet = yes
+		create_marauder_fleet = yes
+		create_marauder_armies = yes
+		create_marauder_armies = yes
+		create_marauder_armies = yes
+		create_marauder_armies = yes
+		create_marauder_constructors = yes
+		create_marauder_constructors = yes
+		create_marauder_constructors = yes
+		country_event = { id = marauder.520 days = 180 } # Start reinforcement cycle
+		if = {
+			limit = {
+				NOT = { has_global_flag = horde_triggered }
+			}
+			observer_event = { id = observer.13 }
+			every_country = {
+				limit = { is_country_type = default }
+				establish_communications_no_message = root
+				country_event = { id = marauder.501 }
+			}
+		}
+		else = {
+			observer_event = { id = observer.18 }
+			every_country = {
+				limit = { is_country_type = default }
+				establish_communications_no_message = root
+				country_event = { id = marauder.526 }
+			}
+		}
+
+		# Mercenaries Defect (Marauder 1)
+		if = {
+			limit = { has_country_flag = marauder_1 }
+			every_country = {
+				limit = {
+					OR = {
+						any_controlled_fleet = {
+							OR = {
+								has_fleet_flag = armada_of_the_voidborn
+								has_fleet_flag = star_rider_flotilla
+								has_fleet_flag = first_storm_wing
+							}
+						}
+						any_owned_leader = {
+							has_leader_flag = hired_merc_leader_1
+						}
+					}
+				}
+				country_event = { id = marauder.77 days = 20 }
+			}
+		}
+		# Mercenaries Defect (Marauder 2)
+		if = {
+			limit = { has_country_flag = marauder_2 }
+			every_country = {
+				limit = {
+					OR = {
+						any_controlled_fleet = {
+							OR = {
+								has_fleet_flag = dwamak_bashers
+								has_fleet_flag = unhinged_screamer_flotilla
+								has_fleet_flag = frenzied_volunteer_squadron
+							}
+						}
+						any_owned_leader = {
+							has_leader_flag = hired_merc_leader_1
+						}
+					}
+				}
+				country_event = { id = marauder.77 days = 20 }
+			}
+		}
+		# Mercenaries Defect (Marauder 3)
+		if = {
+			limit = { has_country_flag = marauder_3 }
+			every_country = {
+				limit = {
+					OR = {
+						any_controlled_fleet = {
+							OR = {
+								has_fleet_flag = her_chosen_champions
+								has_fleet_flag = order_of_eternal_night
+								has_fleet_flag = twilight_congregation
+							}
+						}
+						any_owned_leader = {
+							has_leader_flag = hired_merc_leader_1
+						}
+					}
+				}
+				country_event = { id = marauder.77 days = 20 }
+			}
+		}
+
+		# Mercenaries Join the Great Khan
+		country_event = { id = marauder.78 days = 20 }
+
+		# Should not attack Enclaves
+		every_country = {
+			limit = { 
+				OR = {
+					is_country_type = enclave
+					is_country_type = enclave_mercenary
+				}
+			}
+			event_target:raider_khanate = {
+				set_faction_hostility = {
+					target = prev
+					set_hostile = no
+					set_neutral = no
+					set_friendly = yes
+				}
+			}
+		}
+	}
+}
+
+namespace = preftl
+# Pre-FTL Robot Uprising
+country_event = {
+	id = preftl.1015
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		has_first_contact_dlc = yes
+		has_country_flag = early_space_age
+		is_hive_empire = no
+	}
+
+	immediate = {
+		capital_scope = {
+			create_country = {
+				name = "NAME_Robot_Uprising"
+				type = faction
+				effect = {
+					set_country_flag = pre_ftl_robot_uprising
+					establish_communications_no_message = root
+					if = {
+						limit = {
+							exists = prev.observation_outpost_owner
+						}
+						establish_communications_no_message = prev.observation_outpost_owner
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					while = {
+						count = 10
+						create_army = {
+							name = "NAME_Robot_Army"
+							owner = last_created_country
+							type = "machine_assault_1"
+							land_army = yes
+						}
+					}
+					set_planet_flag = anz_preftl_uprising_terminators
+				}
+				40 = {
+					while = {
+						count = 10
+						create_army = {
+							name = "NAME_Robot_Army"
+							owner = last_created_country
+							type = "acot_army_machine_spm"
+							land_army = yes
+						}
+					}
+					set_planet_flag = anz_preftl_uprising_normal
+				}
+				50 = {
+					while = {
+						count = 10
+						create_army = {
+							name = "NAME_Robot_Army"
+							owner = last_created_country
+							type = "acot_army_machine_cyborg"
+							land_army = yes
+						}
+					}
+					set_planet_flag = anz_preftl_uprising_assimilators
+				}
+			}
+			clear_variable = num_robot_uprising_armies
+			# Notify the owner of the observation post
+			if = {
+				limit = {
+					exists = observation_outpost_owner
+				}
+				observation_outpost_owner = {
+					country_event = { id = preftl.1020 }
+				}
+			}
+		}
+	}
+
+	after = {
+		custom_tooltip = cannot_reveal_tt
+		custom_tooltip = cannot_dismantle_outpost_tt
+	}
+}
+
+# This = country, planet owner
+# From = country, attack leader
+# FromFrom = planet
+# Pre-FTL Robot Uprising Won
+country_event = {
+	id = preftl.1025
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		is_primitive = yes
+		from = { has_country_flag = pre_ftl_robot_uprising }
+	}
+
+	immediate = {
+		# Set the loser's graphical culture, so the machines can copy it.
+		set_species_graphical_culture = yes
+
+		# Remove the original robot rebellion.
+		from = {
+			every_owned_army = {
+				remove_army = yes
+			}
+		}
+
+		# create machine species
+		create_species = {
+			name = random
+			class = MACHINE
+			portrait = random
+			traits = {
+				trait = trait_machine_unit
+				trait = random_traits
+			}
+			immortal = yes
+		}
+
+		# create machine country
+		if = {
+			limit = { fromfrom = { has_planet_flag = anz_preftl_uprising_terminators } }
+			create_terminator_country = yes
+		} else_if = {
+			limit = { fromfrom = { has_planet_flag = anz_preftl_uprising_normal } }
+			create_machine_country = yes
+		} else_if = {
+			limit = { fromfrom = { has_planet_flag = anz_preftl_uprising_assimilators } }
+			create_assimilator_country = yes
+		}
+		# random_list = {
+		# 	1 = { # exterminator
+		# 		create_terminator_country = yes
+		# 	}
+		# 	30 = { # assimilator
+		# 		create_assimilator_country = yes
+		# 	}
+		# 	100 = { # regular machine empire
+		# 		create_machine_country = yes
+		# 	}
+		# }
+
+		event_target:current_uprising = {
+			set_graphical_culture = root
+			hidden_effect = {
+				establish_communications_no_message = root
+			}
+		}
+
+		fromfrom = {
+			save_event_target_as = pre_ftl_planet
+
+			# Check an empire owns the solar system and grant communications with them.
+			solar_system = {
+				if = {
+					limit = {
+						exists = space_owner
+						space_owner = {
+							is_country_type = default
+						}
+					}
+					space_owner = {
+						establish_communications_no_message = event_target:current_uprising
+						save_event_target_as = system_owner
+					}
+				}
+			}
+
+			# If the solar system owner has an observation post, notify them.
+			if = {
+				limit = {
+					exists = observation_outpost_owner
+					observation_outpost_owner = {
+						is_same_value = event_target:system_owner
+					}
+				}
+				event_target:system_owner = {
+					hidden_effect = {
+						prev = {
+							observation_outpost = {
+								dismantle = yes
+							}
+						}
+						add_intel = {
+							who = event_target:current_uprising
+							amount = 60
+						}
+						country_event = { id = preftl.1110 }
+						country_event = { id = preftl.1115 days = 5 }
+					}
+				}
+			}
+			else = {
+				event_target:system_owner = {
+					create_message = {
+						type = MESSAGE_SYSTEM_LOST_TO_PRE_FTL
+						localization = MESSAGE_SYSTEM_LOST_TO_PRE_FTL
+						days = 30
+						target = fromfrom.solar_system
+						variable = {
+							type = name
+							localization = SYSTEM
+							scope = fromfrom.solar_system
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_desert
+				}
+				set_planet_flag = tasty_desert
+			}
+
+			set_owner = event_target:current_uprising
+			set_capital = yes
+			while = {
+				count = 18
+				create_pop = {
+					species = last_created_species
+				}
+			}
+
+			# Reformat the planet
+			remove_all_districts = yes
+			remove_all_buildings = yes
+			generate_start_buildings_and_districts = yes
+
+			# Add Culture Shock modifier
+			add_modifier = {
+				modifier = planet_culture_shock
+				years = 10
+			}
+
+			# Kill some of the original organic pops
+			while = {
+				limit = {
+					count_owned_pop = {
+						limit = {
+							NOT = { is_same_species = owner }
+						}
+						count > 10
+					}
+				}
+				random_owned_pop = {
+					limit = {
+						NOT = { is_same_species = owner }
+					}
+					kill_pop = yes
+				}
+			}
+
+			owner = {
+				random_controlled_ship = {
+					limit = { is_ship_size = primitive_space_station }
+					fleet = { destroy_fleet = THIS }
+				}
+
+				# Unity so they can hire some leaders
+				add_resource = { unity = 1000 }
+
+				if = {
+					limit = {
+						NOT = { owner = { has_valid_civic = civic_machine_terminator } }
+					}
+					# Prevent bankruptcy from food.
+					if = {
+						limit = {
+							any_owned_pop = {
+								species = {
+									is_archetype = BIOLOGICAL
+								}
+							}
+						}
+						add_resource = { food = 100	}
+						prev = {
+							add_district_and_planet_size_if_needed_effect = {
+								district = district_farming
+							}
+						}
+					}
+					# Prevent bankruptcy from minerals.
+					else_if = {
+						limit = {
+							any_owned_pop = {
+								species = {
+									is_archetype = LITHOID
+								}
+							}
+						}
+						add_resource = { minerals = 100	}
+						prev = {
+							add_district_and_planet_size_if_needed_effect = {
+								district = district_mining
+							}
+						}
+					}
+				}
+			}
+
+			# Flip control of the solar system
+			solar_system = {
+				if = {
+					limit = { exists = starbase }
+					starbase = {
+						set_owner = event_target:current_uprising
+						if = {
+							limit = { has_starbase_size = starbase_outpost }
+							set_starbase_size = starbase_starport
+							set_starbase_module = {
+								slot = 1
+								module = shipyard
+							}
+							set_starbase_module = {
+								slot = 2
+								module = shipyard
+							}
+						}
+						else_if = {
+							limit = {
+								NOT = { has_starbase_module = shipyard }
+							}
+							set_starbase_module = {
+								slot = 1
+								module = shipyard
+							}
+							set_starbase_module = {
+								slot = 2
+								module = shipyard
+							}
+						}
+					}
+				}
+				else = {
+					create_starbase = {
+						size = starbase_starport
+						module = shipyard
+						module = shipyard
+						owner = event_target:current_uprising
+					}
+				}
+				every_fleet_in_system = {
+					limit = {
+						owner = { NOT = { is_same_value = event_target:current_uprising } }
+						is_mobile = yes
+					}
+					set_mia = mia_return_home
+				}
+				add_claims = { 
+					who = event_target:system_owner
+					num_of_claims = 1
+					show_notification = no
+				}
+			}
+		}
+	}
+}
+
+# on_pop_purged
+# This = Planet scope
+# From = Country
+# FromFrom = Pop
+# Mechromancy - CyberZombies
+namespace = necroids
+planet_event = {
+	id = necroids.25
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			has_ascension_perk = ap_mechromancy
+		}
+		exists = fromfrom #crisis.202 can remove the last pop
+		fromfrom = {
+			NOT = {
+				has_purge_type = {
+					type = purge_displacement
+				}
+			}
+			is_robotic_species = no
+			NAND = {
+				is_archetype = PRESAPIENT
+				has_trait = trait_cybernetic
+				has_trait = trait_zombie
+			}
+		}
+	}
+
+	immediate = {
+		random_list = {
+			66 = {	}
+			# 33% Chance to create a cyber-zombie per pop.
+			33 = {
+				if = {
+					limit = {
+						fromfrom = {
+							NOT = {
+								has_trait = trait_zombie
+							}
+						}
+					}
+					create_pop = {
+						species = fromfrom.species
+					}
+					last_created_pop = {
+						modify_species = {
+							species = this
+							add_trait = trait_cybernetic
+							add_trait = trait_zombie
+							add_traits_at_start_of_list = yes
+							remove_trait = trait_self_modified
+							remove_trait = trait_latent_psionic
+							remove_trait = trait_psionic
+						}
+						set_citizenship_type = {
+							country = root.owner
+							type = citizenship_full_machine
+						}
+						if = { # assimilator empire
+							limit = {
+								root.owner = {
+									has_authority = auth_machine_intelligence
+									has_civic = civic_machine_assimilator
+									NOT = { has_tradition = tr_cybernetics_assimilator_adopt }
+								}
+							}
+							root.owner = { generate_cyborg_treats = yes } # scripted effect
+						}
+						else_if = {
+							limit = {
+								root.owner = {
+									has_authority = auth_machine_intelligence
+									has_civic = civic_machine_assimilator
+									has_tradition = tr_cybernetics_assimilator_adopt
+								}
+							}
+							root.owner = { generate_cyborg_extra_treats = yes } # scripted effect
+						}
+					}
+				}				
+			}
+		}
+	}
+}

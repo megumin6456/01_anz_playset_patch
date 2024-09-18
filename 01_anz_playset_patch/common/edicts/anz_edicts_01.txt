@@ -1,0 +1,12 @@
+# anz_modlist_fixstarsize = {
+# 	length = -1
+# 	resources = { category = edicts cost = { } }
+# 	potential = {
+# 		is_ai = no
+# 	}
+# 	icon = GFX_edict_type_policy
+
+# 	effect = { 
+# 		country_event = { id = acot_mod_options.1 } 
+# 	}
+# }

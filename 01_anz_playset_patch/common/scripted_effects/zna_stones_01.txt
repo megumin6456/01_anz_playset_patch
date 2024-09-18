@@ -1,0 +1,100 @@
+create_soulborn_leader_governor = {
+    create_leader = {
+        class = governor
+        species = event_target:zero_random_species
+        name = "Soulborn of Leadership"
+        skill = 10
+        leader_age_min = 1
+        leader_age_max = 10000
+        immortal = yes
+        event_leader = yes
+        traits = {
+            trait = leader_trait_governor_soulborn
+            trait = random_trait
+            trait = random_trait
+        }
+        effect = {
+            set_leader_flag = soulborn
+        }
+    }
+}
+
+create_soulborn_leader_scientist = {
+    create_leader = {
+        class = scientist
+        species = event_target:zero_random_species
+        name = "Soulborn of Learning"
+        skill = 10
+        leader_age_min = 1
+        leader_age_max = 10000
+        immortal = yes
+        event_leader = yes
+        traits = {
+            trait = leader_trait_scientist_soulborn
+            trait = random_trait
+            trait = random_trait
+        }
+        effect = {
+            set_leader_flag = soulborn
+        }
+    }
+}
+
+create_soulborn_leader_admiral = {
+    create_leader = {
+        class = admiral
+        species = event_target:zero_random_species
+        name = "Soulborn of War"
+        skill = 10
+        leader_age_min = 1
+        leader_age_max = 10000
+        immortal = yes
+        event_leader = yes
+        traits = {
+            trait = leader_trait_admiral_soulborn
+            trait = random_trait
+            trait = random_trait
+        }
+        effect = {
+            set_leader_flag = soulborn
+        }
+    }
+}
+
+create_soulborn_leader_general = {
+    create_leader = {
+        class = general
+        species = event_target:zero_random_species
+        name = "Soulborn of War"
+        skill = 10
+        leader_age_min = 1
+        leader_age_max = 10000
+        immortal = yes
+        event_leader = yes
+        traits = {
+            trait = leader_trait_general_soulborn
+            trait = random_trait
+            trait = random_trait
+        }
+        effect = {
+            set_leader_flag = soulborn
+        }
+    }
+}
+
+zero_choose_random_owned_species_for_leader = {
+	if = {
+		limit = {
+			is_gestalt = no
+		}
+		random_owned_pop = {
+			limit = { can_fill_ruler_job = yes }
+			species = { save_event_target_as = zero_random_species }
+		}
+	} else = {
+		random_owned_pop = {
+			limit = { can_fill_drone_job = yes NOT = { has_trait = trait_nerve_stapled } }
+			species = { save_event_target_as = zero_random_species }
+		}
+	}
+}

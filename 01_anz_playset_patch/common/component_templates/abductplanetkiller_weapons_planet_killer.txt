@@ -1,0 +1,35 @@
+weapon_component_template = {
+	key = "PLANET_KILLER_ABDUCTER"
+	size = planet_killer
+	entity = "invisible_turret_entity"
+	type = planet_killer
+	static_rotation = yes
+	use_ship_kill_target = no
+	
+	windup = { min = 15 max = 15 }
+	total_fire_time = 15
+	range = 0
+	accuracy = 1.00
+	power = 0
+
+	icon = GFX_ship_part_divine_enforcer
+	icon_frame = 1
+
+	component_set = "PLANET_KILLER_ABDUCTER"
+	
+	valid_for_country = {
+		OR = {
+			has_civic = civic_barbaric_despoilers
+			has_civic = civic_bugged_machine_emancipation_proclamation
+			has_civic = civic_bugged_asset_appropriation
+			has_civic = civic_bugged_hive_aggressive_proliferation
+			has_ascension_perk = ap_nihilistic_acquisition
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	planet_destruction_gfx = "god_ray_gfx"
+}

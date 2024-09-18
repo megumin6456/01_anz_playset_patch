@@ -1,0 +1,50 @@
+
+decision_grow_hive_world = {
+	owned_planets_only = yes
+	sound = event_laboratory_sound
+	icon = decision_grow_hive_world
+
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			food = 1000
+		}
+	}
+
+	potential = {
+		owner = {
+			has_origin = origin_hive_cx_hive_world
+		}
+		NOR = {
+			habitable_structure = yes
+
+			has_modifier = cx_hive_stage_1
+			has_modifier = cx_hive_stage_2
+		}
+		habitable_planet = yes
+		NOR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_pdhive1
+			is_planet_class = pc_pdhive2
+			is_planet_class = pc_bioforge
+			is_planet_class = pc_biocapital
+			is_planet_class = pc_biofort
+		}
+	}
+
+	allow = {
+	}
+	
+	effect = {
+		custom_tooltip = decision_grow_hive_world_effects
+		hidden_effect = {
+			planet_event = { id = cx_hive_world.4 } 
+		}
+	}
+
+	ai_weight = {
+		weight = 500
+	}
+}

@@ -1,0 +1,25 @@
+government = {
+	intel_level = {
+	}
+
+	intel_level = {
+		authority
+		ethics
+		ruler
+	}
+
+	intel_level = {
+		civics
+		origin
+		relics
+		governors
+	}
+
+	intel_level = {
+		capital_location
+		intel_empire_sprawl
+	}
+
+	intel_level = {
+	}
+}

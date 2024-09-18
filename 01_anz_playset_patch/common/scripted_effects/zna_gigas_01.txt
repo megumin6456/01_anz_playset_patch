@@ -1,0 +1,571 @@
+# Cap Katzen Tech
+update_katzen_tech_level_buffs = {
+	if = {
+		limit = { has_modifier = katzen_tech_level_buffs }
+		remove_modifier = katzen_tech_level_buffs
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = kaiser_tech_level
+				value >= 200
+			}
+		}
+
+		set_variable = {
+			which = kaiser_tech_level
+			value = 200
+		}
+	}
+	add_modifier = {
+		modifier = katzen_tech_level_buffs
+		multiplier = kaiser_tech_level
+		days = -1
+	}
+}
+
+update_katzen_tech_level_display = {
+	set_variable = {
+		which = kaiser_tech_ship_hp_buff
+		value = 2
+	}
+	set_variable = {
+		which = kaiser_tech_army_buff
+		value = 5
+	}
+	set_variable = {
+		which = kaiser_tech_mega_speed_buff
+		value = 2.5
+	}
+	set_variable = {
+		which = kaiser_tech_damage_buff
+		value = 1.5
+	}
+	multiply_variable = {
+		which = kaiser_tech_ship_hp_buff
+		value = kaiser_tech_level
+	}
+	multiply_variable = {
+		which = kaiser_tech_army_buff
+		value = kaiser_tech_level
+	}
+	multiply_variable = {
+		which = kaiser_tech_mega_speed_buff
+		value = kaiser_tech_level
+	}
+	multiply_variable = {
+		which = kaiser_tech_damage_buff
+		value = kaiser_tech_level
+	}
+}
+
+# Bug Branch Compat - Katzen
+create_katzen_splinter_state_agri_crisis = {
+	random_owned_pop = {
+		limit = {
+			species = {
+				OR = {
+					AND = {
+						has_trait = trait_machine_unit
+						is_archetype = MACHINE
+					}
+					NOR = {
+						has_trait = trait_mechanical
+						is_archetype = ROBOT
+					}
+				}
+			}
+		}
+		species = {
+			save_event_target_as = splinter_species
+		}
+	}
+	solar_system = { #claim nearby systems
+		set_star_flag = splinter_state_claim
+		every_neighbor_system = {
+			limit = {
+				owner = {
+					is_country_type = katzenartig_imperium
+				}
+				NOT = {
+					has_star_flag = flusion_system
+				}
+			}
+			random_list = {
+				50 = {
+					set_star_flag = splinter_state_claim
+				}
+				50 = {}
+			}
+		}
+	}
+	# every_system = { #claim further systems
+	# 	limit = {
+	# 		has_star_flag = splinter_state_claim
+	# 	}
+	# 	every_neighbor_system = {
+	# 		limit = {
+	# 			owner = {
+	# 				is_country_type = katzenartig_imperium
+	# 			}
+	# 			NOR = {
+	# 				has_star_flag = flusion_system
+	# 			}
+	# 		}
+	# 		random = {
+	# 			chance = 60
+	# 			set_star_flag = splinter_state_claim
+	# 		}
+	# 	}
+	# }
+
+	################################### Patch ###########################
+	# Special case to handle bugged machines
+	if = {
+		limit = {
+			event_target:splinter_species = {
+				has_trait = trait_machine_unit
+				is_archetype = MACHINE
+			}
+		}
+		random_list = {
+			40 = { # Assimilators
+				create_country = {
+					species = event_target:splinter_species
+					name = random
+					authority = auth_machine_intelligence
+					civics = { civic = civic_machine_assimilator civic = random civic = random civic = random }
+					ethos = { ethic = ethic_gestalt_consciousness ethic = ethic_form_convergent ethic = ethic_form_extrospective ethic = ethic_form_impassive ethic = ethic_foci_connection }
+					flag = random
+					origin = origin_katzen_splinter
+					type = default
+					effect = {
+						set_country_flag = katzen_splinter_state
+						save_global_event_target_as = katzen_splinter_country
+						add_modifier = {
+							modifier = katzenartig_splinter
+							days = -1
+						}
+						apply_katzen_difficulty = yes
+						every_country = {
+							establish_communications_no_message = event_target:katzen_splinter_country
+						}
+						copy_techs_from = {
+							target = event_target:flusion_primitives_country
+						}
+					}
+				}
+			}
+			40 = { # Exterminators
+				create_country = {
+					species = event_target:splinter_species
+					name = random
+					authority = auth_machine_intelligence
+					civics = { civic = civic_machine_terminator civic = random civic = random civic = random }
+					ethos = { ethic = ethic_gestalt_consciousness ethic = ethic_form_convergent ethic = ethic_form_introspective ethic = ethic_form_impassive ethic = ethic_foci_encroachment }
+					flag = random
+					origin = origin_katzen_splinter
+					type = default
+					effect = {
+						set_country_flag = katzen_splinter_state
+						save_global_event_target_as = katzen_splinter_country
+						add_modifier = {
+							modifier = katzenartig_splinter
+							days = -1
+						}
+						apply_katzen_difficulty = yes
+						every_country = {
+							establish_communications_no_message = event_target:katzen_splinter_country
+						}
+						copy_techs_from = {
+							target = event_target:flusion_primitives_country
+						}
+					}
+				}
+			}
+			10 = { # Servitors
+				create_country = {
+					species = event_target:splinter_species
+					name = random
+					authority = auth_machine_intelligence
+					civics = { civic = civic_machine_servitor civic = random civic = random civic = random }
+					ethos = { ethic = ethic_gestalt_consciousness ethic = ethic_form_autonomous ethic = ethic_form_extrospective ethic = ethic_form_affective ethic = ethic_foci_logistics }
+					flag = random
+					origin = origin_katzen_splinter
+					type = default
+					effect = {
+						set_country_flag = katzen_splinter_state
+						save_global_event_target_as = katzen_splinter_country
+						add_modifier = {
+							modifier = katzenartig_splinter
+							days = -1
+						}
+						apply_katzen_difficulty = yes
+						every_country = {
+							establish_communications_no_message = event_target:katzen_splinter_country
+						}
+						copy_techs_from = {
+							target = event_target:flusion_primitives_country
+						}
+					}
+				}
+			}
+			10 = { # Matrix
+				create_country = {
+					species = event_target:splinter_species
+					name = random
+					authority = auth_machine_intelligence
+					civics = { civic = random civic = random civic = random civic = random }
+					ethos = { ethic = ethic_gestalt_consciousness ethic = ethic_form_autonomous ethic = ethic_form_extrospective ethic = ethic_form_impassive ethic = ethic_foci_analysis }
+					flag = random
+					origin = origin_katzen_splinter
+					type = default
+					effect = {
+						set_country_flag = katzen_splinter_state
+						save_global_event_target_as = katzen_splinter_country
+						add_modifier = {
+							modifier = katzenartig_splinter
+							days = -1
+						}
+						apply_katzen_difficulty = yes
+						every_country = {
+							establish_communications_no_message = event_target:katzen_splinter_country
+						}
+						copy_techs_from = {
+							target = event_target:flusion_primitives_country
+						}
+					}
+				}
+			}
+		}
+	} else = {
+		create_country = {
+			species = event_target:splinter_species
+			name = random
+			authority = random
+			civics = random
+			ethos = random
+			flag = random
+			origin = origin_katzen_splinter
+			type = default
+			effect = {
+				set_country_flag = katzen_splinter_state
+				save_global_event_target_as = katzen_splinter_country
+				add_modifier = {
+					modifier = katzenartig_splinter
+					days = -1
+				}
+				apply_katzen_difficulty = yes
+				every_country = {
+					establish_communications_no_message = event_target:katzen_splinter_country
+				}
+				copy_techs_from = {
+					target = event_target:flusion_primitives_country
+				}
+			}
+		}
+	}
+	#######################################################################
+	set_owner = event_target:katzen_splinter_country
+	set_capital = yes
+	every_system = { #transfer claims
+		limit = {
+			has_star_flag = splinter_state_claim
+		}
+		starbase = {
+			set_owner = event_target:katzen_splinter_country
+		}
+		remove_star_flag = splinter_state_claim
+	}
+	solar_system = { #claim all other habitable planets in system
+		every_system_planet = {
+			limit = {
+				is_colony = yes
+				is_capital = no
+				owner = {
+					is_country_type = katzenartig_imperium
+				}
+			}
+			set_owner = event_target:katzen_splinter_country
+		}
+	}
+	event_target:katzen_splinter_country = {
+		save_event_target_as = giga_katzen_agri_crisis_country
+		capital_scope = {
+			save_event_target_as = giga_katzen_agri_crisis_planet
+		}
+		create_leader = {
+			class = admiral
+			species = event_target:splinter_species
+			effect = { save_event_target_as = katzen_rebel_admiral }
+		}
+		create_fleet = { #Spawn a simple task force of panzers & bombers
+			settings = {
+				spawn_debris = no
+				can_upgrade = no
+				uses_naval_capacity = no
+			}
+			effect = {
+				set_owner = event_target:katzen_splinter_country
+				while = {
+					count = 1
+					create_ship = {
+						name = random
+						design = "Neu-Clermeowth"
+						prefix = no
+					}
+				}
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						design = "Douclaw"
+						prefix = no
+					}
+				}
+				while = {
+					count = 8
+					create_ship = {
+						name = random
+						design = "Katzchen"
+						prefix = no
+					}
+				}
+				assign_leader = event_target:katzen_rebel_admiral
+				set_location = {
+					target = event_target:giga_katzen_agri_crisis_planet
+					distance = 10
+					angle = random
+				}
+			}
+		}
+		create_fleet = { #Spawn some armies
+			settings = {
+				spawn_debris = no
+				can_upgrade = no
+				uses_naval_capacity = no
+			}
+			effect = {
+				set_owner = event_target:katzen_splinter_country
+				while = {
+					count = 3
+					create_army_transport = {
+						army_type = katzen_assault_army
+						species = event_target:splinter_species
+					}
+				}
+				set_fleet_flag = katzen_troop_fleet
+				set_location = {
+					target = event_target:giga_katzen_agri_crisis_planet
+					distance = 20
+					angle = random
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = giga_flusionoperations.505 }
+		}
+		every_planet_within_border = {
+			limit = {
+				is_colony = yes
+				owner = { is_country_type = katzenartig_imperium }
+			}
+			set_owner = event_target:katzen_splinter_country
+		}
+		add_resource = {
+			minerals = 50000
+			alloys = 10000
+			energy = 50000
+			food = 50000
+			consumer_goods = 25000
+			exotic_gases = 5000
+			volatile_motes = 5000
+			rare_crystals = 5000
+			influence = 250
+		}
+		every_system_within_border = { #claim all katzen fleets in borders
+			every_fleet_in_system = {
+				limit = {
+					owner = { is_country_type = katzenartig_imperium }
+					NOT = { has_fleet_flag = kaiser_moon_fleet }
+					NOT = { has_fleet_flag = katzen_submarine_fleet }
+				}
+				set_owner = event_target:katzen_splinter_country
+			}
+		}
+		declare_war = {
+			target = event_target:flusion_primitives_country
+			attacker_war_goal = wg_katzen_defence
+		}
+	}
+}
+
+create_ezic_revolt = {
+	while = { #here they come
+		count = 10
+		create_pop = {
+			species = event_target:arcticezics
+		}
+	}
+	create_country = {
+		species = event_target:arcticezics
+		name = "Ezicania Order"
+		authority = auth_imperial
+		origin = origin_katzen_rebels
+		ethos = {
+			ethic = ethic_spiritualist
+			ethic = ethic_pacifist
+			ethic = ethic_authoritarian
+			ethic = ethic_ecocentric
+			ethic = ethic_elitist
+		}
+		civics = {
+			civic = civic_bugged_life_cult
+			civic = civic_bugged_keepers_of_harmony
+			civic = civic_aristocratic_elite
+		}
+		flag = {
+			icon={
+				category="pirate"
+				file="flag_pirate_4.dds"
+			}
+			background={
+				category="backgrounds"
+				file="circle.dds"
+			}
+			colors={
+				"light_blue"
+				"grey"
+				"null"
+				"null"
+			}
+		}
+		type = default
+		effect = {
+			set_leader = loufmoving
+			set_country_flag = ezic_rebels_country
+			save_global_event_target_as = ezic_rebels_country
+			add_modifier = {
+				modifier = katzenartig_major_splinter
+				days = -1
+			}
+			every_country = {
+				establish_communications_no_message = event_target:ezic_rebels_country
+			}
+			copy_techs_from = {
+				target = event_target:flusion_primitives_country
+			}
+		}
+	}
+	set_owner = event_target:ezic_rebels_country
+	set_capital = yes
+	set_name = "New Zeichester"
+	every_system = { #transfer claims
+		limit = {
+			has_star_flag = ezic_rebel_system
+		}
+		starbase = {
+			set_owner = event_target:ezic_rebels_country
+		}
+		solar_system = { #claim all other habitable planets in system
+			every_system_planet = {
+				limit = {
+					is_colony = yes
+					is_capital = no
+					owner = {
+						is_country_type = katzenartig_imperium
+					}
+				}
+				set_owner = event_target:ezic_rebels_country
+				save_global_event_target_as = ezic_ship_planet
+				event_target:ezic_rebels_country = {
+					create_leader = {
+						class = admiral
+						species = event_target:arcticezics
+						name = random
+						skill = 3
+						traits = {
+							trait = random_trait
+							trait = random_trait
+						}
+						effect = {
+							save_event_target_as = rebel_ezic_admiral
+						}
+					}
+				}
+				create_fleet = { #Spawn a simple task force of panzers & bombers
+					name = "Anti-Katzen Squadron"
+					settings = {
+						spawn_debris = no
+						can_upgrade = no
+						uses_naval_capacity = no
+					}
+					effect = {
+						set_owner = event_target:ezic_rebels_country
+						while = {
+							count = 12
+							create_ship = {
+								name = random
+								design = "Prime"
+								prefix = no
+								graphical_culture = arthropoid_01
+							}
+						}
+						assign_leader = event_target:rebel_ezic_admiral
+						set_location = {
+							target = event_target:ezic_ship_planet
+							distance = 15
+							angle = random
+						}
+					}
+				}
+				create_fleet = { #Spawn a simple task force of panzers & bombers
+					name = "Ezicanian Hunters"
+					settings = {
+						spawn_debris = no
+						can_upgrade = no
+						uses_naval_capacity = no
+					}
+					effect = {
+						set_owner = event_target:ezic_rebels_country
+						while = {
+							count = 3 #5 transports
+							create_army_transport = {
+								army_type = ezic_assault_army
+								species = event_target:arcticezics
+							}
+						}
+						set_location = {
+							target = event_target:ezic_ship_planet
+							distance = 15
+							angle = random
+						}
+					}
+				}
+			}
+		}
+	}
+	event_target:eziccountry = {
+		every_planet_within_border = {
+			limit = { is_colony = yes }
+			while = { #here they come
+				count = 1
+				create_pop = { species = event_target:arcticezics }
+			}
+		}
+		add_resource = {
+			minerals = 50000
+			alloys = 10000
+			energy = 50000
+			food = 50000
+			consumer_goods = 25000
+			exotic_gases = 5000
+			volatile_motes = 5000
+			rare_crystals = 5000
+			influence = 250
+		}
+	}
+}

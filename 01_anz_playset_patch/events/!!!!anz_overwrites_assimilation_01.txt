@@ -1,0 +1,23 @@
+namespace = action
+
+# Assimilate Pops on Yearly Pulse
+event = {
+	id = action.64
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		
+    }
+}
+
+# Assimilate Pops
+planet_event = {
+	id = action.65
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+}

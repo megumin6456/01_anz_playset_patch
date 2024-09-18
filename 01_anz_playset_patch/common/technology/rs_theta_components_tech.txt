@@ -1,0 +1,1831 @@
+# full overwrite because the game won't let change weights
+# the altered weights moved to zna_cot_tech_01.txt
+# just copy the file over whenever sots update and delete tech_sm_summon techs
+
+@tier5weight4 = 7
+@tier5cost4 = 27500
+
+tech_sm_summon_gateway = {
+	area = society
+	category = { psionics }
+	tier = 5
+	cost = 1000000
+	weight = 5
+	is_dangerous = yes
+	is_rare = yes
+
+	potential = {
+		has_event_chain = shroud_master_summoning
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = can_research_summon_tech }
+		}
+	}
+	ai_weight = {
+		factor = 0.0
+	}
+}
+
+# Dark Matter Power Cores PHANON
+tech_dark_matter_power_core_theta = {
+	area = physics
+	category = { particles }
+	tier = 8
+	cost = 6400000
+	weight = 0
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_country_flag = has_discovered_theta_runic_reactor
+		
+	}
+
+	prerequisites = {  }
+	
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_DARK_MATTER_POWER_THETA_TITLE"
+			desc = "TECH_UNLOCK_DARK_MATTER_POWER_THETA_DESC"
+		}
+	}
+	
+}
+
+############################################################
+###                     TECHNOLOGIES                     ###
+############################################################
+
+tech_laser_theta = {
+	area = physics
+	category = { particles }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+
+############################################################
+##                   AE Plasmapedo                  ##
+##        Unlocks a tier 4 energy torpedo component       ##
+############################################################
+
+tech_energy_torpedo_theta = {
+	area = physics
+	category = { particles }
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no	
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+	
+	ai_weight = {
+		factor = 20
+	}
+}
+
+tech_super_detablizer_theta = {
+	area = physics
+	category = { particles }
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no	
+	prerequisites = {
+		tech_plasma_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                      AE Disurptor                  ##
+##           Unlocks a tier 5 disruptor component         ##
+############################################################
+
+tech_disruptor_theta = {
+	area = physics
+	category = { particles }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                    AE Plasma              ##
+##             Unlocks a tier 5 plasma component          ##
+############################################################
+
+tech_plasma_theta = {
+	area = physics
+	category = { particles }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no	
+	prerequisites = {
+		tech_laser_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                AE PD          ##
+##         Unlocks a tier 5 point defense component       ##
+############################################################
+
+tech_point_defense_theta = {
+	area = physics
+	category = { computing }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}	
+}
+
+############################################################
+##                        AE Gauss
+############################################################
+
+tech_mass_driver_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+
+############################################################
+##                     AE Autocannon
+############################################################
+
+tech_autocannon_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_mass_driver_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}	
+	}
+}
+
+############################################################
+##                    AE Artillery
+############################################################
+
+tech_kinetic_artillery_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no	
+	prerequisites = {
+		tech_mass_driver_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+tech_dakka_autocannon_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_autocannon_theta
+	}	
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                    AE Flak
+############################################################
+
+
+tech_flak_batteries_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no	
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.95
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.05
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                    AE Missiles
+############################################################
+
+tech_missile_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_theta_thruster
+	}
+	is_rare	= yes
+
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                     AE Barrage
+############################################################
+
+tech_barrage_missile_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_missile_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                     AE XL Missile
+############################################################
+
+tech_xl_missile_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_barrage_missile_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                     AE Nuke
+############################################################
+
+tech_missile_nuke_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_xl_missile_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+
+############################################################
+##               AE Strikers
+############################################################
+
+tech_strike_craft_fighter_theta = {
+	area = engineering
+	category = { voidcraft }	
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+tech_strike_craft_bomber_theta = {
+	area = engineering
+	category = { voidcraft }	
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+	is_reverse_engineerable = no
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+tech_strike_craft_gunship_theta = {
+	area = engineering
+	category = { voidcraft }	
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+
+############################################################
+##              AE Lance
+############################################################
+
+tech_energy_lance_theta = {
+	area = physics
+	category = { particles }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_super_detablizer_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                       AE Emitter
+############################################################
+
+tech_arc_emitter_theta = {
+	area = physics
+	category = { particles }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_disruptor_theta
+	}	
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                     AE Cannon
+############################################################
+
+tech_mass_accelerator_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 7680000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_kinetic_artillery_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+############################################################
+##                   AE Titan Perdition
+############################################################
+
+tech_perdition_beam_theta = {
+	area = physics
+	category = { particles }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_energy_lance_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+
+tech_titan_emitter_theta = {
+	area = physics
+	category = { particles }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_arc_emitter_theta
+	}	
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}	
+	}
+}
+
+tech_titan_accelerator_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 8960000
+	tier = 8
+	weight = 1
+	ai_update_type = military
+	is_reverse_engineerable = no
+	prerequisites = {
+		tech_mass_accelerator_theta
+	}
+	is_rare = yes
+	
+	potential = {
+		NOT = { has_global_flag = acot_weapons_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 0.8
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 0.9
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.1
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.2
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+# ##################
+# FE Ship Tech
+# ##################
+
+tech_energy_core_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+	weight = 1
+	
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}
+	
+	ai_weight = {
+		factor = 20
+	}
+}
+
+tech_kinetic_core_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+	weight = 1
+	
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}
+	
+	ai_weight = {
+		factor = 20
+	}
+}
+
+tech_missile_core_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+	weight = 1
+	prerequisites = { "tech_dark_matter_power_core_theta" }
+	
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}
+	
+	ai_weight = {
+		factor = 20
+	}
+}
+
+tech_fighter_core_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+	weight = 1
+	
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}
+	
+	ai_weight = {
+		factor = 20
+	}
+}
+
+tech_enigmatic_drive_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { particles }
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+	weight = 1
+	
+	prereqfor_desc = {
+		component = {
+			title = "TECH_UNLOCK_ENIG_DRIVE"
+			desc = "TECH_UNLOCK_ENIG_DRIVE_DESC"
+		}
+	}	
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}
+	
+	ai_weight = {
+		factor = 20 #FTL techs are good
+	}
+}
+
+########FE Sensors
+
+tech_sensor_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all	
+	weight = 1
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}	
+	
+	ai_weight = {
+		factor = 1.25 #good component
+	}
+	
+	prereqfor_desc = {
+		component = {
+			title = "TECH_UNLOCK_FE_SENSOR_TITLE"
+			desc = "TECH_UNLOCK_FE_SENSOR_DESC"
+		}
+	}
+}
+
+########FE Super Thruster
+
+tech_theta_thruster = {
+	area = engineering
+	category = { propulsion }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_THETA_THRUSTER_TITLE"
+			desc = "TECH_UNLOCK_THETA_THRUSTER_DESC"
+		}
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+# Dark Matter Deflectors AE
+tech_dark_matter_shield_theta = {
+	area = physics
+	category = { field_manipulation }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		NOT = { has_global_flag = acot_utilitys_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	
+	weight_modifier = {	
+	}
+}
+
+# Dark Matter Armor AE
+tech_armor_theta = {
+	area = engineering
+	category = { materials }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+	
+	potential = {
+		NOT = { has_global_flag = acot_utilitys_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+# Dark Matter Armor AE
+#tech_armor_hull_theta = {
+#	area = engineering
+#	category = { materials }
+#	cost = 6400000
+#	tier = 8
+#	weight = 1
+#	ai_update_type = all
+#	is_rare = yes
+#	is_reverse_engineerable = no
+#	
+#	potential = {
+#		NOT = { has_global_flag = acot_utilitys_forbidden }
+#		has_technology = tech_dark_matter_power_core_theta
+#		
+#	}
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 0
+#				NOT = { has_technology = tech_dark_matter_power_core_theta }
+#		}
+#	}
+#}
+
+###### AUX
+
+# Dark Matter Afterburner
+tech_darkmatter_afterburners_theta = {
+	area = engineering
+	category = { propulsion }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	prerequisites = {
+		tech_theta_thruster
+	}
+	is_reverse_engineerable = no
+
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+####Star Charter
+tech_darkmatter_star_charter_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all	
+	weight = 1
+	is_rare = yes
+	prerequisites = {
+		tech_sensor_theta
+	}
+	is_reverse_engineerable = no
+
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}	
+	
+	ai_weight = {
+		factor = 1.25 #good component
+	}
+}
+
+# Dark Matter Suprashielder
+tech_darkmatter_shield_supercharger_theta = {
+	area = physics
+	category = { field_manipulation }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	prerequisites = {
+		tech_dark_matter_shield_theta
+	}
+	is_reverse_engineerable = no
+
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {	
+	}
+}
+
+# Dark Matter Suprashielder
+tech_darkmatter_armor_supercharger_theta = {
+	area = engineering
+	category = { materials }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+	}
+	
+	prerequisites = { tech_armor_theta }
+	
+	weight_modifier = {	
+	}
+
+	ai_weight = {
+		factor = 20
+	}
+}
+
+# Dark Matter Reacotr Booster
+tech_darkmatter_reactor_booster_theta = {
+	area = physics
+	category = { particles }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+	
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		NOT = { has_global_flag = acot_aux_forbidden }
+		
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+	}
+}
+
+# Dark Matter Drone
+tech_darkmatter_reactive_drone_theta = {
+	area = engineering
+	category = { materials }
+	cost = 6400000
+	tier = 8
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	prerequisites = {
+		tech_armor_theta
+	}
+	is_reverse_engineerable = no
+	
+	potential = {
+		NOT = { has_global_flag = acot_aux_forbidden }
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+	
+	weight_modifier = {
+	}
+}
+
+tech_darkmatter_hyper_jump_drive_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { particles }
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+	weight = 1
+	prerequisites = { "tech_enigmatic_drive" }
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+		NOT = { has_global_flag = acot_aux_forbidden }
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}
+	
+	ai_weight = {
+		factor = 20 #FTL techs are good
+	}
+}
+
+#Drainer
+tech_darkmatter_aura_energy_drainer_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all	
+	weight = 1
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+		NOT = { has_global_flag = acot_aux_forbidden }
+	}
+	
+	prereqfor_desc = {
+		custom = {
+			title = "TECH_UNLOCK_ENERGY_DRAINER_AE_TITLE"
+			desc = "TECH_UNLOCK_ENERGY_DRAINER_AE_DESC"
+		}
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}	
+	
+	ai_weight = {
+		factor = 1.25 #good component
+	}
+}
+
+#bionic interface
+tech_computer_theta = {
+	area = physics
+	tier = 8
+	cost = 6400000
+	category = { computing }
+	ai_update_type = all	
+	weight = 1
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+		NOT = { has_global_flag = acot_shipcom_forbidden }
+	}
+	
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+	}	
+	
+	ai_weight = {
+		factor = 1.25 #good component
+	}
+	
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_FATE_COMPUTER_TITLE"
+			desc = "TECH_UNLOCK_FATE_COMPUTER_DESC"
+		}
+	}
+}
+
+# Dark Matter Power Cores PHANON
+tech_pmc_iowa_cannon = {
+	area = physics
+	category = { particles }
+	tier = 8
+	cost = 10240000
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_technology = tech_precursor_theia_design
+		
+		NOT = { has_global_flag = acot_weapons_forbidden }
+	}
+
+	prerequisites = { 
+		tech_perdition_beam_theta
+		tech_titan_accelerator_theta
+	}
+	
+	
+}
+
+# Dark Matter Power Cores PHANON
+tech_precursor_theia_design = {
+	area = physics
+	category = { computing }
+	tier = 8
+	cost = 10240000
+	weight = 1
+	ai_update_type = all
+	is_rare = yes
+	is_reverse_engineerable = no
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_theta
+		
+	}
+
+	prerequisites = {  }
+	
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_THEIA_PRECURSOR_TITLE"
+			desc = "TECH_UNLOCK_THEIA_PRECURSOR_DESC"
+		}
+	}
+	
+}
+
+# Runic Stealth
+tech_darkmatter_stealth_theta = {
+	cost = 10240000
+	area = physics
+	tier = 8
+	category = { field_manipulation }
+	ai_update_type = all
+	is_rare = yes
+	weight = 1
+	is_reverse_engineerable = no
+
+	potential = {
+		has_first_contact_dlc = yes
+		has_technology = tech_dark_matter_power_core_theta
+		NOT = { has_global_flag = acot_utilitys_forbidden }
+		NOT = { has_global_flag = acot_delta_forbidden }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+				NOT = { has_technology = tech_dark_matter_power_core_theta }
+		}		
+	}
+
+	ai_weight = {
+		factor = 1.25 #good component
+	}
+}
+
+#########################

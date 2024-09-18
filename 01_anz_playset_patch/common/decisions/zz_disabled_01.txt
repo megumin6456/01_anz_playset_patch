@@ -1,0 +1,276 @@
+decision_upgrade_gen_growth = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_gen_adapt = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_synth_extra_space = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_synth_assemble = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_psi_manipulate = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_psi_telekinesis = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+
+decision_upgrade_hive_harvest = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_hive_growth = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_machine_cyberspace = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_upgrade_machine_upkeep = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_give_foodman_job = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_give_thinker_job = {
+	owned_planets_only = yes
+	icon = decision_microscopic_life
+	
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+		}
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	effect = { }
+	
+	ai_weight = {
+		weight = 0
+	}
+}

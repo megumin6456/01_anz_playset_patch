@@ -1,0 +1,172 @@
+# disabled
+
+#Phanon MacR.I.P.P.
+solaripp_0 = {
+	entity = "construction_platform_entity"
+	construction_entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	construction_blocks_and_blocked_by = none
+	entity_offset = {
+		x = -14
+		y = -14
+	}
+	potential = {
+		always = no
+	}
+	possible = {
+		always = no
+	}
+	
+	placement_rules = {
+		always = no
+	}
+	
+	country_modifier = {
+	}
+
+	construction_blocks_and_blocked_by = self_type
+
+	build_time = 3
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 9999999999 # over 9bil aka don't do it
+		}
+		upkeep = {
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		remove_megastructure = fromfrom
+	}
+}
+
+solaripp_1 = {
+	entity = "sigma_solaRIPP_stage_1_entity"
+	construction_entity = "sigma_solaRIPP_stage_1_construction_entity"
+	portrait = "GFX_megastructure_construction_background"
+	potential = {
+		always = no
+	}
+	possible = {
+		always = no
+	}
+	
+	placement_rules = {
+		always = no
+	}
+	
+	country_modifier = {
+	}
+
+	construction_blocks_and_blocked_by = self_type
+
+	build_time = 3
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 9999999999 # over 9bil aka don't do it
+		}
+		upkeep = {
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		remove_megastructure = fromfrom
+	}
+}
+
+solaripp_2 = {
+	entity = "sigma_solaRIPP_stage_2_entity"
+	construction_entity = "sigma_solaRIPP_stage_2_construction_entity"
+	portrait = "GFX_megastructure_construction_background"
+	potential = {
+		always = no
+	}
+	possible = {
+		always = no
+	}
+	
+	placement_rules = {
+		always = no
+	}
+	
+	country_modifier = {
+	}
+
+	construction_blocks_and_blocked_by = self_type
+
+	build_time = 3
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 9999999999 # over 9bil aka don't do it
+		}
+		upkeep = {
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		remove_megastructure = fromfrom
+	}
+}
+
+solaripp_3 = {
+	entity = "sigma_solaRIPP_stage_2_entity"
+	construction_entity = "sigma_solaRIPP_stage_2_construction_entity"
+	portrait = "GFX_megastructure_construction_background"
+	potential = {
+		always = no
+	}
+	possible = {
+		always = no
+	}
+	
+	placement_rules = {
+		always = no
+	}
+	
+	country_modifier = {
+	}
+
+	construction_blocks_and_blocked_by = self_type
+
+	build_time = 3
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 9999999999 # over 9bil aka don't do it
+		}
+		upkeep = {
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		remove_megastructure = fromfrom
+	}
+}

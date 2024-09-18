@@ -1,0 +1,2108 @@
+namespace = anz_ee
+
+country_event = {
+	id = anz_ee.1
+	title = anz_ee.1.name
+	desc = anz_ee.1.desc
+	picture = GFX_evt_origin_ascension
+	show_sound = event_mystic_reveal
+	is_triggered_only = yes
+
+	option = {
+		name = anz_ee.1.a
+		custom_tooltip = anz_ee.1.tooltip
+		hidden_effect = {
+			root.owner = {
+				# ANZ Flags
+
+				save_global_event_target_as = sofe_lm_gifted
+				set_country_flag = sofe_lm_gifted
+				
+				set_country_flag = acquired_light_matter
+				set_country_flag = acquired_light_matter_utility
+				set_country_flag = acquired_light_matter_defense
+				set_country_flag = acquired_light_matter_offense
+
+				# Give Tech
+
+				give_technology = { tech = tech_dark_matter_power_core_oe message = no }	
+				##add_research_option = tech_dark_matter_power_core_oe
+				add_resource = {
+					minerals = 1000000
+					energy = 1000000
+					alloys = 1000000
+					food = 1000000
+					consumer_goods = 1000000
+					sr_dark_matter = 1000000
+					acot_sr_dark_energy = 1000000
+					acot_sr_stellarite = 1000000
+					acot_sr_light_matter = 1000000				
+					influence = 1000
+					unity = 100000
+				}
+
+				add_research_option = tech_barrage_missile_oe
+				add_research_option = tech_xl_missile_oe
+				add_research_option = tech_missile_nuke_oe
+
+				add_research_option = tech_laser_oe
+				add_research_option = tech_plasma_oe
+				add_research_option = tech_disruptor_oe
+				add_research_option = tech_energy_torpedo_oe
+				add_research_option = tech_energy_cannon_oe
+				add_research_option = tech_point_defense_oe
+				add_research_option = tech_mass_driver_oe
+				add_research_option = tech_autocannons_oe
+				add_research_option = tech_macrocannon_oe
+				add_research_option = tech_kinetic_artillery_oe
+				add_research_option = tech_flak_batteries_oe
+				add_research_option = tech_missile_oe
+
+				add_research_option = tech_torpedo_oe
+				add_research_option = tech_barrage_missile_oe
+				add_research_option = tech_xl_missile_oe
+				add_research_option = tech_missile_nuke_oe
+				add_research_option = tech_energy_lance_oe
+				add_research_option = tech_arc_emitter_oe
+				add_research_option = tech_mass_accelerator_oe
+				add_research_option = tech_perdition_beam_oe
+				add_research_option = tech_titan_emitter_oe
+				add_research_option = tech_titan_accelerator_oe
+				add_research_option = tech_strike_craft_scout_oe
+
+				add_research_option = tech_strike_craft_fighter_oe
+				add_research_option = tech_strike_craft_bomber_oe
+				add_research_option = tech_strike_craft_gunship_oe
+				add_research_option = tech_armor_oe
+				add_research_option = tech_dark_matter_deflector_oe
+				add_research_option = tech_thrusters_oe
+				add_research_option = tech_sensor_oe
+				add_research_option = tech_computer_lightmatter
+				add_research_option = tech_enigmatic_drive_oe
+
+				add_research_option = tech_darkmatter_afterburners_oe
+				add_research_option = tech_darkmatter_hyper_jump_drive_oe
+				add_research_option = tech_darkmatter_reactive_drone_oe
+				add_research_option = tech_darkmatter_shield_supercharger_oe
+				add_research_option = tech_darkmatter_armor_supercharger_oe
+				add_research_option = tech_darkmatter_aura_energy_drainer_oe
+				add_research_option = tech_energy_core_oe
+				add_research_option = tech_inspire_aura_oe
+				add_research_option = tech_analyzer_oe
+
+				add_research_option = tech_omega_warmech
+
+				add_research_option = tech_champion_flowing_light_crystal_arch
+				add_research_option = tech_champion_flowing_light_power_pyramid
+				add_research_option = tech_champion_flowing_light_eden_garden
+				add_research_option = tech_champion_flowing_light_heaven_sanctuary
+				add_research_option = tech_champion_flowing_light_super_shelter
+				add_research_option = tech_champion_flowing_light_library_of_fate
+				add_research_option = tech_champion_flowing_light_grand_fortress
+				add_research_option = tech_champion_flowing_light_chamber_of_hope
+				add_research_option = tech_champion_flowing_light_omega_fortress
+				add_research_option = tech_champion_flowing_light_light_foundry
+
+				add_research_option = tech_precursor_design
+				add_research_option = tech_precursor_escort
+				add_research_option = tech_omega_escort
+				add_research_option = tech_precursor_escort_cost
+				add_research_option = tech_precursor_bc
+				add_research_option = tech_omega_battlecruiser
+				add_research_option = tech_precursor_bc_cost
+				add_research_option = tech_fe_assault_carrier
+				add_research_option = tech_omega_carrier
+				add_research_option = tech_fe_assault_carrier_cost
+				add_research_option = tech_fe_tower_offense
+				add_research_option = tech_omege_sentinel
+				add_research_option = tech_fe_tower_offense_cost
+				add_research_option = tech_precursor_titan
+				add_research_option = tech_omega_titan
+				add_research_option = tech_precursor_titan_cost
+				add_research_option = tech_precursor_guardian
+				add_research_option = tech_omega_guardian
+				add_research_option = tech_precursor_guardian_cost
+				add_research_option = tech_precursor_colossus
+				add_research_option = tech_omega_colossus
+				add_research_option = tech_precursor_science
+				add_research_option = tech_precursor_science_omega
+				add_research_option = tech_precursor_construcor	
+				add_research_option = tech_precursor_construcor_omega
+				add_research_option = tech_precursor_colonizer
+				add_research_option = tech_precursor_colonizer_omega
+				add_research_option = tech_omega_gatekeeper
+
+				add_research_option = tech_celestial_guardian
+				add_research_option = tech_omega_warmech
+				add_research_option = tech_progenitor_escort
+				add_research_option = tech_progenitor_battlecruiser
+				add_research_option = tech_progenitor_titan
+				add_research_option = tech_progenitor_avatar
+				add_research_option = tech_ultimate_weapon
+
+				# ______________________________________________
+
+				## Set Flags
+				remove_global_flag = active_sofe_crisis
+				save_global_event_target_as = sofe_champion_country
+				set_country_flag = winner_of_sofe
+				create_ship_design = { design = "NAME_OE_Super_Starbase_Playable" }
+				add_ship_design = last_created_design
+
+				## Remove Crisis
+				event_target:sofe_crisis_country = {
+					set_country_type = sbtg_stellarborne_empire_passive
+					set_country_flag = origin_has_champion
+					change_government = {
+						civics = {
+							civic = civic_eternal_fleet_passive
+							civic = civic_know_everything_passive
+							civic = civic_solar_empire_passive
+						}
+					}
+					every_owned_ship = {
+						delete_ship = this
+					}
+					every_owned_fleet = {
+						delete_fleet = this
+					}
+					every_owned_pop = {
+						kill_pop = yes
+					}
+				}
+
+				every_system = {
+					limit = {
+						has_star_flag = outercluster
+					}
+					every_system_planet = {
+						if = { limit = { is_colony = yes } destroy_colony = yes }
+						remove_planet = yes
+					}
+					every_system_megastructure = {
+						remove_megastructure = this
+					}
+					every_fleet_in_system = {
+						owner = {
+							capital_scope = {
+								save_event_target_as = go_back_to_base_sofe
+							}
+						}
+						set_location = event_target:go_back_to_base_sofe
+						clear_orders = yes 
+					}
+				}
+
+				## Other Empires
+				every_country = {
+					limit = {
+						has_event_chain = origin_crisis_chain
+					}
+					end_event_chain = origin_crisis_chain
+				}
+				if = {
+					limit = {
+						any_country = {
+							is_fallen_machine_empire = yes					
+						}
+					}
+					random_country = {
+						limit = {
+							is_fallen_machine_empire = yes
+						}
+						country_event = { id = sofe_crisis.5004 days = 30 }				
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject = yes
+						has_overlord = event_target:sofe_crisis_country
+					}
+					set_subject_of = {
+						who = none
+					}
+					country_event = { id = sofe_crisis.611 }		
+				}
+				every_playable_country = {
+					limit = {
+						NOR = {
+							is_same_value = root
+							is_ai = yes
+						}
+					}
+					country_event = { id = sofe_crisis.5001 }
+				}
+				every_country = {
+					limit = {
+						is_playable_country = yes
+					}
+					add_opinion_modifier = {
+						who = root.owner
+						modifier = opinion_new_orginal_empire
+					}				
+				}
+
+				## Victor
+				create_ship_design = { design = "NAME_OE_Super_Starbase_Playable" }
+				add_ship_design = last_created_design
+
+				# country_event = { id = anz_ee.2 }
+				country_event = { id = acot_test_event.0 }
+				country_event = { id = acot_test_event.1 }
+				country_event = { id = acot_test_event.2 }
+				country_event = { id = acot_test_event.3 }
+
+				if = { limit = { NOT = { has_civic = civic_champion_fleet } }
+					force_add_civic = civic_champion_fleet
+				}
+				if = { limit = { NOT = { has_civic = civic_champion_knowledge } }
+					force_add_civic = civic_champion_knowledge
+				}
+				if = { limit = { NOT = { has_civic = civic_champion_empire } }
+					force_add_civic = civic_champion_empire
+				}
+
+				create_country = {
+					name = "ANZ Eternal Light"
+					type = anz_eternal_light_country
+					flag = {
+						icon = {
+							category = "sbtg"
+							file = "sbtg_empire_flag.dds"
+						}
+						background= {
+							category = "backgrounds"
+							file = "00_solid.dds"
+						}
+						colors={
+							"orange"
+							"grey"
+							"null"
+							"null"
+						}
+					}
+				}
+				last_created_country = {
+					set_country_flag = anz_eternal_light_country
+					set_graphical_culture = original_empire
+					save_global_event_target_as = anz_eternal_light_country
+					establish_communications_no_message = root
+				}				
+
+				every_country = {
+					limit = {
+						OR = {
+							is_country_type = default
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire	
+							NOT = { is_same_value = root }
+						}
+					}
+					country_event = { id = anz_ee.3 days = 1 }
+				}
+			}
+		}
+	}
+}
+
+# Leaders & Species Traits
+country_event = {
+	id = anz_ee.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		## Species
+		every_owned_pop = {
+			modify_species = {
+				species = this
+					add_trait = trait_master_mind
+			}
+			modify_species = {
+				species = this
+					add_trait = trait_ancient_knowledge
+			}
+			modify_species = {
+				species = this
+					add_trait = trait_bionic_implants
+			}
+			modify_species = {
+				species = this
+					add_trait = trait_ancient_race
+			}
+			modify_species = {
+				species = this
+					add_trait = trait_pc_all_preference
+			}
+		}
+
+		## Leaders
+		every_owned_leader = {
+			limit = {
+				NOR = {
+					has_trait =	leader_trait_admiral_ancient_knowledge
+					has_trait =	leader_trait_general_ancient_knowledge
+					has_trait =	leader_trait_governor_ancient_knowledge
+					has_trait =	leader_trait_scientist_ancient_knowledge
+					has_trait =	leader_trait_ruler_ancient_knowledge
+				}
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+		}		
+	
+		every_pool_leader = {
+			limit = {
+				NOR = {
+					has_trait = leader_trait_admiral_ancient_knowledge
+					has_trait = leader_trait_general_ancient_knowledge
+					has_trait = leader_trait_governor_ancient_knowledge
+					has_trait = leader_trait_scientist_ancient_knowledge
+					has_trait = leader_trait_ruler_ancient_knowledge
+				}
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_ancient_knowledge
+				add_ruler_trait = leader_trait_ruler_ancient_knowledge
+			}
+		}
+
+		every_owned_leader = {
+			limit = {
+				NOR = {
+					has_trait =    leader_trait_admiral_bionic_implant
+					has_trait =    leader_trait_general_bionic_implant
+					has_trait =    leader_trait_governor_bionic_implant
+					has_trait =    leader_trait_scientist_bionic_implant
+					has_trait =    leader_trait_ruler_bionic_implant
+				}
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_bionic_implant
+			}
+		}
+		every_owned_leader = {
+			limit = {
+				is_same_species = root.owner
+				NOR = {
+					has_trait =    leader_trait_admiral_bionic_implant
+					has_trait =    leader_trait_general_bionic_implant
+					has_trait =    leader_trait_governor_bionic_implant
+					has_trait =    leader_trait_scientist_bionic_implant
+					has_trait =    leader_trait_ruler_bionic_implant
+				}
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_bionic_implant
+				add_ruler_trait = leader_trait_ruler_bionic_implant
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_bionic_implant
+			}
+		}
+
+		every_owned_leader = {
+			limit = {
+				NOR = {
+					has_trait =    leader_trait_admiral_master_mind
+					has_trait =    leader_trait_general_master_mind
+					has_trait =    leader_trait_governor_master_mind
+					has_trait =    leader_trait_scientist_master_mind
+					has_trait =    leader_trait_ruler_master_mind
+				}
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_master_mind
+			}
+		}
+		every_owned_leader = {
+			limit = {
+				NOR = {
+					has_trait =    leader_trait_admiral_bionic_implant
+					has_trait =    leader_trait_general_bionic_implant
+					has_trait =    leader_trait_governor_bionic_implant
+					has_trait =    leader_trait_scientist_bionic_implant
+					has_trait =    leader_trait_ruler_master_mind
+				}
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_master_mind
+				add_ruler_trait = leader_trait_ruler_master_mind
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_master_mind
+			}			
+		}
+	}
+}
+
+country_event = {
+	id = anz_ee.3
+	title = anz_ee.3.name
+	desc = anz_ee.3.desc
+	picture = GFX_evt_origin_ascension
+	show_sound = event_mystic_reveal
+	is_triggered_only = yes
+
+	option = {
+		default_hide_option = yes
+		name = anz_ee.3.opt.a
+	}
+}
+
+# Contact GUI
+country_event = {
+	id = anz_ee.4
+	title = anz_ee.4.title
+	desc = anz_ee.4.desc
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		room = the_light_room
+	}
+
+	## Diplo Handle
+	trigger = {
+		from = {
+			is_country_type = anz_eternal_light_country
+		}
+		NOT = { has_country_flag = sofe_light_diplomacy_engaged }
+	}
+	immediate = {
+		set_country_flag = sofe_light_diplomacy_engaged
+	}
+	after = {
+		hidden_effect = {
+			remove_country_flag = sofe_light_diplomacy_engaged
+		}
+	}
+
+	option = {
+		name = anz_ee.4.opt.a
+		hidden_effect = {
+			every_country = {
+				remove_relic = r_power_stone
+				remove_relic = r_time_stone
+				remove_relic = r_reality_stone
+				remove_relic = r_soul_stone
+				remove_relic = r_mind_stone
+				remove_relic = r_space_stone
+				remove_relic = r_infinity_gauntlet
+			}
+			add_relic = r_infinity_gauntlet
+			add_relic = r_power_stone
+			add_relic = r_time_stone
+			add_relic = r_reality_stone
+			add_relic = r_soul_stone
+			add_relic = r_mind_stone
+			add_relic = r_space_stone
+			country_event = {
+				id = anz_ee.5
+			}
+		}
+	}
+
+	option = {
+		name = anz_ee.4.opt.b
+		hidden_effect = {
+			# country_event = {
+			# 	id = anz_ee.2
+			# }
+		}
+	}
+
+	option = {
+		name = anz_ee.4.opt.c
+		hidden_effect = {
+			set_country_type = sbtg_stellarborne_empire_passive
+			every_system = {
+				set_asteroid_belt = { radius = 0 }
+				every_system_ambient_object = {
+					destroy_ambient_object = THIS
+				}
+			}
+			every_country = {
+				every_owned_ship = {
+					delete_ship = this
+				}
+				every_owned_pop = {
+					kill_pop = yes
+				}			
+			}
+			every_galaxy_planet = {
+				if = { limit = { is_colony = yes } destroy_colony = yes }
+				remove_planet = yes
+			}
+			every_country = {
+				limit = {
+					NOR = {
+						is_country_type = global_event
+						is_progenitor_empires = yes
+						is_country_type = acot_databank
+						is_country_type = sofe_the_light
+						is_country_type = sofe_lorekeeper
+					}
+				}
+				if = {
+					limit = {
+						is_ai = no
+					}
+					country_event = { id = sofe_crisis.50101 }				
+				}
+				destroy_country = yes
+			}
+			every_megastructure = {
+				remove_megastructure = this
+			}
+		}
+	}
+
+	option = {
+		name = anz_ee.4.opt.d
+		default_hide_option = yes
+	}
+}
+
+# Snap
+country_event = {
+    id = anz_ee.5
+    title = ig_cheats.4.name
+    desc = ig_cheats.4.desc
+    picture = GFX_evt_ig_cheat_snap
+    hide_window = no
+    is_triggered_only = yes
+
+    #The Snap
+    option = {
+        name = infinity_stones_new_gauntlet.11.a
+        custom_tooltip = gauntlet_option_one
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.98 }
+        }
+    }
+
+    #The Reckoning
+    option = {
+        name = infinity_stones_new_gauntlet.11.b
+        custom_tooltip = gauntlet_option_two
+        hidden_effect = {
+            set_timed_country_flag = { flag = gauntlet_used_for_evil days = 30 }
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.150 }
+        }
+    }
+
+    #The Warning
+    option = {
+        name = infinity_stones_new_gauntlet.11.c
+        custom_tooltip = gauntlet_option_three
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.153 }
+        }
+    }
+
+    #The Fresh Start
+    option = {
+        name = infinity_stones_new_gauntlet.11.d
+        custom_tooltip = gauntlet_option_four
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id =infinity_gauntlet.155 }
+        }
+    }
+
+    #The PURGE
+    option = {
+        name = infinity_stones_new_gauntlet.11.e
+        custom_tooltip = gauntlet_option_five
+        hidden_effect = {
+            set_timed_country_flag = { flag = gauntlet_protected days = 30 }
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.157 }
+        }
+    }
+
+    #Snap out Organics
+    option = {
+        name = ig_cheats.4.a
+        custom_tooltip = gauntlet_option_organics
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.159 }
+        }
+    }
+
+    #Destroy Enemies
+    option = {
+        name = infinity_stones_new_gauntlet.11.f
+        custom_tooltip = gauntlet_option_six
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.72 }
+        }
+    }
+
+    #End Hunger
+    option = {
+        name = infinity_stones_new_gauntlet.11.g
+        custom_tooltip = gauntlet_option_seven
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.164 }
+        }
+    }
+
+    #The Enlightenment
+    option = {
+        name = infinity_stones_new_gauntlet.11.h
+        custom_tooltip = gauntlet_option_eight
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.167 }
+        }
+    }
+
+    #The Pacification
+    option = {
+        name = infinity_stones_new_gauntlet.11.i
+        custom_tooltip = gauntlet_option_nine
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.170 }
+        }
+    }
+
+    #The Embrace
+    option = {
+        name = infinity_stones_new_gauntlet.11.j
+        custom_tooltip = gauntlet_option_ten
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.173 }
+        }
+    }
+
+    #End the Crisis
+    option = {
+        name = infinity_stones_new_gauntlet.11.k
+        custom_tooltip = gauntlet_option_eleven
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.176 }
+        }
+    }
+
+    #Infinite Wealth
+    option = {
+        name = infinity_stones_new_gauntlet.11.l
+        custom_tooltip = gauntlet_option_twelve
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.177 }
+        }
+    }
+
+    #The Greater Good
+    option = {
+        name = infinity_stones_new_gauntlet.11.m
+        custom_tooltip = gauntlet_option_thirteen
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.179 }
+        }
+    }
+
+    #The END
+    option = {
+        name = infinity_stones_new_gauntlet.11.n
+        custom_tooltip = gauntlet_option_fourteen
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            set_country_flag = max_soulborn
+            random_country = {
+                limit = { has_country_flag = max_soulborn }
+                save_event_target_as = max_soulborn_nation
+            }
+            remove_country_flag = max_soulborn
+            create_fleet = {
+                name = "NAME_The_End"
+                settings = {
+                    spawn_debris = no
+                }
+                effect = {
+                    set_owner = event_target:max_soulborn_nation
+                    create_ship = {
+                        name = "NAME_Reckoning"
+                        design = "NAME_Warped_Consciousness"
+                    }
+                    set_location = event_target:max_soulborn_nation.capital_scope
+                    set_fleet_stance = aggressive
+                    set_aggro_range_measure_from = return_point
+                    set_aggro_range = 3000
+                    add_modifier = {
+                        modifier = "infinity_gauntlet_max_soulborn"
+                        days = -1
+                    }
+                }
+            }
+        }
+    }
+
+    #The Inevitable
+    option = {
+        name = infinity_stones_new_gauntlet.11.o
+        custom_tooltip = gauntlet_option_fifteen
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            ruler = {
+                add_trait = leader_trait_ruler_the_inevitable
+                set_leader_flag = the_inevitable
+                add_skill = 10
+            }
+            clone_leader = {
+                target = ruler
+                class = admiral
+                traits = { trait = leader_trait_admiral_the_inevitable }
+                effect = {
+                    set_leader_flag = the_inevitable
+                }
+                skill = 10
+            }
+        }
+    }
+
+    #Disarm the galaxy
+    option = {
+        name = infinity_stones_new_gauntlet.11.p
+        custom_tooltip = gauntlet_option_sixteen
+        hidden_effect = {
+            set_timed_country_flag = { flag = gauntlet_used_to_destroy_navy days = 30 }
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.185 }
+        }
+    }
+
+    # Split the galaxy
+    option = {
+        name = infinity_stones_new_gauntlet.11.splitthegalaxy
+        custom_tooltip = gauntlet_option_splitthegalaxy
+        hidden_effect = {
+            country_event = { id = ig_cheats.4 }
+            country_event = { id = infinity_gauntlet.201 }
+        }
+    }
+
+    #Back
+    option = {
+        name = ig_menu.2.back
+    }
+}
+
+@anz_ee_version = 1.52
+
+# Version Check (Monthly Pulse)
+country_event = {
+	id = anz_ee.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		NOT = {
+			check_variable = {
+				which = anz_ee_version
+				value = @anz_ee_version
+			}
+		}
+	}
+
+	immediate = {
+		set_variable = {
+			which = anz_ee_version
+			value = @anz_ee_version
+		}
+		country_event = { id = anz_ee.11 days = 5 }
+	}
+}
+
+# Version Changed dialog
+country_event = {
+	id = anz_ee.11
+	title = anz_ee.11.name
+	desc = anz_ee.11.desc
+	picture = GFX_evt_anz_meg_update_notice
+	is_triggered_only = yes
+
+	option = {
+		default_hide_option = yes
+		name = anz_ee.11.a
+	}
+}
+
+# Welcome Message
+country_event = {
+	id = anz_ee.12
+	title = anz_ee.12.name
+	desc = anz_ee.12.desc
+	picture = GFX_evt_anz_meg_eternal_light
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	# empire pop limit settings
+	option = {
+		name = anz_ee.gplplayer
+		trigger = {
+			event_target:global_event_country = {
+				NOT = {
+					check_variable = {
+						which = anz_ee_gplplayer
+						value = 99999999
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			event_target:global_event_country = {
+				if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 99999999 } }
+					set_variable = { which = anz_ee_gplplayer value = 600 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 600 } }
+					set_variable = { which = anz_ee_gplplayer value = 800 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 800 } }
+					set_variable = { which = anz_ee_gplplayer value = 1000 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 1000 } }
+					set_variable = { which = anz_ee_gplplayer value = 1400 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 1400 } }
+					set_variable = { which = anz_ee_gplplayer value = 1800 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 1800 } }
+					set_variable = { which = anz_ee_gplplayer value = 2000 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 2000 } }
+					set_variable = { which = anz_ee_gplplayer value = 2400 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 2400 } }
+					set_variable = { which = anz_ee_gplplayer value = 2800 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 2800 } }
+					set_variable = { which = anz_ee_gplplayer value = 3000 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplplayer value = 3000 } }
+					set_variable = { which = anz_ee_gplplayer value = 99999999 }
+				}
+			}
+
+			set_global_flag = anz_ee_changing_settings
+			country_event = { id = anz_ee.12 }
+		}
+	}
+
+	option = {
+		name = anz_ee.gplai
+		trigger = {
+			event_target:global_event_country = {
+				NOT = {
+					check_variable = {
+						which = anz_ee_gplai
+						value = 99999999
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			event_target:global_event_country = {
+				if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 99999999 } }
+					set_variable = { which = anz_ee_gplai value = 600 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 600 } }
+					set_variable = { which = anz_ee_gplai value = 800 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 800 } }
+					set_variable = { which = anz_ee_gplai value = 1000 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 1000 } }
+					set_variable = { which = anz_ee_gplai value = 1400 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 1400 } }
+					set_variable = { which = anz_ee_gplai value = 1800 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 1800 } }
+					set_variable = { which = anz_ee_gplai value = 2000 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 2000 } }
+					set_variable = { which = anz_ee_gplai value = 2400 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 2400 } }
+					set_variable = { which = anz_ee_gplai value = 2800 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 2800 } }
+					set_variable = { which = anz_ee_gplai value = 3000 }
+				} else_if = {
+					limit = { check_variable = { which = anz_ee_gplai value = 3000 } }
+					set_variable = { which = anz_ee_gplai value = 99999999 }
+				}
+			}
+
+			set_global_flag = anz_ee_changing_settings
+			country_event = { id = anz_ee.12 }
+		}
+	}
+
+	option = {
+		name = anz_ee.gplplayer_disabled
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = anz_ee_gplplayer
+					value = 99999999
+				}
+			}
+		}
+
+		hidden_effect = {
+			event_target:global_event_country = {
+				set_variable = { which = anz_ee_gplplayer value = 800 }
+			}
+
+			set_global_flag = anz_ee_changing_settings
+			country_event = { id = anz_ee.12 }
+		}
+	}
+
+	option = {
+		name = anz_ee.gplai_disabled
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = anz_ee_gplai
+					value = 99999999
+				}
+			}
+		}
+
+		hidden_effect = {
+			event_target:global_event_country = {
+				set_variable = { which = anz_ee_gplai value = 800 }
+			}
+
+			set_global_flag = anz_ee_changing_settings
+			country_event = { id = anz_ee.12 }
+		}
+	}
+
+	option = {
+		default_hide_option = yes
+		name = anz_ee.12.a
+	}
+
+	immediate = {
+		set_variable = {
+			which = anz_ee_version
+			value = @anz_ee_version
+		}
+		set_global_flag = has_pk_safety_off
+		set_global_flag = anz_ee_modlist
+
+		if = { limit = { NOT = { has_global_flag = anz_ee_changing_settings } }
+			event_target:global_event_country = {
+				set_variable = {
+					which = anz_ee_gplplayer
+					value = 2000
+				}
+				set_variable = {
+					which = anz_ee_gplai
+					value = 1400
+				}
+			}
+		} else = {
+			remove_global_flag = anz_ee_changing_settings
+		}
+	}
+}
+
+# Crisis Event Relay (Yearly Pulse)
+event = {
+	id = anz_ee.20
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_global_flag = prethoryn_arrival
+			has_global_flag = prethoryn_main_invasion
+			has_global_flag = ai_invasion_ongoing
+			has_global_flag = extradimensional_invasion_happened
+			has_global_flag = extradimensional_second_portal
+			has_global_flag = extradimensional_third_portal
+		}
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+				}
+			}
+			country_event = { id = anz_ee.21 } ## Crisis Bombardment
+		}
+	}
+}
+
+# Handles Crisis Bombardment
+country_event = {
+	id = anz_ee.21
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_owned_fleet = {
+			limit = { is_ship_class = shipclass_military }
+			if = {
+				limit = { owner = { is_country_type = swarm } }
+				set_fleet_bombardment_stance = infestation
+			} else_if = {
+				limit = { owner = { is_country_type = ai_empire } }
+				set_fleet_bombardment_stance = contingency
+			} else_if = {
+				limit = { owner = { OR = {
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+				} } }
+				set_fleet_bombardment_stance = siphonlife
+			}
+		}
+	}
+}
+
+# Hive Overmind special traits event
+# .25 - .26
+
+# Respawn Overloads
+country_event = {
+	id = anz_ee.25
+	hide_window = yes
+
+	mean_time_to_happen = {
+		years = 20
+	}
+
+	trigger = {
+		has_origin = origin_hive_overmind
+		NOT = {
+			any_owned_pop = {
+				has_trait = trait_hive_mind_overlord
+			}
+		}
+	}
+
+	immediate = {
+		capital_scope = {
+			create_pop = {
+				species = owner_main_species
+			}
+		}
+	}
+}
+
+# Kill Overloards if more than 1
+country_event = {
+	id = anz_ee.26
+	hide_window = yes
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	trigger = {
+		has_origin = origin_hive_overmind
+	}
+
+	immediate = {
+		while = {
+			limit = {
+				count_owned_pop = {
+					limit = { has_trait = trait_hive_mind_overlord }
+					count >= 2
+				}
+			}
+			random_owned_pop = {
+				limit = { has_trait = trait_hive_mind_overlord }
+				kill_pop = yes
+			}
+		}
+	}
+}
+
+# Real Space - Massive Star Problem
+# Remove GPM Megas
+event = {
+	id = anz_ee.30
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		every_system = {
+			star = {
+				if = {
+					limit = {
+						planet_size > 40
+					}
+					set_planet_size = 40
+				}
+			}
+			every_megastructure = {
+				limit = {
+					OR = {
+						is_megastructure_type = gpm_mega_shipyard_ruined_precursor
+						is_megastructure_type = gpm_mega_shipyard_restored_precursor
+						is_megastructure_type = gpm_refinery_ruined
+						is_megastructure_type = gpm_refinery_restored
+						is_megastructure_type = gpm_mining_facility_ruined
+						is_megastructure_type = gpm_mining_facility_restored
+						is_megastructure_type = gpm_observation_station_ruined
+						is_megastructure_type = gpm_observation_station_restored
+						is_megastructure_type = gpm_silo_ruined
+						is_megastructure_type = gpm_silo_restored
+					}
+				}
+				remove_megastructure = this
+			}
+		}
+	}
+}
+
+# Dimensional Mirror - First Try
+country_event = {
+	id = anz_ee.33
+	title = anz_ee.33.title
+	picture = GFX_evt_anz_phanon_hacks
+	desc = {
+		trigger = {
+			has_country_flag = defeated_wave_1
+			NOT = { has_country_flag = defeated_wave_2 }
+		}
+		text = anz_ee.33.desc.wave1
+	}
+	desc = {
+		trigger = {
+			has_country_flag = defeated_wave_2
+			NOT = { has_country_flag = defeated_wave_3 }
+		}
+		text = anz_ee.33.desc.wave2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = defeated_wave_3
+			NOT = { has_country_flag = defeated_wave_4 }
+		}
+		text = anz_ee.33.desc.wave3
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = anz_ee.33.opt.a
+		if = {
+			limit = {
+				has_country_flag = defeated_wave_1
+				NOR = {
+					has_country_flag = defeated_wave_2
+					has_technology = tech_precursor_phanon_design_pe_1
+				}
+			}
+			add_research_option = tech_precursor_phanon_design_pe_1
+		} else_if = {
+			limit = {
+				has_country_flag = defeated_wave_2
+				NOR = {
+					has_country_flag = defeated_wave_3
+					has_technology = tech_precursor_phanon_design_pe_2
+				}
+			}
+			add_research_option = tech_precursor_phanon_design_pe_2
+		} else_if = {
+			limit = {
+				has_country_flag = defeated_wave_3
+				NOR = {
+					has_country_flag = defeated_wave_4
+					has_technology = tech_precursor_phanon_design_pe_3
+				}
+			}
+			add_research_option = tech_precursor_phanon_design_pe_3
+		}
+	}
+}
+
+# Mind Merge (Organics -> Machines)
+country_event = {
+	id = anz_ee.36
+	is_triggered_only = yes
+	picture = GFX_evt_decryption
+	title = anz_ee.36.title
+	desc = anz_ee.36.desc
+	
+	option = {
+		name = anz_ee.36.a
+	}
+	
+	option = {
+		name = anz_ee.36.b
+		hidden_effect = {
+			set_country_flag = anz_xvcv_become_assimilator
+		}
+	}
+
+	after = {
+		enable_special_project = { name = XVCV_MDLC_AP_MIND_INTEGRATION_PROJECT }
+	}
+}
+
+# Assimilation Redirect
+event = {
+	id = anz_ee.37
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				any_owned_species = {
+					has_citizenship_type = {
+						type = citizenship_assimilation
+						country = prev
+					}
+				}
+			}
+			# Run Assimilation 3 times
+			# Each time assimilate 4 pops (+1 if tradition)
+			# For a total of 12 pops every year (max 15 if tradition)
+			# Each assimilation type can run parallel
+			country_event = { id = anz_ee.38 days = 0 }
+			country_event = { id = anz_ee.38 days = 120 }
+			country_event = { id = anz_ee.38 days = 240 }
+		}
+	}
+}
+
+# Asim Species
+country_event = {
+	id = anz_ee.38
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		any_owned_species = {
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = prev
+			}
+		}
+	}
+
+	immediate = {
+		set_update_modifiers_batch = begin
+
+		every_owned_species = {
+			limit = {
+				has_citizenship_type = {
+					type = citizenship_assimilation
+					country = prev
+				}
+			}
+
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_001 country = prev } }
+				# Machine Synth
+				save_event_target_as = anz_asim_origin
+				random_galaxy_species = {
+					limit = { has_species_flag = anz_asim_spc_mech@event_target:anz_asim_origin }
+					prevprev = { set_country_flag = anz_asim_spc_mech_found@event_target:anz_asim_origin }
+					save_event_target_as = anz_asim_target
+				}
+				if = {
+					limit = { prev = { NOT = { has_country_flag = anz_asim_spc_mech_found@event_target:anz_asim_origin } } }
+					event_target:anz_asim_origin = {
+						create_species = {
+							is_mod = yes
+							name = this
+							plural = this
+							adjective = this
+							name_list = this
+							class = MACHINE
+							portrait = this
+							homeworld = this
+							traits = { trait = trait_machine_unit }
+							effect = {
+								set_species_flag = anz_asim_spc_mech@event_target:anz_asim_origin
+								save_event_target_as = anz_asim_target
+							}
+						}
+						set_species_flag = anz_asim_spc_synth@event_target:anz_asim_target
+					}
+				} else = {
+					prev = { remove_country_flag = anz_asim_spc_mech_found@event_target:anz_asim_origin }
+				}
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_002 country = prev } }
+				# Machine Psi
+				modify_species = {
+					species = this
+					add_trait = trait_psionic
+					remove_trait = trait_latent_psionic
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_003 country = prev } }
+				# Machine Cyber
+				modify_species = {
+					species = this
+					add_trait = trait_cybernetic
+					add_traits_at_start_of_list = yes
+					remove_trait = trait_hive_mind
+					remove_trait = trait_latent_psionic
+					remove_trait = trait_psionic
+					remove_trait = trait_self_modified
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_004 country = prev } }
+				# Machine Cyber + Psi
+				modify_species = {
+					species = this
+					add_trait = trait_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_005 country = prev } }
+				# Hive Gene
+				modify_species = {
+					species = this
+					add_trait = trait_hive_mind
+					remove_trait = trait_self_modified
+					remove_trait = trait_latent_psionic
+					remove_trait = trait_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_006 country = prev } }
+				# Hive Psi
+				modify_species = {
+					species = this
+					add_trait = trait_psionic
+					remove_trait = trait_latent_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_007 country = prev } }
+				# Hive Cyber
+				modify_species = {
+					species = this
+					add_trait = trait_hive_mind
+					add_trait = trait_cybernetic
+					remove_trait = trait_self_modified
+					remove_trait = trait_latent_psionic
+					remove_trait = trait_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_008 country = prev } }
+				# Hive Cyber + Psi
+				modify_species = {
+					species = this
+					add_trait = trait_hive_mind
+					add_trait = trait_cybernetic
+					add_trait = trait_psionic
+					remove_trait = trait_self_modified
+					remove_trait = trait_latent_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_009 country = prev } }
+				# Normie Demech
+				save_event_target_as = anz_asim_origin
+				random_galaxy_species = {
+					limit = { has_species_flag = anz_asim_spc_synth@event_target:anz_asim_origin }
+					prevprev = { set_country_flag = anz_asim_spc_synth_found@event_target:anz_asim_origin }
+					save_event_target_as = anz_asim_target
+				}
+				if = {
+					limit = { prev = { NOT = { has_country_flag = anz_asim_spc_synth_found@event_target:anz_asim_origin } } }
+					event_target:anz_asim_origin = {
+						create_species = {
+							is_mod = yes
+							name = this
+							plural = this
+							adjective = this
+							name_list = this
+							class = ROBOT
+							portrait = this
+							homeworld = this
+							traits = { trait = trait_mechanical }
+							effect = {
+								set_species_flag = anz_asim_spc_synth@event_target:anz_asim_origin
+								save_event_target_as = anz_asim_target
+							}
+						}
+						set_species_flag = anz_asim_spc_mech@event_target:anz_asim_target
+					}
+				} else = {
+					prev = { remove_country_flag = anz_asim_spc_synth_found@event_target:anz_asim_origin }
+				}
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_010 country = prev } }
+				# Normie Dehive
+				modify_species = {
+					species = this
+					remove_trait = trait_hive_mind
+					remove_trait = trait_latent_psionic
+					remove_trait = trait_psionic
+					remove_trait = trait_cybernetic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_015 country = prev } }
+				# Normie Cyber + Psi
+				modify_species = {
+					species = this
+					add_trait = trait_cybernetic
+					add_trait = trait_psionic
+					remove_trait = trait_self_modified
+					remove_trait = trait_latent_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = {
+					has_living_standard = { type = living_standard_anz_spr_012 country = prev }
+					NOT = { has_trait = trait_psionic }
+				}
+				# Normie Synth + Psi
+				modify_species = {
+					species = this
+					add_trait = trait_psionic
+					remove_trait = trait_latent_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects_exact = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_013 country = prev } }
+				# Normie Cyber
+				modify_species = {
+					species = this
+					add_trait = trait_cybernetic
+					remove_trait = trait_self_modified
+					remove_trait = trait_psionic
+					remove_trait = trait_latent_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_014 country = prev } }
+				# Normie Psi
+				modify_species = {
+					species = this
+					add_trait = trait_psionic
+					remove_trait = trait_cybernetic
+					remove_trait = trait_self_modified
+					remove_trait = trait_latent_psionic
+					add_traits_at_start_of_list = yes
+					change_scoped_species = no
+					effect = { save_event_target_as = anz_asim_target }
+				}
+				save_event_target_as = anz_asim_origin
+				anz_asim_effects = yes
+			}
+			if = {
+				limit = { has_living_standard = { type = living_standard_anz_spr_011 country = prev } }
+				# Normie Synth
+				save_event_target_as = anz_asim_origin
+				random_galaxy_species = {
+					limit = { has_species_flag = anz_asim_spc_synth_empire@prevprev }
+					save_event_target_as = anz_asim_target
+				}
+				anz_asim_effects = yes
+			}
+		}
+
+		set_update_modifiers_batch = end
+	}
+}
+
+# Set owner species when gene modding
+country_event = {
+	id = anz_ee.39
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = { is_subspecies = prev.owner_main_species }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				count_owned_pop_species = {
+					limit = { is_exact_same_species = from }
+					count > 0
+				}
+			}
+			change_dominant_species = { species = from }
+		}
+	}
+}
+
+# SOTS MP Compat
+# Redir
+country_event = {
+	id = anz_ee.40
+	hide_window = yes
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	trigger = {
+		has_event_chain = shroud_master_summoning
+		is_multiplayer = yes
+		NAND = {
+			has_country_flag = sobrak_site_complete
+			has_country_flag = ralu_site_complete
+		}
+		any_playable_country = {
+			OR = {
+				has_country_flag = sobrak_site_complete
+				has_country_flag = ralu_site_complete
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = sobrak_site_complete }
+				any_playable_country = { has_country_flag = sobrak_site_complete }
+			}
+			country_event = {
+				id = anz_ee.41
+				random = 120
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_country_flag = ralu_site_complete }
+				any_playable_country = { has_country_flag = ralu_site_complete }
+			}
+			country_event = {
+				id = anz_ee.42
+				random = 120
+			}
+		}
+	}
+}
+
+# Sobrak Site
+country_event = {
+	id = anz_ee.41
+	is_triggered_only = yes
+	title = anz_ee.41.title
+	desc = anz_ee.41.desc
+	picture = GFX_evt_society_cache
+
+	option = {
+		name = anz_ee.41.a
+		set_country_flag = sobrak_site_complete
+		add_event_chain_counter = {
+			event_chain = shroud_master_summoning
+			counter = hist_insights
+			amount = 1
+		}
+	}
+}
+
+# Ralu Site
+country_event = {
+	id = anz_ee.42
+	is_triggered_only = yes
+	title = anz_ee.42.title
+	desc = anz_ee.42.desc
+	picture = GFX_evt_society_cache
+
+	option = {
+		name = anz_ee.42.a
+		set_country_flag = ralu_site_complete
+		add_event_chain_counter = {
+			event_chain = shroud_master_summoning
+			counter = hist_insights
+			amount = 1
+		}
+	}
+}
+
+# delayed exec mind merge after effects
+country_event = {
+	id = anz_ee.43
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# do assign
+
+		# deprecated before even released
+		# if = { # have dlc ^^
+		# 	limit = { has_paragon_dlc = yes }
+
+		# 	# use default if fail
+		# 	if = {
+		# 		limit = { exists = event_target:anz_new_gestalt_gov }
+		# 		event_target:anz_new_gestalt_gov = {
+		# 			set_council_position = councilor_gestalt_governor
+		# 		}
+		# 	} else = {
+		# 		country_create_gestalt_councilor = {
+		# 			CLASS = governor
+		# 			COUNCIL_POS = councilor_gestalt_governor
+		# 			DESC = councilor_gestalt_governor_desc
+		# 		}
+		# 	}
+
+		# 	if = {
+		# 		limit = { exists = event_target:anz_new_gestalt_sci }
+		# 		event_target:anz_new_gestalt_sci = {
+		# 			set_council_position = councilor_gestalt_scientist
+		# 		}
+		# 	} else = {
+		# 		country_create_gestalt_councilor = {
+		# 			CLASS = scientist
+		# 			COUNCIL_POS = councilor_gestalt_scientist
+		# 			DESC = councilor_gestalt_scientist_desc
+		# 		}
+		# 	}
+
+		# 	if = {
+		# 		limit = { exists = event_target:anz_new_gestalt_adl }
+		# 		event_target:anz_new_gestalt_adl = {
+		# 			set_council_position = councilor_gestalt_admiral
+		# 		}
+		# 	} else = {
+		# 		ountry_create_gestalt_councilor = {
+		# 			CLASS = admiral
+		# 			COUNCIL_POS = councilor_gestalt_admiral
+		# 			DESC = councilor_gestalt_admiral_desc
+		# 		}
+		# 	}
+
+		# 	if = {
+		# 		limit = { exists = event_target:anz_new_gestalt_gnl }
+		# 		event_target:anz_new_gestalt_gnl = {
+		# 			set_council_position = councilor_gestalt_general
+		# 		}
+		# 	} else = {
+		# 		country_create_gestalt_councilor = {
+		# 			CLASS = general
+		# 			COUNCIL_POS = councilor_gestalt_general
+		# 			DESC = councilor_gestalt_general_desc
+		# 		}
+		# 	}
+		# } else = { # no dlc :c
+		# 	country_create_gestalt_councilor = {
+		# 		CLASS = governor
+		# 		COUNCIL_POS = councilor_gestalt_governor
+		# 		DESC = councilor_gestalt_governor_desc
+		# 	}
+		# 	country_create_gestalt_councilor = {
+		# 		CLASS = scientist
+		# 		COUNCIL_POS = councilor_gestalt_scientist
+		# 		DESC = councilor_gestalt_scientist_desc
+		# 	}
+		# 	country_create_gestalt_councilor = {
+		# 		CLASS = admiral
+		# 		COUNCIL_POS = councilor_gestalt_admiral
+		# 		DESC = councilor_gestalt_admiral_desc
+		# 	}
+		# 	country_create_gestalt_councilor = {
+		# 		CLASS = general
+		# 		COUNCIL_POS = councilor_gestalt_general
+		# 		DESC = councilor_gestalt_general_desc
+		# 	}
+		# }
+
+		# add subclass if missing
+		every_owned_leader = {
+			limit = {
+				is_councilor = yes
+				has_council_subclass = no
+			}
+			remove_subclass = yes
+			switch = {
+				trigger = leader_class
+				commander = {
+					add_trait_no_notify = subclass_commander_councilor
+				}
+				official = {
+					add_trait_no_notify = subclass_official_economy_councilor
+				}
+				scientist = {
+					add_trait_no_notify = subclass_scientist_councilor
+				}
+			}
+		}
+
+		if = {
+			limit = { NOT = { has_technology = tech_bio_reactor } }
+			give_technology = { tech = tech_bio_reactor message = no }
+		}
+		if = {
+			limit = { has_technology = tech_robomodding }
+			give_technology = { tech = tech_robomodding_m message = no }
+		}
+		if = {
+			limit = { has_technology = tech_robomodding_points_1 }
+			give_technology = { tech = tech_binary_motivators message = no }
+		}
+		if = {
+			limit = { has_technology = tech_robomodding_points_2 }
+			give_technology = { tech = tech_nanite_assemblers message = no }
+		}
+	
+		# ACOT / AOT
+		if = {
+			limit = { has_technology = tech_dm_ancient_palace }
+			give_technology = { tech = tech_dm_ancient_control_center message = no }
+		}
+		if = {
+			limit = { has_technology = tech_ae_ancient_palace }
+			give_technology = { tech = tech_ae_ancient_control_center message = no }
+		}
+		if = {
+			limit = { has_technology = tech_phanon_palace }
+			give_technology = { tech = tech_phanon_control_center message = no }
+		}
+		if = {
+			limit = { has_technology = tech_stellarite_palace }
+			give_technology = { tech = tech_stellarite_control_center message = no }
+		}
+	}
+}
+
+# restore paragon portraits after gene modding
+country_event = {
+	id = anz_ee.44
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_owned_leader = {
+			limit = {
+				is_same_species = from
+				OR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+				OR = {
+					has_leader_flag = anz_paragon_gene_mod
+					has_leader_flag = anz_paragon_gene_mod_mech
+				}
+			}
+			random_galaxy_species = {
+				limit = {
+					has_species_flag = anz_paragon_portrait_target_of@prev
+				}
+				save_event_target_as = anz_paragon_portrait_target
+			}
+			change_leader_portrait = event_target:anz_paragon_portrait_target
+		}
+	}
+}
+
+# New leaders not owned by empire gets assimilated
+# scope: country, from = leader;
+country_event = {
+	id = anz_ee.45
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_country_type = default
+		NOT = { any_owned_species = { is_exact_same_species = root.from } }
+	}
+
+	immediate = {
+		if = {
+			limit = { is_machine_empire = yes }
+			from = { change_background_ethic = ethic_gestalt_consciousness }
+			if = {
+				limit = {
+					from = { species = { is_organic_species = yes } }
+					has_civic = civic_machine_assimilator
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_cyborg } }
+						anz_spr_recyber = yes
+					}
+					from = { add_trait = leader_trait_cyborg }
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_psionic } }
+						anz_spr_repsi = yes
+					}
+					from = { add_trait = leader_trait_psionic }
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_erudite } }
+						anz_spr_rehive = yes
+					}
+					from = { add_trait = leader_trait_erudite }
+				}
+			} else_if = {
+				limit = {
+					from = { species = { is_mechanical_species = yes } }
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_psionic } }
+						anz_spr_repsi = yes
+					}
+					from = { add_trait = leader_trait_psionic }
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_synthetic } }
+						anz_spr_resynth = yes
+					}
+					from = { add_trait = leader_trait_synthetic }
+				}
+			}
+		} else_if = {
+			limit = { is_hive_empire = yes }
+			from = { change_background_ethic = ethic_gestalt_consciousness }
+			if = {
+				limit = {
+					from = { species = { is_organic_species = yes } }
+					OR = { # must check if assimilation is possible
+						anz_spr_recyber = yes
+						anz_spr_rehive = yes
+					}
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_cyborg } }
+						anz_spr_recyber = yes
+					}
+					from = { add_trait = leader_trait_cyborg }
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_psionic } }
+						anz_spr_repsi = yes
+					}
+					from = { add_trait = leader_trait_psionic }
+				}
+				if = {
+					limit = {
+						from = { NOT = { has_trait = leader_trait_erudite } }
+						anz_spr_rehive = yes
+					}
+					from = { add_trait = leader_trait_erudite }
+				}
+			}
+		}
+	}
+}

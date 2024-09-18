@@ -1,0 +1,201 @@
+## These stuff are Disabled / NPC Only
+
+PHANON = {
+	archetype = BIOLOGICAL
+	playable = { always = no }
+	randomized = no
+	use_climate_preference = no
+
+	portraits = {
+		"acot_pmc"
+	}
+	
+	graphical_culture = acot_pmc
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+PROGENITOR = {
+	archetype = DEITY
+	playable = { always = no }
+	randomized = no
+	use_climate_preference = no
+
+	portraits = {
+		"progenitors"
+	}
+
+	custom_portraits = {
+		randomized = { always = no }
+		playable = { always = no }
+		portraits = {
+			anz_megumin_oe
+		}
+	}
+	
+	graphical_culture = sbtg_stellarborne_empire
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+PRE_ORIGINAL = {
+	archetype = BIOLOGICAL
+	playable = { always = no }
+	randomized = no
+
+	portraits = {
+		"progenitors"
+	}
+	
+	graphical_culture = pre_original
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+PRE_ORIGINAL_MACHINE = {
+	archetype = MACHINE
+	playable = { always = no }
+	randomized = no
+
+	portraits = {
+		"progenitors"
+	}
+	
+	graphical_culture = pre_original
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+PRE_ORIGINAL_ROBOT = {
+	archetype = ROBOT
+	playable = { always = no }
+	randomized = no
+
+	portraits = {
+		"progenitors"
+	}
+	
+	graphical_culture = pre_original
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+ECECA = {
+	archetype = BIOLOGICAL
+	possible = { always = no }
+	playable = { always = no }
+	randomized = { always = no }
+	portraits = {
+		"cecaelia"
+	}
+	graphical_culture = molluscoid_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+EANDR = {
+	archetype = MACHINE
+
+	possible = { always = no }
+	playable = { always = no }
+	randomized = { always = no }
+	possible_secondary = { always = no }
+
+	robotic = yes
+	use_climate_preference = no
+	portrait_modding = yes
+	
+	leader_age_min = 2
+	leader_age_max = 10
+
+	portraits = {
+		"android"
+	}
+	graphical_culture = mammalian_01
+	move_pop_sound_effect = "robot_pops_move"
+}
+
+alter-dxd = {
+	archetype = BIOLOGICAL
+	possible = { always = no }
+	playable = { always = no }
+	portrait_modding = no
+	gender = no
+	
+	portraits = {}
+
+	graphical_culture = humanoid_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+	
+	resources = {}
+} 
+
+alter-symphogear = {
+	archetype = BIOLOGICAL
+	possible = { always = no }
+	playable = { always = no }
+	portrait_modding = no
+	gender = no
+	
+	portraits = {}
+
+	graphical_culture = humanoid_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+	
+	resources = {}
+} 
+
+
+alt_girls_und_panzer = {
+	archetype = BIOLOGICAL
+	possible = { always = no }
+	playable = { always = no }
+	portrait_modding = no
+	gender = no
+	
+	portraits = {}
+
+	graphical_culture = humanoid_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+	
+	resources = {}
+}	
+
+alt_imas = {
+	archetype = BIOLOGICAL
+	possible = { always = no }
+	playable = { always = no }
+	portrait_modding = no
+	gender = no
+	
+	portraits = {}
+
+	graphical_culture = humanoid_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+	
+	resources = {}
+}
+
+SOPHIA = {
+	archetype = BIOLOGICAL
+	possible = { always = no }
+	playable = { always = no }
+	randomized = no
+	use_climate_preference = no
+
+	portraits = {
+		"acot_sophia"
+	}
+	
+	graphical_culture = avian_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+SOPHIA_MACHINE = {
+	archetype = MACHINE
+	possible = { always = no }
+	playable = { always = no }
+	randomized = no
+	use_climate_preference = no
+
+	portraits = {
+		"acot_sophia"
+	}
+	
+	graphical_culture = avian_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+}

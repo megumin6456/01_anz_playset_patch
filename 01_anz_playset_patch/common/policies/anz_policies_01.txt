@@ -1,0 +1,36 @@
+anz_ee_become_synth = {
+	potential = {
+		is_gestalt = no
+		is_ai = no
+		anz_spr_resynth = yes
+	}
+
+	option = {
+		name = "anz_ee_become_synth_allowed"
+
+		valid = {
+			always = yes
+		}
+
+		policy_flags = {
+			anz_ee_become_synth_allowed
+		}
+	}
+
+	option = {
+		name = "anz_ee_become_synth_banned"
+
+		policy_flags = {
+			anz_ee_become_synth_banned
+		}
+		
+		valid = {
+			OR = {
+				anz_spr_recyber = yes
+				anz_spr_repsi = yes
+				anz_spr_dehive = yes
+				anz_spr_demech = yes
+			}
+		}
+	}
+}

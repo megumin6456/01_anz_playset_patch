@@ -1,0 +1,171 @@
+country_create_gestalt_councilor = {
+	if = {
+		limit = { owner = { has_origin = origin_anz_cyborgs_collective } }
+		# Code should be moved to clones mod but too lazy for that
+		set_country_flag = anz_gestalt_council
+		set_country_flag = anz_gestalt_council_unlocked
+	} else = { # Vanilla
+		create_leader = {
+			class = $CLASS$
+			species = this
+			name = $COUNCIL_POS$
+			skill = 1
+			gender = indeterminable
+			event_leader = yes
+			skip_background_generation = yes
+			can_manually_change_location = no
+			hide_leader = yes
+			custom_description = $DESC$
+			randomize_traits = no
+			background_ethic = ethic_gestalt_consciousness
+			effect = {
+				save_event_target_as = gestalt_councilor
+			}
+		}
+		event_target:gestalt_councilor = {
+			set_owner = prev
+			change_leader_portrait = $COUNCIL_POS$_1
+			set_council_position = $COUNCIL_POS$
+			set_immortal = yes
+			set_leader_flag = leader_death_events_blocked
+			if = {
+				limit = {
+					has_paragon_dlc = yes
+				}
+				assign_node_subclass_traits = yes
+			}
+			add_trait_no_notify = random_common
+			add_skill_without_trait_selection = owner.modifier:leader_initial_skill
+			switch = {
+				trigger = leader_class
+				commander = {
+					add_skill_without_trait_selection = owner.modifier:commander_initial_skill
+				}
+				official = {
+					add_skill_without_trait_selection = owner.modifier:official_initial_skill
+				}
+				scientist = {
+					add_skill_without_trait_selection = owner.modifier:scientist_initial_skill
+				}
+			}
+		}
+	}
+}
+
+set_gestalt_node_protrait_effect = {
+	if = {
+		limit = {
+			has_leader_flag = anz_leader_gestalt_node
+			owner = { NOT = { has_origin = origin_anz_cyborgs_collective } }
+		}
+		switch = {
+			trigger = is_councilor_type
+			councilor_gestalt_legion = {
+				if = {
+					limit = { has_skill >= 8 }
+					change_leader_portrait = councilor_gestalt_legion_3
+				}
+				else_if = {
+					limit = { has_skill >= 4 }
+					change_leader_portrait = councilor_gestalt_legion_2
+				}
+				else_if = {
+					limit = { has_skill >= 1 }
+					change_leader_portrait = councilor_gestalt_legion_1
+				}
+			}
+			councilor_gestalt_cognitive = {
+				if = {
+					limit = { has_skill >= 8 }
+					change_leader_portrait = councilor_gestalt_cognitive_3
+				}
+				else_if = {
+					limit = { has_skill >= 4 }
+					change_leader_portrait = councilor_gestalt_cognitive_2
+				}
+				else_if = {
+					limit = { has_skill >= 1 }
+					change_leader_portrait = councilor_gestalt_cognitive_1
+				}
+			}
+			councilor_gestalt_regulatory = {
+				if = {
+					limit = { has_skill >= 8 }
+					change_leader_portrait = councilor_gestalt_regulatory_3
+				}
+				else_if = {
+					limit = { has_skill >= 4 }
+					change_leader_portrait = councilor_gestalt_regulatory_2
+				}
+				else_if = {
+					limit = { has_skill >= 1 }
+					change_leader_portrait = councilor_gestalt_regulatory_1
+				}
+			}
+			councilor_gestalt_growth = {
+				if = {
+					limit = { has_skill >= 8 }
+					change_leader_portrait = councilor_gestalt_growth_3
+				}
+				else_if = {
+					limit = { has_skill >= 4 }
+					change_leader_portrait = councilor_gestalt_growth_2
+				}
+				else_if = {
+					limit = { has_skill >= 1 }
+					change_leader_portrait = councilor_gestalt_growth_1
+				}
+			}
+		}
+	}
+}
+
+# Planet Cracker effect
+spawn_habitat_cracker_effect = {
+	create_ambient_object = {
+		location = this
+		type = habitat_cracker_object
+		duration = 5
+
+		use_3d_location = yes
+		base_angle_towards = star
+		entity_face_object = star
+
+		entity_offset = { min = 0 max = 0 }
+
+		entity_scale_to_size = yes
+		scale = 0.10
+	}
+	save_event_target_as = target_habitat
+	solar_system = {
+		# spawn_megastructure = {
+		# 	type = habitat_central_complex_ruined
+		# 	owner = this.owner
+		# 	coords_from = PREV
+		# }
+		random_system_planet = {
+			limit = {
+				has_planet_flag = habitat@event_target:target_habitat
+			}
+			remove_planet_flag = habitat@event_target:target_habitat
+			set_planet_flag = habitat_build_site
+		}
+		every_fleet_in_system = {
+			limit = {
+				is_ship_class = shipclass_habitat_station
+			}
+			orbit = {
+				if = {
+					limit = {
+						NOT = {
+							has_planet_flag = habitat_build_site
+						}
+					}
+					remove_planet_flag = has_megastructure
+				}
+			}
+			delete_fleet = this
+		}
+	}
+	remove_planet = yes
+}

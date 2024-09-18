@@ -1,0 +1,16 @@
+entity = {
+	name = "frontend_background_entity"
+	
+	locator = { name = "loc" position = { 0.0 0.025 0.0 } }
+	attach = { loc = "ee_main_menu_entity_attached_entity" }
+}
+
+entity = {
+	name = "ee_main_menu_entity_attached_entity"
+	pdxmesh = "ee_main_menu_mesh"
+	
+	default_state = "idle"
+	state = { name = "idle" }
+	
+	scale = 1.05
+}

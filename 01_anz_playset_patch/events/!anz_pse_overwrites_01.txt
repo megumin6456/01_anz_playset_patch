@@ -1,0 +1,91 @@
+namespace = pse
+# To phanon users immune
+
+# This = owner of ship 1 (destroyed)
+# From = owner of ship 2 (combatant)
+# FromFrom = ship 1
+# FromFromFrom = ship 2
+country_event = {
+	id = pse.174
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		fromfrom = {
+			has_ship_flag = pse_power_combat_arc_ship_in_effect
+		}
+	}
+	immediate = {
+		fromfrom = {
+			create_ambient_object = {
+				type = pse_arc_effect
+				scale = 1
+				location = this
+				use_3d_location = yes
+				entity_scale_to_size = yes
+				play_animation_once = yes
+				duration = 60
+			}
+		}
+		if = {
+			limit = {
+				exists = fromfrom
+			}
+			fromfrom = {
+				remove_ship_flag = pse_power_combat_arc_ship_in_effect
+			}
+		}
+		if = {
+			limit = {
+				from = { not = { has_technology = tech_dark_matter_power_core_pe } }
+			}
+			fromfromfrom = {
+				if = {
+					limit = {
+						has_hp_percentage > 0.2
+					}
+					reduce_hp_percent = 20
+					create_ambient_object = {
+						type = pse_range_hit_effect
+						scale = 1.0
+						location = this
+						use_3d_location = yes
+						entity_scale_to_size = yes
+						play_animation_once = yes
+						duration = 60
+					}
+				}
+				else_if = {
+					limit = {
+						has_hp_percentage < 0.2
+						has_hp_percentage > 0.05
+					}
+					reduce_hp_percent = 4
+					create_ambient_object = {
+						type = pse_range_hit_effect
+						scale = 1.0
+						location = this
+						use_3d_location = yes
+						entity_scale_to_size = yes
+						play_animation_once = yes
+						duration = 60
+					}
+				}
+				else_if = {
+					limit = {
+						has_hp_percentage < 0.05
+					}
+					reduce_hp_percent = 1
+					create_ambient_object = {
+						type = pse_range_hit_effect
+						scale = 1.0
+						location = this
+						use_3d_location = yes
+						entity_scale_to_size = yes
+						play_animation_once = yes
+						duration = 60
+					}
+				}
+			}
+		}
+	}
+}

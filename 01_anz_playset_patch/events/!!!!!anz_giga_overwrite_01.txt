@@ -1,0 +1,632 @@
+namespace = ehof_megastructure
+
+# Stage 4
+fleet_event = {
+	id = ehof_megastructure.00531
+	title = "ehof_megastructure.00531.name"
+	desc = "ehof_megastructure.00531.desc"
+	picture = GFX_evt_orange_bolt
+	show_sound = event_dig_site
+	location = from
+	archaeology = yes
+	is_triggered_only = yes
+
+	after = { from = { set_site_progress_locked = no } }
+	immediate = {
+		from = { set_site_progress_locked = yes }
+
+		owner.capital_scope.solar_system = {
+			random_list = {
+				75 = {
+					spawn_system = {
+						initializer = "special_init_01"
+						min_distance = 10
+						max_distance = 40
+						max_jumps = 0
+					}
+					last_created_system = {
+						giga_field_system_debris = yes
+						set_star_flag = ehof_blackhole_@root.owner
+						root.owner = {
+							enable_special_project = {
+								name = "EXPLORE_EHOF_PRECURSOR_NO_RUINED"
+								location = prev.star
+								owner = this
+							}
+						}
+					}
+				}
+				25 = {
+					spawn_system = {
+						initializer = "ehof_unique_ruined"
+						min_distance = 10
+						max_distance = 40
+						max_jumps = 0
+					}
+					last_created_system = {
+						set_star_flag = ehof_blackhole_@root.owner
+						root.owner = {
+							enable_special_project = {
+								name = "EXPLORE_EHOF_PRECURSOR_RUINED"
+								location = prev.star
+								owner = this
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		default_hide_option = yes
+		name = CURIOUS
+		if = { limit = { has_ancrel = yes } small_artifact_reward = yes }
+	}
+}
+
+namespace = maginot_destruction
+
+# on_destroy_planet_with_* = colossus was used
+planet_event = {
+	id = maginot_destruction.1002
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_planet_flag = giga_maginot_world
+	}
+
+	immediate = {
+		save_event_target_as = maginot_world_loc
+		this.owner = { save_event_target_as = maginot_owner }
+		from = { save_event_target_as = maginot_destroyer_colossus_fleet }
+		from.owner = { save_event_target_as = maginot_destroyer }
+		if = { # Will not apply for friendly colossus
+			limit = {
+				this.owner = {
+					not = {
+						is_same_empire = from.owner
+					}
+				}
+			}
+			planet_event = { id = maginot_destruction.1010 }
+			planet_event = { id = maginot_destruction.1012 } # destroy colossus
+		}
+	}
+}
+
+namespace = giga_frameworld_origin
+# resettle pops to homeworld, and make sure the anti-pop-growth mod is applied
+country_event = {
+	
+	id = giga_frameworld_origin.100
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		giga_has_frameworld_origin = yes
+		exists = capital_scope
+		capital_scope = {
+			has_orbital_bombardment = no
+			is_occupied_flag = no
+			NOT = { has_modifier = anz_quarantine_planet }
+		}
+	}
+	
+	immediate = {
+		random_owned_planet = {
+			limit = { has_planet_flag = giga_frameworld@root }
+			save_event_target_as = target_frameworld
+		}
+
+		set_update_modifiers_batch = begin
+		every_owned_planet = {
+			limit = {
+				NOT = { is_same_value = event_target:target_frameworld }
+				NOT = { has_planet_flag = frameag_colony_exception }
+				has_orbital_bombardment = no
+				is_occupied_flag = no
+			}
+
+			if = {
+				limit = {
+					not = {
+						has_modifier = frameworld_conquered
+					}
+				}
+				add_modifier = {
+					modifier = frameworld_conquered
+					clear_on_owner_change = yes
+				}
+			}
+
+			# remove resettlement block if we're not at war
+			if = {
+				limit = {
+					root = { is_at_war = no }
+					has_modifier = frameworld_conquered_no_resettle
+				}
+				remove_modifier = frameworld_conquered_no_resettle
+			}
+
+			# resettle pops to the homeworld
+			# if we're not blocked by war or recent acquisition, anyway...
+			if = {
+				limit = {
+					not = { has_modifier = frameworld_conquered_no_resettle }
+				}
+				while = {
+					# 5% or 4, whichever is more
+					count = value:giga_frameworld_resettlement_count
+					random_owned_pop = {
+						resettle_pop = {
+							pop = this
+							planet = event_target:target_frameworld
+						}
+					}
+				}
+			}
+
+			# if there are no pops left, clear out the planet and place an outpost
+			if = {
+				limit = {
+					num_pops = 0
+				}
+				
+				#remove_all_buildings = yes
+				#remove_all_districts = yes
+				#destroy_colony = yes
+				
+				if = {
+					limit = {
+						can_have_frameworld_outpost = yes
+					}
+					set_planet_flag = frameworld_built_outpost
+					#giga_frameworld_create_outpost = { WHO = root RESETTLED = yes}
+					#root = {
+					#	giga_frameworld_recalculate_outpost_bonus = yes
+					#}
+					giga_frameworld_create_outpost = {
+						planet = this
+						owner = root
+					}
+				}
+
+				root = {
+					country_event = {
+						id = giga_frameworld_origin.101
+						scopes = { from = prev }
+					}
+				}
+			}
+		}
+		set_update_modifiers_batch = end
+	}
+}
+
+namespace = giga_hke
+# Holy Katzen (HKE)
+country_event = { #HKE REFEDERATES
+	id = giga_hke.0026
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_federation = { has_federation_type = hke_federation }
+	}
+
+	immediate = {
+		set_update_modifiers_batch = begin
+		event_target:giga_hke_leader = {
+			ruler = {
+				exile_leader_as = hkeruler
+			}
+			leave_alliance = {
+				override_requirements = yes
+			}
+			capital_scope = {
+				create_country = {
+					name = "Holy Katzen Empire"
+					species = event_target:giga_hke_leader.species
+					type = default
+					civics = {
+						civic = civic_distinguished_admiralty
+						civic = civic_warrior_culture
+						civic = civic_spirit_of_the_kaiser
+					}
+					name_list = "katzens"
+					flag = {
+						icon={
+							category="human"
+							file="flag_human_2.dds"
+						}
+						background={
+							category="backgrounds"
+							file="stripe.dds"
+						}
+						colors={
+							"grey"
+							"grey"
+							"null"
+							"null"
+						}
+					}
+					authority = auth_imperial
+					ethos = {
+						ethic = ethic_fanatic_militarist
+						ethic = ethic_fanatic_materialist
+						ethic = ethic_authoritarian
+					}
+					origin = origin_hke
+					effect = {
+						set_leader = hkeruler
+						set_graphical_culture = reptilian_01
+						ruler = { save_global_event_target_as = hkekaiser }
+						add_resource = {
+							alloys = 500000
+							food = 100000
+							minerals = 100000
+							energy = 100000
+							consumer_goods = 100000
+							unity = 1000000
+						}
+						apply_katzen_difficulty = yes
+						every_galaxy_planet = { set_surveyed = { surveyed = yes surveyor = root } }
+						add_modifier = { modifier = "hke_buffs" days = -1 }
+						add_modifier = { modifier = "hke_centra_3" days = -1 }
+						save_global_event_target_as = hke_federated_country
+						establish_communications_no_message = root
+						add_opinion_modifier = { who = root modifier = opinion_giga_galactic_threat }
+						set_country_flag = hke_federated
+						copy_techs_from = { target = event_target:giga_hke_leader }
+					}
+				}
+				set_owner = event_target:hke_federated_country
+				set_capital = yes
+				save_global_event_target_as = hke_capital
+				owner = {
+					create_leader = {
+						class = admiral
+						species = event_target:flusion_katzens
+						name = "Dietrich Videafurr"
+						skill = 10
+						traits = {
+							trait = katzen_trait_elite
+							trait = katzen_trait_blitzkrieg
+							trait = katzen_trait_nukelad
+						}
+						effect = {
+							save_event_target_as = holy_katzen_admiral
+						}
+					}
+				}
+				create_fleet = { #Spawn a new task force
+					name = "Helligekatzarmada Einer"
+					settings = {
+						spawn_debris = no
+						can_upgrade = no
+						uses_naval_capacity = no
+					}
+					effect = {
+						set_owner = event_target:hke_federated_country
+						create_ship = {
+							name = "Kaiser Alpha"
+							design = "Kaiser Moon"
+							prefix = no
+						}
+						while = {
+							count = 20
+							create_ship = {
+								name = random
+								design = "Neu-Clermeowth"
+								prefix = no
+							}
+						}
+						while = {
+							count = 45
+							create_ship = {
+								name = random
+								design = "Douclaw"
+								prefix = no
+							}
+						}
+						while = {
+							count = 100
+							create_ship = {
+								name = random
+								design = "Katzchen"
+								prefix = no
+							}
+						}
+						assign_leader = event_target:holy_katzen_admiral
+						set_fleet_flag = katzen_reserve_fleet
+						set_fleet_flag = katzen_cruiser_fleet
+						set_location = {
+							target = event_target:hke_capital
+							distance = 10
+							angle = random
+						}
+					}
+				}
+				owner = {
+					create_leader = {
+						class = admiral
+						species = event_target:flusion_katzens
+						name = "Meorwin"
+						skill = 10
+						traits = {
+							trait = katzen_trait_elite
+							trait = katzen_trait_blitzkrieg
+							trait = katzen_trait_nukelad
+						}
+						effect = {
+							save_event_target_as = holy_katzen_admiral
+						}
+					}
+				}
+				create_fleet = { #Spawn a new task force
+					name = "Helligekatzarmada Zwei"
+					settings = {
+						spawn_debris = no
+						can_upgrade = no
+						uses_naval_capacity = no
+					}
+					effect = {
+						set_owner = event_target:hke_federated_country
+						create_ship = {
+							name = "Kaiser Beta"
+							design = "Kaiser Moon"
+							prefix = no
+						}
+						while = {
+							count = 20
+							create_ship = {
+								name = random
+								design = "Neu-Clermeowth"
+								prefix = no
+							}
+						}
+						while = {
+							count = 45
+							create_ship = {
+								name = random
+								design = "Douclaw"
+								prefix = no
+							}
+						}
+						while = {
+							count = 100
+							create_ship = {
+								name = random
+								design = "Katzchen"
+								prefix = no
+							}
+						}
+						assign_leader = event_target:holy_katzen_admiral
+						set_fleet_flag = katzen_reserve_fleet
+						set_fleet_flag = katzen_cruiser_fleet
+						set_location = {
+							target = event_target:hke_capital
+							distance = 20
+							angle = random
+						}
+					}
+				}
+			}
+		}
+		every_country = {
+			establish_communications_no_message = event_target:hke_federated_country
+			establish_contact = {
+				who = event_target:hke_federated_country
+				location = event_target:hke_capital.solar_system
+			}
+		}
+		event_target:giga_hke_leader = {
+			set_country_flag = silence_destroy_event
+			every_owned_fleet = {	set_owner = event_target:hke_federated_country }
+			every_owned_leader = {	set_owner = event_target:hke_federated_country }
+			every_owned_planet = {
+				set_owner = event_target:hke_federated_country
+				set_controller = event_target:hke_federated_country
+			}
+			every_owned_army = {	set_owner = event_target:hke_federated_country }
+		}
+		every_country = {
+			limit = {
+				exists = federation
+				federation = { has_federation_type = hke_federation }
+				has_country_flag = is_in_hke
+				has_country_flag = katzen_splinter_state
+			}
+			leave_alliance = {
+				override_requirements = yes
+			}
+			random_list = {
+				90 = {
+					modifier = { factor = 0 				
+						NOR = {
+							is_subject = no
+							AND = {
+								is_subject = yes
+								overlord = {
+									exists = federation
+									federation = { has_federation_type = hke_federation }
+									has_country_flag = is_in_hke
+									has_country_flag = katzen_splinter_state
+								}
+							}
+						} 
+					}
+					set_subject_of = {
+						who = none
+					}
+					every_subject = {
+						set_subject_of = {
+							who = none
+						}
+						set_country_flag = hke_federal_subject
+					}
+					set_country_flag = silence_destroy_event #Not 20 fucking destroyed country events
+					every_owned_fleet = {
+						set_owner = event_target:hke_federated_country
+					}
+					every_owned_leader = {
+						set_owner = event_target:hke_federated_country
+					}
+					every_owned_planet = {
+						set_owner = event_target:hke_federated_country
+						set_controller = event_target:hke_federated_country
+					}
+					every_owned_starbase = {
+						set_owner = event_target:hke_federated_country
+					}
+					every_owned_megastructure = {
+						set_owner = event_target:hke_federated_country
+					}
+					every_owned_army = {
+						set_owner = event_target:hke_federated_country
+					}
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						has_country_flag = hke_federal_subject #If an overlord goes, their vassals get pulled in if they were also in the HKE
+					}
+					set_country_flag = refused_hke_federalization
+				}
+			}
+		}
+		event_target:hke_country = {
+			destroy_country = yes
+		}
+		event_target:hke_federated_country = {
+			add_opinion_modifier = {
+				who = event_target:flusion_conqueror
+				modifier = opinion_ended_kaiser
+			}
+			country_event = { id = giga_hke.0028 days = 360 } #CHANGE TO SMTH ELSE
+			every_planet_within_border = {
+				limit = {
+					is_colony = yes
+					owner = { is_country = event_target:hke_federated_country }
+				}
+				katzen_clear_capitals = yes
+				add_building = building_giga_katzen_capital
+			}
+			every_system_within_border = {
+				every_neighbor_system = {
+					limit = {
+						NOR = {
+							exists = starbase
+							exists = owner
+							any_system_planet = {
+								is_colony = yes
+								owner = {
+									NOT = { is_country_type = primitive }
+								}
+							}
+							any_fleet_in_system = { #no hostiles
+								owner = {
+									OR = {
+										is_at_war_with = event_target:hke_federated_country
+										is_hostile = event_target:hke_federated_country
+									}
+								}
+							}
+						}
+					}
+					create_starbase = { #Make a starbase
+						size = starbase_outpost
+						owner = event_target:hke_federated_country
+					}
+				}
+			}
+		}
+		set_update_modifiers_batch = end
+		every_country = {
+			country_event = { id = giga_hke.0027 days = 1 }
+		}
+	}
+}
+
+namespace = giga_printer
+#Bimonthly planet event to give resources
+planet_event = {
+	id = giga_printer.1002
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { planet_size <= 1 }
+			save_global_event_target_as = planet_being_harvested_depleted
+			set_planet_flag = planet_being_harvested_depleted
+			space_owner = { country_event = { id = giga_printer.1003 } }
+		}
+		else = {
+			change_planet_size = -1
+			space_owner = { add_resource = { sr_solar_energy = 1 } }
+			planet_event = { id = giga_printer.1002 days = 30 } # was 180 days
+		}
+	}
+}
+
+namespace = giga_blokkat_join
+
+#What do we do?
+country_event = {
+	id = giga_blokkat_join.1000
+	title = "giga_blokkat_join.1000.name"
+	desc = "giga_blokkat_join.1000.desc"
+	is_triggered_only = yes
+	show_sound = event_radio_chatter
+	picture = GFX_evt_alien_propaganda
+
+	option = { #FIGHT
+		name = "giga_blokkat_join.1000.a"
+		custom_tooltip = "giga_blokkat_join.1000.a.tooltip"
+		hidden_effect = { set_country_flag = giga_decided_to_fight_blokkats }
+	}
+
+	option = { #FLEE
+		name = "giga_blokkat_join.1000.b"
+		allow = {
+			custom_tooltip = {
+				text = "giga_blokkat_join.1000.b.tooltip"
+				always = no
+			}
+		}
+		hidden_effect = { set_country_flag = giga_decided_to_flee_blokkats }
+	}
+
+	option = { #JOIN
+		name = "giga_blokkat_join.1000.c"
+		custom_tooltip = "giga_blokkat_join.1000.c.tooltip"
+		hidden_effect = {
+			set_country_flag = giga_decided_to_join_blokkats
+			country_event = { id = giga_blokkat_join.1001 }
+		}
+		allow = {
+			custom_tooltip = {
+				text = "giga_blokkat_join.1000.c.deathmode"
+				hidden_trigger = {
+					NOT = { has_global_flag = giga_blokkats_deathmode }
+				}
+			}
+		}
+		trigger = { #Only 1 player can do it.
+			NOT = { any_country = { has_country_flag = giga_decided_to_join_blokkats } }
+			NOR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				is_gestalt = yes
+				is_galactic_custodian = yes
+				# crisis emperor allowed
+				# is_galactic_emperor = yes
+				# has_ascension_perk = ap_become_the_crisis
+			}
+		}
+	}
+}

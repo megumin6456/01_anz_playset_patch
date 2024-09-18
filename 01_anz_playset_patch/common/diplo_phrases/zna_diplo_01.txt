@@ -1,0 +1,65 @@
+action_insult = {
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_01 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_02 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_03 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_04 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_05 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_06 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_07 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_08 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+	propose = {
+		01_INSULT_PROPOSE_REDDIT_09 = {
+			trigger = {
+				always = yes
+			}
+		}
+	}
+}

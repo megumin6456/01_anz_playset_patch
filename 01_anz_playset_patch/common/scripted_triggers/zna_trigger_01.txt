@@ -1,0 +1,359 @@
+is_progenitor_empires = {
+	OR = {
+		is_country_type = sbtg_stellarborne_empire
+		is_country_type = sbtg_stellarborne_empire_passive
+		is_country_type = sbtg_stellarborne_empire_active
+		has_country_flag = sofe_lm_gifted
+	}
+}
+
+is_progenitor_worlds = {
+	always = yes
+}
+
+has_sm_research_skills = {
+	OR = {
+		AND = {
+			OR = {
+				has_trait = leader_trait_acot_curator_archon
+				has_trait = sots_infinity_calculator
+				has_trait = pouchkinn_trait_ancient_knowledge
+				has_trait = pouchkinn_trait_modified
+				has_trait = pouchkinn_trait_lifespan
+				has_trait = pouchkinn_trait_deranged
+				has_trait = leader_trait_gpm_guilli
+				has_trait = leader_trait_scientist_fractal
+				has_trait = leader_trait_phanon_big_brain
+				has_trait = leader_trait_chosen
+				has_leader_flag = exakeides
+				has_leader_flag = mythical_leader
+			}
+			OR = {
+				has_trait = trait_psionic
+				has_trait = leader_trait_chosen
+				has_trait = leader_trait_eater_chosen
+				has_trait = leader_trait_composer_chosen
+				has_trait = leader_trait_instrument_chosen
+				has_trait = leader_trait_whisperers_chosen
+			}
+			has_level >= 10
+		}
+		AND = {
+			has_level >= 12
+			is_gestalt = yes
+			OR = {
+				has_trait = trait_psionic
+				has_trait = leader_trait_chosen
+				has_trait = leader_trait_eater_chosen
+				has_trait = leader_trait_composer_chosen
+				has_trait = leader_trait_instrument_chosen
+				has_trait = leader_trait_whisperers_chosen
+			}
+			OR = {
+				AND = {
+					has_trait = leader_trait_cyborg
+					has_trait = leader_trait_erudite
+				}
+				has_trait = leader_trait_synthetic
+			}
+		}
+		AND = {
+			has_level >= 14
+			is_gestalt = no
+			OR = {
+				has_trait = trait_psionic
+				has_trait = leader_trait_chosen
+				has_trait = leader_trait_eater_chosen
+				has_trait = leader_trait_composer_chosen
+				has_trait = leader_trait_instrument_chosen
+				has_trait = leader_trait_whisperers_chosen
+			}
+			OR = {
+				AND = {
+					has_trait = leader_trait_cyborg
+					has_trait = leader_trait_erudite
+				}
+				has_trait = leader_trait_synthetic
+			}
+		}
+	}
+}
+
+frameag_colony_exception = {
+	OR = {
+		has_planet_flag = ag_ancient_theta_shielded_world
+		has_planet_flag = ag_ancient_beta_shielded_world
+		has_planet_flag = ag_ancient_gamma_shielded_world
+		has_planet_flag = ag_ancient_epsilon_shielded_world
+		has_planet_flag = ag_ancient_epsilon_shielded_world_2
+		has_planet_flag = ag_ancient_epsilon_shielded_world_3
+		has_planet_flag = ag_ancient_eta_shielded_world
+	}
+}
+
+can_have_frameworld_outpost = {
+	custom_tooltip = { fail_text = "requires_surveyed_planet"				is_surveyed = { who = prev.from status = yes } }
+	custom_tooltip = { fail_text = "requires_no_anomaly"					has_anomaly = no }
+	custom_tooltip = { fail_text = "requires_not_asteroid"					is_asteroid = no }
+	#custom_tooltip = { fail_text = "must_build_around_habitable_planet"		is_colonizable = yes is_artificial = no }
+
+	custom_tooltip = { fail_text = "requires_not_terraforming"				is_terraforming = no }
+
+	custom_tooltip = { fail_text = "must_build_around_habitable_planet"		
+		or = {
+			and = { is_colonizable = yes is_artificial = no }
+
+			frameag_colony_exception = yes # anz_ee
+
+			is_planet_class = pc_giga_planetary_computer
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_shattered_ring_habitable
+			#is_planet_class = pc_habitat
+			#is_planet_class = pc_gigaorbital_ring
+			is_planet_class = pc_habitable_gas_giant
+			#is_planet_class = pc_interstellar_habitat
+			is_planet_class = pc_interstellar_ringworld_habitable
+			is_planet_class = pc_giga_penrose_habitable
+			is_planet_class = pc_ringworld_city
+			is_planet_class = pc_ringworld_machine
+			is_planet_class = pc_ringworld_hive
+			#is_planet_class = pc_equatorial_shipyard
+			is_planet_class = pc_birch
+			is_planet_class = pc_squareworld_habitable
+			#is_planet_class = pc_virtual_reality
+			#is_planet_class = pc_virtual_industry
+			#is_planet_class = pc_virtual_stellar_industry
+			is_planet_class = pc_alderson_slice_gaia
+			is_planet_class = pc_alderson_slice_pc
+			is_planet_class = pc_alderson_slice_ecu
+			is_planet_class = pc_alderson_slice_hive
+			is_planet_class = pc_alderson_slice_machine
+			is_planet_class = pc_alderson_slice_gaia_shattered
+			#is_planet_class = pc_pouchkinn_black_hole
+			is_planet_class = pc_flat_world
+		}
+	}
+
+	custom_tooltip = { fail_text = "requires_not_star"						is_star = no }
+	#custom_tooltip = { fail_text = "requires_non_giga_habitable_structure"	giga_habitable_structure = no }
+	custom_tooltip = { fail_text = "requires_no_frameworld_outpost" 		has_frameworld_outpost = no }
+	custom_tooltip = { fail_text = "requires_no_colony"						is_colony = no }
+}
+
+anz_spr_dehive = {
+	OR = {
+		has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation
+		has_active_tradition = tr_genetics_creation
+	}
+}
+
+anz_spr_demech = {
+	has_technology = tech_sapient_ai
+	NOT = { has_policy_flag = ai_outlawed }
+}
+
+anz_spr_rehive = {
+	OR = {
+		has_active_tradition = tr_genetics_creation
+		has_origin = origin_hive_overmind
+	}
+}
+
+anz_spr_recyber = {
+	OR = {
+		has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+		has_valid_civic = civic_machine_assimilator
+	}
+}
+
+anz_spr_resynth = {
+	OR = {
+		has_country_flag = anz_synthetic_empire
+		has_active_tradition = tr_synthetics_adopt_machine
+	}
+}
+
+anz_spr_repsi = {
+	OR = {
+		has_active_tradition = tr_psionics_psionic_assimilation
+	}
+}
+
+# Track mystery / null species used for default species rights
+anz_spr_myst = {
+	NOR = {
+		# Vanilla
+		is_archetype = BIOLOGICAL
+		is_archetype = ROBOT
+		is_archetype = MACHINE
+		is_archetype = PRESAPIENT
+		is_archetype = LITHOID
+		is_archetype = OTHER
+		# XVCV
+		is_archetype = XVCV_MDLC_BIO_ROBOT
+		# SBTG
+		is_archetype = DEITY
+		# Expanded Traits, Civics, Pops, and More
+		is_archetype = HUMANOID
+		is_archetype = MAMMALIAN
+		is_archetype = REPTILIAN
+		is_archetype = AVIAN
+		is_archetype = ARTHROPOID
+		is_archetype = MOLUSCOID
+		is_archetype = FUNGOID
+		is_archetype = PLANTOID
+		is_archetype = NECROID
+		is_archetype = half_species
+		is_archetype = half_species_special
+		is_archetype = half_aberration
+		is_archetype = half_perfect
+		is_archetype = half_amalgamated
+	}
+}
+
+# ACOT / AOT Army compat
+has_aot_army_building_dm = {
+	OR = {
+		has_active_building = building_fe_stronghold
+		has_active_building = building_dm_stronghold
+
+		has_active_building = building_giga_fortress
+		has_active_building = building_giga_fortress_dm
+		has_active_building = building_giga_fortress_fe
+	}
+}
+
+has_aot_army_building_de = {
+	OR = {
+		has_active_building = building_ae_stronghold
+
+		has_active_building = building_giga_fortress_array
+		has_active_building = building_giga_fortress_lab
+		has_active_building = building_giga_fortress_obelisk
+
+		has_district = district_acot_enigmapolis_fortress
+	}
+}
+
+has_aot_army_building_pe = {
+	OR = {
+		has_active_building = building_phanon_stronghold
+
+		has_active_building = building_phanon_giga_fortress_array
+		has_active_building = building_phanon_giga_fortress_lab
+		has_active_building = building_phanon_giga_fortress_obelisk
+	}
+}
+
+has_aot_army_building_se = {
+	OR = {
+		has_active_building = building_stellarite_stronghold
+
+		has_active_building = building_stellarite_giga_fortress_array
+		has_active_building = building_stellarite_giga_fortress_lab
+		has_active_building = building_stellarite_giga_fortress_obelisk
+	}
+}
+
+has_aot_army_jobs_dm = {
+	OR = {
+		num_assigned_jobs = {
+			job = acot_enforcer
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = acot_enforcer_drone
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = fe_protector
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = aot_dm_enforcer
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = aot_dm_enforcer_drone
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = aot_dm_giga_fortress_operator
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = aot_dm_giga_fortress_operator_drone
+			value >= 1
+		}
+	}
+}
+
+has_aot_army_jobs_de = {
+	OR = {
+		num_assigned_jobs = {
+			job = acot_enforcer
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = acot_enforcer_drone
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = acot_giga_fortress_operator_ancient
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = acot_giga_fortress_operator
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = acot_giga_fortress_operator_drone
+			value >= 1
+		}
+		# temp
+		has_aot_army_jobs_pe = yes
+		has_aot_army_jobs_se = yes
+	}
+}
+
+has_aot_army_jobs_pe = {
+	OR = {
+		num_assigned_jobs = {
+			job = phanon_enforcer
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = phanon_enforcer_drone
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = phanon_giga_fortress_operator
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = phanon_giga_fortress_operator_drone
+			value >= 1
+		}
+	}
+}
+
+has_aot_army_jobs_se = {
+	OR = {
+		num_assigned_jobs = {
+			job = stellarite_enforcer
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = stellarite_enforcer_drone
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = stellarite_giga_fortress_operator
+			value >= 1
+		}
+		num_assigned_jobs = {
+			job = stellarite_giga_fortress_operator_drone
+			value >= 1
+		}
+	}
+}

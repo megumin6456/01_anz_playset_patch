@@ -1,0 +1,27 @@
+# DISABLED
+
+decision_matryoshka_project = {
+	owned_planets_only = yes
+
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+		cost = {
+
+		}
+	}
+
+	potential = {
+		always = no
+	}
+
+	effect = {
+		
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+

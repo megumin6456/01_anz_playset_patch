@@ -1,0 +1,296 @@
+opinion_threat = {
+	opinion = {
+		base = 1
+	}
+
+	unique = yes
+}
+
+
+# Cracked a Planet Like an Egg (regular Empires' opinion of world cracker)
+opinion_cracked_a_world = {
+	opinion = {
+		base = -100
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 5
+	}
+}
+
+opinion_cracked_an_uninhabited_world = {
+	opinion = {
+		base = -20
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+# Cracked My Planet Like an Egg (victim Empire's opinion of world cracker)
+opinion_cracked_my_world = {
+	opinion = {
+		base = -1000
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_cracked_my_uninhabited_world = {
+	opinion = {
+		base = -100
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_cracked_a_primitive_world = {
+	opinion = {
+		base = -40
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_cracked_a_primitive_world_phile = {
+	opinion = {
+		base = -60
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+
+# Swept My Planet Clean (victim Empire's opinion of neutron sweep)
+opinion_swept_a_world = {
+	opinion = {
+		base = -80
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_swept_my_world = {
+	opinion = {
+		base = -800
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_swept_a_primitive_world = {
+	opinion = {
+		base = -40
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_swept_a_primitive_world_phile = {
+	opinion = {
+		base = -60
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_assimilated_a_world = {
+	opinion = {
+		base = -60
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_assimilated_my_world = {
+	opinion = {
+		base = -600
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 50
+	}
+}
+
+opinion_assimilated_a_primitive_world = {
+	opinion = {
+		base = -40
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_assimilated_a_primitive_world_phile = {
+	opinion = {
+		base = -60
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_drenched_a_world = {
+	opinion = {
+		base = -60
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_drenched_my_world = {
+	opinion = {
+		base = -600
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_drenched_a_primitive_world = {
+	opinion = {
+		base = -40
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_drenched_a_primitive_world_phile = {
+	opinion = {
+		base = -60
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_converted_a_world = {
+	opinion = {
+		base = -40
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_converted_my_world = {
+	opinion = -400
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 50
+	}
+}
+
+opinion_shielded_a_world = {
+	opinion = {
+		base = -20
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}
+
+opinion_shielded_my_world = {
+	opinion = {
+		base = -200
+	}
+
+	accumulative = no
+	unique = yes
+
+	decay = {
+		base = 10
+	}
+}

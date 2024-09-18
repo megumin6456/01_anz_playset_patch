@@ -1,0 +1,258 @@
+namespace = sofe_crisis
+
+country_event = {
+	id = sofe_crisis.501
+	title = "origin_diplo_header_2"
+	desc = {
+		trigger = {
+			is_progenitor_empires = no
+			NOR = { 
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		text = sofe_crisis.501.desc
+	}
+	desc = {
+		trigger = {
+			is_progenitor_empires = no
+			OR = { 
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		text = sofe_crisis.501.desc.edge
+	}
+	desc = {
+		trigger = {
+			has_valid_civic = civic_machine_servitor			
+		}
+		text = sofe_crisis.501.desc.servitor
+	}
+	desc = {
+		trigger = {
+			is_progenitor_empires = yes		
+		}
+		text = sofe_crisis.501.desc.playoe
+	}
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		portrait = event_target:sofe_crisis_country
+		room = "personality_original_empire_room"
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+
+	################# QUESTIONS
+
+	option = {
+		name = sofe_crisis.501.a
+		trigger = {
+			is_progenitor_empires = no		
+		}
+		response_text = sofe_crisis.501.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = sofe_crisis.501.b
+		trigger = {
+			is_progenitor_empires = no		
+		}
+		response_text = sofe_crisis.501.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = sofe_crisis.501.c
+		trigger = {
+			is_progenitor_empires = no		
+		}
+		response_text = sofe_crisis.501.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = sofe_crisis.501.a.fallenask
+		trigger = {
+			is_progenitor_empires = no
+			any_country = {
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
+		response_text = sofe_crisis.501.a.fallenask.response
+		is_dialog_only = yes
+	}
+
+	################# ACCEPT
+
+	option = {
+		name = sofe_crisis.501.d
+		custom_tooltip = sofe_crisis.501.d_explain
+		trigger = {
+			is_progenitor_empires = no
+			NOR = { 
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		response_text = sofe_crisis.501.d.response
+		country_event = { id = anz_ee.1 days = 10 }
+	}
+
+	option = {
+		name = sofe_crisis.501.d.edge
+		custom_tooltip = sofe_crisis.501.d_explain.edge
+		trigger = {
+			has_valid_civic = "civic_fanatic_purifiers"
+			has_valid_civic = "civic_hive_devouring_swarm"
+			has_valid_civic = "civic_machine_terminator"		
+		}
+		response_text = sofe_crisis.501.d.response.edge
+		country_event = { id = anz_ee.1 days = 10 }
+	}
+
+	option = {
+		name = sofe_crisis.501.d.servitor
+		custom_tooltip = sofe_crisis.501.d_explain.servitor
+		trigger = {
+			has_valid_civic = civic_machine_servitor			
+		}
+		response_text = sofe_crisis.501.d.response.servitor
+		country_event = { id = anz_ee.1 days = 10 }
+	}
+
+
+	################# REFUSE
+
+	option = {
+		name = sofe_crisis.501.e
+		custom_tooltip = sofe_crisis.501.e_explain
+		trigger = {
+			is_progenitor_empires = no
+			NOR = { 
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		response_text = sofe_crisis.501.e.response
+		country_event = { id = sofe_crisis.503 }
+	}
+
+	option = {
+		name = sofe_crisis.501.e.edge
+		trigger = {
+			is_progenitor_empires = no
+			OR = { 
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		response_text = sofe_crisis.501.e.response.edge
+		custom_tooltip = sofe_crisis.501.e_explain
+		country_event = { id = sofe_crisis.503 }
+	}
+
+	option = {
+		name = sofe_crisis.501.e.servitor
+		trigger = {
+			has_valid_civic = civic_machine_servitor				
+		}
+		response_text = sofe_crisis.501.e.response.servitor
+		custom_tooltip = sofe_crisis.501.e_explain
+		country_event = { id = sofe_crisis.503 }
+	}
+
+	################# DIE
+
+	option = {
+		name = sofe_crisis.501.f
+		trigger = {
+			is_progenitor_empires = no
+			NOR = { 
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		response_text = sofe_crisis.501.f.response
+		custom_tooltip = sofe_crisis.501.f
+		hidden_effect = {
+			event_target:sofe_crisis_country = {
+				country_event = { id = sofe_crisis.504 days = 3 }
+			}
+		}
+	}
+
+	option = {
+		name = sofe_crisis.501.f.edge
+		response_text = sofe_crisis.501.f.response
+		custom_tooltip = sofe_crisis.501.f.explain.edge
+		trigger = {
+			is_progenitor_empires = no
+			OR = { 
+				has_ethic = ethic_fanatic_xenophobe
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			} 			
+		}
+		hidden_effect = {
+			event_target:sofe_crisis_country = {
+				country_event = { id = sofe_crisis.504 days = 3 }
+			}
+		}
+	}
+
+	option = {
+		name = sofe_crisis.501.f.servitor
+		response_text = sofe_crisis.501.f.response.servitor
+		custom_tooltip = sofe_crisis.501.f.explain.servitor
+		trigger = {
+			has_valid_civic = civic_machine_servitor			
+		}
+		hidden_effect = {
+			event_target:sofe_crisis_country = {
+				country_event = { id = sofe_crisis.504 days = 3 }
+			}
+		}
+	}
+
+	################# PLAYABLE OE
+
+	option = {
+		name = sofe_crisis.501.playoe.a
+		trigger = {
+			is_progenitor_empires = yes	
+		}
+		response_text = sofe_crisis.501.playoe.a.response
+		country_event = { id = sofe_crisis.502 }
+	}
+
+	option = {
+		name = sofe_crisis.501.playoe.b
+		trigger = {
+			is_progenitor_empires = yes	
+		}
+		response_text = sofe_crisis.501.playoe.b.response
+		event_target:sofe_crisis_country = {
+			country_event = { id = sofe_crisis.505 days = 3 }
+		}
+	}
+}

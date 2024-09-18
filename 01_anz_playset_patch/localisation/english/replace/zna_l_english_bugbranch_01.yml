@@ -1,0 +1,38 @@
+﻿l_english:
+
+## Bureaucratic Engineers
+civic_bureaucratic_engineers: "Bureaucratic Engineers"
+civic_bureaucratic_engineers_desc: "The Government spends more time working with the Engineers than most do. Direct government management allows the empire to work on many projects at once. Due to the management procedures resources and workforces take longer to allocate."
+civic_tooltip_bureaucratic_engineers_effects: "§Y+1§! £mod_megastructure_build_speed_add£ §YMegastructure Build Capacity§! for every 20 £job_bureaucrat  §Y$job_bureaucrat_plural$§!\n\n£job_bureaucrat  §Y$job_bureaucrat_plural$§! increase §YMegastructure Build Speed§! by §G0.01% each§!\n"
+
+job_bureaucrat_zna: "Bureaucrat"
+job_bureaucrat_zna_plural: "Bureaucrats"
+job_bureaucrat_zna_desc: "The bureaucratic demands of an empire is a daunting task that requires dedicated and highly trained individuals."
+job_bureaucrat_effect_desc:0 "£job_bureaucrat£ $job_bureaucrat_plural$ turn £consumer_goods£ §Y$consumer_goods$§! into £mod_country_admin_cap_add£ §Y$MOD_COUNTRY_ADMIN_CAP_ADD$§!"
+mod_job_bureaucrat_zna_add: "$job_bureaucrat$ Jobs"
+mod_job_bureaucrat_zna_per_pop: "§G+1§! $job_bureaucrat$ Job per $VALUE$ Pops"
+mod_job_bureaucrat_zna_per_pop_short: "\n§G+1§! £mod_job_bureaucrat_add£ per $VALUE$ £pop£"
+
+job_dm_bureaucrat_zna: "Delphic Administrator"
+job_dm_bureaucrat_zna_plural: "Delphic Administrators"
+job_dm_bureaucrat_zna_desc: "$job_dm_bureaucrat_plural$ work with the various delphic virtual AI-Administrator cores which tremendously help running our empire more efficiently by taking care of all the mundane government work while we can concentrate on the important matters."
+mod_job_dm_bureaucrat_zna_add: "$job_dm_bureaucrat$"
+job_dm_bureaucrat_zna_effect_desc: "£job_bureaucrat£ $job_dm_bureaucrat_plural$ turn £consumer_goods£ §Y$consumer_goods$§! into £mod_country_admin_cap_add£ §Y$MOD_COUNTRY_ADMIN_CAP_ADD$§!"
+
+job_ae_bureaucrat_zna: "DAI-Singularity Keeper"
+job_ae_bureaucrat_zna_plural: "DAI-Singularity Keepers"
+job_ae_bureaucrat_zna_desc: "$job_ae_bureaucrat_plural$ watch over Delphic AI's that became a singularity. It is basically a simulated proxy civilisation to a govern a real civilisation. They make sure the DAI's fulfill their quota and not slack on making dank memes."
+mod_job_ae_bureaucrat_zna_add: "$job_ae_bureaucrat$"
+job_ae_bureaucrat_effect_zna_desc: "£job_bureaucrat£ $job_ae_bureaucrat_plural$ turn £consumer_goods£ §Y$consumer_goods$§! into £mod_country_admin_cap_add£ §Y$MOD_COUNTRY_ADMIN_CAP_ADD$§!"
+
+job_stellarite_bureaucrat_zna: "Stellarite Observer"
+job_stellarite_bureaucrat_zna_plural: "Stellarite Observers"
+job_stellarite_bureaucrat_zna_desc: "$job_stellarite_bureaucrat_plural$ watch over dimensionally folded and temporal-stretched pocket universes filled with proxy DAI-singularities to use their computation power to run entire galaxies worth of real empires like a breeze."
+mod_job_stellarite_bureaucrat_zna_add: "$job_stellarite_bureaucrat$"
+job_stellarite_bureaucrat_effect_zna_desc: "£job_bureaucrat£ $job_stellarite_bureaucrat_plural$ turn £consumer_goods£ §Y$consumer_goods$§! into £mod_country_admin_cap_add£ §Y$MOD_COUNTRY_ADMIN_CAP_ADD$§!"
+
+job_phanon_bureaucrat_zna: "Runic Power Collars"
+job_phanon_bureaucrat_zna_plural: "Runic Power Collars"
+job_phanon_bureaucrat_zna_desc: "$job_phanon_bureaucrat_plural$ watch over dimensionally folded and temporal-stretched pocket universes filled with proxy DAI-singularities to use their computation power to run entire galaxies worth of real empires like a breeze."
+mod_job_phanon_bureaucrat_zna_add: "$job_phanon_bureaucrat$"
+job_phanon_bureaucrat_effect_zna_desc: "£job_bureaucrat£ $job_phanon_bureaucrat_plural$ turn £consumer_goods£ §Y$consumer_goods$§! into £mod_country_admin_cap_add£ §Y$MOD_COUNTRY_ADMIN_CAP_ADD$§!"

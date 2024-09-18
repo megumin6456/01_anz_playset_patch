@@ -1,0 +1,236 @@
+#### GENETICS
+tech_fe_clone_vats = {
+	cost = @acot_tier6cost2
+	area = society
+	tier = 6
+	category = { biology }	
+	prerequisites = { tech_dark_matter_power_core }
+	weight = @tier5weight3
+	
+	modifier = {
+		pop_growth_speed = 0.20
+	}
+
+	potential = {
+		NOT = { has_global_flag = acot_building_forbidden }
+		OR = {
+			has_technology = tech_cloning_augmented_hive
+			has_technology = tech_cloning_augmented_mech 
+			has_technology = tech_cloning_augmented_organic
+		}
+	}
+	
+	weight_modifier = {
+		factor = 1.5 	# genetech needs to be a bit more common
+		modifier = {
+			factor = 1.25
+			has_authority = auth_hive_mind
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				is_country_type = default				
+			}
+		}	
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_supremacy_adopt
+		}
+	}
+	
+	ai_weight = {
+	}
+}
+
+#Cloning
+tech_ae_clone_vats = {
+	cost = @acot_tier7cost2
+	area = society
+	tier = 7
+	category = { biology }	
+	prerequisites = { tech_fe_clone_vats }
+	weight = @tier5weight3
+	
+	modifier = {
+		pop_growth_speed = 0.20
+	}
+	
+	potential = {
+		NOT = { has_global_flag = acot_building_forbidden }
+		has_technology = tech_dark_matter_power_core_ae
+	}
+	
+	weight_modifier = {
+		factor = 1.5 	# genetech needs to be a bit more common
+		modifier = {
+			factor = 1.25
+			has_authority = auth_hive_mind
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				is_country_type = default				
+			}
+		}	
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_supremacy_adopt
+		}
+	}
+	
+	ai_weight = {
+	}
+}
+
+# Tech disabled in ACOT - Reactivation 
+# Dark Matter Power Cores PHANON
+tech_precursor_phanon_design = {
+	area = physics
+	category = { computing }
+	tier = 9
+	cost = @acot_tier10cost3
+	weight = @tier5weight3
+	ai_update_type = all
+	is_reverse_engineerable = no
+	is_rare = yes
+
+	potential = {
+		has_technology = tech_dark_matter_power_core_re
+		NOT = { has_global_flag = acot_phanon_forbidden }
+	}
+
+	prerequisites = {
+		tech_enable_phanon_design
+	}
+	
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_PHANON_PRECURSOR_TITLE"
+			desc = "TECH_UNLOCK_PHANON_PRECURSOR_DESC"
+		}
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_technology = tech_dark_matter_power_core_re }
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = acot_phanon_tech_stage_four_enabled }
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+
+}
+
+# Tech weight for sots
+tech_sm_summon_physics = {
+	area = physics
+	category = { field_manipulation }
+	tier = 5
+	cost = 20000000
+	weight = 1
+	is_rare = yes
+
+	potential = {
+		has_event_chain = shroud_master_summoning
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_sm_summon_1"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = can_research_summon_tech }
+		}
+		modifier = {
+			factor = 0
+			NOT = {	any_owned_leader = { has_sm_research_skills = yes }	}
+		}
+	}
+	ai_weight = {
+		factor = 100.0
+	}
+}
+
+tech_sm_summon_society = {
+	area = society
+	category = { psionics }
+	tier = 5
+	cost = 20000000
+	weight = 1
+	is_rare = yes
+
+	potential = {
+		has_event_chain = shroud_master_summoning
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_sm_summon_2"
+		}
+	}
+
+	# the game refuses to overwrite and use weight from the other file anyways
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = can_research_summon_tech }
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	NOT = {
+		# 		any_owned_leader = {
+		# 			is_councilor = yes
+		# 			leader_class = scientist
+		# 			has_sm_research_skills = yes
+		# 		}
+		# 	}
+		# }
+	}
+	ai_weight = {
+		factor = 100.0
+	}
+}
+
+tech_sm_summon_engineering = {
+	area = engineering
+	category = { voidcraft }
+	tier = 5
+	cost = 20000000
+	weight = 1
+	is_rare = yes
+
+	potential = {
+		has_event_chain = shroud_master_summoning
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_sm_summon_3"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = can_research_summon_tech }
+		}
+		modifier = {
+			factor = 0
+			NOT = {	any_owned_leader = { has_sm_research_skills = yes }	}
+		}
+	}
+	ai_weight = {
+		factor = 100.0
+	}
+}

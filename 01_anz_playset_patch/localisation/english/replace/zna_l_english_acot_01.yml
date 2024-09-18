@@ -1,0 +1,22 @@
+﻿l_english:
+
+acot_diplo.831.a.response: "Though we have but a few stations scattered across the galaxy, our Order as a whole extends way beyond it. We had an arrangement with a certain corporation to provide us with inter-galactic travel before they mysteriously disappeared. We hope to eventually accumulate enough resources and funding to create our own inter-galactic portal, so that we share knowledge with other galaxies, but progress has been slow. And we still have yet to deal with the Fallen Empires, who will no doubt find reasons to hamper our progress."
+
+acot_diplo.811.d.response: "I'm sorry but Ancient Protocol dictates that we are not allowed to share this knowledge with anyone but those who already process Enigmatic Technologies. Come back when you've built a working Dark Matter Reactor and we can talk more about it."
+
+acot_diplo.861.aa: "Can we talk about Dark Matter now?"
+acot_diplo.861.aa.response: "Since you've already gain the technology, yes we can talk about it. What do you wish to know?"
+
+acot_diplo.821.d: "Are the powers beyond Stellarite?"
+acot_diplo.821.d.response: "Tall tales, Folklore, Myths, and many stories exists but we cannot verify the truth about any of them. Now that you've confirmed and mastered Stellarite, I guess some of those other stories could be real too.\n\nIf you wish to go further, you are on your own.\nThe Galaxy is watching you... Good Luck!"
+
+acot_diplo.801.k.response: "Ah...forgive us, we may have slipped that in in our rambling. But as you have proven to be trustworthy, we believe we can tell you about it a bit more in detail.\n\nBack in the ancient times, long ago before even the Fallen One came to exist, there used to be an extremely powerful source of energy known as the Stellar Power. Its secret is to draw power from what can only be described as the souls of the stars themselves.\n\nUnfortunately the power that once was, has dwindled. Most information about it have been lost to time, you'll need to rediscover it on your own."
+
+# RESEARCH_STELLARITE_POWER: "The Star Beckons"
+# RESEARCH_STELLARITE_POWER_DESC: "Scientists from all across our empire will gather to debate and experiments on the truth of this new power source. It will take a considerable amount of time before such a bold claim can be verified. There are many possible risks as well, this will not be easy.\n\n§BCurrent Pitty§!: §Y[owner.stellarite_project_pitty]§!.\n\n$RESEARCH_STELLARITE_POWER_EXPLAIN$"
+
+# RESEARCH_STELLARITE_POWER_EXPLAIN: "§GChances to succeed§!\nYou'll start with §W0 Pitty§!, when it reaches §W10§! the project is guaranteed to succeed.\nIf the leading researcher is §W$leader_trait_acot_curator_archon$§!, the project is guaranteed to succeed.\n\nAt each §W25%§! interval of the project there is a chance to fail.\n§W25%: §!If Skill less than §W5, 35%§! chance to fail, else §W5%§! chance to fail.\n§W50%: §!If Skill less than §W7, 50%§! chance to fail, else §W35%§! chance to fail.\n§W75%: §!If Skill less than §W7, 65%§! chance to fail, else §W50%§! chance to fail."
+
+sofe_gateway.716.opt.a: "What do we have here"
+sofe_gateway.716.name: "Stellarite Bomb"
+sofe_gateway.716.desc: "It appears that Megumin had set up was a Stellarite bomb. Based upon a quick analysis, the bomb will detonate soon and will cause a chain-reaction towards all systems with Outer Gate.\n\nBlast radius is yet unknown. We must act quickly!"

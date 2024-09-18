@@ -1,0 +1,379 @@
+namespace = xvcv_mdlc
+
+# origin fix, assimilator / normal selection
+# psionic check, leader & main species transfer
+# paragon handle, tech handle, cyborg backup
+# stellarborn champion handle
+country_event = {
+	id = xvcv_mdlc.33
+	title = "xvcv_mdlc.33.name"
+	desc = "xvcv_mdlc.33.desc"
+	picture = GFX_evt_sapient_AI
+	show_sound = event_ai_started
+	is_triggered_only = yes
+
+	immediate = {
+		# jiohjrisjgihoreakgkglkhlkrthstohoidfjgew
+		set_country_flag = anz_gestalt_council
+		set_country_flag = anz_gestalt_council_unlocked
+
+		#  mark empire as not synth ascend
+		random_galaxy_species = {
+			limit = { has_species_flag = anz_asim_spc_synth_empire@prev }
+			remove_species_flag = anz_asim_spc_synth_empire@prev
+		}
+		remove_country_flag = synthetic_empire
+		remove_country_flag = synth_assimilation
+	
+		# store ref
+		root.species = {
+			save_event_target_as = anz_original_species
+		}
+
+		# new species as mod (simillar to synth ascend)
+		# will manually apply changes later
+		create_species = {
+			is_mod = yes
+			name = this
+			namelist = this
+			plural = this
+			class = MACHINE
+			homeworld = root.capital_scope
+			portrait = this
+			traits = {
+				trait = trait_machine_unit
+			}
+	
+			effect = {
+				event_target:anz_original_species = {
+					switch = {
+						trigger = is_species_class
+						HUM = { prev = { change_species_characteristics = { portrait = "sd_hum_robot" } } }
+						MAM = { prev = { change_species_characteristics = { portrait = "sd_mam_robot" } } }
+						REP = { prev = { change_species_characteristics = { portrait = "sd_rep_robot" } } }
+						AVI = { prev = { change_species_characteristics = { portrait = "sd_avi_robot" } } }
+						ART = { prev = { change_species_characteristics = { portrait = "sd_art_robot" } } }
+						MOL = { prev = { change_species_characteristics = { portrait = "sd_mol_robot" } } }
+						FUN = { prev = { change_species_characteristics = { portrait = "sd_fun_robot" } } }
+						PLANT = { prev = { change_species_characteristics = { portrait = "sd_pla_robot" } } }
+						LITHOID = { prev = { change_species_characteristics = { portrait = "lith_machine" } } }
+						NECROID = { prev = { change_species_characteristics = { portrait = "nec_machine" } } }
+						AQUATIC = { prev = { change_species_characteristics = { portrait = "aqu_machine" } } }
+						TOX = { prev = { change_species_characteristics = { portrait = "tox_machine" } } }
+					}
+				}
+				if = {
+					limit = { root = { anz_spr_repsi = yes } }
+					modify_species = {
+						add_trait = trait_psionic
+						change_scoped_species = no
+						effect = {
+							save_event_target_as = new_machine_species
+						}
+					}
+				} else = {
+					save_event_target_as = new_machine_species
+				}
+			}
+		}
+		
+		# not asim? exile all incompats
+		if = {
+			limit = {
+				NOT = { has_country_flag = anz_xvcv_become_assimilator }
+			}
+			every_pool_leader = {
+				limit = { species = { NOT = { has_trait = trait_machine_unit } } }
+				exile_leader_as = exiled_leader
+			}
+			# every_pool_leader = {
+			# 	limit = { species = { NOT = { has_trait = trait_machine_unit } } }
+			# 	exile_leader_as = exiled_leader
+			# }
+			every_owned_leader = {
+				limit = {
+					OR = {
+						species = { NOT = { has_trait = trait_machine_unit } }
+						AND = {
+							OR = {
+								has_leader_flag = renowned_leader
+								has_leader_flag = legendary_leader
+							}
+							NOT = { has_trait = leader_trait_synthetic }
+						}
+					}
+				}
+				exile_leader_as = exiled_leader
+			}
+		}
+
+		# for all leaders
+		every_owned_leader = {
+			change_background_ethic = ethic_gestalt_consciousness
+		}
+		every_pool_leader = {
+			kill_leader = {
+				show_notification = no
+			}
+		}
+
+		# asim paragons synths
+		every_owned_leader = {
+			limit = {
+				OR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+				has_trait = leader_trait_synthetic
+			}
+
+			species = {
+				save_event_target_as = anz_paragon_portrait_target
+				set_species_flag = anz_paragon_portrait_target_of@prev
+			}
+			change_species = event_target:new_machine_species
+			change_leader_portrait = event_target:anz_paragon_portrait_target
+
+			set_leader_flag = anz_paragon_gene_mod_mech
+			
+			if = {
+				limit = { root = { anz_spr_repsi = yes } }
+				add_trait_no_notify = leader_trait_psionic
+			}
+		}
+	
+		if = {
+			limit = {
+				has_country_flag = anz_xvcv_become_assimilator
+			}
+
+			# capture former cyborg scope
+			if = { # Plan A
+				limit = {
+					event_target:anz_original_species = {
+						has_trait = trait_cybernetic
+						NOR = {
+							has_trait = trait_mechanical
+							has_trait = trait_machine_unit
+						}
+					}
+				}
+				save_event_target_as = anz_temp_leader_species
+			} else = { # Plan B
+				random_owned_pop = {
+					limit = {
+						is_same_species = owner_main_species
+						has_trait = trait_cybernetic
+					}
+					save_event_target_as = anz_temp_leader_species
+				}
+			} if = { # Plan C
+				limit = { NOT = { exists = event_target:anz_temp_leader_species } }
+				random_owned_pop = {
+					limit = {
+						has_trait = trait_cybernetic
+					}
+					save_event_target_as = anz_temp_leader_species
+				}
+			} # Plan D but too lazy to code
+			
+			# asim paragons cyber
+			every_owned_leader = {
+				limit = {
+					OR = {
+						has_leader_flag = renowned_leader
+						has_leader_flag = legendary_leader
+					}
+					NOT = {
+						has_trait = leader_trait_synthetic
+					}
+				}
+	
+				set_leader_flag = anz_paragon_gene_mod
+				species = {
+					save_event_target_as = anz_paragon_portrait_target
+					set_species_flag = anz_paragon_portrait_target_of@prev
+				}
+
+				if = {
+					limit = { NOT = { has_trait = leader_trait_cyborg } }
+					add_trait_no_notify = leader_trait_cyborg
+				}
+				if = {
+					limit = {
+						root = { anz_spr_repsi = yes }
+						NOT = { has_trait = leader_trait_psionic }
+					}
+					add_trait_no_notify = leader_trait_psionic
+				}
+				if = {
+					limit = {
+						root = { anz_spr_rehive = yes }
+						NOT = { has_trait = trait_erudite }
+					}
+					add_trait_no_notify = leader_trait_erudite
+				}
+				
+				if = {
+					limit = {
+						exists = event_target:anz_temp_leader_species
+					}
+					change_species = event_target:anz_temp_leader_species
+					change_leader_portrait = event_target:anz_paragon_portrait_target
+				}
+			}
+		}
+
+		# # capture current council state
+		# random_owned_leader = {
+		# 	limit = {
+		# 		is_councilor = yes
+		# 		leader_class = governor
+		# 	}
+		# 	save_event_target_as = anz_new_gestalt_gov
+		# }
+		# random_owned_leader = {
+		# 	limit = {
+		# 		is_councilor = yes
+		# 		leader_class = scientist
+		# 	}
+		# 	save_event_target_as = anz_new_gestalt_sci
+		# }
+		# random_owned_leader = {
+		# 	limit = {
+		# 		is_councilor = yes
+		# 		leader_class = admiral
+		# 	}
+		# 	save_event_target_as = anz_new_gestalt_adl
+		# }
+		# random_owned_leader = {
+		# 	limit = {
+		# 		is_councilor = yes
+		# 		leader_class = general
+		# 	}
+		# 	save_event_target_as = anz_new_gestalt_gnl
+		# }
+
+		# apply species changes
+		every_owned_pop = {
+			limit = { has_trait = trait_mechanical }
+			change_species = last_created_species
+		}
+		random_owned_pop = {
+			limit = { is_same_species = prev.species }
+			xvcv_mdlc_machine_species_rights_adjustments_effect = yes
+		}
+		every_owned_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				species = { has_trait = trait_mechanical }
+			}
+			change_species = last_created_species
+		}
+		every_envoy = {
+			limit = { species = { has_trait = trait_mechanical } }
+			change_species = last_created_species
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = anz_xvcv_become_assimilator }
+			}
+			ruler = {
+				add_trait_no_notify = leader_trait_ruler_machine_intelligence
+			}
+		}
+		
+		# actual council change + give tech
+		country_event = {
+			id = anz_ee.43
+			days = 1
+		}
+
+		# doing it now after paragons were dealt with but before empire auth change
+		# auth change requirers a machine species in charge or it will error
+		change_dominant_species = { species = event_target:new_machine_species }
+
+		# change gov
+		set_origin = origin_default # will block gov change if bad origin
+		clear_ethos = yes
+		country_add_ethic = ethic_gestalt_consciousness
+		country_add_ethic = ethic_form_convergent
+		country_add_ethic = ethic_form_introspective
+		country_add_ethic = ethic_form_impassive
+		country_add_ethic = ethic_foci_connection
+
+		# backup unique civics before gov reset
+		if = {
+			limit = { has_civic = civic_psionic_sovereign }
+			set_country_flag = psionic_sov
+		}
+		
+		if = {
+			limit = {
+				has_country_flag = anz_xvcv_become_assimilator
+			}
+			change_government = {
+				authority = auth_machine_intelligence
+				civics = { civic = civic_machine_assimilator }
+				cooldown = no
+				remove_invalid_civics = yes
+			}
+		} else = {
+			change_government = {
+				authority = auth_machine_intelligence
+				civics = { civic = civic_machine_factory_overclock }
+				cooldown = no
+				remove_invalid_civics = yes
+			}
+		}
+
+		# set civics	
+		if = {
+			limit = { is_galactic_emperor = yes }
+			force_add_civic = civic_galactic_sovereign
+		}
+	
+		if = {
+			limit = { has_country_flag = psionic_sov }
+			remove_country_flag = psionic_sov
+			force_add_civic = civic_psionic_sovereign
+		}
+		
+		if = {
+			limit = { has_country_flag = sofe_lm_gifted }
+			if = { limit = { NOT = { has_civic = civic_champion_fleet } }
+				force_add_civic = civic_champion_fleet
+			}
+			if = { limit = { NOT = { has_civic = civic_champion_knowledge } }
+				force_add_civic = civic_champion_knowledge
+			}
+			if = { limit = { NOT = { has_civic = civic_champion_empire } }
+				force_add_civic = civic_champion_empire
+			}
+		}
+		
+		# clean up
+		if = {
+			limit = { has_country_flag = anz_xvcv_become_assimilator }
+			remove_country_flag = anz_xvcv_become_assimilator
+		}
+
+		every_owned_leader = {
+			limit = { has_leader_flag = anz_bypass_trait_block }
+		}
+
+		country_event = { id = xvcv_mdlc.34 }
+	}
+
+	option = {
+		name = xvcv_mdlc.33.a
+		hidden_effect = {
+			species = {
+				rename_species = {
+					prompt_country = prev
+					name_list = ascension_list
+				}
+			}
+		}
+	}
+}

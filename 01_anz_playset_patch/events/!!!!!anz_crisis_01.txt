@@ -1,0 +1,119 @@
+namespace = crisis
+
+# Engine - Second Stage Complete
+country_event = {
+	id = crisis.6006
+	title = "crisis.6005.name"
+	desc = "crisis.6006.desc"
+	picture = GFX_evt_psionics
+	show_sound = event_default
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = crisis_sphere_revealed
+		random_system = {
+			limit = { has_star_flag = crisis_sphere_system@root }
+			save_event_target_as = crisis_sphere_system
+
+			random_system_ambient_object = {
+				limit = { has_ambient_object_flag = crisis_sphere_1_system_effect }
+				destroy_ambient_object = this
+			}
+			star = {
+				create_ambient_object = {
+					type = "crisis_sphere_2"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = crisis_sphere_2_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
+		}
+		every_playable_country = {
+			limit = {
+				is_ai = no
+				NOT = { has_country_flag = built_crisis_sphere }
+			}
+			country_event = { id = crisis.6015 }
+		}
+	}
+
+	option = {
+		name = crisis.6006.a
+	}
+}
+
+# Engine - Third Stage Complete
+country_event = {
+	id = crisis.6007
+	title = "crisis.6005.name"
+	desc = "crisis.6007.desc"
+	picture = GFX_evt_space_monster
+	show_sound = event_default
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = crisis_sphere_system@root }
+			random_system_ambient_object = {
+				limit = { has_ambient_object_flag = crisis_sphere_2_system_effect }
+				destroy_ambient_object = this
+			}
+			star = {
+				create_ambient_object = {
+					type = "crisis_sphere_3"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = crisis_sphere_3_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
+		}
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_value = root }
+			}
+			establish_communications_no_message = root
+			if = {
+				limit = {
+					has_opinion_modifier = {
+						who = root
+						modifier = opinion_destroying_systems
+					}
+				}
+				remove_opinion_modifier = {
+					who = root
+					modifier = opinion_destroying_systems
+				}
+			}
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_destroying_galaxy
+			}
+		}
+		add_threat = { who = root amount = 1000 }
+		every_country = {
+			limit = { is_fallen_empire = yes }
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_destroying_galaxy
+			}
+		}
+	}
+
+	option = {
+		name = crisis.6007.a
+	}
+}

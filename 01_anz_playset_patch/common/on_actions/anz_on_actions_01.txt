@@ -1,0 +1,61 @@
+on_game_start_country = {
+	events = {
+		anz_ee.12
+	}
+}
+
+on_monthly_pulse_country = {
+	events = {
+		anz_ee.10
+	}
+}
+
+on_tech_increased = {
+	events = {
+		# anz_ee.15 # outdated
+	}
+}
+
+on_custom_diplomacy = {
+	events = {
+		anz_ee.4
+	}
+}
+
+on_yearly_pulse = {
+	events = {
+		anz_ee.20
+		anz_ee.37
+	}
+}
+
+on_bi_yearly_pulse = {
+	events = {
+		anz_ee.30
+	}
+}
+
+on_modification_complete = {
+	events = {
+		anz_ee.39
+		anz_ee.44
+		anz_ee.45
+	}
+}
+
+# a new leader is created
+# scope: country, from: leader
+on_leader_spawned = {
+	events = {
+		anz_ee.45
+	}
+}
+
+# A leader leveled up.
+# Scope = Country
+# From = Leader
+on_leader_level_up = {
+	events = {
+		anz_ee.45
+	}
+}

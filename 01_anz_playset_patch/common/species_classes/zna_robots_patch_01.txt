@@ -1,0 +1,34 @@
+# Buildable Robots
+# very first file of this mod
+# which used to be the only one
+# as this was my very first mod
+# a portrait bug fix
+# I tend to look back here to
+# see how far it has come
+
+# Disabled
+XVCV_MDLC_ROBOT = {
+	archetype = ROBOT
+
+	playable = { always = no }
+	randomized = no
+	gender = no
+	use_climate_preference = no
+	portrait_modding = yes
+
+	leader_age_min = 2
+	leader_age_max = 10
+
+	custom_portraits = {
+		randomized = { always = no }
+		playable = { always = no }
+		portraits = {
+			"default_robot"
+		}
+	}
+
+	graphical_culture = mammalian_01
+	move_pop_sound_effect = "robot_pops_move"
+
+	resources = {}
+}

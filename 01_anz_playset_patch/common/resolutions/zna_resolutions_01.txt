@@ -1,0 +1,1085 @@
+@resolution_weight_popular = 6.5
+@resolution_cost_t2 = 150
+@resolution_flag_timer = 360
+
+# Navel cap
+resolution_mutualdefense_military_readiness_act = {
+	icon = "GFX_resolution_mutual_defense"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t2
+		}
+	}
+	target = no
+	level = 2
+
+	modifier = {
+		resolution_mutualdefense_the_readied_shield = 1
+		resolution_mutualdefense_naval_weight = 1
+	}
+
+	effect = {
+		custom_tooltip = resolution_mutualdefense_military_readiness_act_tooltip
+		hidden_effect = {
+			set_global_flag = resolution_with_breach_effect_passed
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_passed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_failed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mutualdefense_the_readied_shield"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		used_naval_capacity_integer < 400
+		is_subject = no
+	}
+
+	ai_weight = {
+		weight = @resolution_weight_popular
+
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+
+		modifier = {
+			factor = 0
+			in_breach_of = resolution_mutualdefense_military_readiness_act
+		}
+
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_valid_civic = civic_citizen_service
+				has_valid_civic = civic_distinguished_admiralty
+				has_valid_civic = civic_warrior_culture
+				has_valid_civic = civic_private_military_companies
+				has_valid_civic = civic_naval_contractors
+				has_valid_civic = civic_hive_subspace_ephapse
+				has_valid_civic = civic_hive_strength_of_legions
+				has_valid_civic = civic_machine_warbots
+			}
+		}
+
+		modifier = {
+			factor = 0.1
+			used_naval_capacity_integer < 400
+		}
+
+		modifier = {
+			factor = 0
+			is_pacifist = yes
+		}
+	}
+}
+
+resolution_mutualdefense_enemy_of_my_enemy = {
+	icon = "GFX_resolution_mutual_defense"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t3
+		}
+	}
+	target = no
+	level = 3
+
+	modifier = {
+		resolution_mutualdefense_the_readied_shield = 1
+		resolution_mutualdefense_naval_weight = 2
+	}
+
+	effect = {
+		custom_tooltip = resolution_mutualdefense_enemy_of_my_enemy_tooltip
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_passed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_failed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mutualdefense_military_readiness_act"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		used_naval_capacity_integer < 400
+		is_subject = no
+	}
+
+	ai_weight = {
+		base = @resolution_weight_normal
+
+		modifier = {
+			factor = 2
+			is_militarist = yes
+			desc = ethic_militarist
+		}
+
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_valid_civic = civic_citizen_service
+				has_valid_civic = civic_distinguished_admiralty
+				has_valid_civic = civic_warrior_culture
+				has_valid_civic = civic_private_military_companies
+				has_valid_civic = civic_naval_contractors
+				has_valid_civic = civic_hive_subspace_ephapse
+				has_valid_civic = civic_hive_strength_of_legions
+				has_valid_civic = civic_machine_warbots
+			}
+			desc = gal_com_supporting_civics
+		}
+
+		modifier = {
+			factor = 0
+			is_pacifist = yes
+			desc = ethic_pacifist
+		}
+	}
+}
+
+resolution_mutualdefense_castigation_proclamation = {
+	icon = "GFX_resolution_mutual_defense"
+
+	potential = {
+		has_federations_dlc = yes
+	}
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t4
+		}
+	}
+	target = no
+	level = 4
+
+	modifier = {
+		resolution_mutualdefense_the_readied_shield = 1
+		resolution_mutualdefense_naval_weight = 3
+	}
+
+	effect = {
+		custom_tooltip = resolution_mutualdefense_castigation_proclamation_tooltip
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_passed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_failed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mutualdefense_enemy_of_my_enemy"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		used_naval_capacity_integer < 400
+		is_subject = no
+	}
+
+	ai_weight = {
+		base = @resolution_weight_unpopular
+
+		modifier = {
+			factor = 2
+			is_militarist = yes
+			desc = ethic_militarist
+		}
+
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_valid_civic = civic_citizen_service
+				has_valid_civic = civic_distinguished_admiralty
+				has_valid_civic = civic_warrior_culture
+				has_valid_civic = civic_private_military_companies
+				has_valid_civic = civic_naval_contractors
+				has_valid_civic = civic_hive_subspace_ephapse
+				has_valid_civic = civic_hive_strength_of_legions
+				has_valid_civic = civic_machine_warbots
+			}
+			desc = gal_com_supporting_civics
+		}
+
+		modifier = {
+			factor = 0.8
+			OR = {
+				has_modifier = resolution_denounced
+				is_in_breach_of_any = yes
+			}
+			desc = gal_com_is_denounced_or_in_breach
+		}
+
+		modifier = {
+			factor = 0
+			is_pacifist = yes
+			desc = ethic_pacifist
+		}
+	}
+}
+
+resolution_mutualdefense_renegade_containment = {
+	icon = "GFX_resolution_mutual_defense"
+
+	potential = {
+		has_federations_dlc = yes
+	}
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t5
+		}
+	}
+	target = no
+	level = 5
+
+	modifier = {
+		resolution_mutualdefense_the_readied_shield = 1
+		resolution_mutualdefense_naval_weight = 4
+	}
+
+	effect = {
+		custom_tooltip = resolution_mutualdefense_renegade_containment_tooltip
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_passed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_mutualdefense days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_failed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mutualdefense_castigation_proclamation"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		used_naval_capacity_integer < 400
+		is_subject = no
+	}
+
+	ai_weight = {
+		base = @resolution_weight_disliked
+
+		modifier = {
+			factor = 2
+			is_militarist = yes
+			desc = ethic_militarist
+		}
+
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_valid_civic = civic_citizen_service
+				has_valid_civic = civic_distinguished_admiralty
+				has_valid_civic = civic_warrior_culture
+				has_valid_civic = civic_private_military_companies
+				has_valid_civic = civic_naval_contractors
+				has_valid_civic = civic_hive_subspace_ephapse
+				has_valid_civic = civic_hive_strength_of_legions
+				has_valid_civic = civic_machine_warbots
+			}
+			desc = gal_com_supporting_civics
+		}
+
+		modifier = {
+			factor = 0
+			is_pacifist = yes
+			desc = ethic_pacifist
+		}
+	}
+}
+
+# Nominate Custodian
+resolution_galacticreforms_nominate_custodian = {
+	icon = "GFX_resolution_nominate_custodian"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t5
+		}
+	}
+
+	target = yes
+	harmful = no
+	valid_target = {
+		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+		is_galactic_community_member = yes
+		is_part_of_galactic_council = yes
+		is_same_value = from
+	}
+
+	effect = {
+		set_galactic_custodian = yes
+		hidden_effect = {
+			country_event = { id = custodian.1 }
+			if = {
+				limit = { has_global_flag = gdf_active }
+				country_event = { id = custodian.35 days = 10 }
+			}
+		}
+	}
+
+	potential = {
+		has_nemesis = yes
+		is_galactic_council_established = yes
+		has_galactic_custodian = no
+		has_galactic_emperor = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = "nominate_custodian_requires_independence"
+			is_subject = no
+		}
+		# custom_tooltip = {
+		# 	fail_text = "nominate_custodian_not_crisis"
+		# 	NOT = { has_ascension_perk = ap_become_the_crisis }
+		# }
+	}
+
+	active = {
+		has_galactic_custodian = no
+	}
+
+	ai_weight = {
+		weight = @resolution_weight_normal
+		modifier = {
+			factor = 5
+			is_same_value = from
+			is_authoritarian = yes
+		}
+		modifier = {
+			factor = 2
+			is_same_value = from
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		modifier = {
+			factor = 4
+			is_same_value = from
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 2
+			is_same_value = from
+			has_ethic = ethic_fanatic_militarist
+		}
+		modifier = {
+			factor = 12
+			any_neighbor_country = { is_crisis_faction = yes }
+		}
+		modifier = {
+			factor = 4
+			has_crisis_stage_1 = yes
+		}
+		modifier = {
+			factor = 6
+			has_crisis_stage_2 = yes
+		}
+		modifier = {
+			factor = 8
+			has_crisis_stage_3 = yes
+		}
+		modifier = {
+			factor = 20
+			has_crisis_stage_4 = yes
+		}
+		modifier = {
+			factor = 20
+			is_same_value = from
+		}
+		modifier = {
+			factor = 20
+			any_playable_country = { has_country_flag = crisis_sphere_revealed }
+		}
+		modifier = {
+			factor = 8
+			any_playable_country = { has_been_declared_crisis = yes }
+		}
+		modifier = {
+			factor = 8
+			has_global_flag = gray_goo_crisis_active
+		}
+		modifier = {
+			factor = 8
+			has_global_flag = marauder_crisis_ongoing
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophobic_isolationists = yes
+		}
+		modifier = {
+			factor = 0
+			has_ascension_perk = ap_become_the_crisis
+		}
+		modifier = {
+			factor = 0
+			is_rival = from
+		}
+		modifier = {
+			factor = 0
+			is_subject = yes
+			overlord = { 
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+		modifier = {
+			factor = 10
+			any_country = { is_country_type = awakened_fallen_empire }
+		}
+		modifier = {
+			factor = 20
+			has_global_flag = war_in_heaven_ongoing
+		}
+		modifier = {
+			factor = 2
+			is_civic_machine_servitor = yes
+		}
+		modifier = {
+			factor = 5
+			is_civic_diplomatic_corps = yes
+		}
+	}
+}
+
+# Ban custom living standard
+resolution_divinity_a_defined_purpose = {
+	icon = "GFX_resolution_robots_bad"
+
+	potential = {
+		has_federations_dlc = yes
+	}
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t5
+		}
+	}
+	target = no
+	level = 5
+
+	modifier = {
+		resolution_divinity_comfort_the_fallen = 1
+		resolution_divinity_tithe_on_the_soulless = 1
+		resolution_divinity_right_to_work = 1
+		resolution_divinity_silence_the_soulless = 1
+		resolution_divinity_a_defined_purpose = 1
+	}
+
+	effect = {
+		hidden_effect = { add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 } }
+		custom_tooltip = resolution_divinity_a_defined_purpose_effect
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_divinity days = @resolution_flag_timer }
+			set_timed_country_flag = { flag = faction_materialist_outraged_gc days = 7200 }
+			add_modifier = {
+				modifier = resolution_passed_diplomatic_weight
+				days = 2200
+			}
+			every_playable_country = {
+				limit = {
+					is_galactic_community_member = yes
+					in_breach_of = resolution_divinity_a_defined_purpose
+				}
+				country_event = { id = federations.10340 }
+			}
+		}
+		if = {
+			limit = { has_global_flag = resolution_ascension_cyborg_flag }
+			custom_tooltip = resolution_repeal_ascension_cyborg_effect_success
+			hidden_effect = {
+				remove_global_flag = resolution_ascension_cyborg_flag
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = { add_modifier = { modifier = resolution_failed_diplomatic_weight days = 2200 } }
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_divinity days = @resolution_flag_timer }
+			add_modifier = {
+				modifier = resolution_failed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_divinity_silence_the_soulless"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		OR = {
+			AND = {
+				is_synthetic_empire = no
+				has_policy_flag = ai_full_rights
+			}
+			AND = {
+				is_machine_empire = yes
+				NOT = { has_country_flag = synthetic_empire }
+				NOT = { has_civic = civic_machine_servitor }
+			}
+			AND = {
+				has_country_flag = synthetic_empire
+				OR = {
+					any_owned_species = {
+						is_sapient = yes
+						is_robotic = no
+						OR = {
+							has_living_standard = { type = living_standard_subsistence country = prev }
+							has_living_standard = { type = living_standard_stratified country = prev }
+							has_living_standard = { type = living_standard_normal country = prev }
+							has_living_standard = { type = living_standard_academic_privilege country = prev }
+							has_living_standard = { type = living_standard_good country = prev }
+							has_living_standard = { type = living_standard_decadent country = prev }
+						}
+					}
+					any_owned_species = {
+						is_sapient = yes
+						is_robotic = no
+						has_citizenship_type = { type = citizenship_slavery country = prev }
+					}
+				}
+			}
+			any_owned_species = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_anz_spr_011 country = prev }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = @resolution_weight_disliked
+		
+		modifier = {
+			factor = 1.5
+			NOR = {
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+			is_materialist = no
+			is_spiritualist = no
+			desc = gal_com_hurt_rival
+			any_relation = {
+				is_galactic_community_member = yes
+				OR = {
+					is_rival = prev
+					is_at_war_with = prev
+				}
+				OR = {
+					has_ai_personality_behaviour = robot_exploiter
+					has_ai_personality_behaviour = robot_liberator
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			NOR = {
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+			is_materialist = no
+			is_spiritualist = yes
+			desc = gal_com_hurt_rival
+			any_relation = {
+				is_galactic_community_member = yes
+				OR = {
+					is_rival = prev
+					is_at_war_with = prev
+				}
+				OR = {
+					has_ai_personality_behaviour = robot_exploiter
+					has_ai_personality_behaviour = robot_liberator
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 0.5
+			is_civic_materialist = yes
+			desc = ethic_materialist
+		}
+		
+		modifier = {
+			factor = 0
+			is_materialist = yes
+			desc = ethic_materialist
+		}
+		
+		modifier = {
+			factor = 3
+			has_origin = origin_shroud_pact
+			desc = origin_shroud_pact
+		}
+
+		modifier = {
+			factor = 0.5
+			has_ai_personality_behaviour = robot_exploiter
+			NOT = { has_civic = civic_machine_servitor }
+			desc = personality_type_robot_exploiter
+		}
+
+		modifier = {
+			factor = 0.25
+			has_ai_personality_behaviour = robot_liberator
+			NOT = { has_civic = civic_machine_servitor }
+			desc = personality_type_robot_liberator
+		}
+
+		modifier = {
+			factor = 0.8
+			is_gestalt = yes
+			desc = ethic_gestalt_consciousness
+			NOT = { has_civic = civic_machine_servitor }
+		}
+
+		modifier = {
+			factor = 0
+			is_synthetic_empire = yes
+			desc = ap_synthetic_evolution
+			NOT = { has_civic = civic_machine_servitor }
+		}
+		
+		modifier = {
+			factor = 0.75
+			desc = gal_com_ally_in_breach_of_proposed_resolution
+			any_federation_ally = {
+				NOT = {
+					federation = { has_federation_type = hegemony_federation }
+				}
+				is_synthetic_empire = yes
+				NOT = { has_civic = civic_machine_servitor }
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			OR = {
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_ascension_perk = ap_organo_machine_interfacing
+				has_ascension_perk = ap_organo_machine_interfacing_assimilator
+				has_ascension_perk = ap_synthetic_evolution
+			}
+			desc = ap_the_flesh_is_weak
+		}
+
+		modifier = {
+			factor = 1.5
+			NOR = {
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+			desc = gal_com_supporting_personality
+		}
+
+		modifier = {
+			factor = 1.5
+			NOR = {
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+			is_civic_has_meritocracy = yes
+			desc = gal_com_meritocracy_civic
+		}
+
+		modifier = {
+			factor = 2
+			is_spiritualist = yes
+			desc = ethic_spiritualist
+		}
+		
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_spiritualist
+			desc = ethic_spiritualist
+		}
+		
+		modifier = {
+			factor = 2
+			is_civic_spiritualist = yes
+			desc = ethic_spiritualist
+		}
+		
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_machine_cult
+			desc = civic_machine_cult
+		}
+
+		modifier = {
+			factor = 100
+			has_civic = civic_machine_servitor # They sure are eager to sell out their fellow robots
+			desc = civic_machine_servitor
+		}
+		
+		modifier = {
+			factor = 5
+			# Hates all the other resolutions, but likes this one
+			has_ai_personality = decadent_technocracy
+			desc = gal_com_opposing_personality
+		}
+		
+		modifier = {
+			factor = 0.75
+			
+			is_militarist = yes
+			desc = ethic_militarist
+			OR = {
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+		}
+		
+		modifier = {
+			factor = 1.5
+			is_materialist = no
+			is_robot_empire = no
+			OR = {
+				has_global_flag = ai_invasion_ongoing
+				has_global_flag = ai_invasion_defeated
+			}
+			desc = gal_com_wary_of_contingency
+		}
+	}
+}
+
+resolution_greatergood_universal_prosperity_mandate = {
+	icon = "GFX_resolution_greater_good"
+
+	potential = {
+		has_federations_dlc = yes
+	}
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t5
+		}
+	}
+	target = no
+	level = 5
+
+	modifier = {
+		resolution_greatergood_workers_rights = 1
+		resolution_greatergood_five_year_plans = 1
+		resolution_greatergood_greater_than_ourselves = 1
+		resolution_greatergood_balance_in_the_middle = 1
+		resolution_greatergood_universal_prosperity_mandate = 1
+	}
+
+	effect = {
+		hidden_effect = { add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 } }
+		custom_tooltip = resolution_greatergood_universal_prosperity_mandate_tooltip
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_greatergood days = @resolution_flag_timer }
+			set_timed_country_flag = { flag = faction_authoritarian_outraged_gc days = 7200 }
+
+			every_playable_country = {
+				limit = {
+					is_galactic_community_member = yes
+
+					OR = {
+						any_owned_species = {
+							is_sapient = yes
+							has_citizenship_type = { type = citizenship_slavery country = prev }
+						}
+						AND = {
+							is_gestalt = no
+							any_owned_species = {
+								is_sapient = yes
+								OR = {
+									has_living_standard = { type = living_standard_subsistence country = prev }
+									has_living_standard = { type = living_standard_stratified country = prev }
+									has_living_standard = { type = living_standard_normal country = prev }
+									has_living_standard = { type = living_standard_academic_privilege country = prev }
+									has_living_standard = { type = living_standard_good country = prev }
+									has_living_standard = { type = living_standard_decadent country = prev }
+								}
+							}
+						}
+						AND = {
+							is_gestalt = yes
+							any_owned_species = {
+								is_sapient = yes
+								OR = {
+									has_living_standard = { type = living_standard_anz_spr_003 country = prev }
+									has_living_standard = { type = living_standard_anz_spr_005 country = prev }
+									has_living_standard = { type = living_standard_anz_spr_007 country = prev }
+								}
+							}
+						}
+					}
+				}
+				country_event = { id = federations.10230 }
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = { add_modifier = { modifier = resolution_failed_diplomatic_weight days = 2200 } }
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_greatergood days = @resolution_flag_timer }
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		OR = {
+			is_civic_slaver_guilds = yes
+			AND = {
+				is_gestalt = no
+				any_owned_species = {
+					is_sapient = yes
+					OR = {
+						has_living_standard = { type = living_standard_subsistence country = prev }
+						has_living_standard = { type = living_standard_stratified country = prev }
+						has_living_standard = { type = living_standard_normal country = prev }
+						has_living_standard = { type = living_standard_academic_privilege country = prev }
+						has_living_standard = { type = living_standard_good country = prev }
+						has_living_standard = { type = living_standard_decadent country = prev }
+					}
+				}
+			}
+			any_owned_species = {
+				is_sapient = yes
+				has_citizenship_type = { type = citizenship_slavery country = prev }
+			}
+			AND = {
+				is_gestalt = yes
+				any_owned_species = {
+					is_sapient = yes
+					OR = {
+						has_living_standard = { type = living_standard_anz_spr_003 country = prev }
+						has_living_standard = { type = living_standard_anz_spr_005 country = prev }
+						has_living_standard = { type = living_standard_anz_spr_007 country = prev }
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = @resolution_weight_disliked
+
+		modifier = {
+			factor = 0
+			is_egalitarian = no
+			NOT = { has_civic = civic_machine_servitor }
+			NOT = { has_civic = civic_ethical_hedonism }
+			desc = gal_com_cannot_comply_with_proposed_resolution
+		}
+
+		modifier = {
+			factor = 0
+			OR = {
+				is_authoritarian = yes
+				is_civic_authoritarian = yes
+				is_civic_has_elite = yes
+			}
+			desc = ethic_authoritarian
+		}
+		
+		modifier = {
+			factor = 3
+			is_civic_has_meritocracy = yes
+			desc = gal_com_meritocracy_civic
+		}
+		
+		modifier = {
+			factor = 0
+			is_pleasure_seeker = yes
+			desc = civic_pleasure_seekers
+		}
+		
+		modifier = {
+			factor = 0
+			desc = gal_com_in_breach_of_proposed_resolution
+			in_breach_of = resolution_greatergood_universal_prosperity_mandate
+		}
+		
+		modifier = {
+			factor = 0
+			OR = {
+				is_civic_slaver_guilds = yes
+				is_origin_syncretic_livestock = yes
+				is_slaver = yes
+				has_ai_personality_behaviour = slaver
+				any_owned_species = {
+					is_sapient = yes
+					OR = {
+						has_living_standard = { type = living_standard_subsistence country = prev }
+						has_living_standard = { type = living_standard_stratified country = prev }
+						has_living_standard = { type = living_standard_normal country = prev }
+						has_living_standard = { type = living_standard_academic_privilege country = prev }
+					}
+				}
+			}
+			desc = gal_com_slaver_empire
+		}
+		
+		modifier = {
+			factor = 0.75
+			desc = gal_com_ally_in_breach_of_proposed_resolution
+			any_federation_ally = {
+				NOT = {
+					federation = { has_federation_type = hegemony_federation }
+				}
+				in_breach_of = resolution_greatergood_universal_prosperity_mandate
+			}
+		}
+
+		modifier = {
+			factor = 0.5
+			is_capitalist = yes
+			desc = auth_corporate
+		}
+
+		modifier = {
+			factor = 2
+			OR = {
+				is_egalitarian = yes
+				has_valid_civic = civic_ethical_hedonism
+			}
+			desc = ethic_egalitarian
+		}
+
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_egalitarian
+			desc = ethic_egalitarian
+		}
+		
+		modifier = {
+			factor = 1.5
+			is_xenophile = yes
+			desc = ethic_xenophile
+			is_authoritarian = no
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_xenophile
+			desc = ethic_xenophile
+			is_authoritarian = no
+		}
+
+		modifier = {
+			factor = 4
+			is_civic_shared_burden = yes
+			desc = civic_shared_burden
+		}
+		
+		modifier = {
+			factor = 4
+			is_civic_machine_servitor = yes
+			desc = civic_machine_servitor
+		}
+
+		modifier = {
+			factor = 1.5
+			has_valid_civic = civic_agrarian_idyll
+			desc = civic_agrarian_idyll
+		}
+		
+		modifier = {
+			factor = 1.5
+			is_civic_free_haven = yes
+			desc = civic_free_haven
+		}
+		
+		modifier = {
+			factor = 1.5
+			has_valid_civic = civic_inwards_perfection
+			desc = civic_inwards_perfection
+		}
+		
+		modifier = {
+			factor = 2
+			NOT = { in_breach_of = resolution_greatergood_universal_prosperity_mandate }
+			desc = gal_com_hurt_rival
+			any_relation = {
+				OR = {
+					is_rival = prev
+					is_at_war_with = prev
+				}
+				is_galactic_community_member = yes
+				OR = {
+					in_breach_of = resolution_greatergood_universal_prosperity_mandate
+					AND = {
+						is_gestalt = no
+						is_egalitarian = no
+					}
+				}
+			}
+		}
+	}
+}

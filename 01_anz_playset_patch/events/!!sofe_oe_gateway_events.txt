@@ -1,0 +1,116 @@
+namespace = sofe_gateway
+
+##### FIRST SEAL PROMPT 
+country_event = {
+	id = sofe_gateway.6
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 2
+	}
+
+	trigger = {
+		is_ai = no ## Step away you dummy!
+		NOT = { 
+			has_global_flag = outer_cluster_opened 	
+		}
+		has_global_flag = sofe_shield_weaken
+		any_owned_megastructure = {
+			is_megastructure_type = sofe_outer_gate
+		}
+		NOT = {
+			has_country_flag = outer_gate_research_began
+		}
+	}
+
+	immediate = {
+		set_country_flag = outer_gate_research_began
+		random_owned_megastructure = {
+			limit = {
+				is_megastructure_type = sofe_outer_gate
+			}
+			save_event_target_as = candidate_outergateway
+		}
+		country_event = { id = sofe_gateway.601 } # enable project	
+	}
+}
+
+#S-Choice - Troll Sign
+country_event = {
+	id = sofe_gateway.1701
+	title = "sofe_gateway.riddle_incorrect"
+	desc = sofe_gateway.second_riddle_choice_wrong_stellarite_desc
+	picture = GFX_evt_sofe_outergate
+	show_sound = event_mystic_reveal
+	location = event_target:candidate_outergateway
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = second_riddle_stellarite_selected
+		#set_country_flag = hear_stellarite
+	}
+
+	option = {
+		name = sofe_gateway.716.opt.a
+		trigger = {
+			NOT = { has_technology = tech_dark_matter_power_core_se }
+		}
+		hidden_effect = {
+			country_event = { id = sofe_gateway.708 }
+		}
+	}
+
+	option = {
+		name = sofe_gateway.riddle_positive_reply
+		trigger = {
+			has_technology = tech_dark_matter_power_core_se
+		}
+		if = {
+			limit = { has_technology = tech_dark_matter_power_core_se }
+			set_country_flag = stellarite_section_learned
+			add_resource = {
+				acot_sr_stellarite = 5000
+			 }
+			 if = {
+				limit = { 
+					NOT = {
+						has_technology = tech_stellarite_generator_ae
+					}
+				 }
+				 add_research_option = tech_stellarite_generator_ae
+				 add_tech_progress = {
+					 tech = tech_stellarite_generator_ae
+					 progress = 0.10 
+				 }
+			}
+		}
+	}
+
+	after = {
+		remove_country_flag = third_seal_underway
+		hidden_effect = {
+			country_event = { id = sofe_gateway.12 days = 5 } # *THIS* looping check
+		}
+	}
+}
+
+country_event = {
+	id = sofe_gateway.708
+	title = "sofe_gateway.716.name"
+	desc = "sofe_gateway.716.desc"
+	picture = GFX_evt_supernova
+	show_sound = event_red_alert
+	location = event_target:candidate_outergateway
+
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = sofe_gateway.709 days = 30 }
+		set_country_flag = bomb_originator
+	}
+
+	option = {
+		name = sofe_gateway.708.a
+	}
+}

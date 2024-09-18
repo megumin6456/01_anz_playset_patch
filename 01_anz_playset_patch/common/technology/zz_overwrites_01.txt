@@ -1,0 +1,924 @@
+# Block FE from getting Ancient Empire techs
+tech_ag_advanced_psionic_theory = {
+	area = society
+	start_tech = no
+	cost = @ag_tech_cost_1_1
+	is_rare = yes
+	tier = 5
+	category = { psionics }
+	prerequisites = { "tech_basic_science_lab_3" "tech_space_science_5" "tech_physics_3" "tech_global_research_initiative" "tech_psionic_theory" }
+	is_reverse_engineerable = no
+	gateway = psionics
+
+	potential = {
+		NOR = {
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+	}
+	
+	modifier = {
+		country_unity_produces_mult = 0.25
+		country_society_tech_research_speed = 0.20
+	}
+	
+	weight = 1
+	weight_modifier = {
+		modifier = { factor = 1.5 has_ascension_perk = ap_technological_ascendancy }
+		modifier = {
+			factor = 0.5
+			NOR = {
+				has_trait_in_council = { TRAIT = leader_trait_curator }
+				has_trait_in_council = { TRAIT = leader_trait_spark_of_genius }
+				has_trait_in_council = { TRAIT = leader_trait_spark_of_genius_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+		modifier = { factor = 0 NOT = { has_country_flag = ag_has_psionic_weapon } }
+	}
+	
+	ai_weight = { factor = 1000 }
+}
+
+tech_space_exploration = {
+	cost = 0
+	area = engineering
+	start_tech = yes
+	category = { voidcraft }
+	tier = 0
+
+	#allow auto-explore on science ships
+	feature_flags = {
+		tech_automated_exploration
+		unlocks_auto_research
+	}
+
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_SCIENCE_SHIP_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_SCIENCE_SHIP_CONSTRUCTION_DESC"
+		}
+	}
+}
+
+# Psionics
+tech_psionic_theory = {
+	cost = @tier3cost1
+	area = society
+	tier = 3
+	category = { psionics }
+	is_rare = yes
+	weight = @tier3weight1
+	is_reverse_engineerable = no
+
+	gateway = psionics
+
+	potential = {
+		always = yes
+	}
+
+	modifier = {
+		empire_size_pops_mult = -0.10
+	}
+
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0.5
+			is_spiritualist = no
+		}
+		modifier = {
+			factor = 2
+			has_ethic = "ethic_fanatic_spiritualist"
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+		modifier = {
+			factor = 2
+			has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+			NOR = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		modifier = {
+			factor = 2.5
+			has_trait_in_council = { TRAIT = leader_trait_expertise_psionics_2 }
+			NOT = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+		modifier = {
+			factor = 3
+			has_trait_in_council = { TRAIT = leader_trait_expertise_psionics_3 }
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait_in_council = { TRAIT = leader_trait_psionic }
+				has_trait_in_council = { TRAIT = leader_trait_chosen }
+				has_trait_in_council = { TRAIT = leader_trait_composer_chosen }
+				has_trait_in_council = { TRAIT = leader_trait_instrument_chosen }
+				has_trait_in_council = { TRAIT = leader_trait_whisperers_chosen }
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_psionic_theory }
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_pop = {
+				pop_has_trait = trait_psionic
+			}
+		}
+		modifier = {
+			factor = 1.25
+			any_owned_pop = {
+				pop_has_trait = trait_latent_psionic
+			}
+			NOT = {
+				any_owned_pop = {
+					pop_has_trait = trait_psionic
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				has_modifier = pm_shroudwalker_teacher
+			}
+		}
+		modifier = {
+			factor = 0.1
+			AND = {
+				OR = {
+					is_materialist = yes
+					has_ethic = ethic_gestalt_consciousness
+				}
+				NOR = {
+					has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+					any_owned_pop = {
+						OR = {
+							pop_has_trait = trait_psionic
+							pop_has_trait = trait_latent_psionic
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 5
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			is_ai = no #auto-research
+		}
+	}
+}
+
+tech_telepathy = {
+	cost = @tier3cost3
+	area = society
+	tier = 3
+	category = { psionics }
+	is_rare = yes
+	prerequisites = { "tech_psionic_theory" }
+	weight = @tier3weight3
+	is_reverse_engineerable = no
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0
+			host_has_dlc = "Utopia"
+			NOT = { has_origin = origin_shroudwalker_apprentice }
+		}
+		modifier = {
+			factor = 0.50
+			NOT = {
+				has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+			}
+		}
+		modifier = {
+			factor = 0.50
+			NOT = {
+				has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_telepathy }
+			}
+		}
+		modifier = {
+			factor = 2
+			has_ethic = "ethic_spiritualist"
+		}
+		modifier = {
+			factor = 3
+			has_ethic = "ethic_fanatic_spiritualist"
+		}
+		modifier = {
+			factor = 3
+			any_owned_planet = {
+				has_modifier = pm_shroudwalker_teacher
+			}
+		}
+		modifier = {
+			factor = 4
+			OR = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 5
+			is_spiritualist = yes
+		}
+	}
+}
+
+tech_precognition_interface = {
+	cost = @tier4cost2
+	area = society
+	tier = 4
+	category = { psionics }
+	is_rare = yes
+	prerequisites = { "tech_telepathy" }
+	weight = @tier4weight2
+	is_reverse_engineerable = no
+
+	# unlocks precognitive interface-component, combat-computer granting evasion to ships
+
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_COMBAT_COMPUTER_PRECOG_TITLE"
+			desc = "TECH_UNLOCK_COMBAT_COMPUTER_PRECOG_DESC"
+		}
+	}
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0
+			host_has_dlc = "Utopia"
+		}
+		modifier = {
+			factor = 0.50
+			NOT = {
+				has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_precognition_interface }
+			}
+		}
+		modifier = {
+			factor = 2
+			has_ethic = "ethic_spiritualist"
+		}
+		modifier = {
+			factor = 3
+			has_ethic = "ethic_fanatic_spiritualist"
+		}
+		modifier = {
+			factor = 3
+			any_owned_planet = {
+				has_modifier = pm_shroudwalker_teacher
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+	}
+}
+
+tech_thought_enforcement = {
+	cost = @tier4cost2
+	area = society
+	tier = 4
+	category = { psionics }
+	is_rare = yes
+	prerequisites = { "tech_telepathy" }
+	weight = @tier4weight2
+	is_reverse_engineerable = no
+
+	# Unlocks thought enforcement edict
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0.50
+			NOT = {
+				has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_thought_enforcement }
+			}
+		}
+		modifier = {
+			factor = 2
+			is_spiritualist = yes
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			factor = 3
+			is_spiritualist = yes
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		modifier = {
+			factor = 3
+			any_owned_planet = {
+				has_modifier = pm_shroudwalker_teacher
+			}
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_police_state
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 2
+			is_authoritarian = yes
+		}
+	}
+}
+
+tech_psi_jump_drive_1 = {
+	cost = @tier5cost2
+	area = society
+	tier = 5
+	category = { psionics }
+	ai_update_type = all
+	is_rare = yes
+	is_dangerous = yes
+	prerequisites = { "tech_precognition_interface" }
+	weight = @tier5weight2
+	is_dangerous = yes
+	is_reverse_engineerable = no
+
+	feature_flags = {
+		jump_method
+	}
+
+	prereqfor_desc = {
+		component = {
+			title = "TECH_UNLOCK_PSI_JUMPDRIVE_1_TITLE"
+			desc = "TECH_UNLOCK_PSI_JUMPDRIVE_1_DESC"
+		}
+	}
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		factor = 0.1
+		modifier = {
+			factor = 0
+			host_has_dlc = "Utopia"
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+				has_trait_in_council = { TRAIT = leader_trait_curator }
+				has_trait_in_council = { TRAIT = leader_trait_spark_of_genius }
+				has_trait_in_council = { TRAIT = leader_trait_spark_of_genius_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @ap_grasp_the_void_travel_tech
+			has_ascension_perk = ap_grasp_the_void
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_psi_jump_drive_1 }
+			}
+		}
+	}
+}
+
+# Tile Blockers
+tech_mountain_range = {
+	cost = @tier2cost2
+	area = society
+	tier = 2
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier2weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_mountain_range"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_volcano = {
+	cost = @tier2cost2
+	area = society
+	tier = 2
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier2weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_active_volcano"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_dangerous_wildlife = {
+	cost = @tier2cost2
+	area = society
+	tier = 2
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier2weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_dangerous_wildlife_blocker"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_dense_jungle = {
+	cost = @tier1cost2
+	area = society
+	tier = 1
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier1weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_dense_jungle"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_quicksand_basin = {
+	cost = @tier1cost2
+	area = society
+	tier = 1
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier1weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_quicksand_basin"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_noxious_swamp = {
+	cost = @tier1cost2
+	area = society
+	tier = 1
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier1weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_noxious_swamp"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_massive_glacier = {
+	cost = @tier1cost2
+	area = society
+	tier = 1
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier1weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_massive_glacier"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_toxic_kelp = {
+	cost = @tier1cost2
+	area = society
+	tier = 1
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier1weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_toxic_kelp"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_deep_sinkhole = {
+	cost = @tier1cost2
+	area = society
+	tier = 1
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier1weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = 4
+			has_ascension_perk = ap_mastery_of_nature
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_owned_planet = {
+					has_deposit = "d_deep_sinkhole"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			is_ecocentric = yes
+		}
+	}
+}
+
+tech_aec_aw_dpl_defense_platform_repeatable = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { military_theory }
+	levels = 10
+	prerequisites = { "tech_starbase_4" }
+	weight = @repeatableTechWeight
+
+	potential = {		
+		has_global_flag = eac_aw_dpl_repeatable_tech_allowed
+	}
+	
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		custom_tooltip = tech_aec_aw_dpl_defense_platform_repeatable_tooltip
+		# Vanilla
+		starbase_defense_platform_capacity_add = 2
+		shipsize_ion_cannon_build_speed_mult = 0.5
+		shipsize_military_station_small_build_speed_mult = 0.5
+		shipsize_military_station_medium_build_speed_mult = 0.5
+		shipsize_military_station_large_build_speed_mult = 0.5
+		# At War Starbase Improvements
+		shipsize_eac_military_station_heavy_small_build_speed_mult = 0.5
+		# NSC Tech
+		shipsize_xl_cannon_build_speed_mult = 0.5
+		shipsize_headquarters_build_speed_mult = 0.5
+		# ACOT
+		shipsize_precursor_guardian_build_speed_mult = 1
+		shipsize_sentinel_sphere_build_speed_mult = 1
+		shipsize_enigmatic_fortress_platform_build_speed_mult = 2
+	}
+}

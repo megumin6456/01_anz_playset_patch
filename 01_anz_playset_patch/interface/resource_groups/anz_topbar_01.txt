@@ -1,0 +1,188 @@
+tb_anz_de = {
+	resources = {
+		acot_sr_dark_energy
+	}
+	localization = {
+		"RESOURCE_GROUP_DEFAULT" = default
+		"RESOURCE_GROUP_DEFAULT_NEG_DEC" = {
+			balance < 0
+			stored >= 1000
+			stored < 10000
+		}
+		"RESOURCE_GROUP_DEFAULT_NEG" = {
+			balance < 0
+		}
+		"RESOURCE_GROUP_DEFAULT_MAX" = {
+			max > 0
+			stored >= max
+		}
+		"RESOURCE_GROUP_DEFAULT_DEC" = {
+			stored >= 1000
+			stored < 10000
+		}
+	}
+}
+
+tb_anz_re = {
+	resources = {
+		aot_sr_runic_power
+	}
+	localization = {
+		"RESOURCE_GROUP_DEFAULT" = default
+		"RESOURCE_GROUP_DEFAULT_NEG_DEC" = {
+			balance < 0
+			stored >= 1000
+			stored < 10000
+		}
+		"RESOURCE_GROUP_DEFAULT_NEG" = {
+			balance < 0
+		}
+		"RESOURCE_GROUP_DEFAULT_MAX" = {
+			max > 0
+			stored >= max
+		}
+		"RESOURCE_GROUP_DEFAULT_DEC" = {
+			stored >= 1000
+			stored < 10000
+		}
+	}
+}
+
+tb_anz_se = {
+	resources = {
+		acot_sr_stellarite
+	}
+	localization = {
+		"RESOURCE_GROUP_DEFAULT" = default
+		"RESOURCE_GROUP_DEFAULT_NEG_DEC" = {
+			balance < 0
+			stored >= 1000
+			stored < 10000
+		}
+		"RESOURCE_GROUP_DEFAULT_NEG" = {
+			balance < 0
+		}
+		"RESOURCE_GROUP_DEFAULT_MAX" = {
+			max > 0
+			stored >= max
+		}
+		"RESOURCE_GROUP_DEFAULT_DEC" = {
+			stored >= 1000
+			stored < 10000
+		}
+	}
+}
+
+tb_anz_te = {
+	resources = {
+		sm_sr_perfect_runic_energy
+	}
+	localization = {
+		"RESOURCE_GROUP_DEFAULT" = default
+		"RESOURCE_GROUP_DEFAULT_NEG_DEC" = {
+			balance < 0
+			stored >= 1000
+			stored < 10000
+		}
+		"RESOURCE_GROUP_DEFAULT_NEG" = {
+			balance < 0
+		}
+		"RESOURCE_GROUP_DEFAULT_MAX" = {
+			max > 0
+			stored >= max
+		}
+		"RESOURCE_GROUP_DEFAULT_DEC" = {
+			stored >= 1000
+			stored < 10000
+		}
+	}
+}
+
+tb_anz_le = {
+	resources = {
+		acot_sr_light_matter
+	}
+	localization = {
+		"RESOURCE_GROUP_STORE" = default
+	}
+}
+
+tb_anz_larva = {
+	resources = {
+		larva
+	}
+	localization = {
+		"RESOURCE_GROUP_DEFAULT" = default
+		"RESOURCE_GROUP_DEFAULT_NEG_DEC" = {
+			balance < 0
+			stored >= 1000
+			stored < 10000
+		}
+		"RESOURCE_GROUP_DEFAULT_NEG" = {
+			balance < 0
+		}
+		"RESOURCE_GROUP_DEFAULT_MAX" = {
+			max > 0
+			stored >= max
+		}
+		"RESOURCE_GROUP_DEFAULT_DEC" = {
+			stored >= 1000
+			stored < 10000
+		}
+	}
+}
+
+tb_anz_planetary_mass = {
+	resources = {
+		sr_solar_energy
+	}
+	localization = {
+		"RESOURCE_GROUP_DEFAULT" = default
+		"RESOURCE_GROUP_DEFAULT_NEG_DEC" = {
+			balance < 0
+			stored >= 1000
+			stored < 10000
+		}
+		"RESOURCE_GROUP_DEFAULT_NEG" = {
+			balance < 0
+		}
+		"RESOURCE_GROUP_DEFAULT_MAX" = {
+			max > 0
+			stored >= max
+		}
+		"RESOURCE_GROUP_DEFAULT_DEC" = {
+			stored >= 1000
+			stored < 10000
+		}
+	}
+}
+
+tb_anz_supertensiles = {
+	resources = {
+		giga_sr_amb_megaconstruction
+	}
+	localization = {
+		"RESOURCE_GROUP_BALANCE_ONLY" = default
+		"RESOURCE_GROUP_BALANCE_ONLY_NEG" = {
+			balance < 0
+		}
+	}
+}
+
+tb_anz_ehof_qnm = {
+	resources = {
+		ehof_sr_negative_mass
+	}
+	localization = {
+		"RESOURCE_GROUP_STORE" = default
+	}
+}
+
+tb_anz_ehof_sm = {
+	resources = {
+		ehof_sr_sentient_metal
+	}
+	localization = {
+		"RESOURCE_GROUP_STORE" = default
+	}
+}

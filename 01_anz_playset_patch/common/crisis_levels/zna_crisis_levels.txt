@@ -1,0 +1,106 @@
+crisis_level_5 = {
+	# REQUIREMENTS
+	allow = {
+		custom_tooltip = {
+			success_text =	crisis_level_5_req_clear_tooltip
+			fail_text =	crisis_level_5_req_tooltip
+			has_country_flag = crisis_special_project_4_complete
+		}
+		hidden_trigger = {
+			NOT = {
+				has_active_event = {
+					crisis.4135
+				}
+			}
+		}
+		is_subject = no
+	}
+	required_menace = 10000
+
+	# REWARDS
+	perks = {
+		menp_megastructure
+		menp_star_eater
+		menp_mobile_bulwark
+		menp_paid_in_ambition
+	}
+
+	on_unlock = {
+		owner = {
+			# if = {
+			# 	limit = { has_federation = yes }
+			# 	leave_alliance = { override_requirements = yes }
+			# }
+			tooltip = {
+				if = {
+					limit = {
+						is_galactic_community_formed = yes
+						is_galactic_community_member = yes
+					}
+					remove_from_galactic_community = yes
+				}
+			}
+		}
+		hidden_effect = {
+			owner = {
+				# pass resolution declare crisis if not crisis emperor
+				if = {
+					limit = {
+						is_galactic_emperor = no
+					}
+					if = {
+						limit = { any_playable_country = { is_galactic_custodian = yes } }
+						random_playable_country = {
+							limit = { is_galactic_custodian = yes }
+							pass_targeted_resolution = {
+								resolution = resolution_declare_crisis
+								target = root.owner
+							}
+						}
+					}
+					else_if = {
+						limit = { any_playable_country = { is_galactic_emperor = yes } }
+						random_playable_country = {
+							limit = { is_galactic_emperor = yes }
+							pass_targeted_resolution = {
+								resolution = resolution_declare_crisis_empire
+								target = root.owner
+							}
+						}
+					}
+					else_if = {
+						limit = { owner = { any_neighbor_country = { is_galactic_community_member = yes } } }
+						owner = {
+							random_neighbor_country = {
+								limit = { is_galactic_community_member = yes }
+								pass_targeted_resolution = {
+									resolution = resolution_declare_crisis
+									target = root.owner
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = { any_playable_country = { is_galactic_community_member = yes } }
+						random_playable_country = {
+							limit = { is_galactic_community_member = yes }
+							pass_targeted_resolution = {
+								resolution = resolution_declare_crisis
+								target = root.owner
+							}
+						}
+					}
+				}
+
+				room_name_override = ""
+				add_event_chain_counter = {
+					event_chain = "become_the_crisis_chain"
+					counter = "crisis_level_reached"
+					amount = 1
+				}
+				end_event_chain = become_the_crisis_chain
+				country_event = { id = crisis.6000 days = 5 }
+			}
+		}
+	}
+}

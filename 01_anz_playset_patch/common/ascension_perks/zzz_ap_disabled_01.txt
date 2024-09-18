@@ -1,0 +1,281 @@
+ap_esap_gov_1 = {	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+ap_esap_gov_GC_1 = {
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_esap_gov_2 = {	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+ap_esap_gov_GC_2 = {
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_esap_gov_3 = {	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+ap_esap_gov_3_corp = {	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+ap_esap_gov_GC_3 = {	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_esap_bio_cyber_psi_1 = {
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+ap_esap_bio_cyber_psi_1_plain = {
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_esap_bio_cyber_psi_2 = {
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+ap_esap_bio_cyber_psi_2_plain = {
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_matryoshka_project = {
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_life_assemblers = {
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_life_masters = {
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_hollow_project = {	
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+xvcv_mdlc_ap_abyss = {
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+xvcv_mdlc_ap_virtual_worlds = {
+
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+# Disabled (Tier 3 of old ascension path, ESAP mod)
+ap_esap_cyber_bonus = {
+	on_enabled = { 
+		
+	}
+
+	modifier = {
+		
+	}
+
+	possible = {
+		always = no
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_esap_psi_bonus = {
+	on_enabled = { 
+		
+	}
+
+	modifier = {
+		
+	}
+
+	possible = {
+		always = no
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+ap_esap_bio_bonus = {
+	on_enabled = { 
+		
+	}
+
+	modifier = {
+		
+	}
+
+	possible = {
+		always = no
+	}
+	
+	potential = {
+		always = no
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+xvcv_mdlc_ap_genetics_mastery = {
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+xvcv_mdlc_ap_bio_robot = {
+	potential = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}

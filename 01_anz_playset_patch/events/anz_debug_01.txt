@@ -1,0 +1,228 @@
+namespace = anz_debug_01
+
+## DEBUG CODE
+## NOT MEANT TO BE USED INGAME
+
+# Add curator trust
+country_event = {
+	id = anz_debug_01.1
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		event_target:curator_enclave_country = {
+            add_trust = {
+                amount = 100
+                who = root
+            }
+        }
+	}
+}
+
+# empire rights test
+country_event = {
+	id = anz_debug_01.2
+	is_triggered_only = yes
+	hide_window = no
+
+	immediate = {
+		# normal
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = random
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# cyber
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_cybernetic }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# psi
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_psionic }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# cyber + psi
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_psionic trait = trait_cybernetic }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# hive
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_hive_mind }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# cyber + hive
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_cybernetic trait = trait_hive_mind }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# psi + hive
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_psionic trait = trait_hive_mind }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# cyber + psi + hive
+		create_species = {
+			name = random
+			class = random_non_machine
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_psionic trait = trait_cybernetic trait = trait_hive_mind }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# mech
+		create_species = {
+			name = random
+			class = MACHINE
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_machine_unit }
+			sapient = yes
+			is_mod = no
+			namelist = MACHINE1
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# mech + psi
+		create_species = {
+			name = random
+			class = MACHINE
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_machine_unit trait = trait_psionic }
+			sapient = yes
+			is_mod = no
+			namelist = MACHINE2
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# synth
+		create_species = {
+			name = random
+			class = ROBOT
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_mechanical }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+		# synth + psi
+		create_species = {
+			name = random
+			class = ROBOT
+			homeworld = root.capital_scope
+			portrait = random
+			traits = { trait = trait_mechanical trait = trait_psionic }
+			sapient = yes
+			is_mod = no
+			namelist = random
+			effect = { root.capital_scope = { create_pop = { species = last_created_species } } }
+		}
+	}
+}
+
+# random code for console
+country_event = {
+	id = anz_debug_01.3
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		# don't ask
+		add_tech_progress = {
+			tech = tech_sm_summon_physics
+			progress = 0
+		}
+		# when you become pro at kill_country
+		every_country = {
+			limit = {
+				is_country_type = default
+				NOT = { is_same_empire = root }
+			}
+			set_country_flag = anztmpchk_@this
+			switch = {
+				trigger = has_country_flag
+				anztmpchk_1 = { destroy_country = yes }
+				anztmpchk_2 = { destroy_country = yes }
+				anztmpchk_3 = { destroy_country = yes }
+				anztmpchk_4 = { destroy_country = yes }
+				anztmpchk_5 = { destroy_country = yes }
+				anztmpchk_6 = { destroy_country = yes }
+				anztmpchk_7 = { destroy_country = yes }
+				anztmpchk_8 = { destroy_country = yes }
+				anztmpchk_9 = { destroy_country = yes }
+				anztmpchk_10 = { destroy_country = yes }
+				anztmpchk_11 = { destroy_country = yes }
+				anztmpchk_12 = { destroy_country = yes }
+				anztmpchk_60 = { destroy_country = yes }
+				anztmpchk_62 = { destroy_country = yes }
+				anztmpchk_63 = { destroy_country = yes }
+				anztmpchk_68 = { destroy_country = yes }
+				anztmpchk_83886119 = { destroy_country = yes }
+			}
+		}
+		# country 12 cyber ascension: help!
+
+		change_government = {
+			civics = random
+		}
+		every_owned_planet = {
+			limit = {
+				is_capital = no
+			}
+			destroy_colony = yes
+		}
+	}
+}

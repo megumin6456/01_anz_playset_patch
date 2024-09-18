@@ -1,0 +1,87 @@
+namespace = dark_matter_event
+
+#Dark Matter Rumor
+country_event = {
+	id = dark_matter_event.1
+	title = dark_matter_event.1.name
+	desc = dark_matter_event.1.desc
+	picture = GFX_evt_physics_research
+	show_sound = event_mystic_reveal
+
+	trigger = {
+		NOT = {
+			has_global_flag = acot_dark_designs_forbidden
+		}
+		is_country_type = default
+		has_technology = "tech_mine_dark_matter"
+		has_technology = "tech_mine_dark_energy"
+		NOR = {
+			has_country_flag = hear_dark_rumor
+			has_technology = "tech_dark_matter_power_core"
+			has_tech_option = tech_dark_matter_power_core
+		}
+    }
+	
+	mean_time_to_happen = {
+		years = 5
+	}
+
+	immediate = {
+		set_country_flag = hear_dark_rumor
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:dm_curators
+				}
+			 }	
+			 random_country = {
+				limit = {
+					is_country_type = enclave
+					has_country_flag = curator_enclave_country
+				}
+				save_global_event_target_as = dm_curators 
+			}	
+		}
+	}
+	
+	option = {
+		name = dark_matter_event.1.a
+		trigger = {
+			is_ai = no
+		}
+		begin_event_chain = {
+			event_chain = acot_dm_tech_chain
+		}
+		capital_scope = {
+			create_point_of_interest = {
+				id = acot_dm_find_enigmatic.2
+				name = "acot_dm_tech_find_enigmatic_2"
+				desc = "acot_dm_tech_find_enigmatic_2_desc"
+				event_chain = acot_dm_tech_chain
+				location = this
+			}	
+			create_point_of_interest = {
+				id = acot_dm_find_enigmatic.1
+				name = "acot_dm_tech_find_enigmatic_1"
+				desc = "acot_dm_tech_find_enigmatic_1_desc"
+				event_chain = acot_dm_tech_chain
+				location = this
+			}	
+			enable_special_project = {
+				name = "RESEARCH_DARK_POWER_NORMAL"
+				owner = root
+			}
+		}
+	}
+
+	option = {
+		name = EXCELLENT
+		trigger = {
+			is_ai = yes
+		}		
+		set_country_flag = learned_dark_rumor
+		add_research_option = tech_dark_matter_generation
+		add_research_option = tech_dark_matter_strategy
+		add_research_option = tech_dark_matter_container
+	}
+}

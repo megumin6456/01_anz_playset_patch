@@ -1,0 +1,1019 @@
+namespace = acot_diplo
+
+# Curator Guardians Menu
+country_event = {
+	id = acot_diplo.800
+	title = acot_curator_ask_title
+	desc = acot_curator_ask_desc
+	
+	is_triggered_only = yes
+	diplomatic = yes
+	custom_gui = "enclave_curator_window"
+
+	picture_event_data = {
+		portrait = event_target:curator_enclave_country
+		room = enclave_curator_room
+	}
+
+	immediate = {
+		set_country_flag = curator_enclave_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = {
+			remove_country_flag = curator_enclave_diplomacy_engaged
+		}
+	}
+
+	# Outer Gates First Access
+	option = {
+        name =  acot_diplo.800.a
+        custom_tooltip = acot_curator_ask_opinion_check
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            NOT = {
+                has_country_flag = curator_permit_outergate
+            }
+            OR = {
+                has_event_chain = sofe_outergate_chain
+                has_global_flag = outergates_activated_globally
+            }
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = acot_curator_ask_opinion_check_fail
+				event_target:curator_enclave_country = {
+					trust = { 
+						who = root
+						value >= 75
+					}
+				}
+			}
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -75
+                who = root
+            }
+        } 
+		hidden_effect = {
+            set_country_flag = curator_permit_outergate
+			country_event = { id = acot_diplo.801 }
+		}
+    }
+	# Outer Gates
+	option = {
+		name =  acot_diplo.800.a
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            has_country_flag = curator_permit_outergate
+            OR = {
+                has_event_chain = sofe_outergate_chain
+                has_global_flag = outergates_activated_globally
+            }
+		}
+		hidden_effect = {
+			country_event = { id = acot_diplo.801 }
+		}
+    }
+
+	################################################
+
+	# Fallen Empires First Access
+	option = {
+        name = acot_diplo.800.b
+        custom_tooltip = acot_curator_ask_opinion_check
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            NOT = {
+                has_country_flag = curator_permit_fallen
+            }
+            num_fallen_empires >= 1
+        }
+        allow = {
+			custom_tooltip = {
+				fail_text = acot_curator_ask_opinion_check_fail
+				event_target:curator_enclave_country = {
+					trust = { 
+						who = root
+						value >= 50
+					}
+				}
+			}
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -50
+                who = root
+            }
+        } 
+		hidden_effect = {
+            set_country_flag = curator_permit_fallen
+			country_event = { id = acot_diplo.811}
+		}
+    }
+
+	option = {
+		name = acot_diplo.800.b
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            has_country_flag = curator_permit_fallen
+            num_fallen_empires >= 1
+		}
+		hidden_effect = {
+			country_event = { id = acot_diplo.811}
+		}
+    }
+    
+	################################################
+
+	# Stellarite Sigma First Pass
+	option = {
+        name = acot_diplo.800.c
+        custom_tooltip = acot_curator_ask_opinion_check
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            NOT = {
+                has_country_flag = curator_permit_stellarite
+            }
+            OR = {
+                has_event_chain = acot_stellarite_chain
+                has_technology = tech_dark_matter_power_core_se
+            }
+        }
+        allow = {
+			custom_tooltip = {
+				fail_text = acot_curator_ask_opinion_check_fail
+				event_target:curator_enclave_country = {
+					trust = { 
+						who = root
+						value >= 25
+					}
+				}
+			}
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -25
+                who = root
+            }
+        } 
+        
+		hidden_effect = {
+            set_country_flag = curator_permit_stellarite
+			country_event = { id =  acot_diplo.821 }
+		}
+    }
+
+	option = {
+		name = acot_diplo.800.c
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            has_country_flag = curator_permit_stellarite
+            OR = {
+                has_event_chain = acot_stellarite_chain
+                has_technology = tech_dark_matter_power_core_se
+            }
+        }
+        
+		hidden_effect = {
+			country_event = { id =  acot_diplo.821 }
+		}
+    }
+    
+	################################################
+
+	# Curator Orders
+	option = {
+		name = acot_diplo.800.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id =  acot_diplo.831 }
+		}
+    }
+    
+	################################################
+
+	## Phanon Disabled
+    
+	################################################
+
+	# Shroud and Psionics
+	option = {
+		name = acot_diplo.800.f
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            OR = {
+                any_country = {
+                    has_technology = tech_psionic_theory
+					is_country_type = default
+                    has_communications = root
+                }
+                has_technology = tech_psionic_theory
+            }
+		}
+		hidden_effect = {
+			country_event = { id =  acot_diplo.851 }
+		}
+    }
+    
+	################################################
+
+	# Dark Matter
+	option = {
+		name = acot_diplo.800.g
+		custom_gui = "enclave_curator_option"
+		trigger = {
+			has_technology = tech_dark_matter_power_core
+		}
+		hidden_effect = {
+			country_event = { id =  acot_diplo.861 }
+		}
+    }
+    
+	################################################
+
+	# Precursor First Check
+	option = {
+        name = acot_diplo.800.h
+        custom_tooltip = acot_curator_ask_opinion_check
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            NOT = {
+                has_country_flag = curator_permit_precursor
+            }
+            OR = {
+                any_country = {
+                    is_country_type = acot_databank
+                    has_communications = root
+                }
+                has_event_chain = acot_alpha_tech_chain
+                has_technology = tech_precursor_design
+            }
+			has_technology = tech_dark_matter_power_core
+        }
+        allow = {
+			custom_tooltip = {
+				fail_text = acot_curator_ask_opinion_check_fail
+				event_target:curator_enclave_country = {
+					trust = { 
+						who = root
+						value >= 50
+					}
+				}
+			}
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -50
+                who = root
+            }
+        } 
+		hidden_effect = {
+            set_country_flag = curator_permit_precursor
+			country_event = { id =  acot_diplo.871 }
+		}
+    }
+
+	# Precursor
+	option = {
+		name = acot_diplo.800.h
+		custom_gui = "enclave_curator_option"
+		trigger = {
+            has_country_flag = curator_permit_precursor
+            OR = {
+                any_country = {
+                    is_country_type = acot_databank
+                    has_communications = root
+                }
+                has_event_chain = acot_alpha_tech_chain
+                has_technology = tech_precursor_design
+            }
+			has_technology = tech_dark_matter_power_core
+		}
+		hidden_effect = {
+			country_event = { id =  acot_diplo.871 }
+		}
+    }
+    
+	################################################
+
+	option = { # Back
+		name = leviathans.506.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id = leviathans.505 }
+		}
+	}
+	option = { # Sign Off
+		name = leviathans.105.d
+		default_hide_option = yes
+		custom_gui = "enclave_curator_option"
+	}
+}
+
+################################################################################################################################################
+
+# Outer Gates
+country_event = {
+	id = acot_diplo.801
+	title = acot_diplo.801.name
+	desc = acot_diplo.801.desc
+	
+	is_triggered_only = yes
+	diplomatic = yes
+	custom_gui = "enclave_curator_window"
+
+	picture_event_data = {
+		portrait = event_target:curator_enclave_country
+		room = enclave_curator_room
+	}
+
+	immediate = {
+		set_country_flag = curator_enclave_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = {
+			remove_country_flag = curator_enclave_diplomacy_engaged
+		}
+	}
+
+	option = {
+		name = acot_diplo.801.a
+		response_text = acot_diplo.801.a.response
+		is_dialog_only = yes
+		trigger = {
+			has_event_chain = sofe_outergate_chain
+		}
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.b
+		response_text = acot_diplo.801.b.response
+		is_dialog_only = yes
+		trigger = {
+			has_event_chain = sofe_outergate_chain
+		}
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.c
+		response_text = acot_diplo.801.c.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.d
+		response_text = acot_diplo.801.d.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.e
+		response_text = acot_diplo.801.e.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.f
+		response_text = acot_diplo.801.f.response
+		trigger = {
+			any_country = {
+				OR = {
+					is_country_type = sofe_sentinel_active
+					is_country_type = sofe_sentinel_dormant
+				}
+				num_ships >= 1
+			}
+		}
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.g
+		response_text = acot_diplo.801.g.response
+		is_dialog_only = yes
+		trigger = {
+			has_event_chain = sofe_outergate_chain
+		}
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.h
+		response_text = acot_diplo.801.h.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.801.i
+        response_text = acot_diplo.801.i.response
+		trigger = {
+			has_event_chain = sofe_outergate_chain
+			NOT = {
+				has_country_flag = has_keystone
+			}
+			has_country_flag = allow_keystone_steal
+		}
+		custom_gui = "enclave_curator_option"
+		allow = {
+			resource_stockpile_compare = { resource = energy value >= 50000 }
+			resource_stockpile_compare = { resource = acot_sr_dark_energy value >= 5000 }
+			resource_stockpile_compare = { resource = sr_dark_matter value >= 5000 }
+			resource_stockpile_compare = { resource = minor_artifacts value >= 5 }
+		}
+		add_resource = { 
+			energy = -50000 
+			acot_sr_dark_energy= -5000 
+			sr_dark_matter= -5000 
+			minor_artifacts= -5 
+		}
+		event_target:curator_enclave_country = {
+			add_trust = {
+				who = root
+				amount = 25
+			}
+		}
+		hidden_effect = {
+			country_event = { id = sofe_gateway.606 days = 5 }					
+		}
+    }
+	option = {
+		name = acot_diplo.801.j
+        response_text = acot_diplo.801.j.response
+        trigger = {
+			NOT = {
+				has_country_flag = ask_curator_stellarite_origin
+            }
+            NOR = {
+                has_event_chain = acot_stellarite_chain
+                has_technology = tech_dark_matter_power_core_se
+			}
+        }
+        set_country_flag = ask_curator_stellarite_origin
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+    }
+    option = {
+		name = acot_diplo.801.k
+        response_text = acot_diplo.801.k.response
+        custom_tooltip = acot_curator_ask_opinion_check
+        trigger = {
+            has_country_flag = ask_curator_stellarite_origin
+            NOR = {
+				has_country_flag = ask_curator_stellarite_origin_2
+                has_event_chain = acot_stellarite_chain
+                has_technology = tech_dark_matter_power_core_se
+			}
+        }
+		allow = {
+            event_target:curator_enclave_country = {
+                trust = {
+                    who = root
+                    value >= 40
+                }
+            }
+		}
+		event_target:curator_enclave_country = {
+			add_trust = {
+				who = root
+				amount = -40
+			}
+		}
+        set_country_flag = ask_curator_stellarite_origin_2
+		is_dialog_only = yes
+        custom_gui = "enclave_curator_option"
+	}
+	option = { # Back
+		name = leviathans.506.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id = leviathans.505 }
+		}
+	}
+	option = { # Sign Off
+		name = leviathans.105.d
+		default_hide_option = yes
+		custom_gui = "enclave_curator_option"
+	}
+}
+
+# Fallen Empires
+country_event = {
+	id = acot_diplo.811
+	title = acot_diplo.811.name
+	desc = acot_diplo.811.desc
+	
+	is_triggered_only = yes
+	diplomatic = yes
+	custom_gui = "enclave_curator_window"
+
+	picture_event_data = {
+		portrait = event_target:curator_enclave_country
+		room = enclave_curator_room
+	}
+
+	immediate = {
+		set_country_flag = curator_enclave_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = {
+			remove_country_flag = curator_enclave_diplomacy_engaged
+		}
+	}
+
+	option = {
+		name = acot_diplo.811.a
+		response_text = acot_diplo.811.a.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.811.b
+		response_text = acot_diplo.811.b.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.811.c
+		response_text = acot_diplo.811.c.response
+        trigger = {
+            NOT = {
+                has_country_flag = asked_curator_dark_matter
+            }
+        }
+        set_country_flag = asked_curator_dark_matter
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+    }
+	option = {
+		name = acot_diplo.811.d
+        response_text = acot_diplo.811.d.response
+        trigger = {
+            has_country_flag = asked_curator_dark_matter
+			NOT = { has_country_flag = asked_curator_dark_matter_cheat }
+			NOT = { has_technology = tech_dark_matter_power_core }
+        }
+		set_country_flag = asked_curator_dark_matter_cheat
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+    }
+	option = {
+		name = acot_diplo.811.e
+		response_text = acot_diplo.811.e.response
+        trigger = {
+            
+            NOT = {
+                has_country_flag = asked_curator_precursor_ship
+            }
+        }
+        set_country_flag = asked_curator_precursor_ship
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+    }
+    option = {
+		name = acot_diplo.811.f
+        response_text = acot_diplo.811.f.response
+        custom_tooltip = acot_curator_ask_opinion_check
+        trigger = {
+            has_technology = tech_dark_matter_power_core
+            has_country_flag = asked_curator_precursor_ship
+            NOR = {
+                has_event_chain = acot_alpha_tech_chain
+                has_technology = tech_precursor_design
+                has_country_flag = has_databank
+            }
+        }
+        allow = {
+            event_target:curator_enclave_country = {
+                trust = {
+                    who = root
+                    value >= 75
+                }
+            }
+		}
+		event_target:curator_enclave_country = {
+			add_trust = {
+				who = root
+				amount = -75
+			}
+		}
+		is_dialog_only = yes
+        custom_gui = "enclave_curator_option"
+        hidden_effect = {
+            set_country_flag = hear_precursor_rumor       
+            set_country_flag = allow_databank_steal       
+            if = {
+                limit = { 
+                    NOT = {
+                        has_event_chain = acot_alpha_tech_chain
+                    }
+                }
+                begin_event_chain = {
+                    event_chain = acot_alpha_tech_chain
+                }
+                capital_scope = {
+                    IF = {
+                        limit = {
+                            any_country = {
+                                is_fallen_empire = yes
+                            }
+                        }
+                        create_point_of_interest = {
+                            id = acot_alpha_research.1
+                            name = "acot_databank_attack_fe"
+                            desc = "acot_databank_attack_fe_desc"
+                            event_chain = acot_alpha_tech_chain
+                            location = this
+                        }	
+                        create_point_of_interest = {
+                            id = acot_alpha_research.2
+                            name = "acot_databank_trick_fe"
+                            desc = "acot_databank_trick_fe_desc"
+                            event_chain = acot_alpha_tech_chain
+                            location = this
+                        }	
+                    }
+                    IF = {
+                        limit = {
+                            any_country = {
+                                has_country_flag = curator_enclave_country
+                            }
+                            owner = {
+                                NOR = {
+                                    is_homicidal = yes
+                                    has_country_flag = attacked_curators
+                                }
+                            }
+                        }
+                        create_point_of_interest = {
+                            id = acot_alpha_research.4
+                            name = "acot_databank_ask_curator"
+                            desc = "acot_databank_ask_curator_desc"
+                            event_chain = acot_alpha_tech_chain
+                            location = this
+                        }
+                    }	
+                    create_point_of_interest = {
+                        id = acot_alpha_research.5
+                        name = "acot_databank_self_assembly"
+                        desc = "acot_databank_self_assembly_desc"
+                        event_chain = acot_alpha_tech_chain
+                        location = this
+                    }
+                }
+            }   	          
+        }
+    }
+	option = { # Back
+		name = leviathans.506.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id = leviathans.505 }
+		}
+	}
+	option = { # Sign Off
+		name = leviathans.105.d
+		default_hide_option = yes
+		custom_gui = "enclave_curator_option"
+	}
+}
+
+################################################################################################################################################
+
+# Enigmatic Power
+country_event = {
+	id = acot_diplo.861
+	title = acot_diplo.861.name
+	desc = acot_diplo.861.desc
+	
+	is_triggered_only = yes
+	diplomatic = yes
+	custom_gui = "enclave_curator_window"
+
+	picture_event_data = {
+		portrait = event_target:curator_enclave_country
+		room = enclave_curator_room
+	}
+
+	immediate = {
+		set_country_flag = curator_enclave_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = {
+			remove_country_flag = curator_enclave_diplomacy_engaged
+		}
+	}
+
+	option = {
+		name = acot_diplo.861.aa
+		response_text = acot_diplo.861.aa.response
+		trigger = {
+			NOT = { has_country_flag = asked_curator_dark_matter_restricted }
+		}
+		set_country_flag = asked_curator_dark_matter_restricted
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+
+	option = {
+		name = acot_diplo.861.a
+		response_text = acot_diplo.861.a.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+
+	option = { # Back
+		name = leviathans.506.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id = leviathans.505 }
+		}
+	}
+	option = { # Sign Off
+		name = leviathans.105.d
+		default_hide_option = yes
+		custom_gui = "enclave_curator_option"
+	}
+}
+
+################################################################################################################################################
+
+# Stellarite
+country_event = {
+	id = acot_diplo.821
+	title = acot_diplo.821.name
+	desc = acot_diplo.821.desc
+	
+	is_triggered_only = yes
+	diplomatic = yes
+	custom_gui = "enclave_curator_window"
+
+	picture_event_data = {
+		portrait = event_target:curator_enclave_country
+		room = enclave_curator_room
+	}
+
+	immediate = {
+		set_country_flag = curator_enclave_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = {
+			remove_country_flag = curator_enclave_diplomacy_engaged
+		}
+	}
+
+	option = {
+		name = acot_diplo.821.a
+		response_text = acot_diplo.821.a.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+    }
+    option = {
+		name = acot_diplo.821.b
+        response_text = acot_diplo.821.b.response
+        trigger = {
+            NOT = {
+                has_country_flag = stellarite_tech_enable
+            }
+            has_event_chain = acot_stellarite_chain
+        }
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+    }
+    option = {
+		name = acot_diplo.821.c
+        response_text = acot_diplo.821.c.response
+        trigger = {
+            has_technology = tech_dark_matter_power_core_se
+            has_event_chain = sofe_outergate_chain
+        }
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = {
+		name = acot_diplo.821.d
+        response_text = acot_diplo.821.d.response
+        trigger = {
+            has_technology = tech_dark_matter_power_core_se_ae
+        }
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+	option = { # Back
+		name = leviathans.506.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id = leviathans.505 }
+		}
+	}
+	option = { # Sign Off
+		name = leviathans.105.d
+		default_hide_option = yes
+		custom_gui = "enclave_curator_option"
+	}
+}
+
+################################################################################################################################################
+
+# Orecursiors - Um CHIRU!! THAT CALLED PRECURSORS!!
+country_event = {
+	id = acot_diplo.871
+	title = acot_diplo.871.name
+	desc = acot_diplo.871.desc
+	
+	is_triggered_only = yes
+	diplomatic = yes
+	custom_gui = "enclave_curator_window"
+
+	picture_event_data = {
+		portrait = event_target:curator_enclave_country
+		room = enclave_curator_room
+	}
+
+	immediate = {
+		set_country_flag = curator_enclave_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = {
+			remove_country_flag = curator_enclave_diplomacy_engaged
+		}
+	}
+
+	option = {
+		name = acot_diplo.871.a
+		response_text = acot_diplo.871.a.response
+		is_dialog_only = yes
+		custom_gui = "enclave_curator_option"
+	}
+
+	# Databank Clue
+	option = {
+		name =  acot_alpha_matter_events.ask_curator
+		custom_gui = "enclave_curator_option"
+		trigger = {
+			has_event_chain = acot_alpha_tech_chain
+			has_country_flag = allow_databank_steal
+			NOT = {
+				has_country_flag = has_databank
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = leviathans.500.d.opinion
+				event_target:curator_enclave_country = {
+					trust = { 
+						who = root
+						value >= 50
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = { id = acot_alpha_matter_events.104 }
+		}
+	}
+
+    ### HELP PHYSIC
+	option = {
+		name = acot_diplo.871.b
+        response_text = acot_diplo.871.b.response
+        custom_tooltip = acot_curator_alpha_assist_delay_text
+        trigger = {
+            has_tech_option = tech_precursor_design_physics
+            NOT = {
+                has_technology = tech_precursor_design_physics
+            }
+        }
+        allow = {
+            resource_stockpile_compare = { resource = energy value >= 50000 }      
+            event_target:curator_enclave_country = {
+                trust = { 
+                    who = root
+                    value >= 50 #75
+                }
+            }
+            NOT = {
+                has_country_flag = acot_curator_alpha_assist_delay
+            }
+        }
+        custom_gui = "enclave_curator_option"
+        add_resource = {
+            energy = -50000
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -50
+                who = root
+            }
+        } 
+        add_tech_progress = {
+            tech = tech_precursor_design_physics
+            progress = 0.20
+        }
+        hidden_effect = {
+            set_timed_country_flag = { flag = acot_curator_alpha_assist_delay years = 1 }
+        }
+	}
+
+    ### HELP ENGINEER
+	option = {
+		name = acot_diplo.871.c
+        response_text = acot_diplo.871.c.response
+        custom_tooltip = acot_curator_ask_opinion_check
+        trigger = {
+            has_tech_option = tech_precursor_design_engineering
+            NOT = {
+                has_technology = tech_precursor_design_engineering
+            }
+        }
+        allow = {
+            resource_stockpile_compare = { resource = energy value >= 50000 }      
+            event_target:curator_enclave_country = {
+                trust = { 
+                    who = root
+                    value >= 50 #75
+                }
+            }    
+            NOT = {
+                has_country_flag = acot_curator_alpha_assist_delay
+            }
+        }
+        custom_gui = "enclave_curator_option"
+        add_resource = {
+            energy = -50000
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -50
+                who = root
+            }
+        } 
+        add_tech_progress = {
+            tech = tech_precursor_design_engineering
+            progress = 0.20
+        }
+        hidden_effect = {
+            set_timed_country_flag = { flag = acot_curator_alpha_assist_delay years = 1 }
+        }
+    }
+    
+    ### HELP SOCIETY
+	option = {
+		name = acot_diplo.871.d
+        response_text = acot_diplo.871.d.response
+        custom_tooltip = acot_curator_ask_opinion_check
+        trigger = {
+            has_tech_option = tech_precursor_design_history
+            NOT = {
+                has_technology = tech_precursor_design_history
+            }
+        }
+        allow = {
+            resource_stockpile_compare = { resource = energy value >= 50000 }      
+            event_target:curator_enclave_country = {
+                trust = { 
+                    who = root
+                    value >= 50 #75
+                }
+            }    
+            NOT = {
+                has_country_flag = acot_curator_alpha_assist_delay
+            }
+        }
+        custom_gui = "enclave_curator_option"
+        add_resource = {
+            energy = -50000
+        }
+        event_target:curator_enclave_country = {
+            add_trust = {
+                amount = -50
+                who = root
+            }
+        } 
+        add_tech_progress = {
+            tech = tech_precursor_design_history
+            progress = 0.20
+        }
+        hidden_effect = {
+            set_timed_country_flag = { flag = acot_curator_alpha_assist_delay years = 1 }
+        }
+	}
+
+	option = { # Back
+		name = leviathans.506.d
+		custom_gui = "enclave_curator_option"
+		hidden_effect = {
+			country_event = { id = leviathans.505 }
+		}
+	}
+	option = { # Sign Off
+		name = leviathans.105.d
+		default_hide_option = yes
+		custom_gui = "enclave_curator_option"
+	}
+}

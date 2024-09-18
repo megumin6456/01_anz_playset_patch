@@ -1,0 +1,186 @@
+tech_planet_killer_naniter = {
+	area = physics
+	cost = @acot_tier10cost2
+	tier = 10
+	category = { particles }
+	ai_update_type = military
+	weight = 0
+	is_rare = yes
+	is_reverse_engineerable = no
+	
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+
+	weight_modifier = {
+		factor = 0
+	}
+
+	modifier = {
+	}
+	
+	ai_weight = {
+		factor = 200		#weapons are OP
+	}
+}
+
+tech_celestial_guardian = {
+	area = society
+	cost = @acot_tier10cost2
+	tier = 10
+	is_rare = yes
+	category = { military_theory }
+	ai_update_type = military
+	weight = 0
+	
+	weight_modifier = {
+		factor = 0
+	}
+	
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+
+
+	ai_weight = {
+		factor = 5		#ARCHONS
+	}
+}
+
+tech_omega_warmech = {
+	cost = @acot_tier10cost2
+	area = engineering
+	tier = 10
+	category = { industry }
+	weight = 0
+	is_rare = yes
+
+	
+	ai_weight = {
+		factor = 3 # ship upgrades are supposed to be good!
+	}
+}
+
+
+#########################################
+
+tech_progenitor_escort = {
+	cost = @acot_tier10cost2
+	area = engineering
+	tier = 10
+	category = { voidcraft }
+	weight = 0
+	is_rare = yes
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+	
+	ai_weight = {
+		factor = 3 # ship upgrades are supposed to be good!
+	}
+}
+
+tech_progenitor_battlecruiser = {
+	cost = @acot_tier10cost2
+	area = engineering
+	tier = 10
+	category = { voidcraft }
+	weight = 0
+	is_rare = yes
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+
+	modifier = {
+	}
+	
+
+	
+	ai_weight = {
+		factor = 3 # ship upgrades are supposed to be good!
+	}
+}
+
+tech_progenitor_titan = {
+	cost = @acot_tier10cost2
+	area = engineering
+	tier = 10
+	category = { voidcraft }
+	weight = 0
+	is_rare = yes
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+
+	
+
+
+
+	
+	ai_weight = {
+		factor = 3 # ship upgrades are supposed to be good!
+	}
+}
+
+tech_progenitor_avatar = {
+	cost = @acot_tier10cost2
+	area = engineering
+	tier = 10
+	category = { voidcraft }
+	weight = 0
+	is_rare = yes
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+	
+	
+	
+	ai_weight = {
+		factor = 3 # ship upgrades are supposed to be good!
+	}
+}
+
+tech_ultimate_weapon = {
+	area = society
+	cost = @acot_tier10cost2
+	tier = 10
+	category = { psionics }
+	ai_update_type = military
+	is_rare = yes
+	is_reverse_engineerable = no
+	
+	weight = 0
+	
+	potential = {
+		OR = {
+			is_progenitor_empires = yes
+			has_country_flag = sofe_lm_gifted
+		}
+	}
+
+	weight_modifier = {
+		factor = 0
+	}
+	
+	ai_weight = {
+		factor = 200		#components are OP
+	}
+}

@@ -1,0 +1,243 @@
+# Topbar spoiler function
+anz_efb_food = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_monthly_income = { resource = food value > 0 }
+                resource_expenses_compare = { resource = food value > 0 }
+                has_resource = { type = food amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_notused" }
+}
+
+anz_efb_larva = { 
+    potential = {
+        exists = from
+        from = {
+            NOT = { has_civic = civic_hive_organic }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_notused" }
+}
+
+anz_efb_cgs = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_monthly_income = { resource = consumer_goods value > 0 }
+                resource_expenses_compare = { resource = consumer_goods value > 0 }
+                has_resource = { type = consumer_goods amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_notused" }
+}
+
+anz_efb_dm = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_mine_dark_matter
+                has_monthly_income = { resource = sr_dark_matter value > 0 }
+                resource_expenses_compare = { resource = sr_dark_matter value > 0 }
+                has_resource = { type = sr_dark_matter amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_de = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_mine_dark_energy
+                has_monthly_income = { resource = acot_sr_dark_energy value > 0 }
+                resource_expenses_compare = { resource = acot_sr_dark_energy value > 0 }
+                has_resource = { type = acot_sr_dark_energy amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_se = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_dark_matter_power_core_se
+                has_monthly_income = { resource = acot_sr_stellarite value > 0 }
+                resource_expenses_compare = { resource = acot_sr_stellarite value > 0 }
+                has_resource = { type = acot_sr_stellarite amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_re = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_dark_matter_power_core_re
+                has_monthly_income = { resource = aot_sr_runic_power value > 0 }
+                resource_expenses_compare = { resource = aot_sr_runic_power value > 0 }
+                has_resource = { type = aot_sr_runic_power amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_te = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_dark_matter_power_core_theta
+                has_monthly_income = { resource = sm_sr_perfect_runic_energy value > 0 }
+                resource_expenses_compare = { resource = sm_sr_perfect_runic_energy value > 0 }
+                has_resource = { type = sm_sr_perfect_runic_energy amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_le = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_dark_matter_power_core_oe
+                has_monthly_income = { resource = acot_sr_light_matter value > 0 }
+                resource_expenses_compare = { resource = acot_sr_light_matter value > 0 }
+                has_resource = { type = acot_sr_light_matter amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_ehof_qnm = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_country_flag = ehof_sr_negative_mass_found
+                has_monthly_income = { resource = ehof_sr_negative_mass value > 0 }
+                resource_expenses_compare = { resource = ehof_sr_negative_mass value > 0 }
+                has_resource = { type = ehof_sr_negative_mass amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_ehof_sm = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_country_flag = ehof_sr_sentient_metal_found
+                has_monthly_income = { resource = ehof_sr_sentient_metal value > 0 }
+                resource_expenses_compare = { resource = ehof_sr_sentient_metal value > 0 }
+                has_resource = { type = ehof_sr_sentient_metal amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_vanilla_motes = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_mine_volatile_motes
+                has_technology = tech_volatile_motes
+                has_monthly_income = { resource = volatile_motes value > 0 }
+                resource_expenses_compare = { resource = volatile_motes value > 0 }
+                has_resource = { type = volatile_motes amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_vanilla_gas = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_mine_exotic_gases
+                has_technology = tech_exotic_gases
+                has_monthly_income = { resource = exotic_gases value > 0 }
+                resource_expenses_compare = { resource = exotic_gases value > 0 }
+                has_resource = { type = exotic_gases amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_vanilla_crystals = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = tech_mine_rare_crystals
+                has_technology = tech_rare_crystals
+                has_monthly_income = { resource = rare_crystals value > 0 }
+                resource_expenses_compare = { resource = rare_crystals value > 0 }
+                has_resource = { type = rare_crystals amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = { custom_tooltip = "anz_topbar_spoilers" }
+}
+
+anz_efb_supertensiles = { 
+    potential = {
+        exists = from
+        from = {
+            NOR = {
+                has_technology = giga_tech_amb_supertensiles
+                has_monthly_income = { resource = giga_sr_amb_megaconstruction value > 0 }
+                resource_expenses_compare = { resource = giga_sr_amb_megaconstruction value > 0 }
+                has_resource = { type = giga_sr_amb_megaconstruction amount > 0 }
+            }
+        }
+	}
+    allow = { }
+    effect = {
+        if = {
+            limit = { has_global_flag = giga_buildcap_j }
+            custom_tooltip = "anz_topbar_spoilers"
+        } else = {
+            custom_tooltip = "anz_topbar_buildcap_j"
+        }
+    }
+}

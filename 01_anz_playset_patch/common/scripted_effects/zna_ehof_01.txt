@@ -1,0 +1,24 @@
+ehof_generate_pgate = {
+	random_system = {
+		limit = {
+			always = no
+			# NOR = {
+			# 	has_star_flag = empire_cluster
+			# 	has_star_flag = ehof_has_pgate
+			# 	closest_system = {
+			# 		has_megastructure = ehof_pgate_unknown
+			# 		distance = {
+			# 			source = prev
+			# 			max_distance <= 200
+			# 		}
+			# 	}
+			# }
+		}
+		set_star_flag = ehof_has_pgate
+		spawn_megastructure = {
+			type = "ehof_pgate_unknown"
+			orbit_angle = 110
+			orbit_distance = 35
+		}
+	}
+}

@@ -1,0 +1,14 @@
+﻿l_english:
+
+# Katzen Tech
+katzenartig_chain_4_desc: "§BKatzen Research Output§! represents how much technological progress the Katzens are making every month as they work towards their next tech level.\n\n§GKatzen Tech Level§! represents how advanced the Katzens have become, with each level increasing §YHull§!, §YArmor§! & §YShields§! §YHP§! by §Y0.2%§!, §YFire Rate§! and §YWeapons Damage§! by §Y0.15%§!, §YArmy Damage§! and §YArmy Health§! by §Y0.5%§! and §YMegastructure Build Speed§! by §Y0.25%§!. They will stop when they reach their cap at LV §Y200§!.\n\nCurrent Monthly §BKatzen Research§!: §Y[flusion_primitives_country.kaiser_tech_income]§!\nProgress to next §GKatzen Tech Level§!: §Y[flusion_primitives_country.kaiser_tech_stockpile]§! / §Y[flusion_primitives_country.kaiser_tech_to_next_level]§!\n\nCurrent §GKatzen Tech Level§!: §Y[flusion_primitives_country.kaiser_tech_level]§!\nExtra §HShip Hull§!/§HArmor§!/§HShields§!: §Y[flusion_primitives_country.kaiser_tech_ship_hp_buff]%§!\nExtra §HWeapons Damage§! & §HFire Rate§!: §Y[flusion_primitives_country.kaiser_tech_damage_buff]%§!\nExtra §HArmy Damage§! & §HArmy Health§!: §Y[flusion_primitives_country.kaiser_tech_army_buff]%§!\nExtra §HMegastructure Build Speed§!: §Y[flusion_primitives_country.kaiser_tech_mega_speed_buff]%§!"
+
+# Planetary Harvest
+moon_printer_orbital_mass_harvester_1_DESC:0 "This orbital device is steadily dismantling the unfortunate rocky body located beneath it.\nYields one £sr_solar_energy£ §YPlanetary Mass§! every §Y1 month§!."
+
+# Orbital arcology
+decision_giga_build_orbital_arcology_effect:0 "This will begin the construction of an §YOrbital Arcology§! around this world, costing £alloys£§Y200§! per §YPlanet Size§!.\n\nAfter a base build time of §Y900 days§!, this miniature ringworld will provide §Y3%§! extra §BDistrict Slots§! to §Y[ROOT.GetName]§! once completed, with an upkeep of £alloys£§Y5§! and £energy£§Y15§!.\n\nConstructing it will block the §YPlanetary Dockyard§!, but not the §YOrbital Ring§!."
+
+decision_giga_upgrade_orbital_arcology_effect:0 "This will begin to upgrade the §YOrbital Arcology§! around this world into an §YEnhanced Orbital Arcology§!, costing £alloys£§Y250§! per §YPlanet Size§!.\n\nAfter a base build time of §Y1000 days§!, this miniature ringworld will provide another §Y3%§! extra §BDistrict Slots§! to §Y[ROOT.GetName]§! once completed (for a total of §Y6%§!), with an upkeep of £alloys£§Y10§! and £energy£§Y30§!."
+
+decision_giga_maximize_orbital_arcology_effect:0 "This will begin to upgrade the §YEnhanced Orbital Arcology§! around this world into a §YMaximized Orbital Arcology§!, costing £alloys£§Y300§! per §YPlanet Size§!.\n\nAfter a base build time of §Y1100 days§!, this miniature ringworld will provide another §Y6%§! extra §BDistrict Slots§! to §Y[ROOT.GetName]§! once completed (for a total of §Y12%§!), with an upkeep of £alloys£§Y15§! and £energy£§Y45§!."

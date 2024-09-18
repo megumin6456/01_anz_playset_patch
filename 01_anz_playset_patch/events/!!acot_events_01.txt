@@ -1,0 +1,16 @@
+namespace = acot_alpha_matter_events
+
+country_event = {
+	id = acot_alpha_matter_events.9000
+	hide_window = yes 
+	
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			75 = { country_event = { id = acot_alpha_matter_events.9001 } } ## FAILED
+			25 = { country_event = { id = acot_alpha_matter_events.9003 } } ## SUCCESS
+			# 5 = { country_event = { id = acot_alpha_matter_events.9004 } } ## CRITICAL MISSION FAILURE. AI GIVES A LOT OF SHITS TO RANDOM AI
+		}
+	}
+}

@@ -1,0 +1,11 @@
+objectTypes = {
+	pdxmesh = {
+		name = "ee_main_menu_mesh"
+		file = "gfx/models/ui/ee_main_menu.mesh"
+		scale = 1.0
+		
+		meshsettings = {
+			shader = "PdxMeshFrontendBackground"
+		}
+	}
+}

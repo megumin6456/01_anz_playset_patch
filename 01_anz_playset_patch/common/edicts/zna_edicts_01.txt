@@ -1,0 +1,97 @@
+@Edict1Cost = 20
+@Edict2Cost = 25
+@Edict3Cost = 30
+
+@EdictDuration = -1
+
+# Sets the cost for all campaigns with this variable
+@campaignCost = 15
+@hiveFood = 15
+@campaignDuration = -1
+
+@ambitionDuration = -1
+@ambitionCost = 75
+@ambitionUpkeep = 75
+
+recycling_campaign = {
+	length = @campaignDuration
+	icon = "GFX_edict_type_time"
+	resources = {
+		category = campaigns
+		upkeep = {
+			energy = @campaignCost
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = -0.10
+	}
+
+	potential = {
+		NOR = {
+			has_ethic = ethic_gestalt_consciousness
+			has_ethic = ethic_fanatic_anthropocentric
+		}
+		has_technology = tech_planetary_unification
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = @EdictLowPrio
+			has_monthly_income = {
+				resource = consumer_goods
+				value < 0
+			}
+		}
+	}
+}
+
+scientific_revolution = {
+	length = @ambitionDuration
+	icon = "GFX_edict_type_time"
+	
+	resources = {
+		category = edicts
+		cost = {
+			unity = @ambitionCost
+			multiplier = value:edict_size_effect
+		}
+
+		upkeep = {
+			unity = @ambitionUpkeep
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.20
+		num_tech_alternatives_add = 1
+	}
+	
+	potential = {
+		has_technology = tech_ascension_theory
+		NOT = { has_valid_civic = civic_imperial_cult }
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+ag_ancient_empire_seetings_edict = {
+	length = 0
+	icon = "GFX_ag_mod_settings"
+	
+	potential = {
+		is_ai = no
+		NOR = {
+			has_global_flag = ag_seetings_opened
+			has_global_flag = installed_mod_platform
+		}
+	}
+	
+	effect = { hidden_effect = { country_event = { id = ag_settings.2 } } }
+	ai_weight = { weight = 0 }
+}

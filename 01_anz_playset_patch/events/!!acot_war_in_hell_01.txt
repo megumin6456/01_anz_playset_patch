@@ -1,0 +1,79 @@
+
+#########################################
+#
+# on_action_events
+#
+#########################################
+
+namespace = acot_war_in_hell
+
+
+### WAR IN HELL CHECK
+country_event = {
+    id = acot_war_in_hell.0
+    hide_window = yes
+    trigger = {
+        NOR = {
+            has_global_flag = acot_dangerous_forbidden
+            has_global_flag = acot_war_in_hell_active
+        }
+        has_technology = tech_dark_matter_power_core_ae
+        is_country_type = default
+		OR = {
+			is_ai = no
+			AND = {
+				is_ai = yes
+				end_game_years_passed > -25
+			}
+		}
+        any_country = {
+            is_ai = yes
+            OR = {
+                has_country_flag = fallen_empire_1
+                has_country_flag = fallen_empire_2
+                has_country_flag = fallen_empire_3
+                has_country_flag = fallen_empire_4
+            }
+            NOT = {
+                has_ethic = ethic_gestalt_consciousness
+            }
+            NOT = {
+                has_country_flag = awakened_by_wih
+            }
+            NOT = {
+                is_same_value = root
+            }
+        }
+    }
+
+    mean_time_to_happen = {
+        years = 15
+    }
+
+    immediate = {
+        random_country = {
+            limit = {
+                is_ai = yes
+                OR = {
+                    has_country_flag = fallen_empire_1
+                    has_country_flag = fallen_empire_2
+                    has_country_flag = fallen_empire_3
+                    has_country_flag = fallen_empire_4
+                }
+                NOT = {
+                    has_ethic = ethic_gestalt_consciousness
+                }    
+                NOT = {
+                    is_same_value = root
+                }  
+                NOT = {
+                    has_country_flag = awakened_by_wih
+                }           
+            }
+            save_event_target_as = FallenEmpireTaskOrigin
+            set_country_flag = awakened_by_wih
+        }
+        save_event_target_as = FallenEmpireTaskTarget
+        country_event = { id = acot_war_in_hell.1  }     
+    }
+}

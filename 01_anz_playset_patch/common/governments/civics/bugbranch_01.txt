@@ -1,0 +1,21 @@
+#Bureaucratic Engineers (Kazoi's Version) - Temp Disabled
+# civic_bureaucratic_engineers = {
+#     playable = { host_has_dlc = "Utopia" }
+#     modification = no
+#     potential = {
+#         ethics = { NOT = { value = ethic_gestalt_consciousness } }
+#         authority = { NOT = { value = auth_corporate } }
+#     }
+#     possible = {
+#         civics = {
+#             NOR = {
+#                 value = civic_agrarian_idyll
+#                 value = civic_byzantine_bureaucracy
+#                 value = civic_efficient_bureaucracy
+#             }
+#         }
+#     }
+
+#     random_weight = { base = 4 }
+#     description = "civic_tooltip_bureaucratic_engineers_effects"
+# }

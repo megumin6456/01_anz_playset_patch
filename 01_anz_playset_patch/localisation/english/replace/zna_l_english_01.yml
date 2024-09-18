@@ -1,0 +1,343 @@
+﻿l_english:
+
+# Topbar
+RESOURCE_GROUP_STORE:0 "§W$STORED|*0$§!"
+anz_topbar_spoilers: "Resource hidden to prevent spoilers, it'll be unlocked once you discover it."
+anz_topbar_notused: "Resource is not used by your empire."
+anz_topbar_buildcap_j: "Disabled in settings."
+
+# Species Rights
+citizenship_assimilation_tooltip_delayed: "§LAltering species this extensively is no mean feat, the process will be a slow and tedious one.§!"
+SPECIES_MUST_BE_ASSIMILATING: "Species must have §YAssimilation§! citizenship."
+
+anz_spr_notimp: "§RNOT IMPLEMENTED§!"
+anz_spr_001: "Species must be §YMachine Units§! to receive §YPsionic Implants§! OR §YMechanical§! to be repurposed into §YMachine Units§!."
+anz_spr_002: "Species must be §YMechanical§! to be repurposed into §YMachine Units§!"
+anz_spr_003: "Species must be §YMachine Units§! to receive §YPsionic Implants§!."
+anz_spr_004: "Species already have §YPsionic Implants§!."
+anz_spr_005: "Our empire cannot modify this species."
+anz_spr_006: "Species already have §YCybornetic§! and §YPsionic§! implants."
+anz_spr_007: "Species already have §YCybernetic§! implants."
+anz_spr_008: "Cannot assimilate §YHive Minded§! species."
+anz_spr_009: "Only §YHive Minded§! species can become §YPsionically Awakened§!."
+anz_spr_010: "Species have already undergone §YPsionic Awakening§! and are §YHive Minded§!."
+anz_spr_011: "Species already are §YHive Minded§!."
+anz_spr_012: "Species already have §YCybernetic Implants§!, §YPsionic Abilities§! and are §YHive Minded§!."
+anz_spr_013: "§YHive Minded§! drones will die off when separated from their collective."
+anz_spr_014: "§YMachine Units§! cannot operate outside a gestalt consciousness and will automatically shutdown in our empire."
+anz_spr_015: "Species already have §YPsionic Impalnts§!."
+anz_spr_016: "Species have already undergone §YPsionic Awakening§!."
+anz_spr_017: "Species already have §YCybernetic Implants§! and undergone §YPsionic Awakening§!."
+anz_spr_018: "Only our §YMain Species§! will ever be accepted in this empire."
+anz_spr_019: "Organic infestation will not be tolerated."
+anz_spr_020: "Only §YCybernetic§! species can recive §YPsionic§! implants."
+anz_spr_021: "It'll be faster if we intergrate them using cybernetics instead."
+anz_spr_022: "Species have already have §YCybernetic Implants§! and are §YHive Minded§!."
+anz_spr_023: "Species must be §YMechanical§! to receive §YPsionic Implants§!."
+anz_spr_024: "Only for Biological species."
+anz_spr_025: "Only for Robotic species."
+anz_spr_026: "Species must be §YMachine Units§! to be repurposed into §YMechanical§!"
+anz_spr_027: "Species must be §YHive Minded§!."
+anz_spr_028: "$job_asm3_synth$ is banned in empire policies!"
+
+# Living Standards
+living_standard_anz_spr_001: "$job_asm1_synth$"
+living_standard_anz_spr_001_tooltip: "Mechanical species become Machine Units."
+living_standard_anz_spr_001_tooltip_delayed: "$job_asm1_synth_desc$"
+living_standard_anz_spr_002: "$job_asm1_mech_psi$"
+living_standard_anz_spr_002_tooltip: "Machine Units are upgraded with Psionic modules."
+living_standard_anz_spr_002_tooltip_delayed: "$job_asm1_mech_psi_desc$"
+living_standard_anz_spr_003: "$job_asm1_cyber$"
+living_standard_anz_spr_003_tooltip: "Organic are turned into Cyborg drones."
+living_standard_anz_spr_003_tooltip_delayed: "§L$job_asm1_cyber_desc$§!"
+living_standard_anz_spr_004: "$job_asm1_cyber_psi$"
+living_standard_anz_spr_004_tooltip: "Cyborg drones will unlock their hidden Psionic potential."
+living_standard_anz_spr_004_tooltip_delayed: "$job_asm1_cyber_psi_desc$"
+living_standard_anz_spr_005: "$job_asm2_gene$"
+living_standard_anz_spr_005_tooltip: "Species will be unified with our collective."
+living_standard_anz_spr_005_tooltip_delayed: "$job_asm2_gene_desc$"
+living_standard_anz_spr_006: "$job_asm2_psi$"
+living_standard_anz_spr_006_tooltip: "Hive Minded pops will undergo Psionic Awakening."
+living_standard_anz_spr_006_tooltip_delayed: "$job_asm2_psi_desc$"
+living_standard_anz_spr_007: "$job_asm2_cyber$"
+living_standard_anz_spr_007_tooltip: "Cybernetics to better control our drones."
+living_standard_anz_spr_007_tooltip_delayed: "$job_asm2_cyber_desc$"
+living_standard_anz_spr_008: "$job_asm2_cyber_psi$"
+living_standard_anz_spr_008_tooltip: "Hive species become Cyborg Psychics."
+living_standard_anz_spr_008_tooltip_delayed: "$job_asm2_cyber_psi_desc$"
+living_standard_anz_spr_009: "$job_asm3_mech$"
+living_standard_anz_spr_009_tooltip: "Machine pops will turn into Mechanical pops."
+living_standard_anz_spr_009_tooltip_delayed: "$job_asm3_mech_desc$"
+living_standard_anz_spr_010: "$job_asm3_hive$"
+living_standard_anz_spr_010_tooltip: "Hive Minded drones will be turned into sapient individuals."
+living_standard_anz_spr_010_tooltip_delayed: "$job_asm3_hive_desc$"
+living_standard_anz_spr_011: "$job_asm3_synth$"
+living_standard_anz_spr_011_tooltip: "Organic species will be transfered into new Mechanical bodies."
+living_standard_anz_spr_011_tooltip_delayed: "$job_asm3_synth_desc$"
+living_standard_anz_spr_012: "$job_asm3_synth_psi$"
+living_standard_anz_spr_012_tooltip: "Synthetic beings will recive psionic capabilities."
+living_standard_anz_spr_012_tooltip_delayed: "$job_asm3_synth_psi_desc$"
+living_standard_anz_spr_013: "$job_asm3_cyber$"
+living_standard_anz_spr_013_tooltip: "Organics pops will gain Cybernetic implants."
+living_standard_anz_spr_013_tooltip_delayed: "$job_asm3_cyber_desc$"
+living_standard_anz_spr_014: "$job_asm3_psi$"
+living_standard_anz_spr_014_tooltip: "Organics pops will gain Psionic abilities."
+living_standard_anz_spr_014_tooltip_delayed: "$job_asm3_psi_desc$"
+living_standard_anz_spr_015: "$job_asm3_cyber_psi$"
+living_standard_anz_spr_015_tooltip: "Organics will become Cyborgs Psychics."
+living_standard_anz_spr_015_tooltip_delayed: "$job_asm3_cyber_psi_desc$"
+
+# Traits
+trait_phanon_bio_mech: "§RPhanon Hybrids§!"
+trait_phanon_bio_mech_desc: "§RPhanon Genetics + Circuits§!"
+
+# Champion Overwrite
+anz_ee.1.name: "§YWe are the Champion§Y!"
+anz_ee.1.desc: "With the §YStellarborn's Arkship§! Defeated, we have been crowned §YChampion of Light§! We may now reforge the universe as we see fit and join them in the §YOrder of Light§!.\n\n§RLet the Strom Blow! Let the Flames Roar!!§!"
+anz_ee.1.a: "§YCelestial Ascendance:§! §WEternal Light!§!"
+anz_ee.1.tooltip: "§YUnlock: Static Light and Flowing Light!§!"
+
+anz_ee.3.name: "§YChampion of Light Crowned§!"
+anz_ee.3.desc: "The §YStellarborn§! have concluded their Tournament... §YChampion of Light§! Coronated!\nThey may remake the galaxy as they wish and our faith remains on their hands.\n\n§YAll Hail the [event_target:sofe_champion_country.GetName]! May your Empire last for Eternity!§!"
+anz_ee.3.opt.a: "THEY DIT IT!"
+
+# Policies
+policy_anz_ee_become_synth: "Synthetic Ascension Policy"
+policy_anz_ee_become_synth_desc: "This is a quality of life policy for player empires so they can easily set species rights."
+anz_ee_become_synth_allowed: "Allowed"
+anz_ee_become_synth_allowed_name: "$job_asm3_synth$ assimilation type is allowed."
+anz_ee_become_synth_allowed_desc: "We may set transfer organic species into mechanical bodies."
+anz_ee_become_synth_banned: "Banned"
+anz_ee_become_synth_banned_name: "$job_asm3_synth$ assimilation type is banned."
+anz_ee_become_synth_banned_desc: "Transfer of Organics into Mechanical Bodies is banned by law."
+
+# Champion GUI
+anz_ee.4.title: "§YEternal Lights§!"
+anz_ee.4.desc: "§YWhat do you wish for this Universe?§!"
+anz_ee.4.opt.a: "§YUse all Infinity Stones§!"
+anz_ee.4.opt.b: "§YInfuse Empire with Light§!"
+anz_ee.4.opt.c: "§YEnd the Game and Ascend§!"
+anz_ee.4.opt.d: "§YWe shall decide later§!"
+
+# Version change details
+anz_ee.11.name: "Modlist Update"
+anz_ee.11.desc: "# New\n * Leaders who join gestalts that do not belong to any owned species will be assimilated.\n * Said leaders will be given cyborg, psionic, erudite, synthetic traits depending on your and their nature.\n * Hired leaders from external empires will be assimilated when they level up.\n * Can customize Empire Pop Limit for AI Empires, default changed from 1000 to 1400 pops.\n\n# Changes\n * AI more likley to surrender in unwinnable wars even if they might lose a few planets.\n * Global Pop Limit renamed to Empire Pop Limit to reduce confusion about what it does.\n\n# Bug Fixes\n * Being in breach of some Mutual Defense resolutions when you are not supposed to.\n * Some species not being able to colonize certain world types.\n * Being able to assign full military rights to assimilating species."
+#anz_ee.11.desc: "Played with the modlist for the last few weeks and fixed any bugs encounter,\nYou can continue your saves and I wish you a nice day!\n\n$anz_ee.11.log$"
+anz_ee.11.a: "Close"
+
+# Changes log goes here
+anz_ee.11.log: ""
+
+# Welcome message
+anz_ee.12.name: "Thanks for using my modlist"
+anz_ee.12.desc: "Empire Pop Limit will stop you from growing / assembling pops,\nIf you want more you could always conqure them from other empires.\n\nUse for Gigastructures Preset - Contributor: Megumin\n\n$anz_ee.12.notes$"
+anz_ee.12.notes: ""
+anz_ee.12.a: "Close"
+
+# Modifiers
+zna_uprising_ai_buff: "§RWARNING§!: HYPERBUFFED UPRISING!"
+zna_uprising_ai_buff_endgame: "§RWARNING§!: HYPERBUFFED UPRISING!"
+frameag_building_limit: "§PCompatibility modifier§!"
+frameag_building_limit_desc: "§PSince you are playing as a Frameworld empire, the modlist is using experimental code to stop Ancient Empire from breaking.§!"
+
+resolution_mutualdefense_military_readiness_act_tooltip:1 "[global_event_country.GetGalCommunityOrGalImperium] members that are not vassals of another empire that are using less than 400 naval capacity are in §RBreach of Galactic Law§!."
+
+# Decisons
+anz_quarantine_planet: "Quarantine Planet"
+anz_quarantine_planet_desc: "Pops are not allowed to automatically resettle into or out of this planet."
+
+anz_quarantine_planet_remove: "Remove Quarantine"
+anz_quarantine_planet_remove_desc: "Rejoice for the quarantine have been lifted!"
+
+frameag_evac: "§PEVAC Outpost§!"
+frameag_evac_desc: "§PDismatles this outpost and resettle all pops to the Frameworld§!"
+
+# Events
+anz_ee.33.title: "Phi Components"
+anz_ee.33.desc.wave1: "The Dimensional Mirror might have shutdown and not given us the vault but we still managed to pick up a signal which turned out to be a blueprint for some basic Phi Components. We should start researching them quick as they might provide us with an useful upgrade for our fleets to keep on repelling the phanon response fleets."
+anz_ee.33.desc.wave2: "With the second wave we keep getting more data regarding these mysterious components, although phanon fleets seem to be using something better it still might be worth it to decipher these fragmented blueprints."
+anz_ee.33.desc.wave3: "This should be the final phase as all the puzzle pieces seem to just fall into place, with this knowledge we should be able to finally construct the code to get the vault."
+anz_ee.33.opt.a: "Close"
+
+# Syndaw
+anz_synth_age_merge_all: "Merge all species into this new form"
+anz_synth_age_merge_robots: "Only merge our Mechanical pops"
+
+anz_ee.36.title: "What should we become?"
+anz_ee.36.desc: "Our empire houses both synthetic and cyborg pops, as such we must decide which type of Machine Intellegence we'll become. If we chose to become a normal machine, our cyborg pops will not be intergrated and all cyborg leader will be exiled."
+anz_ee.36.a: "Normal Machine Empire"
+anz_ee.36.b: "Driven Assimilator"
+
+xvcv_mdlc_ap_mind_integration_tooltip_effects: "§HIssues Special Project:§! §Y$XVCV_MDLC_AP_MIND_INTEGRATION_PROJECT$§!, §Tto become a §B$auth_machine_intelligence$§!.§!\n\n - Complete the §HSynthetic Path§! to become a normal §BMachine Empire§!,\n - Complete the §HCybernetic Path§! to become a §BDriven Assimilator§!,\n - If both traditions are complete, you may chose what to become.\n\n§g--------------------------------------------------------------------------------§!\n§TIf you have the §MParagons DLC§! installed, you can create a unique §BGestalt Council§!.§!\n\n - Council will be composed of §HNormal Leaders§! instead of §HGestalt Nodes§!.\n - Their §HTrait Selection§! will function as if you are a §HNormal Empire§!.\n - Any recruited §HParagons§! will be forcefully §PAssimilated§! or §PExpelled§!."
+
+# Crisis version of the same ascension perk, uncommet once actual mechanics implemented
+# xvcv_mdlc_ap_mind_integration_tooltip_effects: "§HIssues Special Project:§! §Y$XVCV_MDLC_AP_MIND_INTEGRATION_PROJECT$§!, §Tto become a §B$auth_machine_intelligence$§!.§!\n\n - Complete the §HSynthetic Path§! to become a normal §BMachine Empire§!,\n - Complete the §HCybernetic Path§! to become a §BDriven Assimilator§!,\n - If both traditions are complete, you may chose what to become.\n\n§g--------------------------------------------------------------------------------§!\n§TIf you have the §MParagons DLC§! installed, you can create a unique §BGestalt Council§!.\nChange your §HPresent Council§! to have the right leaders before proceeding.§!\n\n - Only one of each §HLeader Type§! can enter the §BGestalt Council§!.\n - If the right types of §Pleaders are unavailable§!, a §BGestalt Node§! will be created.\n - If §Hmultiple leaders§! of the same type is present, one will be §Bpicked randomly§!.\n - Leave the §HPresent Council empty§! to create a §Btypical Gestalt Council§! instead.\n\n§gThe §PCouncil will be locked§! after the project and the leaders cannot be changed.\nIf one of these §Pleader die§!, an ordinary §BGestalt Node§! will replace them.\nAny §HParagons§! will be forcefully §Pintergrated§! or §Pexpelled§!.§!\n\n§g--------------------------------------------------------------------------------§!\n§RWARNING:§! Depending on how our empire operates and the current galactic state, §TMerging the minds of uncountable sapient individuals into a gestalt consciousness mostly against their will is not a good idea. Other empires might despise you.\n\n§RThis an evil action§! and doing so could have §Runpredictable consequences!§!.§!"
+
+# Bombardment Stances
+bombardment_contingency: "§RContingency Protocol§!"
+bombardment_contingency_desc: "§RCONTINGENCY PROTOCOLS INITIATED, GALACTIC STERILIZATION IN PROGRESS...§!\n- §RCRISIS§! damage to §YArmies§!\n- §RCRISIS§! damage to §YTiles§!\n- §RCRISIS§! damage to §YPops§!\n- Will bombard undefended planets until it's wiped clean if need be."
+ 
+bombardment_infestation: "§GScourge Infestation§!"
+bombardment_infestation_desc: "§GWE MUST FEED BEFORE WE RETREAT INTO DARK SPACE!§!\n- §RCRISIS§! damage to §YArmies§!\n- §RCRISIS§! damage to §YTiles§!\n- §RCRISIS§! damage to §YPops§!\n- Will bombard undefended planets until it's wiped clean if need be."
+ 
+bombardment_siphonlife: "§MSoul Siphon§!"
+bombardment_siphonlife_desc: "§MSO MUCH PREY! WE SHALL HARVEST YOUR ENERGY FOR OURSELVES!§!\n- §RCRISIS§! damage to §YArmies§!\n- §RCRISIS§! damage to §YTiles§!\n- §RCRISIS§! damage to §YPops§!\n- Will bombard undefended planets until it's wiped clean if need be."
+
+# Misc status
+anz_building_disabled_obsolete: "This building is disabled as it's rendered obsolete"
+anz_hive_overmind_pop_controls: "Hive Overload species cannot reproduce"
+zna_hive_overmind_military_full: "Overload species can only be leaders"
+zna_hive_overmind_military_limited: "Remote Drones can only be troops"
+anz_species_not_part_of_consciousness: "This species is not part of our consciousness"
+anz_species_migrate_synths: "Requires the £engineering£ §Y$tech_synthetic_workers$§! technology for robots to auto migrate."
+ee_gobal_pop_limit_soft: "§HPop limit reached (SOFT CAP)§!"
+xvcv_mdlc_trait_self_replicating_microbot_tooltip: "§RTrait Disabled as it ruins game preformance.\nIt will have no effect and can only be removed.§!"
+
+preset_tributary_desc:0 "Tributaries are mostly independent. After a minimum period, they may stop paying tribute whenever they wish.\n\n§YTribute§!: §G25%§! £energy£ §HEnergy§! & £minerals£ §HMinerals§!\n§WSpecial Effects:§! \n§YSubject§!: Can stop paying tribute any time after §Y10§! years"
+
+requires_ascension_perks_6: "$TRIGGER_FAIL$Requires six other Ascension Perks to be selected first."
+
+# Settings
+anz_ee.gplplayer: "Empire Pop Limit | Player Cap: §Y[global_event_country.anz_ee_gplplayer]§!"
+anz_ee.gplai: "Empire Pop Limit | AI Cap: §Y[global_event_country.anz_ee_gplai]§!"
+anz_ee.gplplayer_disabled: "Empire Pop Limit | Player Cap: §YDisabled§!"
+anz_ee.gplai_disabled: "Empire Pop Limit | AI Cap: §YDisabled§!"
+
+# GAME RULES / Multiplayer Rule Enforcement
+anz_rule_forced_early_game_peace: "§RGAME RULE: Cannot Declare War till 2230§!"
+anz_rule_attempt_intergrate_player: "§RGAME RULE: Intergrate Human Players are banned§!"
+
+# Portraits
+ANIME: "Anime Girls"
+ANIME_desc: "Anime Girls"
+ANIME_plural: "Anime Girls"
+ANIME_insult_01: "monster"
+ANIME_insult_plural_01: "2d fictional beings"
+ANIME_compliment_01: "cutie"
+ANIME_compliment_plural_01: "adorable girls"
+ANIME_spawn: "child"
+ANIME_spawn_plural: "children"
+ANIME_sound_01: "growling"
+ANIME_sound_02: "squeaking"
+ANIME_sound_03: "screaming"
+ANIME_sound_04: "yowling"
+ANIME_sound_05: "mewling"
+ANIME_organ: "stomach"
+ANIME_organ_plural: "stomachs"
+ANIME_mouth: "mouth"
+ANIME_ear: "ear"
+ANIME_ear_plural: "ears"
+ANIME_hand: "hand"
+ANIME_hand_plurale: "hands"
+ANIME_tooth: "tooth"
+ANIME_tooth_plural: "teeth"
+ANIME_fossil: "fossil"
+ANIME_fossil_plural: "fossils"
+ANIME_remnant: "skeleton"
+ANIME_remnant_plural: "skeletons"
+
+# Insult by u/thecommonpigeon
+01_INSULT_PROPOSE_REDDIT: "L + no vassals + ratio + invaded + didn’t ask + xeno scum + denounced + skill issue + cry about it + low tech + zro addict + seethe + small navy + molluscoid + cope + just bad + borders closed + undeveloped brain + moderate economic sanctions + ratio again + mote harvester + your emperor died + dustbin of history + stfu"
+
+01_INSULT_PROPOSE_REDDIT_01: "L + Ratio + Invaded"
+01_INSULT_PROPOSE_REDDIT_02: "Cope + Skill Issue + Cope"
+01_INSULT_PROPOSE_REDDIT_03: "Xeno Scum + Denounced"
+01_INSULT_PROPOSE_REDDIT_04: "Economic Sanctions + Just Bad + Border Closed"
+01_INSULT_PROPOSE_REDDIT_05: "Your Emperor Died + Dustbin of History"
+01_INSULT_PROPOSE_REDDIT_06: "No Vassals + Ratio + Invaded"
+01_INSULT_PROPOSE_REDDIT_07: "Zro Addict + Seeth + Didn't ask"
+01_INSULT_PROPOSE_REDDIT_08: "Molluscoid + Underdeveloped Brain"
+01_INSULT_PROPOSE_REDDIT_09: "Mote Harvester + Low Tech + Small Navy"
+
+# Jobs
+job_telepath_gestalt: "Telepath"
+job_telepath_gestalt_plural: "Telepaths"
+job_telepath_gestalt_desc: "Members of the Psi-Corps, a unit of psionically-gifted crime fighters."
+job_telepath_gestalt_effect_desc: "£job_telepath£ $job_telepath_plural$ produce £unity£ §Y$unity$§!, decrease £crime£ §Y$PLANET_CRIME_TITLE$§!, and provide a general productivity boost on the planet."
+mod_job_telepath_gestalt_add: "$job_telepath$ Jobs"
+mod_job_telepath_gestalt_per_pop: "§G+1§! $job_telepath$ Job per $VALUE$ Pops"
+mod_job_telepath_gestalt_per_pop_short: "\n§G+1§! £mod_job_telepath_add£ per $VALUE$ £pop£"
+
+job_asm1_synth: "Mechanical Upgrade"
+job_asm1_synth_plural: "$job_asm1_synth$"
+job_asm1_synth_desc: "§LUpgrading incompatible hardware and software to better serve our network specifications.§!"
+
+job_asm1_mech_psi: "Psionic Upgrade"
+job_asm1_mech_psi_plural: "$job_asm1_mech_psi$"
+job_asm1_mech_psi_desc: "§LInstalling psionic modules into Machine Unit will enable them to use limited psionic abilities. Emulating that which occurs in organic species.§!"
+
+job_asm1_cyber: "Cybernetic Assimilation"
+job_asm1_cyber_plural: "$job_asm1_cyber$"
+job_asm1_cyber_desc: "§LResistance is Futile, your biological and technological distinctiveness will be added to our own.§!"
+
+job_asm1_cyber_psi: "Psionic Awakening"
+job_asm1_cyber_psi_plural: "$job_asm1_cyber_psi$"
+job_asm1_cyber_psi_desc: "§LOrganics have an inherent ability to tap into psionic powers. Tho supressed after the destruction of one's ego, it can be awakened.§!"
+
+job_asm2_gene: "Hive Unification"
+job_asm2_gene_plural: "$job_asm2_gene$"
+job_asm2_gene_desc: "§LFor a long time our mind have unified many organisms under it's collective care. Now we process the ability to welcome sapient beings into the hive as well.§!"
+
+job_asm2_psi: "Psionic Awakening"
+job_asm2_psi_plural: "$job_asm2_psi$"
+job_asm2_psi_desc: "§LAwakining Psionic abilities in our drones takes a lot of meditation on their part. Eventually with our guidence, they'll reach great potential.§!"
+
+job_asm2_cyber: "Cybernetic Implantation"
+job_asm2_cyber_plural: "$job_asm2_cyber$"
+job_asm2_cyber_desc: "§LUsing Cybernetic implants we can improve and better control our drones while providing the ability to intergrate others outside the hive into it.§!"
+
+job_asm2_cyber_psi: "Perfect Ascension"
+job_asm2_cyber_psi_plural: "$job_asm2_cyber_psi$"
+job_asm2_cyber_psi_desc: "§LCombining both Cybernetic implants and Psionic power we will be the perfect species.§!"
+
+job_asm3_mech: "Repurpose Machines"
+job_asm3_mech_plural: "$job_asm3_mech$"
+job_asm3_mech_desc: "§LLetting these machine break down would be a waste of resources. We will install new programs into them so they may serve our needs.§!"
+
+job_asm3_hive: "Hive Dissociation"
+job_asm3_hive_plural: "$job_asm3_hive$"
+job_asm3_hive_desc: "§LWelcome out of the Fold! Although it will be painful at first, I'm sure you will learn to live in our society.§!"
+
+job_asm3_synth: "Synthetic Upgrade"
+job_asm3_synth_plural: "$job_asm3_synth$"
+job_asm3_synth_desc: "§LThe Flesh is Weak, we will no longer be limited by it. As such we must transcend it.§!"
+
+job_asm3_synth_psi: "Psionic Upgrade"
+job_asm3_synth_psi_plural: "$job_asm3_synth_psi$"
+job_asm3_synth_psi_desc: "§LIf electrons traveling through an organic brain can create a soul, why not one traveling through synthetics?§!"
+
+job_asm3_cyber: "Cybernetic Enhancement"
+job_asm3_cyber_plural: "$job_asm3_cyber$"
+job_asm3_cyber_desc: "§LEnhance yourselves with these cybernetics. Become one with the machines and surpass your limits.§!"
+
+job_asm3_psi: "Transcendent Awakening"
+job_asm3_psi_plural: "$job_asm3_psi$"
+job_asm3_psi_desc: "§LAwaken your minds and witness another world for there is so much more to explore.§!"
+
+job_asm3_cyber_psi: "Perfect Ascension"
+job_asm3_cyber_psi_plural: "$job_asm3_cyber_psi$"
+job_asm3_cyber_psi_desc: "§LWe will soon become the embodiment of perfection. In us all things are possible!§!"
+
+# Overwrites
+tr_est_academy_4:0 "Towers of Ivory"
+tr_est_academy_4_desc:0 "Take pride in your knowledge but do not let it to heart,\nThe path to greatness is long and arduous,\nNever stop to think you've reach the end,\nFaulter we all may drown in ignorance."
+tr_est_academy_4_delayed:0 "Take pride in your knowledge but do not let it to heart,\nThe path to greatness is long and arduous,\nNever stop to think you've reach the end,\nFaulter we all may drown in ignorance."
+
+tr_synthetics_adopt_machine_desc:0 "Allows us to repurpose Mechanical units (Robots / Droids / Synthetics) to become Machine Units."
+
+sm_communications_jammer_desc:1 "These powerful jammers interfere with enemy sensors preventing them from seeing anything inside this system.\n"
+sm_disruption_field_desc:0 "Generates localized fields of agitated subatomic particles around hostile ships in the system, significantly reducing the effectiveness of their shields and distrupting fleet movement.\n"
+
+
+TRAIT_LITHOID_GASEOUS_BYPRODUCTS_EFFECT:1 "Each pop working as a slave or better produces 0.1 £exotic_gases£ §Y$exotic_gases$§! per month."
+TRAIT_LITHOID_SCINTILLATING_EFFECT:1 "Each pop working as a slave or better produces 0.1 £rare_crystals£ §Y$rare_crystals$§! per month."
+TRAIT_LITHOID_VOLATILE_EXCRETIONS_EFFECT:1 "Each pop working as a slave or better produces 0.1 £volatile_motes£ §Y$volatile_motes$§! per month."
+
+# SOTS
+anz_ee.41.title: "Historical Insight: The Price of Vengeance"
+anz_ee.41.desc: "While searching for Historical Insights about Shroud Masters, we  managed to discover these valuable data from another empire. Since the trade was done is secret we got no idea from who or where it came from but it sure will prove useful for our pursuit."
+anz_ee.41.a: "Yes Please"
+
+anz_ee.42.title: "Historical Insight: Decadence and Death"
+anz_ee.42.desc: "After chasing many trails which lead nowhere, we finally found something valuable. The data archive is quite large but after some analysis we are confident that it is the real deal.\n\n"
+anz_ee.42.a: "Finally we found it"

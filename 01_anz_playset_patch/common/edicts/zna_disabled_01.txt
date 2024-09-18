@@ -1,0 +1,12 @@
+ig_options_menu_edict = {
+	icon = Normal
+	length = 0
+
+	potential = {
+		always = no
+   	}
+
+	ai_weight = {
+		weight = 0
+	}
+}

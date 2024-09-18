@@ -1,0 +1,23 @@
+COMPLEX = {
+	archetype = BIOLOGICAL
+	playable = { always = no }
+	randomized = no
+	
+	portraits = {
+				"horrorworm"
+				"dlc_portraits_01"
+				"dlc_portraits_02"
+				"dlc_portraits_03"
+
+	}
+	# These should not be used for randomly generated species
+	non_randomized_portraits = {
+				"horrorworm"
+				"dlc_portraits_01"
+				"dlc_portraits_02"
+				"dlc_portraits_03"
+
+	}
+	graphical_culture  = mammalian_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+}

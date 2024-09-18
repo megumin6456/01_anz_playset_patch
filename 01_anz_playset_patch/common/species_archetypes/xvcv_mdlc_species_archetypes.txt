@@ -1,0 +1,5 @@
+XVCV_MDLC_BIO_ROBOT = {
+	species_trait_points = 20
+	species_max_traits = 10
+	robotic = yes
+}

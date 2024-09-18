@@ -1,0 +1,476 @@
+tech_frameworld_repeatable_outpost_output = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { new_worlds }
+	levels = 15
+	prerequisites = { tech_mega_engineering }
+	weight = @repeatableTechWeight
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+
+		modifier = {
+			factor = 0
+			not = {
+				has_origin = origin_frameworld
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = 1.0
+	}
+
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+
+	modifier = {
+		frameworld_outposts_produces_mult = 0.2
+	}
+}
+
+xvcv_mdlc_tech_world_machines_districts_produces = {
+	area = engineering
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { industry }
+	levels = 6 #5% X 6 = 30%
+	weight = @repeatableTechWeight
+
+	potential = {
+		any_owned_planet = { xvcv_mdlc_world_machines_planet_classes_trigger = yes }
+	}
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		xvcv_mdlc_world_machines_districts_produces_mult = 0.05
+	}
+
+	potential = {
+		always = no
+	}
+}
+
+xvcv_mdlc_tech_bio_robot_trait_points = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { biology }
+	levels = 3 #same with the tier 3 compatibility module trait
+	weight = @repeatableTechWeight
+
+	potential = {
+		has_ascension_perk = xvcv_mdlc_ap_bio_robot
+	}
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		XVCV_MDLC_BIO_ROBOT_species_trait_points_add = 1
+	}
+
+	potential = {
+		always = no
+	}
+}
+
+tech_repeatable_improved_core_system_cap = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { statecraft }
+	levels = 1
+	prerequisites = { "tech_galactic_bureaucracy" }
+	weight = @repeatableTechWeight
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+
+	ai_weight = {
+		factor = 1.0
+	}
+
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+
+	modifier = {
+		country_admin_cap_add = 15
+	}
+
+	potential = {
+		always = no
+	}
+}
+
+tech_repeatable_improved_core_system_cap = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { statecraft }
+	levels = 1
+	prerequisites = { "tech_galactic_bureaucracy" }
+	weight = @repeatableTechWeight
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+
+	ai_weight = {
+		factor = 1.0
+	}
+
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+
+	modifier = {
+		country_admin_cap_add = 15
+	}
+
+	potential = {
+		always = no
+	}
+}
+
+giga_tech_repeatable_dimensional_storage = {
+	area = physics
+	cost = 50000
+	cost_per_level = 5000
+	tier = 5
+	category = { field_manipulation }
+	levels = 20
+	prerequisites = { "giga_tech_tetradimensional_engineering" }
+	weight = 20
+	ai_weight = { factor = 1 }
+	weight_groups = { repeatable }
+	mod_weight_if_group_picked = { repeatable = 0.01 }
+	modifier = { country_resource_max_add = 500000 }
+}
+
+giga_tech_blokkat_society_repeatable = {
+	cost = 750000
+	cost_per_level = 750000
+	area = society
+	tier = 5
+	category = { blokkats }
+	is_rare = yes
+	weight = 40
+	levels = 10
+	is_reverse_engineerable = no
+	prerequisites = { giga_tech_blokkat_sociology_study }
+
+	modifier = {
+		country_unity_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			has_global_flag = blokkat_crisis_defeated
+		}
+	}
+
+	prereqfor_desc = {
+		custom = { title = "blokkat_knowledge_repeatable_title"	desc = "blokkat_knowledge_repeatable_title" }
+	}
+}
+
+giga_tech_blokkat_physics_repeatable = {
+	cost = 750000
+	cost_per_level = 750000
+	area = physics
+	tier = 5
+	category = { blokkats }
+	is_rare = yes
+	weight = 40
+	levels = 10
+	is_reverse_engineerable = no
+	prerequisites = { giga_tech_blokkat_dimension_study }
+
+	modifier = {
+		megastructure_build_speed_mult = 0.05
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			has_global_flag = blokkat_crisis_defeated
+		}
+	}
+
+	prereqfor_desc = {
+		custom = { title = "blokkat_knowledge_repeatable_title"	desc = "blokkat_knowledge_repeatable_title" }
+	}
+}
+
+giga_tech_blokkat_engineering_repeatable = {
+	cost = 750000
+	cost_per_level = 750000
+	area = engineering
+	tier = 5
+	category = { blokkats }
+	is_rare = yes
+	weight = 40
+	levels = 10
+	is_reverse_engineerable = no
+	prerequisites = { giga_tech_blokkat_armor_study }
+
+	modifier = {
+		planet_building_build_speed_mult = 0.15
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			has_global_flag = blokkat_crisis_defeated
+		}
+	}
+
+	prereqfor_desc = {
+		custom = { title = "blokkat_knowledge_repeatable_title"	desc = "blokkat_knowledge_repeatable_title" }
+	}
+}
+
+giga_tech_blokkat_scrap_research = {
+	cost = 500000
+	cost_per_level = 100000
+	area = society
+	tier = 1
+	category = { blokkats }
+	is_rare = yes
+	weight = 1000
+	levels = 10
+	is_reverse_engineerable = no
+
+	modifier = {
+		all_technology_research_speed = 0.05
+		category_blokkats_research_speed_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = { title = "blokkat_scrap_research_title"	desc = "blokkat_scrap_research_title" }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = researching_blokkat_scrap_research }
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+giga_tech_blokkat_scrap_damage = {
+	cost = 500000
+	cost_per_level = 100000
+	area = engineering
+	tier = 1
+	category = { blokkats }
+	is_rare = yes
+	weight = 1000
+	levels = 5
+	is_reverse_engineerable = no
+
+	modifier = {
+		ship_weapon_damage = 0.05
+		damage_vs_country_type_blokkat_stripminers_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = { title = "blokkat_scrap_damage_title"	desc = "blokkat_scrap_damage_title" }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = { has_country_flag = researching_blokkat_scrap_damage }
+		}
+	}
+
+	ai_weight = {
+		factor = 0
+	}
+}
+
+giga_tech_repeatable_reduced_mega_building_time = {
+	area = engineering
+	cost = 100000
+	cost_per_level = 10000
+	tier = 5
+	category = { industry }
+	levels = 10
+	prerequisites = { "tech_mega_engineering" }
+	weight = 20
+	ai_weight = { factor = 1 }
+	weight_groups = { repeatable }
+	mod_weight_if_group_picked = { repeatable = 0.01 }
+	modifier = { megastructure_build_speed_mult = 0.05 }
+}
+
+giga_tech_repeatable_defense_nexus_capacity_upgrade = {
+	area = engineering
+	cost = 200000
+	cost_per_level = 50000
+	tier = 5
+	category = { voidcraft }
+	levels = 10
+	prerequisites = { "giga_tech_defense_nexus_production_2" }
+	weight = 20
+	ai_weight = { factor = 1 }
+	weight_groups = { repeatable }
+	mod_weight_if_group_picked = { repeatable = 0.01 }
+
+	prereqfor_desc = {
+		custom = { title = "increases_defense_nexus_capacity"	desc = "increases_defense_nexus_capacity" }
+	}
+}
+
+tech_repeatable_lcluster_clue = {
+	area = engineering
+	cost = 2000
+	cost_per_level = @repeatableTechLevelCost
+	tier = 2
+	is_rare = yes
+	category = { voidcraft }
+	levels = 10
+	weight = 70
+
+	potential = {
+		has_country_flag = encountered_first_lgate
+		NOT = { has_country_flag = completed_lcluster_chain }
+		NOT = { has_global_flag = l_cluster_opened }
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = add_lcluster_clue
+			desc = tech_repeatable_lcluster_clue_desc
+		}
+	}
+
+	ai_weight = {
+		factor = 1.0
+	}
+
+	weight_groups = {
+		#repeatable
+	}
+	mod_weight_if_group_picked = {
+		#repeatable = 0.01
+	}
+}
+
+tech_acot_precursor_herculean_regain = {
+	area = society
+	cost = 1500000
+	cost_per_level = 1500000
+	tier = 8
+	is_rare = yes
+	category = { military_theory }
+	ai_update_type = military
+	weight = 20
+
+	levels = 0
+	
+
+	prerequisites = {
+		tech_precursor_colossus
+	}
+	
+	modifier = {
+	}
+
+	potential = {
+		has_country_flag = acot_herculean_research_required
+	}
+
+	ai_weight = {
+		factor = 5		#weapons are good
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+ui_tech_ascension_theory_repeatable = {
+	area = society
+	cost = 100000
+	cost_per_level = 50000
+	tier = @repeatableTechTier
+	category = { statecraft }
+	ai_update_type = all
+	is_rare = yes
+	levels = 0
+	prerequisites = { "tech_ascension_theory" }
+	weight = @repeatableTechWeight
+	potential = {
+		always = no
+	}
+	modifier = {
+		ascension_perks_add = 1
+	}
+	weight_modifier = {
+	}
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	ai_weight = {
+		factor = 0
+	}
+}

@@ -1,0 +1,157 @@
+# Disabled ----------------------------
+
+living_standard_deassimilation = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_ego_assimilation = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_ego_assimilation_psionic = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_cyborg_ego_assimilation = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_cyborg_ego_assimilation_psionic = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_tech_assimilation = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_cyborg_assimilation = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_cyborg_assimilation_psionic = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_psi_assimilation = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_psi_assimilation_cyborg = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+living_standard_deassimilation_machine = {
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+# -------------------------------------

@@ -1,0 +1,37 @@
+##########################################################################
+# Empire edicts
+##########################################################################
+
+@Edict1Cost = 100
+@Edict2Cost = 200
+@Edict3Cost = 300
+
+@EdictPerpetual = -1
+
+#################
+# Toggle Edicts
+#################
+
+self_awareness = {
+	length = @EdictPerpetual
+	icon = "GFX_edict_type_policy"
+
+	resources = {
+		category = edicts
+		upkeep = {
+			unity = @Edict1Cost
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+	}
+
+	potential = {
+		has_valid_civic = civic_hive_autonomous_drones
+	}
+
+	ai_weight = {
+		weight = @EdictHighPrio
+	}
+}

@@ -1,0 +1,149 @@
+namespace = giga_aeternum
+
+country_event = {
+	id = giga_aeternum.4002
+	title = "giga_aeternum.4002.name"
+	desc = {
+		text = "giga_aeternum.4002.desc"
+		trigger = { NOT = { has_global_flag = pre_emptive_aeternum_war } }
+	}
+	desc = {
+		text = "giga_aeternum.4002.desc.preemptive"
+		trigger = { has_global_flag = pre_emptive_aeternum_war }
+	}
+	diplomatic = yes
+	custom_gui = "giga_aeternum_gui"
+	is_triggered_only = yes
+
+	force_open = yes
+
+	picture_event_data = {
+		portrait = event_target:birch_aeternum.ruler
+		graphical_culture = event_target:birch_aeternum
+		room = aeternum_room
+	}
+
+	immediate = {
+		set_country_flag = aeternum_diplomacy_engaged
+		country_event = { id = giga_aeternum.4004 days = 30 }
+	}
+
+	option = {
+		name = "giga_aeternum.4002.a.preemptive" #war
+		custom_gui = aeternum_event_option_entry
+		trigger = {
+			has_global_flag = pre_emptive_aeternum_war
+			NOR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+			}
+		}
+		hidden_effect = {
+			remove_country_flag = aeternum_diplomacy_engaged
+			if = {
+				limit = { ROOT = { NOT = { is_at_war_with = event_target:birch_aeternum } } }
+				event_target:birch_aeternum = {
+					declare_war = {
+						target = ROOT
+						attacker_war_goal = "wg_aeternum_conquest"
+						name = "Aeternal Reclamation"
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "giga_aeternum.4002.a" #war
+		custom_gui = aeternum_event_option_entry
+		trigger = {
+			NOR = {
+				has_global_flag = pre_emptive_aeternum_war
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+			}
+			is_multiplayer = no
+		}
+		hidden_effect = {
+			remove_country_flag = aeternum_diplomacy_engaged
+			if = {
+				limit = { ROOT = { NOT = { is_at_war_with = event_target:birch_aeternum } } }
+				event_target:birch_aeternum = {
+					declare_war = {
+						target = ROOT
+						attacker_war_goal = "wg_aeternum_conquest"
+						name = "Aeternal Reclamation"
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "giga_aeternum.4002.purifier" #war
+		custom_gui = aeternum_event_option_entry
+		trigger = {
+			has_valid_civic = civic_fanatic_purifiers
+			is_multiplayer = no
+		}
+		hidden_effect = {
+			remove_country_flag = aeternum_diplomacy_engaged
+			if = {
+				limit = { ROOT = { NOT = { is_at_war_with = event_target:birch_aeternum } } }
+				event_target:birch_aeternum = {
+					declare_war = {
+						target = ROOT
+						attacker_war_goal = "wg_aeternum_conquest"
+						name = "Aeternal Reclamation"
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "giga_aeternum.4002.swarm" #war
+		custom_gui = aeternum_event_option_entry
+		trigger = {
+			has_valid_civic = civic_hive_devouring_swarm
+			is_multiplayer = no
+		}
+		hidden_effect = {
+			remove_country_flag = aeternum_diplomacy_engaged
+			if = {
+				limit = { ROOT = { NOT = { is_at_war_with = event_target:birch_aeternum } } }
+				event_target:birch_aeternum = {
+					declare_war = {
+						target = ROOT
+						attacker_war_goal = "wg_aeternum_conquest"
+						name = "Aeternal Reclamation"
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "giga_aeternum.4002.terminator" #war
+		custom_gui = aeternum_event_option_entry
+		trigger = {
+			has_valid_civic = civic_machine_terminator
+			is_multiplayer = no
+		}
+		hidden_effect = {
+			remove_country_flag = aeternum_diplomacy_engaged
+			if = {
+				limit = { ROOT = { NOT = { is_at_war_with = event_target:birch_aeternum } } }
+				event_target:birch_aeternum = {
+					declare_war = {
+						target = ROOT
+						attacker_war_goal = "wg_aeternum_conquest"
+						name = "Aeternal Reclamation"
+					}
+				}
+			}
+		}
+	}
+}

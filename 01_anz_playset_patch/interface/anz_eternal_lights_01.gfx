@@ -1,0 +1,49 @@
+spriteTypes = {	
+	spriteType = {
+		name = "GFX_evt_anz_meg_eternal_light"
+		texturefile = "gfx/event_pictures/anz_evt_meg_eternal_lights.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_anz_meg_update_notice"
+		texturefile = "gfx/event_pictures/anz_evt_meg_update_notice.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+
+	spriteType = {
+		name = "GFX_evt_anz_phanon_hacks"
+		texturefile = "gfx/event_pictures/anz_evt_phanon_hacks.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+
+	spriteType = {
+		name = "GFX_resource_queens_larva"
+		textureFile = "gfx/interface/icons/resources/larva.dds"
+	}
+
+	spriteType = {
+		name = "GFX_giga_sr_amb_megaconstruction_large"
+		textureFile = "gfx/interface/icons/resources/giga_sr_amb_megaconstruction_large.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_anz_te"
+		textureFile = "gfx/interface/icons/resources/sm_sr_perfect_runic_energy_large.dds"
+	}
+
+	corneredTileSpriteType = {
+		name = "GFX_anz_topbar_spoiler"
+		textureFile = "gfx/interface/icons/topbar_spoiler.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+
+	corneredTileSpriteType = {
+		name = "GFX_anz_topbar_spoiler_small"
+		textureFile = "gfx/interface/icons/topbar_spoiler_small.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+}

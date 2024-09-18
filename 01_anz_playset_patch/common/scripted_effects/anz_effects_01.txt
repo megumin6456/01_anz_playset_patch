@@ -1,0 +1,184 @@
+# this = species
+# prev = country
+anz_asim_effects = {
+	optimize_memory
+	prev = {
+		every_owned_planet = {
+			set_variable = {
+				which = assimilation_counter
+				value = 6
+			}
+			if = {
+				limit = { prev = { has_tradition = tr_cybernetics_assimilator_inevitable_assimilation } }
+				change_variable = {
+					which = assimilation_counter
+					value = 1
+				}
+			}
+			every_owned_pop = {
+				limit = {
+					has_citizenship_type = {
+						type = citizenship_assimilation
+						country = prevprev
+					}
+					is_same_species = event_target:anz_asim_origin
+				}
+				if = {
+					limit = {
+						prev = {
+							check_variable = {
+								which = assimilation_counter
+								value > 0
+							}
+						}
+					}
+					prev = {
+						subtract_variable = {
+							which = assimilation_counter
+							value = 1
+						}
+					}
+					change_species = event_target:anz_asim_target
+					anz_asim_post_effects = yes
+					# stop assimilating new species to prevent duplicate bugs
+					if = {
+						limit = { has_citizenship_type = { type = citizenship_assimilation } }
+						if = {
+							limit = { prevprev = { has_authority = auth_machine_intelligence } }
+							set_citizenship_type = {
+								type = citizenship_full_machine
+								country = prevprev
+							}
+						} else = {
+							set_citizenship_type = {
+								type = citizenship_full
+								country = prevprev
+							}
+						}
+						if = {
+							limit = { prevprev = { has_ethic = ethic_gestalt_consciousness } }
+							set_living_standard = {
+								type = living_standard_hive_mind
+								country = prevprev
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# copy of anz_asim_effects
+# use is_exact_same_species = *** instead of is_same_species = ***
+anz_asim_effects_exact = {
+	optimize_memory
+	prev = {
+		every_owned_planet = {
+			set_variable = {
+				which = assimilation_counter
+				value = 6
+			}
+			if = {
+				limit = { prev = { has_tradition = tr_cybernetics_assimilator_inevitable_assimilation } }
+				change_variable = {
+					which = assimilation_counter
+					value = 1
+				}
+			}
+			every_owned_pop = {
+				limit = {
+					has_citizenship_type = {
+						type = citizenship_assimilation
+						country = prevprev
+					}
+					is_exact_same_species = event_target:anz_asim_origin
+				}
+				if = {
+					limit = {
+						prev = {
+							check_variable = {
+								which = assimilation_counter
+								value > 0
+							}
+						}
+					}
+					prev = {
+						subtract_variable = {
+							which = assimilation_counter
+							value = 1
+						}
+					}
+					change_species = event_target:anz_asim_target
+					anz_asim_post_effects = yes
+				}
+			}
+		}
+	}
+}
+
+# this = pop
+# prev = planet
+# prevprev = country
+anz_asim_post_effects = {
+	prevprev = {
+		if = { # BTC
+			limit = { has_ascension_perk = ap_become_the_crisis }
+			complete_crisis_objective = crisobj_purge_pops
+		}
+		if = { # Count when not assimilators
+			limit = { NOT = { has_civic = civic_machine_assimilator } }
+			change_variable = {
+				which = num_assimilated_pops
+				value = 1
+			}
+		}
+		if = { # assimilator empire
+			limit = {
+				has_authority = auth_machine_intelligence
+				has_civic = civic_machine_assimilator
+				NOT = { has_tradition = tr_cybernetics_assimilator_adopt }
+			}
+			generate_cyborg_treats = yes
+		}
+		else_if = {
+			limit = {
+				has_authority = auth_machine_intelligence
+				has_civic = civic_machine_assimilator
+				has_tradition = tr_cybernetics_assimilator_adopt
+			}
+			generate_cyborg_extra_treats = yes
+		}
+	}
+}
+
+
+anz_asim_post_effects_country_scope = {
+	if = { # BTC
+		limit = { has_ascension_perk = ap_become_the_crisis }
+		complete_crisis_objective = crisobj_purge_pops
+	}
+	if = { # Count when not assimilators
+		limit = { NOT = { has_civic = civic_machine_assimilator } }
+		change_variable = {
+			which = num_assimilated_pops
+			value = 1
+		}
+	}
+	if = { # assimilator empire
+		limit = {
+			has_authority = auth_machine_intelligence
+			has_civic = civic_machine_assimilator
+			NOT = { has_tradition = tr_cybernetics_assimilator_adopt }
+		}
+		generate_cyborg_treats = yes
+	}
+	else_if = {
+		limit = {
+			has_authority = auth_machine_intelligence
+			has_civic = civic_machine_assimilator
+			has_tradition = tr_cybernetics_assimilator_adopt
+		}
+		generate_cyborg_extra_treats = yes
+	}
+}

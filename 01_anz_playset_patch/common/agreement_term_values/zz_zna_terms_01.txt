@@ -1,0 +1,84 @@
+subject_holdings_limit_3 = {
+	term = subject_holdings_limit
+	loyalty_change = -30
+	ai_acceptance = {
+		overlord = 180
+		subject = -150
+	}
+	target_modifier = {
+		monthly_loyalty = -2
+		planet_max_subject_holding_buildings_add = 3
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = { agreement_preset = preset_tributary }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOT = { is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight }
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = { agreement_preset = preset_luminarium }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_devolved
+			NOT = { agreement_preset = preset_ver_devolved }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_condo
+			NOT = { agreement_preset = preset_ver_condo }
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_4 = {
+	term = subject_holdings_limit
+	loyalty_change = -50
+	ai_acceptance = {
+		overlord = 300
+		subject = -250
+	}
+	target_modifier = {
+		monthly_loyalty = -4
+		planet_max_subject_holding_buildings_add = 4
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = { agreement_preset = preset_tributary }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = { agreement_preset = preset_luminarium }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_devolved
+			NOT = { agreement_preset = preset_ver_devolved }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_condo
+			NOT = { agreement_preset = preset_ver_condo }
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}

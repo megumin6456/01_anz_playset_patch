@@ -1,0 +1,632 @@
+# ┌───────────────────┐
+# │    ／l、   Meow?  
+# │  （ﾟ､ ｡７        
+# │    l、ﾞ~ヽ 	     
+# │    じし(_,)ノ    
+# └───────────────────┘
+
+# Machine Synth (Blue)
+living_standard_anz_spr_001 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_machine_empire = yes
+			anz_spr_resynth = yes
+		}
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_025
+			is_robotic_species = yes
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_002
+			NOT = { has_trait = trait_machine_unit }
+			has_trait = trait_mechanical
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Machine Psi (Red)
+living_standard_anz_spr_002 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_machine_empire = yes
+			anz_spr_repsi = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_025
+			is_robotic_species = yes
+		}
+		if = {
+			limit = { has_trait = trait_machine_unit }
+			custom_tooltip = {
+				fail_text = anz_spr_004
+				NOT = { has_trait = trait_psionic }
+			}
+		} else = {
+			custom_tooltip = {
+				fail_text = anz_spr_003
+				always = no
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Machine Cyber (Yellow)
+living_standard_anz_spr_003 = {
+	pop_modifier = { pop_happiness = -1.0 }
+
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = { has_valid_civic = civic_machine_assimilator }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_024
+			is_robotic_species = no
+		}
+		if = {
+			limit = { has_trait = trait_hive_mind }
+			if = {
+				limit = { from = { anz_spr_dehive = no } }
+				custom_tooltip = {
+					fail_text = anz_spr_008
+					always = no
+				}
+			}
+		} else = {
+			custom_tooltip = {
+				fail_text = anz_spr_007
+				NOT = { has_trait = trait_cybernetic }
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Machine Cyber + Psi (White)
+living_standard_anz_spr_004 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			has_valid_civic = civic_machine_assimilator
+			anz_spr_repsi = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_024
+			is_robotic_species = no
+		}
+		if = {
+			limit = {
+				has_trait = trait_cybernetic
+				NOT = { has_trait = trait_hive_mind }
+			}
+			custom_tooltip = {
+				fail_text = anz_spr_006
+				NOT = { has_trait = trait_psionic }
+			}
+		} else = {
+			custom_tooltip = {
+				fail_text = anz_spr_020
+				always = no
+			}
+		}
+		
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Hive Gene (Green)
+living_standard_anz_spr_005 = {
+	pop_modifier = { pop_happiness = -1.0 }
+
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_hive_empire = yes
+			anz_spr_rehive = yes
+			anz_spr_recyber = no
+		}
+		is_robotic_species = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_011
+			NOT = { has_trait = trait_hive_mind }
+		}
+		
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Hive Psi (Purple)
+living_standard_anz_spr_006 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_hive_empire = yes
+			anz_spr_repsi = yes
+			anz_spr_recyber = no
+		}
+		is_robotic_species = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		if = {
+			limit = { has_trait = trait_hive_mind }
+			custom_tooltip = {
+				fail_text = anz_spr_010
+				NOR = {
+					has_trait = trait_psionic
+				}
+			}
+		} else = {
+			custom_tooltip = {
+				fail_text = anz_spr_009
+				always = no
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Hive Cyber (Yellow)
+living_standard_anz_spr_007 = {
+	pop_modifier = { pop_happiness = -1.0 }
+
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_hive_empire = yes
+			anz_spr_recyber = yes
+			anz_spr_repsi = no
+		}
+		is_robotic_species = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		if = {
+			limit = { has_trait = trait_hive_mind }
+			custom_tooltip = {
+				fail_text = anz_spr_022
+				NOR = {
+					has_trait = trait_psionic
+				}
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Hive Cyber + Psi (Pink)
+living_standard_anz_spr_008 = {
+	pop_modifier = { pop_happiness = -1.0 }
+
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_hive_empire = yes
+			anz_spr_recyber = yes
+			anz_spr_repsi = yes
+		}
+		is_robotic_species = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_012
+			NAND = {
+				has_trait = trait_hive_mind
+				has_trait = trait_psionic
+				has_trait = trait_cybernetic
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Normie Demech (Blue)
+living_standard_anz_spr_009 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_demech = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_026
+			has_trait = trait_machine_unit
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Normie Dehive (Green)
+living_standard_anz_spr_010 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_dehive = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_027
+			has_trait = trait_hive_mind
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Normie Synth (Cyan)
+living_standard_anz_spr_011 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_resynth = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_024
+			is_robotic_species = no
+		}
+		if = {
+			limit = { from = { is_ai = no } }
+			custom_tooltip = {
+				fail_text = anz_spr_028
+				from = { has_policy_flag = anz_ee_become_synth_allowed }
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+		modifier = {
+			factor = 0
+			from = {
+				has_country_flag = anz_synth_ascend_only_robots
+			}
+		}
+	}
+}
+
+# Normie Synth + Psi (Red)
+living_standard_anz_spr_012 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_repsi = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_023
+			has_trait = trait_mechanical
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_004
+			NOT = { has_trait = trait_psionic }
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Normie Cyber (Yellow)
+living_standard_anz_spr_013 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_recyber = yes
+			anz_spr_repsi = no
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_024
+			is_robotic_species = no
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_007
+			NOT = { has_trait = trait_cybernetic }
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Normie Psi (Purple)
+living_standard_anz_spr_014 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_repsi = yes
+			anz_spr_recyber = no
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_024
+			is_robotic_species = no
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_016
+			NOT = { has_trait = trait_psionic }
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+# Normie Cyber + Psi (Orange)
+living_standard_anz_spr_015 = {
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+		exists = from
+		from = {
+			is_gestalt = no
+			anz_spr_recyber = yes
+			anz_spr_repsi = yes
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_024
+			is_robotic_species = no
+		}
+		custom_tooltip = {
+			fail_text = anz_spr_017
+			NAND = {
+				has_trait = trait_cybernetic
+				has_trait = trait_psionic
+			}
+		}
+		hidden_trigger = { exists = from }
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}

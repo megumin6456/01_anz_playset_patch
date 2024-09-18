@@ -1,0 +1,91 @@
+# FQ Patch Import
+
+origin_hive_overmind = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_overmind.dds"
+	picture = GFX_origin_overmind
+
+	possible = {
+		authority = { value = auth_hive_mind }
+		civics = {
+			NOR = {
+				value = civic_hive_devouring_swarm
+				value = civic_hive_parasitic
+				value = civic_mutualistic_behavior 
+			}
+		}
+	}
+
+	flags = { custom_start_screen }
+	random_weight = {
+		base = 1
+	}
+	
+	traits = {
+		trait = trait_hive_mind_overlord
+	}
+	
+	advanced_start = yes
+	description = origin_tooltip_overmind_effects
+
+	has_secondary_species = {	# see game_start.overmind
+		title = civic_overmind_secondary_species
+		traits = {
+			trait = trait_hive_mind
+			trait = trait_hive_mind_remote_drone
+		}
+	}
+}
+
+civic_machine_multi_threaded = {
+	icon = "gfx/interface/icons/governments/civics/civic_machine_multi_threaded.dds"
+ potential = { authority = { value = auth_machine_intelligence } }	
+ advanced_start = no
+ 
+ random_weight = { base = 5 }
+ modifier = {
+	 country_edict_fund_add = 30
+ }			
+}
+
+civic_hive_parasitic = {
+	potential = { authority = { value = auth_hive_mind } }
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_hive_devouring_swarm
+				value = civic_mutualistic_behavior 
+			}
+		}
+		origin = {
+			#NOT = { value = origin_hive_thriving_prey }
+			NOT = { value = origin_hive_overmind }
+		}
+	}
+
+	modification = no
+	random_weight = {
+		base = 1
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = civic_tooltip_parasitic_effects
+	modifier = {
+		slave_market_cost_mult = 5
+	}
+	swap_type = {
+		name = civic_hive_parasitic_lithoid
+		trigger = {
+			local_human_species_class = LITHOID
+		}	
+	}
+	swap_type = {
+		name = civic_hive_parasitic_necroid
+		trigger = {
+			local_human_species_class = NECROID
+		}
+	}
+}

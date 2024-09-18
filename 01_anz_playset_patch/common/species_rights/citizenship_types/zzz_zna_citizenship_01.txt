@@ -1,0 +1,472 @@
+# GUIDE: Deassimilate Machines (only used as ref, most code remade)
+# REF SHEET: /species_rules.md
+
+citizenship_assimilation = {
+	is_assimilation = yes
+
+	potential = {
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
+		exists = from
+
+		# if the empire can assimilate anything, show option
+		from = {
+			if = {
+				limit = { is_machine_empire = yes }
+				OR = {
+					anz_spr_resynth = yes
+					anz_spr_repsi = yes
+					AND = {
+						has_civic = civic_machine_assimilator
+						OR = {
+							anz_spr_recyber = yes
+							anz_spr_dehive = yes
+						}
+					}
+				}
+			} else_if = {
+				limit = { is_hive_empire = yes }
+				OR = {
+					anz_spr_rehive = yes
+					anz_spr_repsi = yes
+					anz_spr_recyber = yes
+				}
+			} else_if = {
+				limit = { is_gestalt = no }
+				OR = {
+					anz_spr_dehive = yes
+					anz_spr_demech = yes
+					anz_spr_resynth = yes
+					anz_spr_repsi = yes
+					anz_spr_recyber = yes
+				}
+			}
+		}
+	}
+	
+	allow = {
+		hidden_trigger = { exists = from }
+
+		if = { # Default Species
+			limit = { anz_spr_myst = yes }
+			always = yes
+		} else = { # Real species
+			from = {
+				if = { # terminators
+					limit = {
+						has_valid_civic = civic_machine_terminator
+					}
+					custom_tooltip = {
+						fail_text = anz_spr_019
+						prev = { is_robotic_species = yes }
+					}
+				} else_if = { # genocidals
+					limit = {
+						is_homicidal = yes
+					}
+					custom_tooltip = {
+						fail_text = anz_spr_018
+						is_exact_same_species = from
+					}
+				}
+
+				if = { # machines
+					limit = { is_machine_empire = yes }
+					# machine shared code
+					if = {
+						limit = { prev = { is_organic_species = no } }
+						if = { # synth + psi trads
+							limit = {
+								anz_spr_resynth = yes
+								anz_spr_repsi = yes
+							}
+							custom_tooltip = { # only mech -> psi + mech or synth -> mech
+								fail_text = anz_spr_001
+								prev = {
+									OR = {
+										AND = {
+											has_trait = trait_machine_unit
+											NOT = { has_trait = trait_psionic }
+										}
+										has_trait = trait_mechanical
+									}
+								}
+							}
+						} else_if = { # synth trad
+							limit = {
+								anz_spr_resynth = yes
+								anz_spr_repsi = no
+							}
+							custom_tooltip = { # only synth -> mech
+								fail_text = anz_spr_002
+								prev = {
+									has_trait = trait_mechanical
+								}
+							}
+						} else_if = { # psi trad
+							limit = {
+								anz_spr_resynth = no
+								anz_spr_repsi = yes
+							}
+							custom_tooltip = { # only mech -> mech + psi
+								fail_text = anz_spr_003
+								prev = {
+									has_trait = trait_machine_unit
+								}
+							}
+							if = { # already psi
+								limit = {
+									prev = { has_trait = trait_machine_unit }
+								}
+								custom_tooltip = {
+									fail_text = anz_spr_004
+									prev = {
+										NOT = { has_trait = trait_psionic }
+									}
+								}
+							}
+						} else = { # nothing left to modify
+							custom_tooltip = {
+								fail_text = anz_spr_005
+								always = no
+							}
+						}
+					} else_if = { # block if organics & not assimilators
+						limit = {
+							prev = { is_organic_species = yes }
+							NOT = { has_valid_civic = civic_machine_assimilator }
+						}
+						custom_tooltip = {
+							fail_text = anz_spr_005
+							always = no
+						}
+					}
+					if = { # assimilators
+						limit = {
+							has_valid_civic = civic_machine_assimilator
+							prev = { is_organic_species = yes }
+						}
+						if = { # psi + dehive trads
+							limit = {
+								anz_spr_dehive = yes
+								anz_spr_repsi = yes
+							}
+							custom_tooltip = { # already cyber + psi
+								fail_text = anz_spr_006
+								prev = {
+									NAND = {
+										has_trait = trait_cybernetic
+										has_trait = trait_psionic
+										NOT = { has_trait = trait_hive_mind }
+									}
+								}
+							}
+						} else_if = { # dehive trad
+							limit = {
+								anz_spr_dehive = yes
+								anz_spr_repsi = no
+							}
+							# any -> cyber
+							if = {
+								limit = { prev = { NOT = { has_trait = trait_hive_mind } } }
+								custom_tooltip = { # already cyber
+									fail_text = anz_spr_007
+									prev = { NOT = { has_trait = trait_cybernetic } }
+								}
+							}
+						} else_if = { # psi trad
+							limit = {
+								anz_spr_dehive = no
+								anz_spr_repsi = yes
+							}
+							if = { # can't hive -> cyber
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = {
+									fail_text = anz_spr_008
+									always = no
+								}
+							} else_if = { # cyber -> cyber + psi
+								limit = { prev = { has_trait = trait_cybernetic } }
+								custom_tooltip = {
+									fail_text = anz_spr_006
+									prev = { NOT = { has_trait = trait_psionic } }
+								}
+							} else = { # normie -> cyber
+								custom_tooltip = {
+									fail_text = anz_spr_007
+									prev = { NOT = { has_trait = trait_cybernetic } }
+								}
+							}
+						} else = { # no trads
+							if = { # can't hive -> cyber
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = {
+									fail_text = anz_spr_008
+									always = no
+								}
+							} else = { # normie -> cyber
+								custom_tooltip = {
+									fail_text = anz_spr_007
+									prev = { NOT = { has_trait = trait_cybernetic } }
+								}
+							}
+						}
+					}
+				} else_if = { # hives
+					limit = { is_hive_empire = yes }
+					if = { # nah for robits
+						limit = { prev = { is_robotic_species = yes } }
+						custom_tooltip = {
+							fail_text = anz_spr_005
+							always = no
+						}
+					} else = {
+						if = { # all trads
+							limit = {
+								anz_spr_rehive = yes
+								anz_spr_recyber = yes
+								anz_spr_repsi = yes
+							}
+							if = { # already hive
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = { # already cyber + psi
+									fail_text = anz_spr_012
+									prev = { NAND = {
+										has_trait = trait_cybernetic
+										has_trait = trait_psionic
+									} }
+								}
+							} # else allow
+						} else_if = { # cyber + psi trads
+							limit = {
+								anz_spr_rehive = no
+								anz_spr_recyber = yes
+								anz_spr_repsi = yes
+							}
+							if = { # already hive
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = { # already cyber + psi
+									fail_text = anz_spr_012
+									prev = { NAND = {
+										has_trait = trait_cybernetic
+										has_trait = trait_psionic
+									} }
+								}
+							} # else allow
+						} else_if = { # gene + psi trads
+							limit = {
+								anz_spr_rehive = yes
+								anz_spr_recyber = no
+								anz_spr_repsi = yes
+							}
+							if = { # already hive
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = { # already psi
+									fail_text = anz_spr_010
+									prev = { NOT = { has_trait = trait_psionic } }
+								}
+							} # else allow
+						} else_if = { # gene + cyber trads
+							limit = {
+								anz_spr_rehive = yes
+								anz_spr_recyber = yes
+								anz_spr_repsi = no
+							}
+							if = { # already hive
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = { # already cyber
+									fail_text = anz_spr_007
+									prev = {
+										NOT = { has_trait = trait_cybernetic }
+									}
+								}
+							} # else allow
+						} else_if = { # gene trad
+							limit = {
+								anz_spr_rehive = yes
+								anz_spr_recyber = no
+								anz_spr_repsi = no
+							}
+							custom_tooltip = { # already hive
+								fail_text = anz_spr_011
+								prev = { NOT = { has_trait = trait_hive_mind } }
+							}
+						} else_if = { # cyber trad
+							limit = {
+								anz_spr_rehive = no
+								anz_spr_recyber = yes
+								anz_spr_repsi = no
+							}
+							if = { # already hive
+								limit = { prev = { has_trait = trait_hive_mind } }
+								custom_tooltip = { # already cyber
+									fail_text = anz_spr_007
+									prev = {
+										NOT = { has_trait = trait_cybernetic }
+									}
+								}
+							} # else allow
+						} else_if = { # psi trad
+							limit = {
+								anz_spr_rehive = no
+								anz_spr_recyber = no
+								anz_spr_repsi = yes
+							}
+							custom_tooltip = { # already hive?
+								fail_text = anz_spr_009
+								prev = { has_trait = trait_hive_mind }
+							}
+							custom_tooltip = { # already psi?
+								fail_text = anz_spr_010
+								prev = { NOT = { has_trait = trait_psionic } }
+							}
+						} else_if = { # no trads
+							limit = {
+								anz_spr_rehive = no
+								anz_spr_recyber = no
+								anz_spr_repsi = no
+							}
+							custom_tooltip = {
+								fail_text = anz_spr_005
+								always = no
+							}
+						}
+					}
+				} else_if = { # normies
+					limit = { is_gestalt = no }
+
+					if = { # dehive
+						limit = { prev = { has_trait = trait_hive_mind } }
+						custom_tooltip = {
+							fail_text = anz_spr_013
+							anz_spr_dehive = yes
+						}
+					}
+
+					if = { # demech
+						limit = { prev = { has_trait = trait_machine_unit } }
+						custom_tooltip = {
+							fail_text = anz_spr_014
+							anz_spr_demech = yes
+						}
+					}
+
+					if = { # synths
+						limit = { prev = { has_trait = trait_mechanical } }
+						if = {
+							limit = { anz_spr_repsi = yes }
+							custom_tooltip = {
+								fail_text = anz_spr_015
+								prev = { NOT = { has_trait = trait_psionic } }
+							}
+						} else = {
+							custom_tooltip = {
+								fail_text = anz_spr_005
+								always = no
+							}
+						}
+					}
+					
+					if = { # Everyone else
+						limit = { prev = { NOR = {
+							has_trait = trait_machine_unit
+							has_trait = trait_hive_mind
+							has_trait = trait_mechanical
+						} } }
+						if = { # become synth
+							limit = {
+								anz_spr_resynth = yes
+								from = {
+									OR = {
+										is_ai = yes
+										AND = {
+											is_ai = no
+											has_policy_flag = anz_ee_become_synth_allowed
+										}
+									}
+								}
+							}
+							always = yes
+						} else = {
+							if = { # cyber + psi
+								limit = {
+									anz_spr_repsi = yes
+									anz_spr_recyber = yes
+								}
+								custom_tooltip = { # already cyber + psi
+									fail_text = anz_spr_017
+									prev = { NAND = {
+										has_trait = trait_cybernetic
+										has_trait = trait_psionic
+									} }
+								}
+							} else_if = { # psi
+								limit = {
+									anz_spr_repsi = yes
+									anz_spr_recyber = no
+								}
+								custom_tooltip = { # already psi
+									fail_text = anz_spr_016
+									prev = { NOT = { has_trait = trait_psionic } }
+								}
+							} else_if = { # cyber
+								limit = {
+									anz_spr_repsi = no
+									anz_spr_recyber = yes
+								}
+								custom_tooltip = { # already cyber
+									fail_text = anz_spr_007
+									prev = { NOT = { has_trait = trait_cybernetic } }
+								}
+							} else_if = { # none
+								limit = {
+									anz_spr_repsi = no
+									anz_spr_recyber = no
+								}
+								custom_tooltip = {
+									fail_text = anz_spr_005
+									always = no
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	ai_will_do = {
+		factor = 10000
+		modifier = {
+			factor = 0
+			from = {
+				is_gestalt = no
+				anz_spr_resynth = yes
+				has_country_flag = anz_synth_ascend_only_robots
+			}
+			is_robotic_species = no
+			if = {
+				limit = { from = {
+					anz_spr_recyber = yes
+					anz_spr_repsi = yes
+				} }
+				has_trait = trait_cybernetic
+				has_trait = trait_psionic
+			} else_if = {
+				limit = { from = {
+					anz_spr_recyber = no
+					anz_spr_repsi = yes
+				} }
+				has_trait = trait_psionic
+			} else_if = {
+				limit = { from = {
+					anz_spr_recyber = yes
+					anz_spr_repsi = no
+				} }
+				has_trait = trait_cybernetic
+			}
+		}
+	}
+}

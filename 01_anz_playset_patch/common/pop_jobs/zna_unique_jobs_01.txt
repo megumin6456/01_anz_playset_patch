@@ -1,0 +1,1315 @@
+# Default - disabled
+assimilation = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+
+	possible = {
+		always = no
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+	}
+}
+
+# Machine - Synth
+asm1_synth = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_5
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_machine_empire = yes }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_001 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_001 }
+			}
+		}
+	}
+}
+
+# Machine - Mech + Psi
+asm1_mech_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_1
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_machine_empire = yes }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_002 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_002 }
+			}
+		}
+	}
+}
+
+# Machine - Cyber
+asm1_cyber = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_3
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { has_valid_civic = civic_machine_assimilator }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_003 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_003 }
+			}
+		}
+	}
+}
+
+# Macine - Cyber + Psi
+asm1_cyber_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_9
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { has_valid_civic = civic_machine_assimilator }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_004 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Hive - Gene
+asm2_gene = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_4
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_hive_empire = yes }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_005 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Hive - Psi
+asm2_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_7
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_hive_empire = yes }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_006 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Hive - Cyber
+asm2_cyber = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_3
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_hive_empire = yes }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_007 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Hive - Cyber + Psi
+asm2_cyber_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_8
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_hive_empire = yes }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_008 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Demech
+asm3_mech = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_6
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_009 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Dehive
+asm3_hive = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_4
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_010 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Synth
+asm3_synth = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_5
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_011 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Synth + Psi
+asm3_synth_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_1
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_012 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Cyber
+asm3_cyber = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_3
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_013 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Psi
+asm3_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_7
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_014 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}
+
+# Normi - Cyber + Psi
+asm3_cyber_psi = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = asm_2
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+	
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+		owner = { is_gestalt = no }
+		OR = {
+			has_living_standard = { type = living_standard_anz_spr_015 }
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+
+		# remove weight if not supported
+		modifier = {
+			factor = 0
+			NOR = {
+				has_living_standard = { type = living_standard_anz_spr_004 }
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+katzen_tech_level_buffs = {
+	ship_fire_rate_mult = 0.0015
+	ship_weapon_damage = 0.0015
+	ship_armor_mult = 0.002
+	ship_hull_mult = 0.002
+	ship_shield_mult = 0.002
+	army_damage_mult = 0.005
+	army_health = 0.005
+	megastructure_build_speed_mult = 0.05
+}
+
+giga_fe_planetcraft_buff = {
+	ship_hull_mult = 0.3
+	ship_armor_mult = 0.3
+	ship_shield_mult = 0.3
+	ship_weapon_damage = -0.3
+	ship_fire_rate_mult = -0.3
+	ship_speed_mult = -0.5
+}
+
+giga_fe_repeatables_modifier = {
+	
+}
+
+gamers_modifier = {
+	ship_evasion_mult = 0.2
+	ship_accuracy_mult = 0.15
+	ship_tracking_mult = 0.15
+	ship_experience_gain_mult = 1
+	army_morale = 0.5
+	army_damage_mult = 0.25
+	army_morale_damage_mult = 0.5
+	army_experience_gain_mult = 1
+	species_leader_exp_gain = 1
+	leader_skill_levels = 15
+}
+
+gamers_fallen_modifier = {
+	ship_home_territory_fire_rate_mult = 1
+	army_defense_morale_mult = 1
+	army_defense_damage_mult = 1
+	army_defense_health_mult = 1
+	shipclass_military_station_damage_mult = 2
+}
+
+giga_fe_no_mega_upkeep = {
+	megastructures_upkeep_mult = -1
+	country_command_limit_add = 2000 #Giant Planetcraft Fleets :)
+}
+
+giga_meopa_fe_resources = {
+	country_food_produces_add = 250
+	country_consumer_goods_produces_add = 400
+	country_alloys_produces_add = 250
+	country_minerals_produces_add = 250
+	country_energy_produces_add = 250
+	ships_upkeep_mult = -1
+}
+
+giga_pouchkinn_fe_disarray = {
+	ship_fire_rate_mult = -0.80
+	ship_weapon_damage = -0.80
+	ship_speed_mult = -0.80
+	ship_hull_mult = -0.80
+	ship_armor_mult = -0.80
+	ship_shield_mult = -0.80
+}
+
+new_orbital_arcology_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arcology.dds"
+	icon_frame = 1
+
+	planet_max_districts_mult = 0.03
+}
+
+new_orbital_arcology_double_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arcology.dds"
+	icon_frame = 1
+
+	planet_max_districts_mult = 0.06
+}
+
+new_orbital_arcology_triple_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arcology.dds"
+	icon_frame = 1
+
+	planet_max_districts_mult = 0.12
+}

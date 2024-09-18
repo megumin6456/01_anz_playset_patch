@@ -1,0 +1,277 @@
+# Effect unused, update & migrate to event version
+
+# Origins fix, assimilator or normal selection
+# psionic machine check, leader & main species transfer
+# renowned & legendary paragon handle, tech give handle
+# stellarborn handle
+
+# Make species mod
+xvcv_mdlc_ap_mind_separation_project_main_effect = {
+	every_owned_pop = { prev = { add_resource = { consumer_goods = 12 } } } #add 12 goods per pop
+
+	if = {
+		limit = { has_civic = civic_psionic_sovereign }
+		set_country_flag = psionic_sov
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_origin = origin_machine
+				#origins from this mod
+				has_origin = xvcv_mdlc_origin_start_with_colony
+			}
+		}
+		set_origin = origin_default
+	}
+
+	clear_ethos = yes
+	country_add_ethic = ethic_materialist
+	change_government = {
+		authority = auth_dictatorial
+		civics = { civic = civic_philosopher_king } #the least impactful civic
+		remove_invalid_civics = yes
+		cooldown = no
+	}
+
+	set_country_flag = flesh_weakened
+	set_country_flag = synthetic_empire
+	set_country_flag = synth_assimilation
+
+	give_technology = { tech = tech_robotic_workers message = no }
+	give_technology = { tech = tech_droid_workers message = no }
+	give_technology = { tech = tech_synthetic_workers message = no }
+	give_technology = { tech = tech_synthetic_leaders message = no }
+
+	give_technology = { tech = tech_luxuries_1 message = no }
+	give_technology = { tech = tech_luxuries_2 message = no }
+
+	#give species modification points with proper techs
+	if = {
+		limit = { has_technology = tech_robomodding_m }
+		give_technology = { tech = tech_robomodding message = no }
+	}
+	if = {
+		limit = { has_technology = tech_binary_motivators }
+		give_technology = { tech = tech_robomodding_points_1 message = no }
+	}
+	if = {
+		limit = { has_technology = tech_nanite_assemblers }
+		give_technology = { tech = tech_robomodding_points_2 message = no }
+	}
+
+	this.species = {
+		create_species = {
+			adjective = this
+			name = this
+			namelist = prev
+			is_mod = yes
+			plural = this
+			class = "ROBOT"
+			portrait = this
+			traits = { trait = trait_mechanical }
+			homeworld = prev.capital_scope
+
+			effect = {
+				set_species_flag = anz_asim_spc_synth_empire@prevprev
+				if = {
+					limit = { prevprev = { anz_spr_repsi = yes } }
+					modify_species = {
+						add_trait = trait_psionic
+						change_scoped_species = no
+					}
+				}
+				prev = {
+					switch = {
+						trigger = is_species_class
+						HUM = { prev = { change_species_characteristics = { portrait = "sd_hum_robot" } } }
+						MAM = { prev = { change_species_characteristics = { portrait = "sd_mam_robot" } } }
+						REP = { prev = { change_species_characteristics = { portrait = "sd_rep_robot" } } }
+						AVI = { prev = { change_species_characteristics = { portrait = "sd_avi_robot" } } }
+						ART = { prev = { change_species_characteristics = { portrait = "sd_art_robot" } } }
+						MOL = { prev = { change_species_characteristics = { portrait = "sd_mol_robot" } } }
+						FUN = { prev = { change_species_characteristics = { portrait = "sd_fun_robot" } } }
+						PLANT = { prev = { change_species_characteristics = { portrait = "sd_pla_robot" } } }
+						LITHOID = { prev = { change_species_characteristics = { portrait = "lith_machine" } } }
+						NECROID = { prev = { change_species_characteristics = { portrait = "nec_machine" } } }
+						AQUATIC = { prev = { change_species_characteristics = { portrait = "aqu_machine" } } }
+						TOX = { prev = { change_species_characteristics = { portrait = "tox_machine" } } }
+					}
+				}
+			}
+		}
+	}
+	every_owned_pop = {
+		limit = { has_trait = trait_machine_unit }
+		change_species = last_created_species
+	}
+	change_dominant_species = { species = last_created_species }
+	random_owned_pop = {
+		limit = { is_same_species = prev.species }
+		xvcv_mdlc_robot_species_rights_adjustments_effect = yes
+	}
+	every_owned_ship = {
+		limit = {
+			is_ship_class = shipclass_colonizer
+			species = { has_trait = trait_machine_unit }
+		}
+		change_species = last_created_species
+	}
+	every_owned_leader = {
+		limit = { species = { has_trait = trait_machine_unit } }
+		change_species = last_created_species
+		if = {
+			limit = {
+				NOR = {
+					has_trait = leader_trait_admiral_synthetic
+					has_trait = leader_trait_general_synthetic
+					has_trait = leader_trait_governor_synthetic
+					has_trait = leader_trait_scientist_synthetic
+					has_trait = leader_trait_ruler_synthetic
+				}
+			}
+			switch = {
+				trigger = leader_class
+				admiral = { add_trait = leader_trait_admiral_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				general = { add_trait = leader_trait_general_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				governor = { add_trait = leader_trait_governor_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				scientist = { add_trait = leader_trait_scientist_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				ruler = { add_trait = leader_trait_ruler_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+			}
+		}
+	}
+	every_envoy = {
+		limit = { species = { has_trait = trait_machine_unit } }
+		change_species = last_created_species
+	}
+	every_pool_leader = {
+		limit = { species = { has_trait = trait_machine_unit } }
+		change_species = last_created_species
+		if = {
+			limit = {
+				NOR = {
+					has_trait = leader_trait_admiral_synthetic
+					has_trait = leader_trait_general_synthetic
+					has_trait = leader_trait_governor_synthetic
+					has_trait = leader_trait_scientist_synthetic
+					has_trait = leader_trait_ruler_synthetic
+				}
+			}
+			switch = {
+				trigger = leader_class
+				admiral = { add_trait = leader_trait_admiral_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				general = { add_trait = leader_trait_general_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				governor = { add_trait = leader_trait_governor_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				scientist = { add_trait = leader_trait_scientist_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+				ruler = { add_trait = leader_trait_ruler_synthetic add_ruler_trait = leader_trait_ruler_synthetic }
+			}
+		}
+	}
+	clone_leader = {
+		target = ruler
+		class = ruler
+		traits = { trait = leader_trait_ruler_synthetic } #to reset other ruler traits
+		effect = { save_event_target_as = xvcv_mdlc_ap_mind_separation_project_new_ruler }
+	}
+	ruler = { exile_leader_as = xvcv_mdlc_ap_mind_separation_project_old_ruler } #kill the ruler, but do not trigger the 'on_leader_death' on_action
+	assign_leader = event_target:xvcv_mdlc_ap_mind_separation_project_new_ruler
+
+	#reset the origin when it's needed
+	if = {
+		limit = { NOT = { has_authority = auth_dictatorial } }
+		set_origin = origin_default
+		#and attempt again to change the government
+		change_government = {
+			authority = auth_dictatorial
+			civics = { civic = civic_philosopher_king }
+			remove_invalid_civics = yes
+			cooldown = no
+		}
+	}
+
+	if = {
+		limit = { is_galactic_emperor = yes }
+		force_add_civic = civic_galactic_sovereign
+	}
+
+	if = {
+		limit = { has_country_flag = sofe_lm_gifted }
+		if = { limit = { NOT = { has_civic = civic_champion_fleet } }
+			force_add_civic = civic_champion_fleet
+		}
+		if = { limit = { NOT = { has_civic = civic_champion_knowledge } }
+			force_add_civic = civic_champion_knowledge
+		}
+		if = { limit = { NOT = { has_civic = civic_champion_empire } }
+			force_add_civic = civic_champion_empire
+		}
+	}
+
+	if = {
+		limit = { has_country_flag = psionic_sov }
+		remove_country_flag = psionic_sov
+		force_add_civic = civic_psionic_sovereign
+	}
+}
+
+# Flesh is weak
+create_cybernetic_species_mod = {
+	species = {
+		modify_species = {
+			#remove_trait = trait_latent_psionic
+			#remove_trait = trait_psionic
+			effect = {
+				create_species = {
+					is_mod = yes
+					name = this
+					plural = this
+					class = this
+					portrait = this
+					traits = this
+					can_be_modified = this
+					homeworld = this
+					namelist = this
+					gender = this
+					traits = {
+						ideal_planet_class = this
+						trait = trait_cybernetic
+					}
+				}
+			}
+		}
+		save_event_target_as = changing_species
+	}
+
+	owner = {
+		every_owned_pop = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_owned_leader = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_pool_leader = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_envoy = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_owned_army = {
+			limit = {
+				exists = species
+				is_exact_same_species = event_target:changing_species
+			}
+			change_species = last_created_species
+		}
+		every_controlled_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				is_exact_same_species = event_target:changing_species
+			}
+			change_species = last_created_species
+		}
+	}
+}

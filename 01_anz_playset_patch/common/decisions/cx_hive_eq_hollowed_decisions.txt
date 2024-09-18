@@ -1,0 +1,51 @@
+# DISABLED
+
+decision_hollow_project = {
+	owned_planets_only = yes
+
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+		cost = {
+
+		}
+	}
+
+	potential = {
+		always = no
+	}
+
+	effect = {
+		
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_prospect_hollow = {
+	owned_planets_only = yes
+
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+		cost = {
+
+		}
+	}
+
+	potential = {
+		always = no
+	}
+
+	effect = {
+		
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}

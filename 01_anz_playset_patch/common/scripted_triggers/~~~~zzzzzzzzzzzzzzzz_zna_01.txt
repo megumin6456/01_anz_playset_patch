@@ -1,0 +1,137 @@
+## Used for Overwriting Merger of Rules
+
+merg_is_forbidden_target = {
+	OR = {
+		# Merger of Rules
+		has_planet_flag = merg_is_forbidden_target		# add this to your planet to dynamically exclude it.
+		merg_is_dense_star = yes
+		merg_is_empty_space = yes
+		# MEM
+		is_planet_class = pc_mem_synthetic_sun
+		# ACOT
+		is_planet_class = pc_acot_enigmopolis
+		# Secrets of the Shroud
+		is_planet_class = pc_acot_soulsphere
+		# ACOT/Gigas
+		has_planet_flag = cant_target_this_planet
+		AND = {
+			has_planet_flag = cant_build_here
+			NOT = { has_planet_flag = gigaflusion }
+		}
+	}
+}
+
+merg_has_cloning_building = {
+	optimize_memory
+	OR = {
+		# Vanilla
+		has_building = building_clone_vats
+		# ANZ Advanced Cloning
+		has_building = building_clone_vats_basic_organic
+		has_building = building_clone_vats_improved_organic
+		has_building = building_clone_vats_advanced_organic
+		has_building = building_clone_vats_augmented_organic
+		has_building = building_clone_vats_basic_mech
+		has_building = building_clone_vats_improved_mech
+		has_building = building_clone_vats_advanced_mech
+		has_building = building_clone_vats_augmented_mech
+		# Ethics and Civics Bug Branch
+		has_building = building_bugged_life_monastery
+		has_building = building_bugged_life_monastery_two
+		# ACOT
+		has_building = building_fe_clone_vats
+		has_building = building_ae_clone_vats
+		# AOT
+		has_building = building_stellarite_clone_vats
+		has_building = building_phanon_clone_vats
+		# The Dark Arts of Necromancy
+		has_building = building_house_of_the_fleshsculpter
+		has_building = building_summoner_site
+		# Lithoid Supremacy
+		has_building = building_crystallization_facilities
+		has_building = building_ocean_spawning_pool
+		# Galaxius
+		has_building = building_ie_clone_vats
+		has_building = building_ie_spawning_pool
+	}
+}
+
+is_a_habitable_planet_megastructure = {
+	OR = {
+		is_planet_class = pc_flusion_gaia_ecu
+		is_planet_class = pc_infested
+		# Expanded Gestalts: Forgotten Queens
+		is_planet_class = pc_matryoshka
+		# ACOT
+		is_planet_class = pc_dark_fractured
+		is_planet_class = pc_dark_fractured_ae
+		is_planet_class = pc_acot_enigmopolis
+		colonizable_planet = yes		# Ariphaos patch
+		habitable_structure = yes
+	}
+}
+
+# All pops are vaild
+is_valid_pop_for_PLANET_KILLER_NANOBOTS = {
+	always = yes
+}
+
+# why is this so buggy
+can_destroy_planet_with_PLANET_KILLER_NANOBOTS = {
+	custom_tooltip = {
+		fail_text = merg_forbidden_target
+		merg_is_forbidden_target = no
+	}
+	custom_tooltip = {
+		fail_text = is_not_a_habitable_planet_or_megastructure
+		is_a_habitable_planet_megastructure = yes
+	}
+	custom_tooltip = {
+		fail_text = is_shielded
+		merg_is_shielded = no
+	}
+	custom_tooltip = {
+		fail_text = fotd_cant_collossus
+		NOT = { has_planet_flag = fotd_seperatist_planet@from.owner }
+		exists = from.owner
+		from.owner = { 
+			NOT = { has_country_flag = fotd_seperatist_country@from.owner }
+		}
+	}
+	custom_tooltip = {
+		fail_text = is_not_hostile_or_primitive
+		OR = {
+			planet_is_hostile = yes
+			AND = {
+				exists = owner
+				owner = { is_country_type = primitive }
+			}
+			AND = {
+				merg_has_safety_off = yes
+				# is_same_value = from.owner
+				owner = { is_same_value = fromfrom.owner } # edited here
+			}
+		}
+	}
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_country_type = primitive }
+		}
+		custom_tooltip = {
+			fail_text = primitives_not_in_borders
+			exists = space_owner
+			space_owner = { is_same_empire = from.owner }
+		}
+		custom_tooltip = {
+			fail_text = primitives_not_full_interference
+			from.owner = { has_policy_flag = interference_aggressive }
+		}
+	}
+	custom_tooltip = {
+		fail_text = no_assimilatable_pops
+		any_owned_pop = {
+			is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes
+		}
+	}
+}

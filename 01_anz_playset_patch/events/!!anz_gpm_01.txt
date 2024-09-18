@@ -1,0 +1,247 @@
+namespace = gpm_engine
+
+# set precursor worlds event
+planet_event = {
+	id = gpm_engine.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	
+	trigger = {
+		OR = {
+			gpm_is_planet_class_normal_uninhabitable = yes
+			gpm_is_planet_class_normal_habitable = yes
+			gpm_is_planet_class_nuked = yes
+			gpm_is_planet_class_toxic = yes
+			gpm_is_planet_class_barren = yes
+			# gpm_is_planet_class_molten = yes
+			gpm_is_planet_class_city = yes
+			gpm_is_planet_primitive = yes
+			gpm_is_planet_class_star = yes
+		}
+		NOT = { gpm_is_planet_class_molten = yes }
+		NOT = { has_planet_flag = gpm_is_primitive_relic_world }
+		NOT = { has_planet_flag = forbid_guillis_planet_modifiers }
+		NOT = { has_planet_flag = forbid_guillis_precursor_modifiers }
+		gpm_engine_forbidden_planets = yes
+		# Ego system
+		NOT = { solar_system = { has_star_flag = gpm_guardians_ego_system } }
+		# forbid space creature home systems
+		solar_system = {
+			NOR = {
+				has_star_flag = drone_home_system
+				has_star_flag = tiyanki_spawn_system
+				has_star_flag = pirate_home_system
+				has_star_flag = amoeba_home_system
+				has_star_flag = gpm_precursor_machine_system
+			}
+		}
+		# NAND = {
+			# is_capital = yes
+			# solar_system = {
+				# has_star_flag = primitive_system
+				# is_country_type = primitive
+			# }
+			# gpm_is_planet_primitive = no
+		# }
+		solar_system = {
+			NAND = {
+				exists = space_owner
+				space_owner = { is_country_type = default }
+			}
+		}
+		NOT = { gpm_is_planet_fallen_empire = yes }
+		NOT = { gpm_is_a_wondrous_world = yes }
+	}
+	
+	immediate = {
+		
+
+		if = {
+			limit = { gpm_is_planet_class_star = yes }
+			random_list = {
+				998 = {}
+				2 = {
+					# designate precursor world
+					set_planet_flag = gpm_is_precursor_world
+					solar_system = { set_star_flag = gpm_is_precursor_system }
+					# Planet Modifier Scaling
+					# if = {
+					# 	limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+					# 	gpm_scale_planet_modifiers = yes
+					# }
+					# roll precursor modifiers
+					gpm_roll_precursor_modifiers = yes
+					# spawn precursor features
+					# gpm_spawn_precursor_features = yes
+					modifier = { factor = 0.75 has_global_flag = gpm_galaxy_age_young } 	# GALAXY AGE: YOUNG  -25% spawn chance
+					modifier = { factor = 1 has_global_flag = gpm_galaxy_age_young } 		# GALAXY AGE: NORMAL
+					modifier = { factor = 1.25 has_global_flag = gpm_galaxy_age_old }		# GALAXY AGE: OLD # +25% spawn chance
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				gpm_is_planet_class_normal_habitable = yes
+				NOT = { gpm_is_planet_primitive = yes }
+			}
+			random_list = {
+				850 = {}
+				150 = {
+					# designate precursor world
+					set_planet_flag = gpm_is_precursor_world
+					solar_system = { set_star_flag = gpm_is_precursor_system }
+					# Planet Modifier Scaling
+					if = {
+						limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+						gpm_scale_planet_modifiers = yes
+					}
+					# roll precursor modifiers
+					gpm_roll_precursor_modifiers = yes
+					# spawn precursor features
+					gpm_spawn_precursor_features = yes
+					modifier = { factor = 0.75 has_global_flag = gpm_galaxy_age_young } 	# GALAXY AGE: YOUNG  -25% spawn chance
+					modifier = { factor = 1 has_global_flag = gpm_galaxy_age_young } 		# GALAXY AGE: NORMAL
+					modifier = { factor = 1.25 has_global_flag = gpm_galaxy_age_old }		# GALAXY AGE: OLD # +25% spawn chance
+				}
+			}
+		}
+		if = {
+			limit = { gpm_is_planet_primitive = yes }
+			random_list = {
+				970 = {}
+				30 = {
+					# designate precursor world
+					set_planet_flag = gpm_is_precursor_world
+					solar_system = { set_star_flag = gpm_is_precursor_system }
+					# Planet Modifier Scaling
+					# if = {
+						# limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+						# gpm_scale_planet_modifiers = yes
+					# }
+					# roll precursor modifiers
+					gpm_roll_precursor_modifiers = yes
+					# spawn precursor features
+					gpm_spawn_precursor_features = yes
+					modifier = { factor = 0.75 has_global_flag = gpm_galaxy_age_young }		# GALAXY AGE: YOUNG  -25% spawn chance
+					modifier = { factor = 1 has_global_flag = gpm_galaxy_age_young } 		# GALAXY AGE: NORMAL
+					modifier = { factor = 1.25 has_global_flag = gpm_galaxy_age_old }		# GALAXY AGE: OLD # +25% spawn chance
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					gpm_is_planet_class_normal_uninhabitable = yes
+					gpm_is_planet_class_toxic = yes
+					gpm_is_planet_class_barren = yes
+				}
+			}
+			random_list = {
+				990 = {}
+				10 = {
+					# designate precursor world
+					set_planet_flag = gpm_is_precursor_world
+					solar_system = { set_star_flag = gpm_is_precursor_system }
+					# Planet Modifier Scaling
+					# if = {
+						# limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+						# gpm_scale_planet_modifiers = yes
+					# }
+					# spawn precursor features
+					# gpm_spawn_precursor_features = yes
+					# chance to turn into precursor ruined world
+					random_list = {
+						40 = {}
+						60 = {
+							# NOPE GET OUT OF MY MOD LIST
+						}
+					}
+					# roll precursor modifiers
+					gpm_roll_precursor_modifiers = yes
+					# spawn precursor features
+					gpm_spawn_precursor_features = yes
+					modifier = { factor = 0.75 has_global_flag = gpm_galaxy_age_young }		# GALAXY AGE: YOUNG  -25% spawn chance
+					modifier = { factor = 1 has_global_flag = gpm_galaxy_age_young } 		# GALAXY AGE: NORMAL
+					modifier = { factor = 1.25 has_global_flag = gpm_galaxy_age_old }		# GALAXY AGE: OLD # +25% spawn chance
+					modifier = { factor = gpm_galaxy_setting_habitable_worlds_scale }		# Scaler based on galaxy nr of habitable worlds setting# spawn a random mini megastructure to repair
+				}
+			}
+		}
+		if = {
+			limit = { gpm_is_planet_class_nuked = yes }
+			random_list = {
+				700 = {}
+				300 = {
+					# designate precursor world
+					set_planet_flag = gpm_is_precursor_world
+					solar_system = { set_star_flag = gpm_is_precursor_system }
+					# Planet Modifier Scaling
+					# if = {
+						# limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+						# gpm_scale_planet_modifiers = yes
+					# }
+					# roll precursor modifiers
+					gpm_roll_precursor_modifiers = yes
+					# spawn precursor features
+					gpm_spawn_precursor_features = yes
+					modifier = { factor = 0.75 has_global_flag = gpm_galaxy_age_young }		# GALAXY AGE: YOUNG  -25% spawn chance
+					modifier = { factor = 1 has_global_flag = gpm_galaxy_age_young } 		# GALAXY AGE: NORMAL
+					modifier = { factor = 1.25 has_global_flag = gpm_galaxy_age_old }		# GALAXY AGE: OLD # +25% spawn chance
+				}
+			}
+		}
+		if = {
+			limit = { gpm_is_planet_class_city = yes }
+			random_list = {
+				800 = {}
+				200 = {
+					# designate precursor world
+					set_planet_flag = gpm_is_precursor_world
+					solar_system = { set_star_flag = gpm_is_precursor_system }
+					# Planet Modifier Scaling
+					# if = {
+						# limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+						# gpm_scale_planet_modifiers = yes
+					# }
+					# roll precursor modifiers
+					gpm_roll_precursor_modifiers = yes
+					# spawn precursor features
+					gpm_spawn_precursor_features = yes
+					modifier = { factor = 0.75 has_global_flag = gpm_galaxy_age_young }		# GALAXY AGE: YOUNG  -25% spawn chance
+					modifier = { factor = 1 has_global_flag = gpm_galaxy_age_young } 		# GALAXY AGE: NORMAL
+					modifier = { factor = 1.25 has_global_flag = gpm_galaxy_age_old }		# GALAXY AGE: OLD # +25% spawn chance
+				}
+			}
+		}
+
+		## Precursor Planets
+		# if = {
+		# 	limit = {
+		# 		gpm_is_a_precursor_world = yes
+		# 		NOT = { gpm_has_precursor_modifiers = yes }
+		# 	}
+		# 	# Planet Modifier Scaling
+		# 	if = {
+		# 		limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+		# 		gpm_scale_planet_modifiers = yes
+		# 	}
+		# 	# if uninhabitable world, change into tomb world, relic world or precursor ruined world at random
+		# 	random_list = {
+		# 		55 = {}
+		# 		45 = {
+		# 			gpm_make_precursor_ruined_world = yes
+		# 			modifier = { factor = gpm_galaxy_setting_habitable_worlds_scale } # scale chance bases on galaxy setting
+		# 		}
+		# 	}
+		# 	# we roll for precursor modifiers
+		# 	gpm_roll_precursor_modifiers = yes
+			
+		# 	if = {
+		# 		limit = { gpm_is_planet_class_normal_habitable = yes }
+		# 		gpm_spawn_precursor_features = yes
+		# 	}
+		# }
+	}
+}

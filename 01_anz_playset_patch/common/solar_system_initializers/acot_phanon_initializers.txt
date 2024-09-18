@@ -1,0 +1,2 @@
+## To block ACOT Phanon from spawning
+## Unlock them through AOT Event chain

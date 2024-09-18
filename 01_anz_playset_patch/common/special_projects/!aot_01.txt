@@ -1,0 +1,21 @@
+# Changed from physics to society
+special_project = {
+	key = "RESEARCH_PHANON_DIMENSIONAL_MIRROR"
+	cost = 10000000
+	tech_department = society_technology
+	picture = GFX_evt_dimensional_mirror
+	event_chain = phanon_dimensional_mirror_chain
+	event_scope = country_event
+	location = no
+	abort_trigger = {
+	}
+	on_success = {
+		owner = {
+			country_event = {
+				id = aot_phanon_events.2
+			}
+		}
+	}
+	on_fail = {
+	}
+}
