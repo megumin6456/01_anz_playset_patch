@@ -8,6 +8,7 @@ citizenship_assimilation = {
 		OR = {
 			has_synthethic_dawn = yes
 			has_utopia = yes
+			has_machine_age_dlc = yes
 		}
 		exists = from
 

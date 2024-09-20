@@ -189,25 +189,8 @@ anz_spr_myst = {
 		is_archetype = PRESAPIENT
 		is_archetype = LITHOID
 		is_archetype = OTHER
-		# XVCV
-		is_archetype = XVCV_MDLC_BIO_ROBOT
 		# SBTG
 		is_archetype = DEITY
-		# Expanded Traits, Civics, Pops, and More
-		is_archetype = HUMANOID
-		is_archetype = MAMMALIAN
-		is_archetype = REPTILIAN
-		is_archetype = AVIAN
-		is_archetype = ARTHROPOID
-		is_archetype = MOLUSCOID
-		is_archetype = FUNGOID
-		is_archetype = PLANTOID
-		is_archetype = NECROID
-		is_archetype = half_species
-		is_archetype = half_species_special
-		is_archetype = half_aberration
-		is_archetype = half_perfect
-		is_archetype = half_amalgamated
 	}
 }
 

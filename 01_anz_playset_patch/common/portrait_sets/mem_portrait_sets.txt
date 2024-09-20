@@ -1,0 +1,75 @@
+mem_necroids = {
+	species_class = NECROID
+	
+	conditional_portraits = {
+		randomizable = { always = no }
+		playable = { always = no }
+		portraits = {
+			"mem_Chadorian"
+			"mem_chada"
+		}
+	}
+}
+
+mem_cybernetic_humanoids = {
+	species_class = HUM
+
+	conditional_portraits = {
+		randomizable = { always = no }
+		playable = { always = no }
+		portraits = {
+			"mem_Orila"
+		}
+	}
+}
+
+mem_synthetic_humanoids = {
+	species_class = HUM
+
+	conditional_portraits = {
+		randomizable = { always = no }
+		playable = { always = no }
+		portraits = {
+			"mem_Orila"
+		}
+	}
+}
+
+mem_arthropoids = {
+	species_class = ART
+
+	conditional_portraits = {
+		randomizable = { always = no }
+		playable = { always = no }
+		portraits = {
+			"mem_Vazu"
+			"mem_Vazu_crisis"
+		}
+	}
+}
+
+mem_robots = {
+	species_class = ROBOT
+
+	conditional_portraits = {
+		randomizable = { always = no }
+		playable = { always = no }
+		portraits = {
+			"mem_Orila_holo_robot"
+			"mem_Orila_robot"
+		}
+	}
+}
+
+mem_machines = {
+	species_class = MACHINE
+
+	conditional_portraits = {
+		randomizable = { always = no }
+		playable = { always = no }
+		portraits = {
+			"mem_Orila_holo_robot"
+			"mem_Orila_robot"
+		}
+	}
+}

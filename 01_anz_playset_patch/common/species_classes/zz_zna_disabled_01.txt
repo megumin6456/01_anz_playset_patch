@@ -4,7 +4,7 @@ PHANON = {
 	archetype = BIOLOGICAL
 	playable = { always = no }
 	randomized = no
-	use_climate_preference = no
+	# use_climate_preference = no
 
 	portraits = {
 		"acot_pmc"
@@ -28,7 +28,7 @@ PROGENITOR = {
 		randomized = { always = no }
 		playable = { always = no }
 		portraits = {
-			anz_megumin_oe
+			"anz_megumin_oe"
 		}
 	}
 	
@@ -109,79 +109,18 @@ EANDR = {
 	move_pop_sound_effect = "robot_pops_move"
 }
 
-alter-dxd = {
-	archetype = BIOLOGICAL
-	possible = { always = no }
-	playable = { always = no }
-	portrait_modding = no
-	gender = no
-	
-	portraits = {}
-
-	graphical_culture = humanoid_01
-	move_pop_sound_effect = "moving_pop_confirmation"
-	
-	resources = {}
-} 
-
-alter-symphogear = {
-	archetype = BIOLOGICAL
-	possible = { always = no }
-	playable = { always = no }
-	portrait_modding = no
-	gender = no
-	
-	portraits = {}
-
-	graphical_culture = humanoid_01
-	move_pop_sound_effect = "moving_pop_confirmation"
-	
-	resources = {}
-} 
-
-
-alt_girls_und_panzer = {
-	archetype = BIOLOGICAL
-	possible = { always = no }
-	playable = { always = no }
-	portrait_modding = no
-	gender = no
-	
-	portraits = {}
-
-	graphical_culture = humanoid_01
-	move_pop_sound_effect = "moving_pop_confirmation"
-	
-	resources = {}
-}	
-
-alt_imas = {
-	archetype = BIOLOGICAL
-	possible = { always = no }
-	playable = { always = no }
-	portrait_modding = no
-	gender = no
-	
-	portraits = {}
-
-	graphical_culture = humanoid_01
-	move_pop_sound_effect = "moving_pop_confirmation"
-	
-	resources = {}
-}
-
 SOPHIA = {
 	archetype = BIOLOGICAL
 	possible = { always = no }
 	playable = { always = no }
 	randomized = no
-	use_climate_preference = no
+	# use_climate_preference = no
 
 	portraits = {
 		"acot_sophia"
 	}
 	
-	graphical_culture = avian_01
+	graphical_culture = acot_sophia
 	move_pop_sound_effect = "moving_pop_confirmation"
 }
 
@@ -190,12 +129,15 @@ SOPHIA_MACHINE = {
 	possible = { always = no }
 	playable = { always = no }
 	randomized = no
-	use_climate_preference = no
+	# use_climate_preference = no
 
 	portraits = {
 		"acot_sophia"
 	}
+
+	gender = yes
+	trait = trait_machine_unit
 	
-	graphical_culture = avian_01
+	graphical_culture = acot_sophia
 	move_pop_sound_effect = "moving_pop_confirmation"
 }

@@ -102,7 +102,6 @@ trait_symbiote = {
 	ai_weight = {
 		weight = 0
 	}
-
 }
 
 trait_exofungus = {
@@ -138,5 +137,121 @@ trait_nanomachines = {
 
 	modifier = {
 		planet_pop_assembly_mult = 0.1
+	}
+}
+
+trait_igneous = {
+	cost = 0
+	sorting_priority = 20
+	initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	allowed_archetypes = { LITHOID }
+
+	custom_tooltip_with_modifiers = trait_igneous_tooltip
+
+	triggered_planet_growth_habitability_modifier = {
+		potential = {
+			exists = planet
+		}
+		pop_growth_speed = 0.05
+		mult = planet.value:eo_num_volcanoes
+	}
+	triggered_planet_growth_habitability_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				NOT = {
+					has_modifier = unstable_tectonics
+				}
+			}
+		}
+		habitability_ceil_add = -0.25
+	}
+}
+
+trait_eo_immortal = {
+	cost = 0
+	potential_crossbreeding_chance = 0.25
+	icon = "gfx/interface/icons/traits/trait_eo_immortal.dds"
+
+	opposites = { "trait_venerable" "trait_enduring" "trait_fleeting" "trait_fleeting_lithoid" "trait_ancient" "trait_godly" "trait_SAT_precocious" "trait_SAT_late_bloomers" }
+
+	immortal_leaders = yes
+	leader_age_min = 50
+	leader_age_max = 1000
+	initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+
+	modifier = {
+		pop_environment_tolerance = 0.5
+		army_health = 0.75
+		pop_growth_speed = -0.5
+		planet_pop_assembly_organic_mult = -0.5
+		species_leader_exp_gain = -0.25
+	}
+	slave_cost = {
+		energy = 2000
+	}
+}
+
+trait_hive_world_symbiosis = {
+	icon = "gfx/interface/icons/traits/trait_hive_world_symbiosis.dds"
+	initial = no
+	species_potential_add = {
+		exists = from
+		from = {
+			AND = {
+				has_origin = origin_genius_loci
+				has_tradition = tr_genetics_resequencing
+			}
+		}
+	}
+	species_possible_add = {
+		has_trait = trait_pc_hive_preference
+		has_trait = trait_hive_mind
+	}
+	species_possible_remove = {
+		can_remove_beneficial_genetic_traits = yes
+	}
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	sorting_priority = 30
+	potential_crossbreeding_chance = 0.33
+	custom_tooltip = hive_world_symbiosis_trait_tooltip
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = { is_planet_class = pc_hive }
+		}
+		planet_jobs_produces_mult = 0.1
+	}
+	ai_weight = {
+		weight = 0
+	}
+	assembly_score = {
+		modifier = {
+			add = 1.5
+			from = { uses_district_set = hive_world }
+		}
+		modifier = {
+			subtract = 1.5
+			from = {
+				NOT = { uses_district_set = hive_world }
+			}
+		}
 	}
 }
