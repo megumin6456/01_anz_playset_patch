@@ -52,38 +52,7 @@ species_can_live_on_planet = {
 					prev = { species_can_be_necrophaged = yes }
 				}
 			}
-			# Forgotten Queens
-			AND = { #Parasitic Embryos Necrophage Pops
-				exists = root.owner
-				root.owner = {
-					is_hive_empire = yes
-					has_valid_civic = civic_hive_parasitic
-					prev = { has_job = purge_parasitic }
-				}
-			}
-			# ANZ Patch - Forgotten Queens
-			AND = {
-				# Holobiont can have livestock
-				exists = root.owner
-				root.owner = {
-					is_hive_empire = yes
-					has_origin = origin_hive_cx_hive_world
-				}
-				has_citizenship_type = {
-					type = citizenship_slavery
-					country = root
-				}
-				has_slavery_type = {
-					type = slavery_livestock
-					country = root
-				}
-			}
 		}
-	}
-	# Forgotten Queens
-	NAND = {
-		root = { is_fq_matryoshka = no }
-		has_trait = trait_machine_digital
 	}
 	# Planetary Population Restrictions
 	custom_tooltip = {
@@ -1450,7 +1419,7 @@ can_add_claim = {
 					# Ethical Gestalts
 					# has_valid_civic = civic_hive_assimilator
 					# Expanded Mods Base
-					has_government = gov_parasitic_overmind
+					# has_government = gov_parasitic_overmind
 				}
 			}
 			root = {
@@ -1460,7 +1429,7 @@ can_add_claim = {
 					# Ethical Gestalts
 					# has_valid_civic = civic_hive_assimilator
 					# Expanded Mods Base
-					has_government = gov_parasitic_overmind
+					# has_government = gov_parasitic_overmind
 				}
 			}
 		}

@@ -155,7 +155,6 @@ anz_spr_demech = {
 anz_spr_rehive = {
 	OR = {
 		has_active_tradition = tr_genetics_creation
-		has_origin = origin_hive_overmind
 	}
 }
 

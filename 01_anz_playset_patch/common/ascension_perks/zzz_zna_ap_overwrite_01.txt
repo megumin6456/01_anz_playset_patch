@@ -239,7 +239,7 @@ ap_synthetic_evolution = {
 		host_has_dlc = "Utopia"
 		NOR = {
 			has_ascension_perk = ap_synthetic_evolution
-			has_authority = "auth_machine_intelligence"
+			is_machine_empire = yes
 			has_origin = origin_shroudwalker_apprentice
 		}
 		is_gestalt = no
@@ -275,7 +275,7 @@ ap_synthetic_age = {
 
 	potential = {
 		has_synthethic_dawn = yes
-		has_authority = auth_machine_intelligence
+		is_machine_empire = yes
 		NOR = {
 			has_ascension_perk = ap_synthetic_age
 			has_origin = origin_shroudwalker_apprentice
@@ -375,7 +375,7 @@ ap_the_flesh_is_weak = {
 		host_has_dlc = "Utopia"
 		NOR = {
 			has_ascension_perk = ap_the_flesh_is_weak
-			has_authority = "auth_machine_intelligence"
+			is_machine_empire = yes
 			has_origin = origin_shroudwalker_apprentice
 		}
 	}
@@ -419,7 +419,7 @@ ap_organo_machine_interfacing = {
 			has_ascension_perk = ap_organo_machine_interfacing
 			has_origin = origin_shroudwalker_apprentice
 		}
-		has_authority = auth_hive_mind
+		is_hive_empire = yes
 	}
 
 	ai_weight = {
@@ -569,7 +569,7 @@ ap_world_shaper = {
 			}
 		}
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = { is_machine_empire = yes }
 			has_valid_civic = civic_machine_servitor
 			has_valid_civic = civic_machine_assimilator
 		}
@@ -583,7 +583,7 @@ ap_world_shaper = {
 				has_origin = origin_void_dwellers
 				has_origin = origin_shattered_ring
 				has_trait = trait_aquatic
-				has_ethic = ethic_gestalt_consciousness
+				is_gestalt = yes
 			}
 		}
 		modifier = {

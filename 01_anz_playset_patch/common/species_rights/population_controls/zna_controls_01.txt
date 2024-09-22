@@ -1,30 +1,23 @@
-# Base Code: Deassimilate machines mod
-# Modified : ...
+# Base code Fix Slave Policies
+# Modified so gestalt's don't care.
 
 population_control_yes = {
 	can_reproduce = no
-
 	pop_modifier = {
 		pop_happiness = -0.1
 	}
 
 	allow = {
 		hidden_trigger = { exists = from }
-		from = {
-			NOT = { has_policy_flag = population_controls_not_allowed }
-		}
+		OR = {
+            from = { NOT = { has_policy_flag = population_controls_not_allowed } }
+            has_citizenship_type = { country = from type = citizenship_slavery }
+        }
 		if = {
 			limit = {
 				OR = {
 					has_citizenship_type = { country = from type = citizenship_purge }
 					has_citizenship_type = { country = from type = citizenship_purge_machine }
-					AND = {
-						has_trait = trait_machine_unit
-						has_living_standard = {
-							country = from
-							type = living_standard_deassimilation
-						}
-					}
 				}
 			}
 			hidden_trigger = { always = yes }
@@ -32,7 +25,7 @@ population_control_yes = {
 		else_if = { # Gestalt's don't care
 			limit = {
 				from = {
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 					is_ai = no
 				}
 				is_same_species = from
@@ -61,62 +54,7 @@ population_control_yes = {
 			NOR = {
 				has_citizenship_type = { country = from type = citizenship_purge_machine }
 				has_citizenship_type = { country = from type = citizenship_purge }
-				AND = {
-					has_trait = trait_machine_unit
-					has_living_standard = {
-						country = from
-						type = living_standard_deassimilation
-					}
-				}
 			}
 		}
-	}
-}
-
-population_control_no = {
-	potential = {
-		always = yes
-	}
-
-	allow = {
-		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			NOR = {
-				has_citizenship_type = { country = from type = citizenship_purge_machine }
-				has_citizenship_type = { country = from type = citizenship_purge }
-			}
-			fail_text = is_undesirables_tooltip
-		}
-		if = { limit = { from = { has_origin = origin_hive_overmind } }
-			custom_tooltip = {
-				fail_text = anz_hive_overmind_pop_controls
-				NOT = { has_trait = trait_hive_mind_overlord }
-			}
-		}
-		custom_tooltip = {
-			fail_text = "HIVE_MIND_SPECIES_CITIZENS_ONLY"
-			OR = {
-				from = {
-					OR = {
-						is_hive_empire = no
-						dm_is_necrophage_empire = yes
-					}
-				}
-				has_trait = trait_hive_mind
-			}
-		}
-		custom_tooltip = {
-			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
-			NAND = {
-				has_trait = trait_machine_unit
-				has_living_standard = {
-					country = from
-					type = living_standard_deassimilation
-				}
-			}
-		}
-	}
-	ai_will_do = {
-		factor = 1
 	}
 }

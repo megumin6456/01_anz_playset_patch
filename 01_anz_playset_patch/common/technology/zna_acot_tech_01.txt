@@ -24,7 +24,7 @@ tech_fe_clone_vats = {
 		factor = 1.5 	# genetech needs to be a bit more common
 		modifier = {
 			factor = 1.25
-			has_authority = auth_hive_mind
+			is_hive_empire = yes
 		}
 		modifier = {
 			factor = 0.5
@@ -64,7 +64,7 @@ tech_ae_clone_vats = {
 		factor = 1.5 	# genetech needs to be a bit more common
 		modifier = {
 			factor = 1.25
-			has_authority = auth_hive_mind
+			is_hive_empire = yes
 		}
 		modifier = {
 			factor = 0.5

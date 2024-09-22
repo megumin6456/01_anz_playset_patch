@@ -60,8 +60,6 @@ is_a_habitable_planet_megastructure = {
 	OR = {
 		is_planet_class = pc_flusion_gaia_ecu
 		is_planet_class = pc_infested
-		# Expanded Gestalts: Forgotten Queens
-		is_planet_class = pc_matryoshka
 		# ACOT
 		is_planet_class = pc_dark_fractured
 		is_planet_class = pc_dark_fractured_ae

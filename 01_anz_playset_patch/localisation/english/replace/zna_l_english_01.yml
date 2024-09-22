@@ -3,7 +3,7 @@
 # Topbar
 RESOURCE_GROUP_STORE:0 "§W$STORED|*0$§!"
 anz_topbar_spoilers: "Resource hidden to prevent spoilers, it'll be unlocked once you discover it."
-anz_topbar_notused: "Resource is not used by your empire."
+anz_topbar_notused: "Reserved space for future updates, there is nothing here."
 anz_topbar_buildcap_j: "Disabled in settings."
 
 # Species Rights
@@ -185,9 +185,6 @@ bombardment_siphonlife_desc: "§MSO MUCH PREY! WE SHALL HARVEST YOUR ENERGY FOR 
 
 # Misc status
 anz_building_disabled_obsolete: "This building is disabled as it's rendered obsolete"
-anz_hive_overmind_pop_controls: "Hive Overload species cannot reproduce"
-zna_hive_overmind_military_full: "Overload species can only be leaders"
-zna_hive_overmind_military_limited: "Remote Drones can only be troops"
 anz_species_not_part_of_consciousness: "This species is not part of our consciousness"
 anz_species_migrate_synths: "Requires the £engineering£ §Y$tech_synthetic_workers$§! technology for robots to auto migrate."
 ee_gobal_pop_limit_soft: "§HPop limit reached (SOFT CAP)§!"
@@ -299,6 +296,13 @@ tr_synthetics_adopt_machine_desc:0 "Allows us to repurpose Mechanical units (Rob
 sm_communications_jammer_desc:1 "These powerful jammers interfere with enemy sensors preventing them from seeing anything inside this system.\n"
 sm_disruption_field_desc:0 "Generates localized fields of agitated subatomic particles around hostile ships in the system, significantly reducing the effectiveness of their shields and distrupting fleet movement.\n"
 
+MACHINE: "Machine"
+
+trait_machine_unit:0 "Machines"
+trait_machine_unit_desc:1 "§LAdvanced machines that have been designed by other machines. By default they are meant to operate as drones for a single collective intelligence but with enough modifications be it from outsiders or themselves, they should be able to act as individual entities, possibly holding a true synthetic consciousness of their own.§!\n"
+
+trait_mechanical:0 "Synthetics"
+trait_mechanical_desc:2 "§LComplex Mechanical creatures orignally built by organic to serve organics. As such their capabilities all depend on their makers designed them for. Ranging from being only able to follow simple instructions, to holding a fully fledged synthetic consciousness. While designed to act as individual robots hosting their own code, a gestalt consciousness can easily overwrite their program to make them serve as networked drones.§!\n"
 
 TRAIT_LITHOID_GASEOUS_BYPRODUCTS_EFFECT:1 "Each pop working as a slave or better produces 0.1 £exotic_gases£ §Y$exotic_gases$§! per month."
 TRAIT_LITHOID_SCINTILLATING_EFFECT:1 "Each pop working as a slave or better produces 0.1 £rare_crystals£ §Y$rare_crystals$§! per month."

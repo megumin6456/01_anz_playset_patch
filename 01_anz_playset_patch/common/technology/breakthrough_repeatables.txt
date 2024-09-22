@@ -2156,7 +2156,7 @@ tech_repeatable_farmer_drone_jobs = {
 	}
 
 	potential = {
-		has_authority = auth_hive_mind
+		is_hive_empire = yes
 		is_country_type = default
 	}
 
@@ -2765,7 +2765,7 @@ tech_repeatable_brain_drone_jobs = {
 	}
 
 	potential = {
-		has_authority = auth_hive_mind
+		is_hive_empire = yes
 		is_country_type = default
 	}
 
@@ -2852,7 +2852,7 @@ tech_repeatable_calculator_drone_jobs = {
 	}
 
 	potential = {
-		has_authority = auth_machine_intelligence
+		is_machine_empire = yes
 		is_country_type = default
 	}
 
@@ -3322,7 +3322,7 @@ tech_repeatable_pop_assembly = {
 	potential = {
        	OR = { 
            	has_technology = tech_droid_workers
-           	has_authority = auth_machine_intelligence
+           	is_machine_empire = yes
 		}
 		NOT = { is_country_type = fallen_empire }
 	}	

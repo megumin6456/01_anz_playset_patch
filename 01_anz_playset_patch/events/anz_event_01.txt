@@ -1213,65 +1213,6 @@ country_event = {
 	}
 }
 
-# Hive Overmind special traits event
-# .25 - .26
-
-# Respawn Overloads
-country_event = {
-	id = anz_ee.25
-	hide_window = yes
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
-	trigger = {
-		has_origin = origin_hive_overmind
-		NOT = {
-			any_owned_pop = {
-				has_trait = trait_hive_mind_overlord
-			}
-		}
-	}
-
-	immediate = {
-		capital_scope = {
-			create_pop = {
-				species = owner_main_species
-			}
-		}
-	}
-}
-
-# Kill Overloards if more than 1
-country_event = {
-	id = anz_ee.26
-	hide_window = yes
-
-	mean_time_to_happen = {
-		years = 2
-	}
-
-	trigger = {
-		has_origin = origin_hive_overmind
-	}
-
-	immediate = {
-		while = {
-			limit = {
-				count_owned_pop = {
-					limit = { has_trait = trait_hive_mind_overlord }
-					count >= 2
-				}
-			}
-			random_owned_pop = {
-				limit = { has_trait = trait_hive_mind_overlord }
-				kill_pop = yes
-			}
-		}
-	}
-}
-
 # Real Space - Massive Star Problem
 # Remove GPM Megas
 event = {

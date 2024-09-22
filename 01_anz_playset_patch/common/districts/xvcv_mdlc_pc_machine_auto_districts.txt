@@ -9,7 +9,7 @@ xvcv_mdlc_pc_machine_auto_district_city = {
 		exists = from
 		from = {
 			has_ascension_perk = xvcv_mdlc_ap_planet_scale_machines
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = { is_machine_empire = yes }
 		}
 		uses_district_set = xvcv_mdlc_pc_machine_auto_district_set
 	}
@@ -17,7 +17,7 @@ xvcv_mdlc_pc_machine_auto_district_city = {
 		exists = owner
 		owner = {
 			has_ascension_perk = xvcv_mdlc_ap_planet_scale_machines
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = { is_machine_empire = yes }
 		}
 		uses_district_set = xvcv_mdlc_pc_machine_auto_district_set
 	}
@@ -92,7 +92,7 @@ xvcv_mdlc_pc_machine_auto_district_nexus = {
 		exists = from
 		from = {
 			has_ascension_perk = xvcv_mdlc_ap_planet_scale_machines
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 		}
 		uses_district_set = xvcv_mdlc_pc_machine_auto_district_set
 	}
@@ -100,7 +100,7 @@ xvcv_mdlc_pc_machine_auto_district_nexus = {
 		exists = owner
 		owner = {
 			has_ascension_perk = xvcv_mdlc_ap_planet_scale_machines
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 		}
 		uses_district_set = xvcv_mdlc_pc_machine_auto_district_set
 	}
@@ -293,7 +293,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 		produces = {
 			trigger = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+				owner = { NOT = { is_gestalt = yes } }
 			}
 			alloys = 30
 			consumer_goods = 10
@@ -302,7 +302,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = { is_gestalt = yes }
 					is_catalytic_empire = no
 				}
 			}
@@ -312,7 +312,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = { is_gestalt = yes }
 					is_catalytic_empire = yes
 				}
 			}
@@ -323,7 +323,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 			trigger = {
 				planet = { has_designation = col_foundry }
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+				owner = { NOT = { is_gestalt = yes } }
 			}
 			alloys = 40
 		}
@@ -332,7 +332,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 				planet = { has_designation = col_foundry }
 				exists = owner
 				owner = {
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = { is_gestalt = yes }
 					is_catalytic_empire = no
 				}
 			}
@@ -343,7 +343,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 				planet = { has_designation = col_foundry }
 				exists = owner
 				owner = {
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = { is_gestalt = yes }
 					is_catalytic_empire = yes
 				}
 			}
@@ -356,7 +356,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 				exists = owner
 				owner = {
 					OR = {
-						NOT = { has_ethic = ethic_gestalt_consciousness }
+						NOT = { is_gestalt = yes }
 						has_valid_civic = civic_machine_servitor
 					}
 				}
@@ -370,7 +370,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 				exists = owner
 				owner = {
 					OR = {
-						NOT = { has_ethic = ethic_gestalt_consciousness }
+						NOT = { is_gestalt = yes }
 						has_valid_civic = civic_machine_servitor
 					}
 					is_catalytic_empire = no
@@ -384,7 +384,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 				exists = owner
 				owner = {
 					OR = {
-						NOT = { has_ethic = ethic_gestalt_consciousness }
+						NOT = { is_gestalt = yes }
 						has_valid_civic = civic_machine_servitor
 					}
 					is_catalytic_empire = yes
@@ -396,7 +396,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 		produces = {
 			trigger = {
 				exists = owner
-				owner = { has_ethic = ethic_gestalt_consciousness }
+				owner = { is_gestalt = yes }
 			}
 			alloys = 40
 		}
@@ -404,7 +404,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 			trigger = {
 				exists = owner
 				owner = {
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 					is_catalytic_empire = no
 				}
 			}
@@ -414,7 +414,7 @@ xvcv_mdlc_pc_machine_auto_district_industrial = {
 			trigger = {
 				exists = owner
 				owner = {
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 					is_catalytic_empire = yes
 				}
 			}

@@ -18,7 +18,7 @@ anz_efb_larva = {
     potential = {
         exists = from
         from = {
-            NOT = { has_civic = civic_hive_organic }
+            always = yes
         }
 	}
     allow = { }

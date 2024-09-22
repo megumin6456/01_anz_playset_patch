@@ -44,7 +44,7 @@ anz_asim_effects = {
 					if = {
 						limit = { has_citizenship_type = { type = citizenship_assimilation } }
 						if = {
-							limit = { prevprev = { has_authority = auth_machine_intelligence } }
+							limit = { prevprev = { is_machine_empire = yes } }
 							set_citizenship_type = {
 								type = citizenship_full_machine
 								country = prevprev
@@ -56,7 +56,7 @@ anz_asim_effects = {
 							}
 						}
 						if = {
-							limit = { prevprev = { has_ethic = ethic_gestalt_consciousness } }
+							limit = { prevprev = { is_gestalt = yes } }
 							set_living_standard = {
 								type = living_standard_hive_mind
 								country = prevprev
@@ -135,7 +135,7 @@ anz_asim_post_effects = {
 		}
 		if = { # assimilator empire
 			limit = {
-				has_authority = auth_machine_intelligence
+				is_machine_empire = yes
 				has_civic = civic_machine_assimilator
 				NOT = { has_tradition = tr_cybernetics_assimilator_adopt }
 			}
@@ -143,7 +143,7 @@ anz_asim_post_effects = {
 		}
 		else_if = {
 			limit = {
-				has_authority = auth_machine_intelligence
+				is_machine_empire = yes
 				has_civic = civic_machine_assimilator
 				has_tradition = tr_cybernetics_assimilator_adopt
 			}
@@ -167,7 +167,7 @@ anz_asim_post_effects_country_scope = {
 	}
 	if = { # assimilator empire
 		limit = {
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 			has_civic = civic_machine_assimilator
 			NOT = { has_tradition = tr_cybernetics_assimilator_adopt }
 		}
@@ -175,7 +175,7 @@ anz_asim_post_effects_country_scope = {
 	}
 	else_if = {
 		limit = {
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 			has_civic = civic_machine_assimilator
 			has_tradition = tr_cybernetics_assimilator_adopt
 		}

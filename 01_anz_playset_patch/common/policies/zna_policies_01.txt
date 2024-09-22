@@ -292,7 +292,7 @@ war_philosophy = {
 		}
 
 		potential = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = { is_gestalt = yes }
 		}
 
 		valid = {
@@ -511,7 +511,7 @@ purge = {
 		name = "purge_not_allowed"
 
 		valid = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = { is_gestalt = yes }
 			NOT = { has_valid_civic = "civic_fanatic_purifiers" }
 		}
 
@@ -573,7 +573,7 @@ purge = {
 			}
 			OR = {
 				AND = {
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 					NOT = {
 						has_valid_civic = civic_mutualistic_behavior
 					}
@@ -588,7 +588,7 @@ purge = {
 			factor = 10
 			modifier = {
 				factor = 40
-				has_ethic = ethic_gestalt_consciousness
+				is_gestalt = yes
 				NOT = { has_valid_civic = civic_hive_empath }
 			}
 			modifier = {
@@ -603,7 +603,7 @@ purge = {
 				has_valid_ai_personality = yes
 				NOR = {
 					has_ai_personality_behaviour = purger
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 				}
 			}
 			modifier = {

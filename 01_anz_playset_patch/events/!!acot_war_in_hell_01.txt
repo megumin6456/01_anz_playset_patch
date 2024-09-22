@@ -35,7 +35,7 @@ country_event = {
                 has_country_flag = fallen_empire_4
             }
             NOT = {
-                has_ethic = ethic_gestalt_consciousness
+                is_gestalt = yes
             }
             NOT = {
                 has_country_flag = awakened_by_wih
@@ -61,7 +61,7 @@ country_event = {
                     has_country_flag = fallen_empire_4
                 }
                 NOT = {
-                    has_ethic = ethic_gestalt_consciousness
+                    is_gestalt = yes
                 }    
                 NOT = {
                     is_same_value = root

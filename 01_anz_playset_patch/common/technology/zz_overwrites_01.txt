@@ -169,7 +169,7 @@ tech_psionic_theory = {
 			AND = {
 				OR = {
 					is_materialist = yes
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 				}
 				NOR = {
 					has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }

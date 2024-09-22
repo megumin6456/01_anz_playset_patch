@@ -21,11 +21,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_resource_queens_larva"
-		textureFile = "gfx/interface/icons/resources/larva.dds"
-	}
-
-	spriteType = {
 		name = "GFX_giga_sr_amb_megaconstruction_large"
 		textureFile = "gfx/interface/icons/resources/giga_sr_amb_megaconstruction_large.dds"
 	}
