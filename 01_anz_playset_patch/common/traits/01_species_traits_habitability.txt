@@ -178,12 +178,6 @@ trait_pc_machine_preference = {
 		pc_pd_machine_superhabitable_arc_habitability = 1.0
 		pc_pd_machine_tidally_locked_habitability = 1.0
 		pc_pd_machine_tidally_locked_arc_habitability = 1.0
-
-		# xvcv_mdlc_pc_mechanical_habitability = 1.0
-		# xvcv_mdlc_pc_machine_auto_habitability = 1.0
-		# xvcv_mdlc_pc_machine_ecu_habitability = 1.0
-		# xvcv_mdlc_pc_machine_cpu_habitability = 1.0
-		# xvcv_mdlc_pc_machine_ser_habitability = 1.0
 	}
 	ai_weight = {
 		weight = 0

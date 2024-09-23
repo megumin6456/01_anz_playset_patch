@@ -3,5 +3,6 @@
 # PLS NO ASIM CODE :c
 
 
- * Machines and Mechanical trait description.
  * Portraits reordered.
+ * Individual Machines are disabled.
+ * Ascension Paths basics.

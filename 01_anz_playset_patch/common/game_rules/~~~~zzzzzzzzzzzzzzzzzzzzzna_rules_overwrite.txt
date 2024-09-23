@@ -1586,3 +1586,76 @@ can_add_claim = {
 		}
 	}
 }
+
+# Modified to block machine units from having hapiness (outside of bugged_happy_gestalts)
+
+# Root = Species
+# From = Country
+# This = Species
+species_has_happiness = {
+	NOR = {
+		AND = {
+			has_trait = trait_machine_unit
+			exists = FROM
+			# FROM = { is_machine_empire = yes }
+			# Ethics & Civics Bug Branch
+			FROM = {  is_bugged_happy_gestalt = no }
+		}
+		AND = {
+			has_trait = trait_hive_mind
+			# Ethics & Civics Bug Branch
+			FROM = { is_bugged_happy_gestalt = no }
+		}
+		can_think = no
+		# Vanilla
+		AND = {
+			has_trait = trait_mechanical
+			# Animated Synthetics Portraits Expanded: Reborn
+			OR = {
+				merg_has_animated_synth = no
+				AND = {
+					merg_has_animated_synth = yes
+					FROM = { is_machine_empire = yes }
+					is_extsynth_synthetic = yes
+					NOT = { has_trait = trait_psionic }
+				}
+				AND = {
+					merg_has_animated_synth = yes
+					NAND = {
+						FROM = { is_machine_empire = yes }
+						is_extsynth_synthetic = yes
+					}
+				}
+			}
+			# Vanilla
+			OR = {
+				NOT = { exists = FROM }
+				FROM = {
+					OR = {
+						is_machine_empire = yes
+						NOR = {
+							has_technology = tech_synthetic_workers
+						}
+						has_policy_flag = ai_outlawed
+					}
+				}
+			}
+		}
+		AND = {
+			has_trait = trait_cybernetic
+			exists = FROM
+			FROM = {
+				OR = {
+					AND = {
+						is_machine_empire = yes
+						has_civic = civic_machine_assimilator # Assimilator empire
+					}
+					AND = {
+						is_democratic_authority = yes
+						has_country_flag = cyber_collectivist
+					}
+				}
+			}
+		}
+	}
+}

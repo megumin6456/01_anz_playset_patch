@@ -299,10 +299,10 @@ sm_disruption_field_desc:0 "Generates localized fields of agitated subatomic par
 MACHINE: "Machine"
 
 trait_machine_unit:0 "Machines"
-trait_machine_unit_desc:1 "§LAdvanced machines that have been designed by other machines. By default they are meant to operate as drones for a single collective intelligence but with enough modifications be it from outsiders or themselves, they should be able to act as individual entities, possibly holding a true synthetic consciousness of their own.§!\n"
+trait_machine_unit_desc:1 "§LAdvanced machines designed by other machines to serve their own needs. They can only operate as drones for a single collective intelligence and will break down if disconnected.§!\n"
 
 trait_mechanical:0 "Synthetics"
-trait_mechanical_desc:2 "§LComplex Mechanical creatures orignally built by organic to serve organics. As such their capabilities all depend on their makers designed them for. Ranging from being only able to follow simple instructions, to holding a fully fledged synthetic consciousness. While designed to act as individual robots hosting their own code, a gestalt consciousness can easily overwrite their program to make them serve as networked drones.§!\n"
+trait_mechanical_desc:2 "§LSynthetics are Machines built by organics, their capabilities depend on the technology of their host empire. Ranging from following simple instructions, to holding a fully fledged consciousness, acting as individuals hosting their own code.§!\n"
 
 TRAIT_LITHOID_GASEOUS_BYPRODUCTS_EFFECT:1 "Each pop working as a slave or better produces 0.1 £exotic_gases£ §Y$exotic_gases$§! per month."
 TRAIT_LITHOID_SCINTILLATING_EFFECT:1 "Each pop working as a slave or better produces 0.1 £rare_crystals£ §Y$rare_crystals$§! per month."

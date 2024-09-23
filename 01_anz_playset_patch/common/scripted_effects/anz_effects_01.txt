@@ -126,13 +126,6 @@ anz_asim_post_effects = {
 			limit = { has_ascension_perk = ap_become_the_crisis }
 			complete_crisis_objective = crisobj_purge_pops
 		}
-		if = { # Count when not assimilators
-			limit = { NOT = { has_civic = civic_machine_assimilator } }
-			change_variable = {
-				which = num_assimilated_pops
-				value = 1
-			}
-		}
 		if = { # assimilator empire
 			limit = {
 				is_machine_empire = yes
@@ -157,13 +150,6 @@ anz_asim_post_effects_country_scope = {
 	if = { # BTC
 		limit = { has_ascension_perk = ap_become_the_crisis }
 		complete_crisis_objective = crisobj_purge_pops
-	}
-	if = { # Count when not assimilators
-		limit = { NOT = { has_civic = civic_machine_assimilator } }
-		change_variable = {
-			which = num_assimilated_pops
-			value = 1
-		}
 	}
 	if = { # assimilator empire
 		limit = {

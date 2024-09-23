@@ -3,6 +3,8 @@
 * Traits
 * Species Classes & Portraits
 * Species Rights (except assimilation code)
+* Individual machines removed (no need to update assim code)
+* Ascension Paths basic update, should be semi playable now.
 
 # Updated Elements
 * Trigger: anz_spr_myst
