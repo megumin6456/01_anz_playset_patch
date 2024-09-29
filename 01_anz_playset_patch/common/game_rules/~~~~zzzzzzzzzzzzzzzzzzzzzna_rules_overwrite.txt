@@ -1596,7 +1596,7 @@ species_has_happiness = {
 	NOR = {
 		AND = {
 			has_trait = trait_machine_unit
-			exists = FROM
+			# exists = FROM
 			# FROM = { is_machine_empire = yes }
 			# Ethics & Civics Bug Branch
 			FROM = {  is_bugged_happy_gestalt = no }
@@ -1636,6 +1636,10 @@ species_has_happiness = {
 						NOR = {
 							has_technology = tech_synthetic_workers
 						}
+						AND = {
+							is_democratic_authority = yes
+							has_country_flag = cyber_collectivist
+						}
 						has_policy_flag = ai_outlawed
 					}
 				}
@@ -1649,6 +1653,10 @@ species_has_happiness = {
 					AND = {
 						is_machine_empire = yes
 						has_civic = civic_machine_assimilator # Assimilator empire
+					}
+					AND = {
+						is_hive_empire = yes
+						has_tradition = tr_cybernetics_finish
 					}
 					AND = {
 						is_democratic_authority = yes
